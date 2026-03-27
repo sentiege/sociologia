@@ -81,13 +81,8 @@
       gap: 1.2rem;
     }
 
-    .slide {
-      display: none;
-    }
-
-    .slide.active {
-      display: block;
-    }
+    .slide { display: none; }
+    .slide.active { display: block; }
 
     .card {
       background: var(--card-bg);
@@ -253,6 +248,7 @@
       align-items: center;
       margin-top: 1.2rem;
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .nav-buttons {
@@ -282,9 +278,51 @@
       color: #374151;
     }
 
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
     .step-indicator {
       font-size: 0.8rem;
       color: #6b7280;
+    }
+
+    .progress-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 200px;
+    }
+
+    .progress-label {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(to right, #0f766e, #0369a1);
+      transition: width 0.25s ease;
+    }
+
+    .back-home-wrapper {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      padding: 0 1.2rem;
+      display: flex;
+      justify-content: flex-end;
     }
 
     @media (max-width: 640px) {
@@ -296,6 +334,14 @@
       }
       .hero {
         padding: 2.3rem 1.1rem 2rem;
+      }
+      .progress-wrapper {
+        order: 2;
+      }
+      .nav-buttons {
+        order: 1;
+        width: 100%;
+        justify-content: space-between;
       }
     }
   </style>
@@ -804,14 +850,29 @@
       </div>
     </section>
 
+    <!-- Controles de navegación + barra de progreso -->
     <div class="nav-controls">
-      <div class="step-indicator" id="step-indicator">Tarjeta 1 de 17</div>
+      <div class="progress-wrapper">
+        <div class="progress-label">
+          <span id="step-indicator">Tarjeta 1 de 17</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
       <div class="nav-buttons">
         <button class="btn btn-secondary" id="prev-btn">&larr; Anterior</button>
         <button class="btn btn-primary" id="next-btn">Siguiente &rarr;</button>
       </div>
     </div>
   </main>
+
+  <!-- Botón volver al inicio ABAJO -->
+  <div class="back-home-wrapper">
+    <button class="btn btn-secondary" onclick="window.location.href='/index.php'">
+      ⬅ Volver al inicio
+    </button>
+  </div>
 
   <script>
     const slides = Array.from(document.querySelectorAll('.slide'));
@@ -820,14 +881,23 @@
     const stepIndicator = document.getElementById('step-indicator');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const progressFill = document.getElementById('progress-fill');
 
     function updateSlides() {
       slides.forEach((s, i) => {
         s.classList.toggle('active', i === current);
       });
-      stepIndicator.textContent = 'Tarjeta ' + (current + 1) + ' de ' + slides.length;
+
+      const total = slides.length;
+      stepIndicator.textContent = 'Tarjeta ' + (current + 1) + ' de ' + total;
+
+      const percent = ((current + 1) / total) * 100;
+      if (progressFill) {
+        progressFill.style.width = percent + '%';
+      }
+
       prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === slides.length - 1;
+      nextBtn.disabled = current === total - 1;
     }
 
     prevBtn.addEventListener('click', () => {
