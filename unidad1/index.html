@@ -1,423 +1,317 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unidad I — Introducción a la Sociología</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+  <title>Herramienta de Repaso — Introducción a la Sociología</title>
   <style>
-    /* ===== TOKENS ===== */
-    :root, [data-theme="light"] {
-      --color-bg: #f7f6f2;
-      --color-surface: #ffffff;
-      --color-surface-2: #f3f0ec;
-      --color-border: rgba(30,25,15,0.10);
-      --color-text: #1e190f;
-      --color-text-muted: #6b6760;
-      --color-text-faint: #b0aea8;
-      --color-primary: #01696f;
-      --color-primary-light: #e0f0ef;
-      --color-primary-hover: #0c4e54;
-      --color-accent: #7c3aed;
-      --color-accent-light: #ede9fe;
-      --color-extra: #b45309;
-      --color-extra-light: #fef3c7;
-      --color-success: #15803d;
-      --color-success-light: #dcfce7;
-      --color-error: #b91c1c;
-      --color-error-light: #fee2e2;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.09);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-      --radius-md: 12px;
+    :root {
+      --primary: #0f766e;
+      --primary-light: #d1fae5;
+      --secondary: #0369a1;
+      --text: #111827;
+      --muted: #6b7280;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
       --radius-lg: 18px;
-      --radius-full: 9999px;
-      --font-display: 'Instrument Serif', Georgia, serif;
-      --font-body: 'Work Sans', system-ui, sans-serif;
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
-      --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem;
-      --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
-    }
-    [data-theme="dark"] {
-      --color-bg: #13120f;
-      --color-surface: #1c1b18;
-      --color-surface-2: #252420;
-      --color-border: rgba(255,255,240,0.09);
-      --color-text: #e8e6e0;
-      --color-text-muted: #8a8880;
-      --color-text-faint: #5a5955;
-      --color-primary: #4f98a3;
-      --color-primary-light: #1e3336;
-      --color-primary-hover: #6db8c4;
-      --color-accent: #a78bfa;
-      --color-accent-light: #2e2547;
-      --color-extra: #fbbf24;
-      --color-extra-light: #3a2e10;
-      --color-success: #6daa45;
-      --color-success-light: #1e3318;
-      --color-error: #f87171;
-      --color-error-light: #3a1818;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+      --radius-md: 12px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.09);
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.06);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
     }
 
-    /* ===== BASE ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      color: var(--color-text);
-      background: var(--color-bg);
-      min-height: 100dvh;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
     }
-    img { display: block; max-width: 100%; height: auto; }
-    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
 
-    /* ===== HERO ===== */
     .hero {
-      background: linear-gradient(135deg, #0f3638 0%, #01696f 45%, #1e1b4b 100%);
-      color: #f0fdf4;
-      padding: clamp(var(--space-10), 8vw, var(--space-16)) var(--space-6) clamp(var(--space-8), 6vw, var(--space-12));
+      background: linear-gradient(135deg, #064e3b 0%, #047857 45%, #0369a1 100%);
+      color: white;
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.85); }
+    .hero-sub strong { color: #bbf7d0; font-weight: 700; }
+    .hero-desc { font-size: 0.92rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 1.5rem 1.8rem;
       position: relative;
       overflow: hidden;
+      border: 1px solid var(--border);
     }
-    .hero::before {
-      content: '';
+
+    .card-stripe {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 60%, rgba(124,58,237,0.18) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 20%, rgba(1,105,111,0.25) 0%, transparent 50%);
-      pointer-events: none;
+      width: 5px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
     }
-    .hero-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero-tag {
-      display: inline-block;
-      background: rgba(255,255,255,0.13);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: var(--radius-full);
-      padding: 0.25rem 0.9rem;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: var(--space-4);
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      line-height: 1.1;
-      margin-bottom: var(--space-3);
-      color: #fff;
-    }
-    .hero-sub { font-size: var(--text-sm); color: rgba(255,255,255,0.7); }
-    .hero-sub strong { color: #fde68a; font-weight: 700; }
 
-    /* ===== STICKY PROGRESS ===== */
-    .progress-bar-wrap {
-      position: sticky; top: 0; z-index: 30;
-      background: var(--color-surface);
-      border-bottom: 1px solid var(--color-border);
-      padding: var(--space-2) var(--space-6);
-      display: flex; align-items: center; gap: var(--space-4);
-      box-shadow: var(--shadow-sm);
+    .card-stripe.extra {
+      background: linear-gradient(to bottom, #7c3aed, #0369a1);
     }
-    .progress-label { font-size: var(--text-xs); font-weight: 700; color: var(--color-primary); white-space: nowrap; }
-    .progress-track { flex: 1; height: 7px; background: var(--color-primary-light); border-radius: var(--radius-full); overflow: hidden; }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-      border-radius: var(--radius-full);
-      transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    .progress-count { font-size: var(--text-xs); color: var(--color-text-muted); white-space: nowrap; }
-    .theme-toggle {
-      margin-left: auto;
-      width: 34px; height: 34px;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-2);
-      color: var(--color-text-muted);
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.18s, color 0.18s;
-    }
-    .theme-toggle:hover { background: var(--color-primary-light); color: var(--color-primary); }
-
-    /* ===== MAIN ===== */
-    .main { max-width: 820px; margin: 0 auto; padding: var(--space-8) var(--space-4) var(--space-12); }
-
-    /* ===== SLIDE SYSTEM ===== */
-    .slide { display: none; flex-direction: column; gap: var(--space-6); animation: fadeUp 0.35s ease; }
-    .slide.active { display: flex; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ===== CARD ===== */
-    .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      padding: clamp(var(--space-6), 4vw, var(--space-8));
-      position: relative;
-      overflow: hidden;
-    }
-    .card-stripe {
-      position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-    }
-    .card-stripe.extra { background: linear-gradient(90deg, var(--color-extra), var(--color-accent)); }
-    .card-stripe.quiz  { background: linear-gradient(90deg, #f97316, #ea580c); }
 
     .card-tag {
-      display: inline-block;
-      border-radius: var(--radius-full);
-      padding: 0.2rem 0.75rem;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: var(--space-3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.9rem;
+      margin-bottom: 0.6rem;
     }
-    .tag-primary { background: var(--color-primary-light); color: var(--color-primary); }
-    .tag-extra    { background: var(--color-extra-light);   color: var(--color-extra); }
-    .tag-quiz     { background: #ffedd5; color: #c2410c; }
-    .tag-compare  { background: var(--color-accent-light);  color: var(--color-accent); }
+
+    .tag-primary {
+      background: var(--primary-light);
+      color: #065f46;
+    }
+
+    .tag-extra {
+      background: #e0e7ff;
+      color: #4338ca;
+    }
+
+    .tag-compare {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
 
     .card h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      color: var(--color-text);
-      line-height: 1.2;
-      margin-bottom: var(--space-4);
+      margin-left: 0.9rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.35rem;
     }
-    .card p { font-size: var(--text-base); line-height: 1.75; color: var(--color-text); margin-bottom: var(--space-3); }
-    .card p:last-of-type { margin-bottom: 0; }
 
-    .card ul, .card ol { padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); margin: var(--space-3) 0; }
-    .card li { font-size: var(--text-base); line-height: 1.65; }
-    .card li strong { color: var(--color-primary); }
+    .card p {
+      margin-left: 0.9rem;
+      font-size: 0.95rem;
+      color: #374151;
+      margin-bottom: 0.4rem;
+    }
 
-    /* ===== HIGHLIGHT / DATO BOXES ===== */
-    .highlight-box {
-      background: var(--color-primary-light);
-      border: 1px solid rgba(1,105,111,0.2);
+    .card ul {
+      margin-left: 1.4rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      margin-left: 0.9rem;
+    }
+
+    .mini-card {
+      background: #f9fafb;
       border-radius: var(--radius-md);
-      padding: var(--space-4) var(--space-6);
-      margin-top: var(--space-4);
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
     }
-    .highlight-box .box-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--color-primary); margin-bottom: var(--space-2); }
-    .highlight-box p { font-size: var(--text-sm); color: var(--color-text); margin: 0; }
+
+    .mini-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+      color: #111827;
+    }
+
+    .highlight-box,
+    .dato-box {
+      margin-top: 0.7rem;
+      margin-left: 0.9rem;
+      border-radius: var(--radius-md);
+      padding: 0.7rem 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .highlight-box {
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+    }
 
     .dato-box {
-      background: var(--color-extra-light);
-      border: 1px solid rgba(180,83,9,0.2);
-      border-radius: var(--radius-md);
-      padding: var(--space-4) var(--space-6);
-      margin-top: var(--space-4);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
     }
-    .dato-box .box-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--color-extra); margin-bottom: var(--space-2); }
-    .dato-box p { font-size: var(--text-sm); color: var(--color-text); margin: 0; }
 
-    /* ===== GRID 2 ===== */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-4); }
-    @media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
-    .mini-card {
-      background: var(--color-surface-2);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: var(--space-4) var(--space-5);
-    }
-    .mini-card h4 { font-size: var(--text-sm); font-weight: 800; color: var(--color-text); margin-bottom: var(--space-2); }
-    .mini-card p  { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin: 0; }
-
-    /* ===== COMPARE TABLE ===== */
-    .compare-table { width: 100%; border-collapse: collapse; margin-top: var(--space-4); font-size: var(--text-sm); }
-    .compare-table th {
-      background: var(--color-primary-light);
-      color: var(--color-primary);
+    .box-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       font-weight: 700;
-      padding: var(--space-3) var(--space-4);
-      text-align: left;
-      border-bottom: 2px solid rgba(1,105,111,0.2);
+      margin-bottom: 0.15rem;
+      color: #047857;
     }
-    .compare-table th:first-child { border-radius: var(--radius-md) 0 0 0; }
-    .compare-table th:last-child  { border-radius: 0 var(--radius-md) 0 0; }
-    .compare-table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); color: var(--color-text); vertical-align: top; line-height: 1.55; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table tr:nth-child(even) td { background: var(--color-surface-2); }
-    .compare-table td:first-child { font-weight: 700; color: var(--color-primary); }
 
-    /* ===== QUIZ ===== */
-    .quiz-header { text-align: center; margin-bottom: var(--space-2); }
-    .quiz-header h2 { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-2); }
-    .quiz-header p  { font-size: var(--text-sm); color: var(--color-text-muted); }
-
-    .q-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); margin-bottom: var(--space-4); }
-    .q-num  { font-size: var(--text-xs); font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-2); }
-    .q-text { font-size: var(--text-base); font-weight: 700; color: var(--color-text); line-height: 1.45; margin-bottom: var(--space-4); }
-    .q-tag  { display: inline-block; background: var(--color-surface-2); color: var(--color-text-muted); border-radius: var(--radius-full); padding: 0.15rem 0.6rem; font-size: var(--text-xs); font-weight: 600; margin-bottom: var(--space-3); }
-
-    .options { display: flex; flex-direction: column; gap: var(--space-2); }
-    .opt {
-      display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      font-size: var(--text-sm);
-      background: var(--color-bg);
-      transition: border-color 0.18s, background 0.18s;
-      text-align: left;
-      line-height: 1.5;
-    }
-    .opt:hover:not(.locked) { border-color: #f97316; background: #fff7ed; }
-    [data-theme="dark"] .opt:hover:not(.locked) { background: #2a1f10; }
-    .opt .letter {
-      min-width: 24px; height: 24px;
-      border-radius: var(--radius-full);
-      background: #ffedd5; color: #c2410c;
-      font-size: 0.72rem; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-    }
-    .opt.correct  { border-color: #16a34a; background: var(--color-success-light); }
-    .opt.correct .letter { background: #16a34a; color: #fff; }
-    .opt.wrong    { border-color: #dc2626; background: var(--color-error-light); }
-    .opt.wrong .letter { background: #dc2626; color: #fff; }
-
-    .feedback { margin-top: var(--space-3); font-size: var(--text-sm); font-weight: 600; padding: var(--space-2) var(--space-4); border-radius: 8px; display: none; }
-    .feedback.show { display: block; }
-    .feedback.ok { background: var(--color-success-light); color: var(--color-success); }
-    .feedback.ko { background: var(--color-error-light); color: var(--color-error); }
-
-    .quiz-result {
-      display: none; flex-direction: column; align-items: center;
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
-      padding: var(--space-10) var(--space-8); text-align: center; gap: var(--space-3);
-      margin-top: var(--space-4);
-    }
-    .quiz-result.show { display: flex; }
-    .result-emoji { font-size: 3rem; }
-    .result-score { font-family: var(--font-display); font-size: var(--text-2xl); color: #f97316; }
-    .result-msg   { font-size: var(--text-base); color: var(--color-text-muted); max-width: 40ch; }
-
-    /* ===== SECTION SEPARATOR ===== */
     .section-sep {
-      display: flex; align-items: center; gap: var(--space-4);
-      margin: var(--space-2) 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      margin-left: 0.4rem;
     }
-    .section-sep-line { flex: 1; height: 1px; background: var(--color-border); }
+
+    .section-sep-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #9ca3af, transparent);
+    }
+
     .section-sep-label {
-      font-size: var(--text-xs); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
-      color: var(--color-extra); white-space: nowrap;
-      background: var(--color-extra-light);
-      padding: 0.25rem 0.9rem; border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      white-space: nowrap;
     }
 
-    /* ===== NAV ===== */
-    .nav-bar {
-      position: sticky; bottom: 0; z-index: 20;
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border);
-      padding: var(--space-3) var(--space-6);
-      display: flex; align-items: center; justify-content: center; gap: var(--space-3); flex-wrap: wrap;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
     }
+
+    .compare-table th,
+    .compare-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0.45rem 0.5rem;
+      text-align: left;
+    }
+
+    .compare-table thead {
+      background: #f3f4f6;
+    }
+
+    .nav-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2rem;
+      gap: 0.5rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
     .btn {
-      border-radius: var(--radius-full);
-      padding: 0.5rem 1.2rem;
-      font-size: var(--text-sm); font-weight: 700;
-      transition: all 0.18s;
-      display: inline-flex; align-items: center; gap: var(--space-2);
+      border: none;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
     }
+
     .btn-primary {
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(249,115,22,0.3);
+      background: var(--primary);
+      color: #ecfdf5;
     }
-    .btn-primary:hover { box-shadow: 0 6px 20px rgba(249,115,22,0.45); transform: translateY(-1px); }
-    .btn-ghost {
-      background: var(--color-surface-2);
-      color: var(--color-text);
-      border: 1px solid var(--color-border);
-    }
-    .btn-ghost:hover { background: var(--color-primary-light); color: var(--color-primary); }
-    .btn-home {
-      background: var(--color-success-light);
-      color: var(--color-success);
-      border: 1px solid rgba(21,128,61,0.25);
-    }
-    .btn-home:hover { background: #bbf7d0; }
-    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
 
-    /* ===== SUMMARY ===== */
-    .summary {
-      background: var(--color-surface-2); border: 1px solid var(--color-border);
-      border-radius: var(--radius-md); padding: var(--space-3) var(--space-5);
-      font-size: var(--text-sm); color: var(--color-text-muted);
-      display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;
-      margin-top: var(--space-4);
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #374151;
     }
-    .summary span strong { color: var(--color-text); }
 
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      padding: var(--space-8) var(--space-4);
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      border-top: 1px solid var(--color-border);
-      line-height: 2;
+    .step-indicator {
+      font-size: 0.8rem;
+      color: #6b7280;
     }
-    footer strong { color: var(--color-primary); }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 520px) {
-      .card { padding: var(--space-5) var(--space-4); }
-      .nav-bar { padding: var(--space-2) var(--space-3); }
-      .btn { padding: 0.45rem 0.9rem; font-size: var(--text-xs); }
+    @media (max-width: 640px) {
+      .card {
+        padding: 1.4rem 1.1rem 1.5rem;
+      }
+      .card h2 {
+        font-size: 1.2rem;
+      }
+      .hero {
+        padding: 2.3rem 1.1rem 2rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- HERO -->
   <header class="hero">
     <div class="hero-inner">
-      <span class="hero-tag">Unidad I · Introducción a la Sociología</span>
-      <h1>Sociología: ciencia, método y perspectiva</h1>
-      <p class="hero-sub">Prof. <strong>Ilda Mayeregger</strong> · Año 2026 · UNA — Facultad de Derecho y Ciencias Sociales</p>
+      <div class="hero-tag">Unidad I · Introducción a la Sociología</div>
+      <h1>Herramienta de repaso rápido</h1>
+      <p class="hero-sub">Basado en el PPT de cátedra y en <strong>Macionis &amp; Plummer</strong>, <strong>Giddens</strong> y otros autores.</p>
+      <p class="hero-desc">Deslizá por las tarjetas para revisar los puntos clave del programa 1.1 a 1.4 antes de tu evaluación.</p>
     </div>
   </header>
 
-  <!-- PROGRESS -->
-  <div class="progress-bar-wrap">
-    <span class="progress-label">Progreso</span>
-    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:6.25%"></div></div>
-    <span class="progress-count" id="progressCount">1 / 16</span>
-    <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-      </svg>
-    </button>
-  </div>
-
   <main class="main">
-
-    <!-- ===== SLIDE 0: ¿Qué es la sociología? ===== -->
+    <!-- SLIDE 0: ¿Qué es la sociología? -->
     <section class="slide active" id="slide-0">
       <div class="card">
         <div class="card-stripe"></div>
@@ -450,7 +344,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 1: Ciencias Sociales ===== -->
+    <!-- SLIDE 1: Ciencias Sociales -->
     <section class="slide" id="slide-1">
       <div class="card">
         <div class="card-stripe"></div>
@@ -475,7 +369,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 2: Perspectiva Sociológica ===== -->
+    <!-- SLIDE 2: Perspectiva Sociológica -->
     <section class="slide" id="slide-2">
       <div class="card">
         <div class="card-stripe"></div>
@@ -496,7 +390,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 3: Continuismo / Discontinuismo ===== -->
+    <!-- SLIDE 3: Continuismo / Discontinuismo -->
     <section class="slide" id="slide-3">
       <div class="card">
         <div class="card-stripe"></div>
@@ -520,7 +414,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 4: Objeto y especializaciones ===== -->
+    <!-- SLIDE 4: Objeto y especializaciones -->
     <section class="slide" id="slide-4">
       <div class="card">
         <div class="card-stripe"></div>
@@ -546,7 +440,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 5: Macro y Micro ===== -->
+    <!-- SLIDE 5: Macro y Micro -->
     <section class="slide" id="slide-5">
       <div class="card">
         <div class="card-stripe"></div>
@@ -570,7 +464,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 6: Métodos ===== -->
+    <!-- SLIDE 6: Métodos -->
     <section class="slide" id="slide-6">
       <div class="card">
         <div class="card-stripe"></div>
@@ -594,7 +488,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 7: Técnicas y herramientas ===== -->
+    <!-- SLIDE 7: Técnicas y herramientas -->
     <section class="slide" id="slide-7">
       <div class="card">
         <div class="card-stripe"></div>
@@ -629,7 +523,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 8: Diferencias metodológicas ===== -->
+    <!-- SLIDE 8: Diferencias metodológicas -->
     <section class="slide" id="slide-8">
       <div class="card">
         <div class="card-stripe"></div>
@@ -657,7 +551,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 9: Construcción social ===== -->
+    <!-- SLIDE 9: Construcción social -->
     <section class="slide" id="slide-9">
       <div class="card">
         <div class="card-stripe"></div>
@@ -676,7 +570,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 10: Relación con otras ciencias ===== -->
+    <!-- SLIDE 10: Relación con otras ciencias -->
     <section class="slide" id="slide-10">
       <div class="card">
         <div class="card-stripe"></div>
@@ -710,7 +604,7 @@
       </div>
     </section>
 
-    <!-- ===== SEPARATOR EXTRA ===== -->
+    <!-- SEPARATOR EXTRA -->
     <section class="slide" id="slide-11">
       <div class="section-sep">
         <div class="section-sep-line"></div>
@@ -721,7 +615,7 @@
         <div class="card-stripe extra"></div>
         <span class="card-tag tag-extra">Extra · Durkheim · Marx · Weber</span>
         <h2>Los tres pilares del pensamiento sociológico clásico</h2>
-        <p>La sociología se consolidó como disciplina a partir de tres figuras cuyas teorías siguen siendo marcos de referencia fundamentales hasta hoy (Macionis &amp; Plummer; Giddens).</p>
+        <p>La sociología se consolidó como disciplina a partir de tres figuras cuyas teorías siguen siendo marcos de referencia fundamentales hasta hoy.</p>
         <div class="grid-2">
           <div class="mini-card">
             <h4>🧱 Émile Durkheim (1858–1917)</h4>
@@ -739,7 +633,7 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 12: EXTRA Comparativa ===== -->
+    <!-- SLIDE 12: EXTRA Comparativa -->
     <section class="slide" id="slide-12">
       <div class="card">
         <div class="card-stripe extra"></div>
@@ -767,502 +661,199 @@
       </div>
     </section>
 
-    <!-- ===== SLIDE 13: QUIZ ===== -->
+    <!-- SLIDE 13: Origen y Evolución -->
     <section class="slide" id="slide-13">
-      <div class="quiz-header">
-        <h2>🎯 Quiz — Unidad I</h2>
-        <p>16 preguntas que cubren Unidad I y el bloque EXTRA · Seleccioná la respuesta correcta</p>
-      </div>
+      <div class="card">
+        <div class="card-stripe"></div>
+        <span class="card-tag tag-primary">1.1 · Origen y evolución</span>
+        <h2>Origen histórico de la Sociología</h2>
+        <p>La sociología surge en el siglo XIX como respuesta a profundas transformaciones: la Revolución Industrial, la urbanización acelerada y las revoluciones políticas que alteraron el orden feudal.</p>
+        <p>El paso del Medioevo al mundo moderno implicó pasar de una legitimidad basada en la religión y la tradición a un orden sustentado en la razón, la ciencia y el Estado nacional.</p>
 
-      <!-- Q1 -->
-      <div class="q-card" id="q0">
-        <p class="q-num">Pregunta 1</p>
-        <span class="q-tag">1.1</span>
-        <p class="q-text">¿Quién acuñó el término "Sociología" y en qué año?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(0,0,0)"><span class="letter">A</span>Auguste Comte en 1839</button>
-          <button class="opt" onclick="ans(0,1,0)"><span class="letter">B</span>Karl Marx en 1848</button>
-          <button class="opt" onclick="ans(0,2,0)"><span class="letter">C</span>Émile Durkheim en 1895</button>
-          <button class="opt" onclick="ans(0,3,0)"><span class="letter">D</span>Max Weber en 1905</button>
+        <div class="grid-2" style="margin-top: var(--space-4);">
+          <div class="mini-card">
+            <h4>Del Medioevo a la Modernidad</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Feudalismo, latifundio y estamentos fijos.</li>
+              <li>Legitimidad religiosa y derecho divino.</li>
+              <li>Transición: grandes navegaciones, Reforma Protestante, Ilustración.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>La sociedad moderna</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Industrialización y concentración urbana.</li>
+              <li>Ascenso de la burguesía como clase hegemónica.</li>
+              <li>Desigualdad social como categoría central de análisis.</li>
+            </ul>
+          </div>
         </div>
-        <div class="feedback" id="fb0"></div>
-      </div>
 
-      <!-- Q2 -->
-      <div class="q-card" id="q1">
-        <p class="q-num">Pregunta 2</p>
-        <span class="q-tag">1.1</span>
-        <p class="q-text">Según Macionis y Plummer, ¿cómo definen la sociología?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(1,0,1)"><span class="letter">A</span>El estudio del comportamiento individual y los procesos mentales</button>
-          <button class="opt" onclick="ans(1,1,1)"><span class="letter">B</span>El estudio sistemático, riguroso y científico de la sociedad</button>
-          <button class="opt" onclick="ans(1,2,1)"><span class="letter">C</span>El estudio de las normas jurídicas y su aplicación</button>
-          <button class="opt" onclick="ans(1,3,1)"><span class="letter">D</span>El análisis de los fenómenos económicos de producción</button>
+        <div class="highlight-box">
+          <p class="box-label">💡 De la desigualdad a la diferencia</p>
+          <p>En la modernidad la clave es la <strong>desigualdad social</strong>; en la posmodernidad se enfatizan las <strong>diferencias</strong> (identidades, estilos de vida, culturas) y la fragmentación de la realidad.</p>
         </div>
-        <div class="feedback" id="fb1"></div>
-      </div>
-
-      <!-- Q3 -->
-      <div class="q-card" id="q2">
-        <p class="q-num">Pregunta 3</p>
-        <span class="q-tag">1.2</span>
-        <p class="q-text">La perspectiva sociológica reconoce principalmente que:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(2,0,2)"><span class="letter">A</span>Las personas actúan solo por intereses individuales</button>
-          <button class="opt" onclick="ans(2,1,2)"><span class="letter">B</span>La economía determina absolutamente todo el comportamiento humano</button>
-          <button class="opt" onclick="ans(2,2,2)"><span class="letter">C</span>La vida de los individuos se ve afectada por el contexto social</button>
-          <button class="opt" onclick="ans(2,3,2)"><span class="letter">D</span>Solo los grupos marginales tienen perspectiva sociológica</button>
-        </div>
-        <div class="feedback" id="fb2"></div>
-      </div>
-
-      <!-- Q4 -->
-      <div class="q-card" id="q3">
-        <p class="q-num">Pregunta 4</p>
-        <span class="q-tag">1.2 · Continuismo</span>
-        <p class="q-text">¿Cuál de las siguientes afirmaciones describe el "continuismo" en la evolución del conocimiento?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(3,0,0)"><span class="letter">A</span>El conocimiento se acumula linealmente; cada momento contiene los saberes del pasado</button>
-          <button class="opt" onclick="ans(3,1,0)"><span class="letter">B</span>El conocimiento presente rompe radicalmente con el anterior</button>
-          <button class="opt" onclick="ans(3,2,0)"><span class="letter">C</span>El conocimiento solo avanza mediante revoluciones científicas abruptas</button>
-          <button class="opt" onclick="ans(3,3,0)"><span class="letter">D</span>El conocimiento depende exclusivamente de experimentos en laboratorio</button>
-        </div>
-        <div class="feedback" id="fb3"></div>
-      </div>
-
-      <!-- Q5 -->
-      <div class="q-card" id="q4">
-        <p class="q-num">Pregunta 5</p>
-        <span class="q-tag">1.3</span>
-        <p class="q-text">¿Cuál NO es una especialización dentro de la sociología?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(4,0,3)"><span class="letter">A</span>Sociología urbana</button>
-          <button class="opt" onclick="ans(4,1,3)"><span class="letter">B</span>Sociología de género</button>
-          <button class="opt" onclick="ans(4,2,3)"><span class="letter">C</span>Sociología clínica</button>
-          <button class="opt" onclick="ans(4,3,3)"><span class="letter">D</span>Sociología de los metales</button>
-        </div>
-        <div class="feedback" id="fb4"></div>
-      </div>
-
-      <!-- Q6 -->
-      <div class="q-card" id="q5">
-        <p class="q-num">Pregunta 6</p>
-        <span class="q-tag">1.3 · Macro/Micro</span>
-        <p class="q-text">La <strong>macrosociología</strong> se caracteriza principalmente por:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(5,0,1)"><span class="letter">A</span>Centrarse en interacciones individuales cara a cara</button>
-          <button class="opt" onclick="ans(5,1,1)"><span class="letter">B</span>Estudiar grandes estructuras como el Estado, la economía y las clases sociales</button>
-          <button class="opt" onclick="ans(5,2,1)"><span class="letter">C</span>Usar exclusivamente métodos cualitativos</button>
-          <button class="opt" onclick="ans(5,3,1)"><span class="letter">D</span>Rechazar el análisis de grupos e instituciones</button>
-        </div>
-        <div class="feedback" id="fb5"></div>
-      </div>
-
-      <!-- Q7 -->
-      <div class="q-card" id="q6">
-        <p class="q-num">Pregunta 7</p>
-        <span class="q-tag">1.4</span>
-        <p class="q-text">¿Cuál de las siguientes es una técnica característica de la investigación <strong>cualitativa</strong>?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(6,0,2)"><span class="letter">A</span>Encuesta masiva con cuestionario estructurado</button>
-          <button class="opt" onclick="ans(6,1,2)"><span class="letter">B</span>Análisis estadístico correlacional</button>
-          <button class="opt" onclick="ans(6,2,2)"><span class="letter">C</span>Entrevista a profundidad e historias de vida</button>
-          <button class="opt" onclick="ans(6,3,2)"><span class="letter">D</span>Experimento controlado en laboratorio</button>
-        </div>
-        <div class="feedback" id="fb6"></div>
-      </div>
-
-      <!-- Q8 -->
-      <div class="q-card" id="q7">
-        <p class="q-num">Pregunta 8</p>
-        <span class="q-tag">1.4</span>
-        <p class="q-text">Según Macionis &amp; Plummer, la perspectiva positivista/cuantitativa tiene como objetivo principal:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(7,0,3)"><span class="letter">A</span>Interpretar y entender la experiencia subjetiva</button>
-          <button class="opt" onclick="ans(7,1,3)"><span class="letter">B</span>Narrar hechos a partir de la experiencia vivida</button>
-          <button class="opt" onclick="ans(7,2,3)"><span class="letter">C</span>Describir de manera fenomenológica</button>
-          <button class="opt" onclick="ans(7,3,3)"><span class="letter">D</span>Explicar y medir fenómenos sociales</button>
-        </div>
-        <div class="feedback" id="fb7"></div>
-      </div>
-
-      <!-- Q9 -->
-      <div class="q-card" id="q8">
-        <p class="q-num">Pregunta 9</p>
-        <span class="q-tag">1.5</span>
-        <p class="q-text">¿Cuál de las siguientes combinaciones corresponde a técnicas <strong>cuantitativas</strong>?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(8,0,0)"><span class="letter">A</span>Cuestionario estructurado y encuesta</button>
-          <button class="opt" onclick="ans(8,1,0)"><span class="letter">B</span>Historias de vida y grupos focales</button>
-          <button class="opt" onclick="ans(8,2,0)"><span class="letter">C</span>Entrevistas en profundidad y observación participante</button>
-          <button class="opt" onclick="ans(8,3,0)"><span class="letter">D</span>Estudios de caso y narrativas biográficas</button>
-        </div>
-        <div class="feedback" id="fb8"></div>
-      </div>
-
-      <!-- Q10 -->
-      <div class="q-card" id="q9">
-        <p class="q-num">Pregunta 10</p>
-        <span class="q-tag">1.6</span>
-        <p class="q-text">Un ejemplo de trabajo <strong>interdisciplinario</strong> donde participa la sociología sería:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(9,0,1)"><span class="letter">A</span>Un estudio sobre órbitas planetarias realizado solo por físicos</button>
-          <button class="opt" onclick="ans(9,1,1)"><span class="letter">B</span>Un diagnóstico de pobreza que combina datos económicos, jurídicos y análisis de desigualdad social</button>
-          <button class="opt" onclick="ans(9,2,1)"><span class="letter">C</span>Un manual de anatomía elaborado por médicos</button>
-          <button class="opt" onclick="ans(9,3,1)"><span class="letter">D</span>Un estudio químico sobre la composición del agua</button>
-        </div>
-        <div class="feedback" id="fb9"></div>
-      </div>
-
-      <!-- Q11 -->
-      <div class="q-card" id="q10">
-        <p class="q-num">Pregunta 11</p>
-        <span class="q-tag">Extra · Durkheim</span>
-        <p class="q-text">¿Qué concepto central propuso Durkheim para describir las normas, creencias y formas de actuar que son externas y coercitivas para el individuo?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(10,0,2)"><span class="letter">A</span>Acción social</button>
-          <button class="opt" onclick="ans(10,1,2)"><span class="letter">B</span>Lucha de clases</button>
-          <button class="opt" onclick="ans(10,2,2)"><span class="letter">C</span>Hecho social</button>
-          <button class="opt" onclick="ans(10,3,2)"><span class="letter">D</span>Tipo ideal</button>
-        </div>
-        <div class="feedback" id="fb10"></div>
-      </div>
-
-      <!-- Q12 -->
-      <div class="q-card" id="q11">
-        <p class="q-num">Pregunta 12</p>
-        <span class="q-tag">Extra · Marx</span>
-        <p class="q-text">La teoría del conflicto de Marx sostiene que el motor fundamental de la historia y del cambio social es:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(11,0,3)"><span class="letter">A</span>La solidaridad orgánica entre distintas clases sociales</button>
-          <button class="opt" onclick="ans(11,1,3)"><span class="letter">B</span>La racionalización progresiva de las instituciones</button>
-          <button class="opt" onclick="ans(11,2,3)"><span class="letter">C</span>La lucha de clases derivada de las relaciones de producción capitalistas</button>
-          <button class="opt" onclick="ans(11,3,3)"><span class="letter">D</span>La construcción social del conocimiento científico</button>
-        </div>
-        <div class="feedback" id="fb11"></div>
-      </div>
-
-      <!-- Q13 -->
-      <div class="q-card" id="q12">
-        <p class="q-num">Pregunta 13</p>
-        <span class="q-tag">Extra · Weber</span>
-        <p class="q-text">¿Qué distingue el método comprensivo (Verstehen) de Weber frente al método de Durkheim?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(12,0,1)"><span class="letter">A</span>Weber propone interpretar el sentido subjetivo que los actores dan a sus acciones; Durkheim estudia los hechos sociales como cosas objetivas</button>
-          <button class="opt" onclick="ans(12,1,1)"><span class="letter">B</span>Weber es más cuantitativo; Durkheim es más cualitativo</button>
-          <button class="opt" onclick="ans(12,2,1)"><span class="letter">C</span>Weber estudia estructuras económicas; Durkheim estudia acciones individuales</button>
-          <button class="opt" onclick="ans(12,3,1)"><span class="letter">D</span>No hay diferencias metodológicas relevantes entre ambos</button>
-        </div>
-        <div class="feedback" id="fb12"></div>
-      </div>
-
-      <!-- Q14 -->
-      <div class="q-card" id="q13">
-        <p class="q-num">Pregunta 14</p>
-        <span class="q-tag">Extra · Comparativa</span>
-        <p class="q-text">¿Cuál de las siguientes preguntas corresponde mejor al paradigma <strong>funcionalista</strong> de Durkheim?</p>
-        <div class="options">
-          <button class="opt" onclick="ans(13,0,2)"><span class="letter">A</span>¿Quién se beneficia de la desigualdad social y cómo la reproduce?</button>
-          <button class="opt" onclick="ans(13,1,2)"><span class="letter">B</span>¿Cómo el capitalismo genera alienación en los trabajadores?</button>
-          <button class="opt" onclick="ans(13,2,2)"><span class="letter">C</span>¿Qué función cumple la religión para mantener la cohesión social?</button>
-          <button class="opt" onclick="ans(13,3,2)"><span class="letter">D</span>¿Qué sentido da el individuo a su participación en el mercado laboral?</button>
-        </div>
-        <div class="feedback" id="fb13"></div>
-      </div>
-
-      <!-- Q15 -->
-      <div class="q-card" id="q14">
-        <p class="q-num">Pregunta 15</p>
-        <span class="q-tag">1.2 · Construcción social</span>
-        <p class="q-text">Cuando Berger y Luckmann hablan de que la realidad es "institucionalizada", se refieren a que:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(14,0,3)"><span class="letter">A</span>La realidad es puramente biológica y natural</button>
-          <button class="opt" onclick="ans(14,1,3)"><span class="letter">B</span>Las instituciones son entidades naturales inmutables</button>
-          <button class="opt" onclick="ans(14,2,3)"><span class="letter">C</span>Cada individuo inventa su propia realidad al margen de los demás</button>
-          <button class="opt" onclick="ans(14,3,3)"><span class="letter">D</span>Los significados se objetivan y se convierten en estructuras estables que orientan la acción</button>
-        </div>
-        <div class="feedback" id="fb14"></div>
-      </div>
-
-      <!-- Q16 -->
-      <div class="q-card" id="q15">
-        <p class="q-num">Pregunta 16</p>
-        <span class="q-tag">1.1–1.6 · Síntesis</span>
-        <p class="q-text">Aplicar la perspectiva sociológica a la realidad paraguaya implica, entre otras cosas:</p>
-        <div class="options">
-          <button class="opt" onclick="ans(15,0,0)"><span class="letter">A</span>Explicar la desigualdad solo por "falta de esfuerzo" individual</button>
-          <button class="opt" onclick="ans(15,1,0)"><span class="letter">B</span>Relacionar experiencias individuales (desempleo, pobreza, migración) con estructuras históricas, económicas y políticas</button>
-          <button class="opt" onclick="ans(15,2,0)"><span class="letter">C</span>Reducir todos los fenómenos a decisiones psicológicas</button>
-          <button class="opt" onclick="ans(15,3,0)"><span class="letter">D</span>Considerar que la realidad social es fija y no puede cambiar</button>
-        </div>
-        <div class="feedback" id="fb15"></div>
-      </div>
-
-      <div class="quiz-result" id="quizResult">
-        <div class="result-emoji" id="resultEmoji"></div>
-        <div class="result-score" id="resultScore"></div>
-        <p class="result-msg" id="resultMsg"></p>
-        <button class="btn btn-primary" onclick="retryQuiz()" style="margin-top: var(--space-3);">🔄 Volver a intentar</button>
-      </div>
-
-      <div class="summary" id="quizSummary">
-        <span>Respondidas: <strong id="answeredCount">0</strong> / 16</span>
-        <span>Correctas: <strong id="correctCount">0</strong></span>
       </div>
     </section>
 
-    <!-- (Opcional) podrías reservar slide-14 y slide-15 para futuras actividades -->
+    <!-- SLIDE 14: Escuelas y Tendencias -->
+    <section class="slide" id="slide-14">
+      <div class="card">
+        <div class="card-stripe"></div>
+        <span class="card-tag tag-primary">1.1 · Escuelas y tendencias</span>
+        <h2>Principales paradigmas sociológicos</h2>
+        <p>Las teorías sociológicas ofrecen distintos lentes para pensar la sociedad. Tres paradigmas clásicos han organizado gran parte del pensamiento sociológico.</p>
 
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>🔧 Funcionalismo</h4>
+            <p>Ve la sociedad como un sistema de partes interrelacionadas que tienden al equilibrio y la estabilidad (Comte, Durkheim, Parsons, Merton).</p>
+            <p>Pregunta central: ¿qué función cumple cada institución para mantener el orden social?</p>
+          </div>
+          <div class="mini-card">
+            <h4>⚡ Teoría del conflicto</h4>
+            <p>Enfatiza la desigualdad y el conflicto entre grupos por recursos, poder y prestigio (Marx y autores críticos).</p>
+            <p>Pregunta central: ¿quién se beneficia y quién es perjudicado por el orden social existente?</p>
+          </div>
+        </div>
+
+        <div class="mini-card" style="margin-top: var(--space-4); margin-left: 0.9rem;">
+          <h4>🧩 Interaccionismo simbólico / Acción social</h4>
+          <p>Se centra en cómo las personas construyen significados en la interacción cotidiana (Weber, Mead, Goffman). La sociedad se entiende como resultado de acciones con sentido compartido.</p>
+        </div>
+
+        <div class="dato-box">
+          <p class="box-label">📚 Tendencias contemporáneas</p>
+          <p>Feminismo, teoría poscolonial, teoría queer y enfoques posmodernos amplían la mirada clásica al incorporar género, colonialismo, sexualidad y crítica de las "grandes narrativas".</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15: Bases de la sociología -->
+    <section class="slide" id="slide-15">
+      <div class="card">
+        <div class="card-stripe"></div>
+        <span class="card-tag tag-primary">1.2 · Bases de la Sociología</span>
+        <h2>De lo general a lo particular y categorías sociales</h2>
+        <p>La sociología se mueve constantemente entre lo <strong>general</strong> (estructuras e instituciones) y lo <strong>particular</strong> (experiencias individuales concretas).</p>
+        <p>Las decisiones personales se analizan a la luz de <strong>categorías sociales</strong> como clase social, género, edad, etnia, territorio y generación.</p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>De lo general a lo particular</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Macro: Estado, economía, sistema educativo, mercado laboral.</li>
+              <li>Micro: biografías individuales, relaciones cara a cara, identidades.</li>
+              <li>La sociología conecta ambos niveles en sus explicaciones.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Categorías sociales clave</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Clase social y posición económica.</li>
+              <li>Género y relaciones entre hombres, mujeres y disidencias.</li>
+              <li>Edad, generación, ciclo vital.</li>
+              <li>Origen étnico y pertenencia cultural.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p class="box-label">💡 Mirada sociológica</p>
+          <p>Lo que parece "elección personal" (estudiar, migrar, trabajar) está profundamente condicionado por estas categorías y por la posición que se ocupa en la estructura social.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 16: Oficio del sociólogo -->
+    <section class="slide" id="slide-16">
+      <div class="card">
+        <div class="card-stripe"></div>
+        <span class="card-tag tag-primary">1.4 · Oficio del sociólogo</span>
+        <h2>Roles, funciones y ámbitos de actuación del sociólogo</h2>
+        <p>El sociólogo aplica teorías y métodos para comprender problemas sociales concretos y contribuir a su transformación en diversos contextos.</p>
+        <p>Su trabajo no se limita a la academia: se desarrolla también en instituciones públicas, privadas, comunitarias e internacionales.</p>
+
+        <div class="grid-2">
+          <div class="mini-card">
+            <h4>Roles y funciones</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Investigador académico y productor de conocimiento.</li>
+              <li>Docente en universidades e institutos superiores.</li>
+              <li>Asesor y consultor en políticas públicas y programas sociales.</li>
+              <li>Coordinador o director de proyectos de investigación.</li>
+              <li>Generador de opinión en medios de comunicación.</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Ámbitos de actuación</h4>
+            <ul style="margin:0; padding-left:1.2rem;">
+              <li>Ministerios, municipios y entidades del Estado.</li>
+              <li>Organizaciones de la sociedad civil y ONGs.</li>
+              <li>Organismos internacionales (PNUD, CEPAL, Banco Mundial, etc.).</li>
+              <li>Empresas privadas: estudios de mercado, RR.HH., RSE.</li>
+              <li>Centros de investigación y universidades.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dato-box">
+          <p class="box-label">📌 Idea central</p>
+          <p>El profesional en sociología aporta una mirada crítica y fundada sobre la realidad social, útil para el diseño, implementación y evaluación de políticas y proyectos.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="nav-controls">
+      <div class="step-indicator" id="step-indicator">Tarjeta 1 de 17</div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" id="prev-btn">&larr; Anterior</button>
+        <button class="btn btn-primary" id="next-btn">Siguiente &rarr;</button>
+      </div>
+    </div>
   </main>
 
-  <!-- BOTTOM NAV -->
-  <nav class="nav-bar">
-    <button class="btn btn-home" onclick="goHome()">🏠 Inicio</button>
-    <button class="btn btn-ghost" id="btnPrev" onclick="prev()" disabled>← Anterior</button>
-    <button class="btn btn-primary" id="btnNext" onclick="next()">Siguiente →</button>
-  </nav>
-
-  <footer>
-    <p>Unidad I · Introducción a la Sociología</p>
-    <p>Prof. <strong>Ilda Mayeregger</strong> · Año 2026 · UNA — Facultad de Derecho y Ciencias Sociales</p>
-    <p>Desarrollado por <strong>SC</strong></p>
-  </footer>
-
   <script>
-    // ===== THEME =====
-    (function(){
-      const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
-      let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
-      r.setAttribute('data-theme',d);
-      if(t) t.addEventListener('click',()=>{
-        d=d==='dark'?'light':'dark';
-        r.setAttribute('data-theme',d);
-      });
-    })();
-
-    // ===== SLIDES =====
-    const TOTAL = 14; // 0–13 (último es el quiz)
+    const slides = Array.from(document.querySelectorAll('.slide'));
     let current = 0;
 
-    function showSlide(idx) {
-      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-      document.getElementById('slide-' + idx).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('btnPrev').disabled = idx === 0;
-      document.getElementById('btnNext').textContent = idx === TOTAL - 1 ? '✓ Fin' : 'Siguiente →';
-      document.getElementById('btnNext').disabled = idx === TOTAL - 1;
-      const pct = ((idx + 1) / TOTAL) * 100;
-      document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressCount').textContent = (idx + 1) + ' / ' + TOTAL;
+    const stepIndicator = document.getElementById('step-indicator');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    function updateSlides() {
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === current);
+      });
+      stepIndicator.textContent = 'Tarjeta ' + (current + 1) + ' de ' + slides.length;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
     }
 
-    function next() { if (current < TOTAL - 1) { current++; showSlide(current); } }
-    function prev() { if (current > 0) { current--; showSlide(current); } }
-    function goHome() { window.location.href = '../index.html'; }
-
-    // ===== QUIZ =====
-    const TOTAL_Q = 16;
-    // índice de opción correcta para cada pregunta
-    const correctAnswers = [
-      0, // Q1
-      1, // Q2
-      2, // Q3
-      0, // Q4
-      3, // Q5
-      1, // Q6
-      2, // Q7
-      3, // Q8
-      0, // Q9
-      1, // Q10
-      2, // Q11
-      2, // Q12
-      0, // Q13
-      2, // Q14
-      3, // Q15
-      1  // Q16
-    ];
-
-    const feedbackTexts = [
-      // Q1
-      [
-        "✔ Correcto. Auguste Comte acuñó el término en 1839 en su Curso de filosofía positiva.",
-        "Incorrecto. Marx escribió el Manifiesto Comunista en 1848, pero no acuñó el término sociología.",
-        "Incorrecto. Durkheim vino después; su obra Las reglas del método sociológico es de 1895.",
-        "Incorrecto. Weber escribió Economía y sociedad alrededor de 1920."
-      ],
-      // Q2
-      [
-        "Incorrecto. Esa es la definición de la psicología.",
-        "✔ Correcto. Macionis y Plummer definen la sociología como el estudio sistemático, riguroso y científico de la sociedad.",
-        "Incorrecto. Esa es la definición de las ciencias jurídicas.",
-        "Incorrecto. Esa es la definición de la economía."
-      ],
-      // Q3
-      [
-        "Incorrecto. El individualismo metodológico no es la base de la perspectiva sociológica general.",
-        "Incorrecto. El determinismo económico es una lectura de Marx, no la perspectiva sociológica en general.",
-        "✔ Correcto. La perspectiva sociológica reconoce que las vidas individuales están profundamente afectadas por el contexto social.",
-        "Incorrecto. Si bien la marginalidad amplía la perspectiva, no es exclusiva de esos grupos."
-      ],
-      // Q4
-      [
-        "✔ Correcto. El continuismo sostiene que el conocimiento se acumula de forma lineal y progresiva.",
-        "Incorrecto. Esa es la definición del discontinuismo.",
-        "Incorrecto. Esa idea está más cerca de Kuhn y las revoluciones científicas.",
-        "Incorrecto. El continuismo no limita el conocimiento a experimentos de laboratorio."
-      ],
-      // Q5
-      [
-        "Incorrecto. Sociología urbana es una especialización reconocida.",
-        "Incorrecto. Sociología de género es una especialización reconocida.",
-        "Incorrecto. Sociología clínica es una especialización reconocida.",
-        "✔ Correcto. 'Sociología de los metales' no existe como especialización sociológica."
-      ],
-      // Q6
-      [
-        "Incorrecto. Eso corresponde a la microsociología.",
-        "✔ Correcto. La macrosociología estudia grandes estructuras: Estado, economía, clases, instituciones.",
-        "Incorrecto. Ambos enfoques pueden usar métodos cuantitativos o cualitativos.",
-        "Incorrecto. Justamente analiza grupos e instituciones a gran escala."
-      ],
-      // Q7
-      [
-        "Incorrecto. Esa es una técnica cuantitativa.",
-        "Incorrecto. El análisis estadístico es propio de la investigación cuantitativa.",
-        "✔ Correcto. La entrevista a profundidad y las historias de vida son técnicas cualitativas.",
-        "Incorrecto. El experimento controlado corresponde al enfoque cuantitativo/experimental."
-      ],
-      // Q8
-      [
-        "Incorrecto. Interpretar y entender es el objetivo de la perspectiva cualitativa.",
-        "Incorrecto. Narrar desde la experiencia vivida es propio de enfoques cualitativos.",
-        "Incorrecto. La descripción fenomenológica es cualitativa.",
-        "✔ Correcto. La perspectiva positivista/cuantitativa tiene como objetivo explicar y medir los fenómenos sociales."
-      ],
-      // Q9
-      [
-        "✔ Correcto. Cuestionario estructurado y encuesta son técnicas típicamente cuantitativas.",
-        "Incorrecto. Esas son técnicas cualitativas.",
-        "Incorrecto. Esas son técnicas cualitativas.",
-        "Incorrecto. Esas son técnicas cualitativas."
-      ],
-      // Q10
-      [
-        "Incorrecto. Es un trabajo exclusivamente de física.",
-        "✔ Correcto. Combina economía, derecho y sociología para analizar pobreza y desigualdad.",
-        "Incorrecto. Es propio del campo de la medicina.",
-        "Incorrecto. Corresponde a la química."
-      ],
-      // Q11
-      [
-        "Incorrecto. La acción social es el concepto central de Weber.",
-        "Incorrecto. La lucha de clases es el concepto central de Marx.",
-        "✔ Correcto. Durkheim definió los hechos sociales como modos de actuar, pensar y sentir externos al individuo y con poder coercitivo.",
-        "Incorrecto. El tipo ideal es un concepto metodológico de Weber."
-      ],
-      // Q12
-      [
-        "Incorrecto. La solidaridad es más bien un concepto de Durkheim.",
-        "Incorrecto. La racionalización es el concepto central de Weber.",
-        "✔ Correcto. Para Marx, la lucha de clases derivada de las relaciones capitalistas de producción es el motor del cambio histórico.",
-        "Incorrecto. La construcción social del conocimiento es una temática distinta."
-      ],
-      // Q13
-      [
-        "✔ Correcto. Weber propone interpretar el sentido subjetivo de las acciones; Durkheim estudia los hechos sociales como cosas objetivas.",
-        "Incorrecto. Weber es precisamente el representante del enfoque cualitativo/comprensivo.",
-        "Incorrecto. Es al revés: Marx analiza la estructura económica; Durkheim estudia hechos sociales colectivos.",
-        "Incorrecto. Hay diferencias metodológicas muy claras entre ambos."
-      ],
-      // Q14
-      [
-        "Incorrecto. Esa pregunta corresponde a la teoría del conflicto de Marx.",
-        "Incorrecto. La alienación es un concepto central de Marx.",
-        "✔ Correcto. Preguntar por la función de la religión para la cohesión social es típico del funcionalismo de Durkheim.",
-        "Incorrecto. Esa es más bien una pregunta weberiana sobre sentido subjetivo."
-      ],
-      // Q15
-      [
-        "Incorrecto. Berger y Luckmann subrayan el carácter social, no puramente biológico, de la realidad.",
-        "Incorrecto. Las instituciones son construcciones históricas y pueden cambiar.",
-        "Incorrecto. La realidad se construye intersubjetivamente, no de forma aislada.",
-        "✔ Correcto. Institucionalizar significa que significados compartidos se objetivan y se vuelven estructuras estables que orientan la acción."
-      ],
-      // Q16
-      [
-        "Incorrecto. Esa explicación culpabiliza al individuo y desconoce estructuras históricas.",
-        "✔ Correcto. Esa es la aplicación de la perspectiva sociológica: vincular biografía e historia, individuo y estructura.",
-        "Incorrecto. Reducirlo a psicología ignora las dimensiones sociales.",
-        "Incorrecto. La sociología muestra precisamente que las realidades sociales pueden transformarse."
-      ]
-    ];
-
-    let quizAnswered = new Array(TOTAL_Q).fill(false);
-    let quizScore = 0;
-    let quizDone = false;
-
-    function ans(qIdx, optIdx, correctIdxOverride) {
-      if (quizAnswered[qIdx]) return;
-      quizAnswered[qIdx] = true;
-
-      const correctIdx = correctAnswers[qIdx];
-
-      const card = document.getElementById('q' + qIdx);
-      const opts = card.querySelectorAll('.opt');
-      opts.forEach(o => o.classList.add('locked'));
-      opts[optIdx].classList.add(optIdx === correctIdx ? 'correct' : 'wrong');
-      if (optIdx !== correctIdx) opts[correctIdx].classList.add('correct');
-
-      const fb = document.getElementById('fb' + qIdx);
-      fb.classList.add('show');
-      if (optIdx === correctIdx) {
-        quizScore++;
-        fb.classList.add('ok');
-        fb.textContent = feedbackTexts[qIdx][correctIdx];
-      } else {
-        fb.classList.add('ko');
-        fb.textContent = feedbackTexts[qIdx][optIdx];
+    prevBtn.addEventListener('click', () => {
+      if (current > 0) {
+        current--;
+        updateSlides();
       }
+    });
 
-      document.getElementById('answeredCount').textContent = quizAnswered.filter(Boolean).length;
-      document.getElementById('correctCount').textContent = quizScore;
-
-      if (quizAnswered.every(Boolean) && !quizDone) {
-        quizDone = true;
-        setTimeout(showResult, 600);
+    nextBtn.addEventListener('click', () => {
+      if (current < slides.length - 1) {
+        current++;
+        updateSlides();
       }
-    }
+    });
 
-    function showResult() {
-      const pct = Math.round((quizScore / TOTAL_Q) * 100);
-      let emoji, msg;
-      if (pct >= 90)      { emoji = '🏆'; msg = '¡Excelente! Dominás la Unidad I.'; }
-      else if (pct >= 70) { emoji = '🎉'; msg = 'Muy bien. Repasá los detalles menores.'; }
-      else if (pct >= 50) { emoji = '📖'; msg = 'Aceptable, pero conviene repasar las cartillas.'; }
-      else                { emoji = '💪'; msg = 'Revisá las cartillas y volvé a intentar.'; }
-      document.getElementById('resultEmoji').textContent = emoji;
-      document.getElementById('resultScore').textContent = quizScore + ' / ' + TOTAL_Q + '  (' + pct + '%)';
-      document.getElementById('resultMsg').textContent = msg;
-      document.getElementById('quizResult').classList.add('show');
-      document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function retryQuiz() {
-      quizAnswered = new Array(TOTAL_Q).fill(false);
-      quizScore = 0;
-      quizDone = false;
-      document.getElementById('quizResult').classList.remove('show');
-      document.getElementById('answeredCount').textContent = '0';
-      document.getElementById('correctCount').textContent = '0';
-      for (let i = 0; i < TOTAL_Q; i++) {
-        const card = document.getElementById('q' + i);
-        card.querySelectorAll('.opt').forEach(o => o.classList.remove('correct','wrong','locked'));
-        const fb = document.getElementById('fb' + i);
-        fb.classList.remove('show','ok','ko');
-        fb.textContent = '';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        nextBtn.click();
       }
-      document.getElementById('slide-13').scrollIntoView({ behavior: 'smooth' });
-    }
+      if (e.key === 'ArrowLeft') {
+        prevBtn.click();
+      }
+    });
+
+    updateSlides();
   </script>
 </body>
 </html>
