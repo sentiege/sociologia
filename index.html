@@ -76,7 +76,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     .card-row {
@@ -137,6 +137,72 @@
       color: #374151;
     }
 
+    /* Franja “Machete” que abarca ambos bloques */
+    .machete-container {
+      margin-top: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid #d1fae5;
+      background: #ecfdf5;
+      box-shadow: 0 8px 24px rgba(16,185,129,0.15);
+      padding: 1.1rem 1.3rem 1.2rem;
+    }
+
+    .machete-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .machete-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .machete-sub {
+      font-size: 0.85rem;
+      color: #047857;
+      margin-top: 0.15rem;
+    }
+
+    .machete-toggle-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #d1fae5;
+      color: #065f46;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .machete-body {
+      margin-top: 0.8rem;
+      display: none;
+      font-size: 0.9rem;
+      color: #064e3b;
+    }
+
+    .machete-body h3 {
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .machete-body ul {
+      margin-left: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .machete-body li {
+      margin-bottom: 0.1rem;
+    }
+
     .footer {
       max-width: 900px;
       margin: 0 auto 1.8rem;
@@ -155,6 +221,9 @@
       }
       .main {
         padding: 0 1.1rem 2.4rem;
+      }
+      .machete-header {
+        align-items: flex-start;
       }
     }
   </style>
@@ -190,17 +259,76 @@
           </a>
         </div>
       </article>
+    </section>
 
-      <article class="card">
-        <h2>Machete rápido</h2>
-        <p>Versión ultra resumida de definiciones, paradigmas y métodos para repasar en 5 minutos.</p>
-        <div class="btn-row">
-          <!-- Podés apuntar a otra página o dejarlo para después -->
-          <a class="btn btn-secondary" href="unidad1/index.html#slide-15">
-            Ver machete de la Unidad I
-          </a>
+    <!-- Franja Machete que se extiende entre las dos tarjetas -->
+    <section class="machete-container">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title">Machete rápido — Unidad I</div>
+          <div class="machete-sub">Versión extendida de conceptos clave del capítulo 1 (1.1 a 1.4).</div>
         </div>
-      </article>
+        <button class="machete-toggle-btn" id="toggle-machete">
+          📌 Mostrar machete completo
+        </button>
+      </div>
+
+      <div class="machete-body" id="machete-body">
+        <h3>1. ¿Qué es la Sociología?</h3>
+        <ul>
+          <li>Ciencia que estudia la sociedad y la vida social humana de forma sistemática, rigurosa y empírica.</li>
+          <li>Etimología: <em>socius</em> (compañero) + <em>logos</em> (tratado, ciencia).</li>
+          <li>Autores: Macionis &amp; Plummer, Giddens, Bourdieu, Horton &amp; Hunt.</li>
+        </ul>
+
+        <h3>2. Origen y evolución</h3>
+        <ul>
+          <li>Contexto: Revolución Industrial, urbanización, Revolución Francesa e independencia de EEUU.</li>
+          <li>Del feudalismo y los estamentos a la sociedad capitalista y de clases.</li>
+          <li>Modernidad: foco en <strong>desigualdad social</strong>. Posmodernidad: foco en <strong>diferencias</strong> e identidades múltiples.</li>
+        </ul>
+
+        <h3>3. Escuelas y paradigmas</h3>
+        <ul>
+          <li><strong>Funcionalismo:</strong> sociedad como sistema de partes interdependientes que buscan orden y estabilidad.</li>
+          <li><strong>Teoría del conflicto:</strong> desigualdades estructurales, lucha de clases y otros grupos por poder y recursos.</li>
+          <li><strong>Interaccionismo simbólico / acción social:</strong> significados que las personas construyen en la interacción cotidiana.</li>
+        </ul>
+
+        <h3>4. Bases de la Sociología</h3>
+        <ul>
+          <li>Ir de lo <strong>general</strong> (estructuras, instituciones) a lo <strong>particular</strong> (biografías y experiencias individuales).</li>
+          <li>Categorías sociales clave: clase, género, edad, etnia, territorio, generación.</li>
+          <li>Dudar de lo “normal”: cuestionar lo naturalizado y analizar la influencia de factores sociales.</li>
+        </ul>
+
+        <h3>5. Objeto, especificidad y especializaciones</h3>
+        <ul>
+          <li>Objeto: sociedad humana, grupos sociales, comportamientos colectivos y sus significados.</li>
+          <li>Especificidad: mirada relacional y estructural, en diálogo con otras ciencias sociales.</li>
+          <li>Especializaciones: sociología urbana, rural, educación, jurídica, género, política, arte, clínica, entre otras.</li>
+        </ul>
+
+        <h3>6. Macro y microsociología</h3>
+        <ul>
+          <li><strong>Macro:</strong> Estado, economía, clases, instituciones; racionalidad colectiva.</li>
+          <li><strong>Micro:</strong> interacción cara a cara, significados, identidades; experiencias cotidianas.</li>
+          <li>Ambos niveles se complementan para explicar la realidad social.</li>
+        </ul>
+
+        <h3>7. Métodos, técnicas y enfoques</h3>
+        <ul>
+          <li><strong>Cuantitativo:</strong> explicar y medir; encuestas, cuestionarios, muestras grandes; enfoque positivista.</li>
+          <li><strong>Cualitativo:</strong> comprender significados; entrevistas en profundidad, grupos focales, historias de vida, estudios de caso.</li>
+          <li>Investigación mixta: combina técnicas cuantitativas y cualitativas.</li>
+        </ul>
+
+        <h3>8. Oficio del sociólogo</h3>
+        <ul>
+          <li>Roles: investigador, docente, asesor/consultor, coordinador de proyectos, generador de opinión.</li>
+          <li>Ámbitos: ministerios, municipios, ONGs, organismos internacionales, universidades, empresas.</li>
+        </ul>
+      </div>
     </section>
   </main>
 
@@ -208,5 +336,19 @@
     <span>Introducción a la Sociología · Unidad I</span>
     <span>Sitio de estudiante — uso académico</span>
   </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-machete');
+    const macheteBody = document.getElementById('machete-body');
+    let macheteVisible = false;
+
+    toggleBtn.addEventListener('click', () => {
+      macheteVisible = !macheteVisible;
+      macheteBody.style.display = macheteVisible ? 'block' : 'none';
+      toggleBtn.textContent = macheteVisible
+        ? 'Ocultar machete completo'
+        : '📌 Mostrar machete completo';
+    });
+  </script>
 </body>
 </html>
