@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz — Introducción a la Sociología (Unidad I)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-light: #d1fae5;
+      --secondary: #0369a1;
+      --text: #111827;
+      --muted: #6b7280;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.09);
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0369a1 0%, #0f766e 60%, #065f46 100%);
+      color: white;
+      padding: 2.6rem 1.5rem 2.1rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      background: rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 0.25rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.4rem 1.6rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .card-tag {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .question {
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+
+    .question:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .question h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .question p {
+      font-size: 0.9rem;
+      color: #374151;
+      margin-bottom: 0.3rem;
+    }
+
+    .options {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .options li {
+      margin-bottom: 0.15rem;
+      font-size: 0.9rem;
+    }
+
+    .options label {
+      cursor: pointer;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ecfdf5;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .result-box {
+      margin-top: 0.9rem;
+      padding: 0.7rem 0.8rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    .result-box strong {
+      font-weight: 700;
+    }
+
+    .bad {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
+    .ok {
+      background: #ecfdf5;
+      border-color: #bbf7d0;
+      color: #047857;
+    }
+
+    .back-home {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      padding: 0 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .back-home p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 2.2rem 1.1rem 1.8rem;
+      }
+      .card {
+        padding: 1.3rem 1.1rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Unidad I · Quiz de repaso</div>
+      <h1>Quiz — Introducción a la Sociología</h1>
+      <p class="hero-sub">Preguntas rápidas sobre conceptos clave de la Unidad I (1.1 a 1.4).</p>
+      <p class="hero-desc">Marcá las opciones correctas y luego hacé clic en "Corregir". Podés volver a intentar las que salgan mal.</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="card" id="quiz-card">
+      <div class="card-header">
+        <h2 class="card-title">Quiz Unidad I</h2>
+        <span class="card-tag">Introducción a la Sociología</span>
+      </div>
+
+      <!-- P1 -->
+      <div class="question" data-correct="b">
+        <h3>1. ¿Cuál de estas definiciones se acerca más a la idea de sociología según Macionis &amp; Plummer?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q1" value="a"> El estudio de la mente humana y los procesos internos del individuo.</label></li>
+          <li><label><input type="radio" name="q1" value="b"> El estudio sistemático, riguroso y científico de la sociedad.</label></li>
+          <li><label><input type="radio" name="q1" value="c"> La historia de las civilizaciones antiguas.</label></li>
+        </ul>
+      </div>
+
+      <!-- P2 -->
+      <div class="question" data-correct="c">
+        <h3>2. ¿Qué transformaciones históricas explican el origen de la sociología en el siglo XIX?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q2" value="a"> La expansión del feudalismo y el fortalecimiento de los estamentos.</label></li>
+          <li><label><input type="radio" name="q2" value="b"> La consolidación del Imperio Romano en Europa.</label></li>
+          <li><label><input type="radio" name="q2" value="c"> La Revolución Industrial, la urbanización y las revoluciones políticas modernas.</label></li>
+        </ul>
+      </div>
+
+      <!-- P3 -->
+      <div class="question" data-correct="a">
+        <h3>3. En la modernidad, la categoría de análisis central para la sociología es:</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q3" value="a"> La desigualdad social.</label></li>
+          <li><label><input type="radio" name="q3" value="b"> La belleza estética.</label></li>
+          <li><label><input type="radio" name="q3" value="c"> La telepatía colectiva.</label></li>
+        </ul>
+      </div>
+
+      <!-- P4 -->
+      <div class="question" data-correct="b">
+        <h3>4. El funcionalismo entiende a la sociedad como:</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q4" value="a"> Un conjunto de individuos aislados sin relación.</label></li>
+          <li><label><input type="radio" name="q4" value="b"> Un sistema de partes interrelacionadas que tienden al equilibrio y la estabilidad.</label></li>
+          <li><label><input type="radio" name="q4" value="c"> Un caos sin ningún tipo de estructura.</label></li>
+        </ul>
+      </div>
+
+      <!-- P5 -->
+      <div class="question" data-correct="c">
+        <h3>5. La teoría del conflicto (Marx) pone el foco principalmente en:</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q5" value="a"> Las emociones individuales en la vida cotidiana.</label></li>
+          <li><label><input type="radio" name="q5" value="b"> La armonía perfecta entre las clases sociales.</label></li>
+          <li><label><input type="radio" name="q5" value="c"> Las desigualdades estructurales y la lucha entre grupos por el poder y los recursos.</label></li>
+        </ul>
+      </div>
+
+      <!-- P6 -->
+      <div class="question" data-correct="a">
+        <h3>6. ¿Qué estudia la macrosociología?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q6" value="a"> Grandes estructuras sociales como el Estado, la economía y las clases.</label></li>
+          <li><label><input type="radio" name="q6" value="b"> Solo las emociones individuales.</label></li>
+          <li><label><input type="radio" name="q6" value="c"> Únicamente las interacciones cara a cara.</label></li>
+        </ul>
+      </div>
+
+      <!-- P7 -->
+      <div class="question" data-correct="b">
+        <h3>7. ¿Qué combinación describe mejor la investigación cualitativa?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q7" value="a"> General, explicativa, basada en estadísticas.</label></li>
+          <li><label><input type="radio" name="q7" value="b"> Interpretativa, en profundidad, centrada en significados.</label></li>
+          <li><label><input type="radio" name="q7" value="c"> Exclusivamente experimental y de laboratorio.</label></li>
+        </ul>
+      </div>
+
+      <!-- P8 -->
+      <div class="question" data-correct="c">
+        <h3>8. ¿Cuál de las siguientes es una técnica cualitativa?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q8" value="a"> Cuestionario estructurado aplicado a 500 personas.</label></li>
+          <li><label><input type="radio" name="q8" value="b"> Encuesta telefónica de opinión.</label></li>
+          <li><label><input type="radio" name="q8" value="c"> Entrevista en profundidad sobre la experiencia de migrar.</label></li>
+        </ul>
+      </div>
+
+      <!-- P9 -->
+      <div class="question" data-correct="a">
+        <h3>9. ¿Qué significa “dudar de lo normal o naturalizado” en la perspectiva sociológica?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q9" value="a"> Cuestionar lo que parece obvio y analizar la influencia de los factores sociales.</label></li>
+          <li><label><input type="radio" name="q9" value="b"> Aceptar siempre el sentido común de la mayoría.</label></li>
+          <li><label><input type="radio" name="q9" value="c"> Negar cualquier influencia social en las decisiones personales.</label></li>
+        </ul>
+      </div>
+
+      <!-- P10 -->
+      <div class="question" data-correct="b">
+        <h3>10. ¿Cuál es un ámbito típico de actuación profesional de un sociólogo?</h3>
+        <ul class="options">
+          <li><label><input type="radio" name="q10" value="a"> Únicamente escribir novelas de ficción.</label></li>
+          <li><label><input type="radio" name="q10" value="b"> Ministerios, ONGs, organismos internacionales o universidades.</label></li>
+          <li><label><input type="radio" name="q10" value="c"> Solo empresas tecnológicas.</label></li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="submit-btn">Corregir respuestas</button>
+        <button class="btn btn-secondary" id="reset-btn" type="button">Reiniciar quiz</button>
+      </div>
+
+      <div id="result" class="result-box" style="display:none;"></div>
+    </section>
+  </main>
+
+  <div class="back-home">
+    <div>
+      <button class="btn btn-secondary" onclick="window.location.href='https://sentiege.github.io/sociologia/index.html'">
+        ⬅ Volver a Sociología
+      </button>
+    </div>
+    <p>Consejo: si sacás menos de 7/10, volvé a repasar la Unidad I con las tarjetas antes de reintentar.</p>
+  </div>
+
+  <script>
+    const submitBtn = document.getElementById('submit-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultBox = document.getElementById('result');
+    const questions = Array.from(document.querySelectorAll('.question'));
+
+    submitBtn.addEventListener('click', () => {
+      let correct = 0;
+      let total = questions.length;
+      let unanswered = 0;
+
+      questions.forEach((q, index) => {
+        const correctValue = q.getAttribute('data-correct');
+        const name = 'q' + (index + 1);
+        const selected = document.querySelector('input[name="' + name + '"]:checked');
+
+        // limpiar estilos anteriores
+        q.classList.remove('ok', 'bad');
+
+        if (!selected) {
+          unanswered++;
+          return;
+        }
+
+        if (selected.value === correctValue) {
+          correct++;
+          q.classList.add('ok');
+        } else {
+          q.classList.add('bad');
+        }
+      });
+
+      let msg = 'Respuestas correctas: ' + correct + ' de ' + total + '. ';
+      let clase = 'result-box';
+
+      if (unanswered > 0) {
+        msg += 'Te faltó responder ' + unanswered + ' pregunta(s).';
+      } else if (correct === total) {
+        msg += '¡Excelente! Dominás muy bien la Unidad I.';
+        clase += ' ok';
+      } else if (correct >= 7) {
+        msg += 'Buen resultado. Podés reforzar los temas donde fallaste.';
+        clase += ' ok';
+      } else {
+        msg += 'Conviene repasar la Unidad I y volver a intentar.';
+        clase += ' bad';
+      }
+
+      resultBox.textContent = '';
+      resultBox.className = clase;
+      resultBox.textContent = msg;
+      resultBox.style.display = 'block';
+    });
+
+    resetBtn.addEventListener('click', () => {
+      // desmarcar radios
+      const inputs = document.querySelectorAll('input[type="radio"]');
+      inputs.forEach(i => i.checked = false);
+      // limpiar estilos preguntas
+      questions.forEach(q => q.classList.remove('ok', 'bad'));
+      // ocultar resultado
+      resultBox.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
