@@ -3,423 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Herramienta de Repaso — Introducción a la Sociología</title>
+  <title>Introducción a la Sociología — Inicio</title>
   <style>
     :root {
       --primary: #0f766e;
-      --primary-light: #dbeafe;
-      --secondary: #f97316;
-      --text: #0f172a;
-      --muted: #64748b;
-      --bg: #ecf4f3;
+      --secondary: #0369a1;
+      --text: #111827;
+      --muted: #6b7280;
+      --bg: #f3f4f6;
       --card-bg: #ffffff;
-      --border: #d0e0de;
+      --border: #e5e7eb;
       --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow: 0 8px 32px rgba(15, 23, 42, 0.16);
-      --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.08);
+      --shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
       color: var(--text);
-      line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     .hero {
-      background: radial-gradient(circle at 0% 0%, #22c55e 0, #0f766e 26%, #1e293b 70%, #020617 100%);
-      color: white;
-      padding: 3rem 1.5rem 2.5rem;
+      padding: 3.2rem 1.5rem 2.6rem;
       text-align: center;
     }
 
     .hero-inner {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
     }
 
     .hero-tag {
-      background: rgba(15,23,42,0.4);
-      border: 1px solid rgba(248,250,252,0.4);
+      display: inline-flex;
+      background: rgba(15,118,110,0.08);
+      color: #047857;
       border-radius: 999px;
-      padding: 0.3rem 0.9rem;
+      padding: 0.25rem 0.8rem;
       font-size: 0.75rem;
       font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(248,250,252,0.9);
+      margin-bottom: 0.6rem;
     }
 
     .hero h1 {
-      font-size: clamp(1.85rem, 5vw, 3rem);
+      font-size: clamp(2rem, 4vw, 2.7rem);
       font-weight: 900;
-      line-height: 1.1;
+      color: #022c22;
+      margin-bottom: 0.35rem;
     }
 
-    .hero-sub { font-size: 1rem; color: rgba(226,232,240,0.9); }
-    .hero-sub strong { color: #fbbf24; font-weight: 700; }
-    .hero-desc { font-size: 0.92rem; color: rgba(226,232,240,0.7); margin-top: 0.2rem; }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
 
     .main {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 2rem 1.2rem 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+      padding: 0 1.5rem 3rem;
       flex: 1;
-      width: 100%;
-    }
-
-    .section-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin: 0.2rem 0 0.4rem;
-    }
-
-    .unit-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      padding: 1.4rem 1.6rem;
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      position: relative;
-      overflow: hidden;
+      gap: 1.5rem;
     }
 
-    .unit-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
     }
 
-    .unit-card.available { cursor: pointer; border-color: #7dd3fc; }
-    .unit-card.available:hover {
-      transform: translateY(-3px);
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      border-color: #22c55e;
-    }
-
-    .unit-header { display: flex; align-items: flex-start; gap: 1rem; }
-
-    .unit-num {
-      min-width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 0 0, #a5f3fc 0, #0ea5e9 40%, #0f766e 100%);
-      color: #f9fafb;
-      font-size: 1rem;
-      font-weight: 900;
+      padding: 1.3rem 1.2rem 1.4rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35);
+      flex-direction: column;
+      gap: 0.55rem;
     }
 
-    .unit-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--primary);
+    .card h2 {
+      font-size: 1.05rem;
       margin-bottom: 0.1rem;
     }
 
-    .unit-title {
-      font-size: clamp(0.97rem, 2vw, 1.15rem);
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1.3;
-    }
-
-    .unit-badge {
-      margin-left: auto;
-      flex-shrink: 0;
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .available-badge {
-      background: #dcfce7;
-      color: #15803d;
-      border: 1px solid #86efac;
-    }
-
-    .unit-topics {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      padding-left: 0.2rem;
-    }
-
-    .unit-topics li {
+    .card p {
       font-size: 0.9rem;
-      color: var(--muted);
-      padding-left: 1.1rem;
-      position: relative;
+      color: #4b5563;
     }
 
-    .unit-topics li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: 900;
-      font-size: 0.85rem;
-    }
-
-    .unit-footer {
+    .btn-row {
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
       flex-wrap: wrap;
-      padding-top: 0.3rem;
-      border-top: 1px solid var(--border);
+      gap: 0.6rem;
+      margin-top: 0.7rem;
     }
 
-    .chip {
-      background: var(--primary-light);
-      color: #0f4c5c;
+    .btn {
+      border: none;
       border-radius: 999px;
-      padding: 0.2rem 0.7rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .chip.muted {
-      background: #e5e7eb;
-      color: var(--muted);
-    }
-
-    .btn-go {
-      margin-left: auto;
-      background: linear-gradient(135deg, var(--primary), #0ea5e9);
-      color: white;
-      border-radius: 999px;
-      padding: 0.45rem 1.1rem;
-      font-size: 0.88rem;
-      font-weight: 800;
-      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
-    }
-
-    /* Machete acordeón */
-    details {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      border: 1.5px solid var(--border);
-      box-shadow: var(--shadow-sm);
-      padding: 0.7rem 1rem;
-    }
-
-    summary {
-      list-style: none;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 0.7rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #0f172a;
+      gap: 0.3rem;
+      text-decoration: none;
     }
 
-    summary::-webkit-details-marker { display: none; }
-
-    .summary-main {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
+    .btn-primary {
+      background: var(--primary);
+      color: #ecfdf5;
     }
 
-    .summary-label {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.7rem;
-      color: var(--muted);
-      font-weight: 700;
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #374151;
     }
 
-    .summary-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    .summary-hint {
+    .footer {
+      max-width: 900px;
+      margin: 0 auto 1.8rem;
+      padding: 0 1.5rem;
       font-size: 0.8rem;
       color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .chevron {
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    details[open] .chevron {
-      transform: rotate(90deg);
-    }
-
-    .machete-panel {
-      margin-top: 0.6rem;
-      padding-top: 0.6rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.88rem;
-      color: #111827;
-    }
-
-    .machete-panel ul {
-      margin-left: 1.1rem;
-      margin-top: 0.25rem;
-    }
-
-    .machete-panel li {
-      margin-bottom: 0.25rem;
-    }
-
-    .key { font-weight: 600; }
-
-    /* Footer estilizado */
-    .footer {
-      margin-top: auto;
-      padding: 1.6rem 1rem 2rem;
-      border-top: 1px solid var(--border);
-      background: linear-gradient(135deg, #0b1220, #020617);
-      color: #e5e7eb;
-      text-align: center;
-      font-size: 0.83rem;
-      line-height: 1.8;
-    }
-
-    .footer strong {
-      color: #38bdf8;
-      font-weight: 700;
-    }
-
-    .footer p {
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .footer-counter {
-      margin-top: 0.5rem;
-    }
-
-    @media (max-width: 520px) {
-      .unit-card  { padding: 1.1rem 1rem; }
-      .hero       { padding: 2rem 1rem 1.8rem; }
-      .unit-badge { display: none; }
-      .btn-go     { margin-left: 0; }
+    @media (max-width: 640px) {
+      .hero {
+        padding: 2.4rem 1.1rem 2.1rem;
+      }
+      .main {
+        padding: 0 1.1rem 2.4rem;
+      }
     }
   </style>
 </head>
 <body>
-
-<header class="hero">
-  <div class="hero-inner">
-    <span class="hero-tag">Herramienta de Repaso</span>
-    <h1>Introducción a la Sociología</h1>
-    <p class="hero-sub">Facilitada por la <strong>Prof. Ilda Mayeregger</strong></p>
-    <p class="hero-desc">Elegí la Unidad I o desplegá el machete para un repaso rápido.</p>
-  </div>
-</header>
-
-<main class="main">
-
-  <p class="section-title">Contenido principal</p>
-
-  <!-- UNIDAD I -->
-  <div class="unit-card available" onclick="window.location.href='unidad1/index.html'">
-    <div class="unit-header">
-      <div class="unit-num">I</div>
-      <div>
-        <p class="unit-label">Unidad I</p>
-        <h2 class="unit-title">Ciencias sociales e inicio de la sociología</h2>
-      </div>
-      <span class="unit-badge available-badge">Disponible</span>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Facultad de Derecho · Ciencias Políticas</div>
+      <h1>Introducción a la Sociología</h1>
+      <p class="hero-sub">Prof. Ilda Mayeregger · Año 2026</p>
+      <p class="hero-desc">Material interactivo de repaso basado en el PPT de cátedra y en textos de Macionis &amp; Plummer, Giddens y otros autores.</p>
     </div>
-    <ul class="unit-topics">
-      <li>Las ciencias sociales y la especificidad de la sociología</li>
-      <li>Definiciones de Macionis, Giddens, Bourdieu y Horton</li>
-      <li>Continuismo y discontinuismo en el conocimiento</li>
-      <li>Objeto de la sociología y especializaciones</li>
-      <li>Introducción a los métodos sociológicos</li>
-    </ul>
-    <div class="unit-footer">
-      <span class="chip">Cartillas Unidad I</span>
-      <span class="btn-go">Abrir Unidad I →</span>
-    </div>
-  </div>
+  </header>
 
-  <p class="section-title">Machete rápido</p>
+  <main class="main">
+    <section class="card-row">
+      <article class="card">
+        <h2>Unidad I — Herramienta de repaso</h2>
+        <p>Tarjetas interactivas con los puntos clave: conceptos, origen, escuelas, métodos, técnicas y oficio del sociólogo.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="unidad1/index.html">
+            Ir a la Unidad I →
+          </a>
+        </div>
+      </article>
 
-  <!-- MACHETE DESPLEGABLE EN EL INDEX -->
-  <details>
-    <summary>
-      <div class="summary-main">
-        <span class="summary-label">Machete Unidad I</span>
-        <span class="summary-title">Resumen clave para examen</span>
-        <span class="summary-hint">Click para desplegar / ocultar.</span>
-      </div>
-      <span class="chevron">▶</span>
-    </summary>
-    <div class="machete-panel">
-      <ul>
-        <li><span class="key">Definición de sociología:</span> ciencia que estudia de forma sistemática la sociedad, la vida social humana y las relaciones entre individuos y grupos.</li>
-        <li><span class="key">Ciencias sociales:</span> historia, economía, ciencia política, derecho, antropología, psicología, geografía, educación, comunicación, demografía.</li>
-        <li><span class="key">Especificidad de la sociología:</span> analiza estructuras, instituciones y desigualdades articulando niveles macro y micro.</li>
-        <li><span class="key">Continuismo:</span> conocimiento como acumulación lineal; cada etapa contiene a las anteriores.</li>
-        <li><span class="key">Discontinuismo:</span> cortes y rupturas; nuevas formas de conocimiento redefinen objeto y reglas.</li>
-        <li><span class="key">Objeto de la sociología:</span> sociedad humana, grupos y relaciones sociales; explica causas, significados y efectos de comportamientos colectivos.</li>
-        <li><span class="key">Especializaciones:</span> sociología urbana, rural, de la educación, jurídica, política, del género, del arte, clínica, entre otras.</li>
-        <li><span class="key">Método cuantitativo:</span> mide y generaliza; usa encuestas, cuestionarios estructurados y estadísticas.</li>
-        <li><span class="key">Método cualitativo:</span> comprende significados y procesos; usa entrevistas en profundidad, grupos focales, historias de vida y estudios de caso.</li>
-        <li><span class="key">Frase comodín:</span> «Desde la perspectiva sociológica, la vida social no es natural ni dada, sino una construcción histórica de relaciones, instituciones y significados que pueden estudiarse científicamente».</li>
-      </ul>
-    </div>
-  </details>
+      <article class="card">
+        <h2>Quiz — Unidad I</h2>
+        <p>Evaluá lo que recordás de la Unidad I con 10 preguntas automáticas. Ideal para practicar antes del examen.</p>
+        <div class="btn-row">
+          <a class="btn btn-secondary" href="quiz/index.html">
+            Hacer el quiz de la Unidad I ✏️
+          </a>
+        </div>
+      </article>
 
-</main>
+      <article class="card">
+        <h2>Machete rápido</h2>
+        <p>Versión ultra resumida de definiciones, paradigmas y métodos para repasar en 5 minutos.</p>
+        <div class="btn-row">
+          <!-- Podés apuntar a otra página o dejarlo para después -->
+          <a class="btn btn-secondary" href="unidad1/index.html#slide-15">
+            Ver machete de la Unidad I
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
 
-<footer class="footer">
-  <p>Herramienta de repaso académico · Introducción a la Sociología</p>
-  <p>Facilitada por la <strong>Prof. Ilda Mayeregger</strong> · Desarrollado por <strong>SC</strong></p>
-
-  <div class="footer-counter">
-    <a href="https://hits.sh/sentiege.github.io/introduccionasociologia/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-      <img
-        src="https://hits.sh/sentiege.github.io/introduccionasociologia/.svg?view=today-total&label=Visitas&color=38bdf8&labelColor=020617"
-        alt="Contador de visitas"
-        style="vertical-align:middle;margin-top:6px;border-radius:4px;"
-      >
-    </a>
-  </div>
-</footer>
-
+  <footer class="footer">
+    <span>Introducción a la Sociología · Unidad I</span>
+    <span>Sitio de estudiante — uso académico</span>
+  </footer>
 </body>
 </html>
