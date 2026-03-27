@@ -223,32 +223,82 @@
       box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
     }
 
-    .simulacro-card .unit-num {
-      background: radial-gradient(circle at 0 0, #fed7aa 0, #f97316 40%, #c2410c 100%);
-      box-shadow: 0 4px 12px rgba(248, 113, 22, 0.4);
-    }
-    .simulacro-card::before {
-      background: linear-gradient(90deg, #f97316, #ea580c);
-    }
-    .simulacro-card .chip {
-      background: #ffedd5;
-      color: #c2410c;
-    }
-    .simulacro-card .btn-go {
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      box-shadow: 0 4px 12px rgba(248, 113, 22, 0.45);
+    /* Machete acordeón */
+    details {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 0.7rem 1rem;
     }
 
-    .footer {
-      text-align: center;
-      padding: 1.5rem 1rem 2rem;
-      font-size: 0.83rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      line-height: 1.8;
-      background: rgba(15, 23, 42, 0.01);
+    summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
     }
-    .footer strong { color: var(--primary); }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .summary-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .summary-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .summary-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .summary-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .chevron {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    details[open] .chevron {
+      transform: rotate(90deg);
+    }
+
+    .machete-panel {
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: #111827;
+    }
+
+    .machete-panel ul {
+      margin-left: 1.1rem;
+      margin-top: 0.25rem;
+    }
+
+    .machete-panel li {
+      margin-bottom: 0.25rem;
+    }
+
+    .key { font-weight: 600; }
 
     @media (max-width: 520px) {
       .unit-card  { padding: 1.1rem 1rem; }
@@ -265,7 +315,7 @@
     <span class="hero-tag">Herramienta de Repaso</span>
     <h1>Introducción a la Sociología</h1>
     <p class="hero-sub">Facilitada por la <strong>Prof. Ilda Mayeregger</strong></p>
-    <p class="hero-desc">Elegí la Unidad I o el machete para comenzar el repaso interactivo.</p>
+    <p class="hero-desc">Elegí la Unidad I o desplegá el machete para un repaso rápido.</p>
   </div>
 </header>
 
@@ -296,29 +346,33 @@
     </div>
   </div>
 
-  <p class="section-title">Machete / Simulacro</p>
+  <p class="section-title">Machete rápido</p>
 
-  <!-- MACHETE / SIMULACRO -->
-  <div class="unit-card available simulacro-card" onclick="window.location.href='simulacro/index.html'">
-    <div class="unit-header">
-      <div class="unit-num">★</div>
-      <div>
-        <p class="unit-label">Machete</p>
-        <h2 class="unit-title">Resumen clave para repaso rápido</h2>
+  <!-- MACHETE DESPLEGABLE EN EL INDEX -->
+  <details>
+    <summary>
+      <div class="summary-main">
+        <span class="summary-label">Machete Unidad I</span>
+        <span class="summary-title">Resumen clave para examen</span>
+        <span class="summary-hint">Click para desplegar / ocultar.</span>
       </div>
-      <span class="unit-badge available-badge">Disponible</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="machete-panel">
+      <ul>
+        <li><span class="key">Definición de sociología:</span> ciencia que estudia de forma sistemática la sociedad, la vida social humana y las relaciones entre individuos y grupos.</li>
+        <li><span class="key">Ciencias sociales:</span> historia, economía, ciencia política, derecho, antropología, psicología, geografía, educación, comunicación, demografía.</li>
+        <li><span class="key">Especificidad de la sociología:</span> analiza estructuras, instituciones y desigualdades articulando niveles macro y micro.</li>
+        <li><span class="key">Continuismo:</span> conocimiento como acumulación lineal; cada etapa contiene a las anteriores.</li>
+        <li><span class="key">Discontinuismo:</span> cortes y rupturas; nuevas formas de conocimiento redefinen objeto y reglas.</li>
+        <li><span class="key">Objeto de la sociología:</span> sociedad humana, grupos y relaciones sociales; explica causas, significados y efectos de comportamientos colectivos.</li>
+        <li><span class="key">Especializaciones:</span> sociología urbana, rural, de la educación, jurídica, política, del género, del arte, clínica, entre otras.</li>
+        <li><span class="key">Método cuantitativo:</span> mide y generaliza; usa encuestas, cuestionarios estructurados y estadísticas.</li>
+        <li><span class="key">Método cualitativo:</span> comprende significados y procesos; usa entrevistas en profundidad, grupos focales, historias de vida y estudios de caso.</li>
+        <li><span class="key">Frase comodín:</span> «Desde la perspectiva sociológica, la vida social no es natural ni dada, sino una construcción histórica de relaciones, instituciones y significados que pueden estudiarse científicamente».</li>
+      </ul>
     </div>
-    <ul class="unit-topics">
-      <li>Ideas centrales de la Unidad I para examen</li>
-      <li>Definiciones y esquemas comparativos</li>
-      <li>Preguntas típicas de evaluación</li>
-    </ul>
-    <div class="unit-footer">
-      <span class="chip">Versión corta</span>
-      <span class="chip">Enfoque examen</span>
-      <span class="btn-go">Abrir machete →</span>
-    </div>
-  </div>
+  </details>
 
 </main>
 
