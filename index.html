@@ -2,378 +2,429 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>App – Introducción a la Sociología</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Herramienta de Repaso — Introducción a la Sociología</title>
   <style>
     :root {
-      --bg: #f4efe6;
-      --bg-soft: #fcfaf6;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #5b6472;
-      --primary: #7c3aed;
-      --primary-dark: #5b21b6;
-      --secondary: #0f766e;
-      --accent: #d97706;
-      --success: #15803d;
-      --border: #e5dccf;
-      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --max-width: 900px;
+      /* Paleta nueva: azules verdosos + coral */
+      --primary: #0f766e;
+      --primary-light: #dbeafe;
+      --secondary: #f97316;
+      --text: #0f172a;
+      --muted: #64748b;
+      --bg: #ecf4f3;
+      --card-bg: #ffffff;
+      --border: #d0e0de;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow: 0 8px 32px rgba(15, 23, 42, 0.16);
+      --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.08);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(124, 58, 237, 0.10), transparent 28%),
-        linear-gradient(180deg, #f7f2ea 0%, #f4efe6 100%);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
-    }
-
-    .container {
-      width: min(94%, var(--max-width));
-      margin: 0 auto;
-    }
-
-    .progress-wrap {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.25);
-      z-index: 999;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      transition: width 0.2s ease;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
     .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      padding: 4rem 0 3rem;
-      background:
-        linear-gradient(rgba(17, 24, 39, 0.58), rgba(17, 24, 39, 0.52)),
-        linear-gradient(135deg, #8b5cf6, #0f766e);
+      background: radial-gradient(circle at 0% 0%, #22c55e 0, #0f766e 26%, #1e293b 70%, #020617 100%);
       color: white;
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
     }
 
-    .hero .container { max-width: 720px; }
+    .hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-    .tag {
-      display: inline-block;
-      margin-bottom: 1rem;
-      padding: 0.35rem 0.9rem;
+    .hero-tag {
+      background: rgba(15,23,42,0.4);
+      border: 1px solid rgba(248,250,252,0.4);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 0.9rem;
-      letter-spacing: 0.4px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(248,250,252,0.9);
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      line-height: 1.08;
-      margin-bottom: 1rem;
+      font-size: clamp(1.85rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
     }
 
-    .subtitle {
-      font-size: 1.05rem;
-      max-width: 620px;
-      margin: 0 auto 1.2rem;
-      color: rgba(255, 255, 255, 0.92);
-    }
+    .hero-sub { font-size: 1rem; color: rgba(226,232,240,0.9); }
+    .hero-sub strong { color: #fbbf24; font-weight: 700; }
+    .hero-desc { font-size: 0.92rem; color: rgba(226,232,240,0.7); margin-top: 0.2rem; }
 
-    .hero-questions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin: 1.4rem 0 2rem;
-    }
-
-    .hero-questions span {
-      padding: 0.6rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(6px);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .btn {
-      border: none;
-      background: linear-gradient(135deg, var(--accent), #f59e0b);
-      color: white;
-      padding: 0.9rem 1.4rem;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(217, 119, 6, 0.25);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 24px rgba(217, 119, 6, 0.28);
-      filter: brightness(1.03);
-    }
-
-    main { padding: 3rem 0 4rem; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.7rem 1.6rem;
-    }
-
-    .section { margin-bottom: 2rem; }
-
-    .section-top {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.7rem;
-    }
-
-    .step-badge {
-      display: inline-block;
-      padding: 0.32rem 0.75rem;
-      border-radius: 999px;
-      background: #d1fae5;
-      color: #166534;
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    h2 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: #1e1b4b;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      margin-bottom: 1.1rem;
-    }
-
-    .tool-btn {
-      border: none;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, #ede9fe, #d1fae5);
-      color: #1e1b4b;
-      font-size: 0.98rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      box-shadow: 0 8px 16px rgba(91, 33, 182, 0.08);
-      width: 100%;
-      text-align: center;
-    }
-
-    .tool-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 20px rgba(91, 33, 182, 0.12);
-    }
-
-    .info-box {
-      margin-top: 1rem;
-      padding: 1rem 1.1rem;
-      border-radius: var(--radius-sm);
-      background: var(--bg-soft);
-      border-left: 5px solid var(--primary);
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .machete-header {
-      width: 100%;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 1rem;
-      background: linear-gradient(135deg,#eef2ff,#ecfeff);
-    }
-
-    .machete-list {
-      padding-left: 1.1rem;
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 0.2rem 0 0.4rem;
+    }
+
+    .unit-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .unit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .unit-card.available { cursor: pointer; border-color: #7dd3fc; }
+    .unit-card.available:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: #22c55e;
+    }
+
+    .unit-header { display: flex; align-items: flex-start; gap: 1rem; }
+
+    .unit-num {
+      min-width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 0 0, #a5f3fc 0, #0ea5e9 40%, #0f766e 100%);
+      color: #f9fafb;
+      font-size: 1rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.35);
+    }
+
+    .unit-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+      margin-bottom: 0.1rem;
+    }
+
+    .unit-title {
+      font-size: clamp(0.97rem, 2vw, 1.15rem);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+
+    .unit-badge {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .available-badge {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+
+    .unit-topics {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding-left: 0.2rem;
+    }
+
+    .unit-topics li {
       font-size: 0.9rem;
-      margin-top: 0.7rem;
+      color: var(--muted);
+      padding-left: 1.1rem;
+      position: relative;
     }
 
-    .machete-list li strong { color: var(--primary-dark); }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: all 0.4s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .unit-topics li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 0.85rem;
     }
 
-    @media (max-width: 600px) {
-      .hero { padding-top: 3.5rem; }
-      .card { padding: 1.4rem 1.2rem; }
+    .unit-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      padding-top: 0.3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .chip {
+      background: var(--primary-light);
+      color: #0f4c5c;
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .chip.muted {
+      background: #e5e7eb;
+      color: var(--muted);
+    }
+
+    .btn-go {
+      margin-left: auto;
+      background: linear-gradient(135deg, var(--primary), #0ea5e9);
+      color: white;
+      border-radius: 999px;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+    }
+
+    .simulacro-card .unit-num {
+      background: radial-gradient(circle at 0 0, #fed7aa 0, #f97316 40%, #c2410c 100%);
+      box-shadow: 0 4px 12px rgba(248, 113, 22, 0.4);
+    }
+    .simulacro-card::before {
+      background: linear-gradient(90deg, #f97316, #ea580c);
+    }
+    .simulacro-card .chip {
+      background: #ffedd5;
+      color: #c2410c;
+    }
+    .simulacro-card .btn-go {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 4px 12px rgba(248, 113, 22, 0.45);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      line-height: 1.8;
+      background: rgba(15, 23, 42, 0.01);
+    }
+    .footer strong { color: var(--primary); }
+
+    @media (max-width: 520px) {
+      .unit-card  { padding: 1.1rem 1rem; }
+      .hero       { padding: 2rem 1rem 1.8rem; }
+      .unit-badge { display: none; }
+      .btn-go     { margin-left: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="progress-wrap">
-    <div id="progressBar" class="progress-bar"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Herramienta de Repaso</span>
+    <h1>Introducción a la Sociología</h1>
+    <p class="hero-sub">Facilitada por la <strong>Prof. Ilda Mayeregger</strong></p>
+    <p class="hero-desc">Seleccioná una unidad o el simulacro para comenzar el repaso interactivo.</p>
+  </div>
+</header>
+
+<main class="main">
+
+  <p class="section-title">Unidades de estudio</p>
+
+  <!-- UNIDAD I -->
+  <div class="unit-card available" onclick="window.location.href='unidad1/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">I</div>
+      <div>
+        <p class="unit-label">Unidad I</p>
+        <h2 class="unit-title">Ciencias sociales e inicio de la sociología</h2>
+      </div>
+      <span class="unit-badge available-badge">Disponible</span>
+    </div>
+    <ul class="unit-topics">
+      <li>Las ciencias sociales y la especificidad de la sociología</li>
+      <li>Definiciones de Macionis, Giddens, Bourdieu y Horton</li>
+      <li>Continuismo y discontinuismo en el conocimiento</li>
+      <li>Objeto de la sociología y especializaciones</li>
+      <li>Nociones básicas de método sociológico</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">12 cartillas</span>
+      <span class="chip">Quiz final</span>
+      <span class="btn-go">Comenzar →</span>
+    </div>
   </div>
 
-  <header class="hero">
-    <div class="container">
-      <div class="tag">Introducción a la Sociología · Unidad 1</div>
-      <h1>Tu app de Sociología para repasar rápido</h1>
-      <p class="subtitle">
-        Cartillas interactivas + quiz + machete de conceptos clave de la Unidad I, todo en un solo lugar.
-      </p>
-      <div class="hero-questions">
-        <span>¿Qué es la Sociología como ciencia?</span>
-        <span>¿Qué diferencia a macro y micro?</span>
-        <span>¿Cómo piensan Durkheim, Marx y Weber?</span>
+  <!-- UNIDAD II -->
+  <div class="unit-card available" onclick="window.location.href='unidad2/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">II</div>
+      <div>
+        <p class="unit-label">Unidad II</p>
+        <h2 class="unit-title">Perspectiva sociológica y realidad social</h2>
       </div>
-      <button class="btn" onclick="scrollToSection('unidad1')">Ir a la Unidad 1</button>
-      <p style="margin-top:1rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
-        Visitas en esta sesión: <strong id="visitCounter">1</strong>
-      </p>
+      <span class="unit-badge available-badge">Disponible</span>
     </div>
-  </header>
+    <ul class="unit-topics">
+      <li>La perspectiva sociológica en la vida cotidiana</li>
+      <li>Marginalidad, crisis social y mirada crítica</li>
+      <li>Construcción social de la realidad (Berger y Luckmann, Searle)</li>
+      <li>Realidad global y desigualdad social</li>
+      <li>Realidad social del Paraguay</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">10 cartillas</span>
+      <span class="chip">Quiz final</span>
+      <span class="btn-go">Comenzar →</span>
+    </div>
+  </div>
 
-  <main class="container">
-    <!-- Unidad 1 -->
-    <section class="section reveal" id="unidad1">
-      <div class="card">
-        <div class="section-top">
-          <span class="step-badge">Unidad 1 – Introducción</span>
-          <h2>Unidad 1 – Sociología</h2>
-        </div>
-        <p class="section-intro">
-          Sociología como ciencia, métodos de investigación, macro y micro, construcción de la realidad y los clásicos Durkheim, Marx y Weber.
-        </p>
-
-        <button class="tool-btn" onclick="window.location.href='sociologia/unidad1/index.html'">
-          Abrir Unidad 1 – App interactiva
-        </button>
-
-        <div class="info-box" style="margin-top:1.2rem;">
-          <p><strong>Recomendación:</strong> primero leé las cartillas y hacé el quiz en la app de la Unidad 1; después volvé acá al machete para el repaso final.</p>
-        </div>
+  <!-- UNIDAD III -->
+  <div class="unit-card available" onclick="window.location.href='unidad3/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">III</div>
+      <div>
+        <p class="unit-label">Unidad III</p>
+        <h2 class="unit-title">Macro y microsociología. Individuo y estructura</h2>
       </div>
-    </section>
+      <span class="unit-badge available-badge">Disponible</span>
+    </div>
+    <ul class="unit-topics">
+      <li>Macro y microsociología: enfoques y lazo social</li>
+      <li>Acción social, estructura y agencia</li>
+      <li>Análisis del comportamiento social y toma de decisiones</li>
+      <li>Desigualdad: clase, género, etnia y edad</li>
+      <li>Instituciones sociales y contexto paraguayo</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">10 cartillas</span>
+      <span class="chip">Quiz final</span>
+      <span class="btn-go">Comenzar →</span>
+    </div>
+  </div>
 
-    <!-- Machete -->
-    <section class="section reveal">
-      <div class="card">
-        <div class="section-top">
-          <span class="step-badge" style="background:#eef2ff;color:#4338ca;">Machete</span>
-          <h2>Conceptos rápidos de Sociología</h2>
-        </div>
-        <p class="section-intro">
-          Checklist corto para el examen: definiciones clave y diferencias que no podés mezclar.
-        </p>
-
-        <div class="info-box">
-          <button class="tool-btn machete-header" onclick="toggleMachete()">
-            <span>📎 Conceptos rápidos (machete de Sociología)</span>
-            <span id="macheteArrow" style="font-size:1.1rem;">▼</span>
-          </button>
-
-          <div id="macheteBox" style="display:none;">
-            <ul class="machete-list">
-              <li><strong>Sociología:</strong> estudio científico de la sociedad y de la vida social humana.</li>
-              <li><strong>Perspectiva sociológica:</strong> ver cómo el contexto social influye en las biografías individuales.</li>
-              <li><strong>Ciencias sociales:</strong> disciplinas que estudian distintos aspectos de la realidad social (historia, economía, antropología, derecho, etc.).</li>
-              <li><strong>Continuismo:</strong> el conocimiento se acumula de forma lineal y progresiva; cada momento contiene a los anteriores.</li>
-              <li><strong>Discontinuismo:</strong> nuevas formas de conocer que rompen y redefinen objeto, métodos y alcances de las anteriores.</li>
-              <li><strong>Microsociología:</strong> analiza interacciones cara a cara, experiencias cotidianas, sentido subjetivo.</li>
-              <li><strong>Macrosociología:</strong> estudia grandes estructuras (Estado, economía, clases, instituciones).</li>
-              <li><strong>Objeto de la sociología:</strong> sociedad humana y grupos; explica causas y significados de comportamientos colectivos.</li>
-              <li><strong>Hecho social (Durkheim):</strong> modo de actuar, pensar y sentir externo al individuo y coercitivo.</li>
-              <li><strong>Lucha de clases (Marx):</strong> conflicto entre clases por el control de los medios de producción y la riqueza social.</li>
-              <li><strong>Acción social (Weber):</strong> conducta a la que el actor atribuye un sentido subjetivo y que se orienta a otros.</li>
-              <li><strong>Investigación cuantitativa:</strong> explica y mide fenómenos con datos numéricos; usa encuestas, cuestionarios estructurados, estadísticas.</li>
-              <li><strong>Investigación cualitativa:</strong> comprende significados y procesos; usa entrevistas a profundidad, grupos focales, historias de vida, estudios de caso.</li>
-              <li><strong>Paradigma funcionalista:</strong> ve la sociedad como sistema de partes interdependientes que generan orden y cohesión.</li>
-              <li><strong>Teoría del conflicto:</strong> enfatiza el conflicto de clase y la desigualdad como motor del cambio social.</li>
-              <li><strong>Teoría de la acción social:</strong> centra el análisis en el sentido subjetivo y en los motivos de la acción.</li>
-            </ul>
-          </div>
-        </div>
+  <!-- UNIDAD IV -->
+  <div class="unit-card available" onclick="window.location.href='unidad4/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">IV</div>
+      <div>
+        <p class="unit-label">Unidad IV</p>
+        <h2 class="unit-title">Métodos de investigación en sociología</h2>
       </div>
-    </section>
-  </main>
+      <span class="unit-badge available-badge">Disponible</span>
+    </div>
+    <ul class="unit-topics">
+      <li>Método cuantitativo: diseño, técnicas y herramientas</li>
+      <li>Método cualitativo: enfoque humanista e interpretativo</li>
+      <li>Técnicas: encuestas, entrevistas, historias de vida, estudios de caso</li>
+      <li>Investigación mixta y triangulación</li>
+      <li>Dilemas éticos en la investigación social</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">10 cartillas</span>
+      <span class="chip">Quiz final</span>
+      <span class="btn-go">Comenzar →</span>
+    </div>
+  </div>
 
-  <script>
-    let visitCount = 0;
-    function updateVisitCounter() {
-      visitCount++;
-      const span = document.getElementById("visitCounter");
-      if (span) span.textContent = visitCount;
-    }
+  <!-- UNIDAD V -->
+  <div class="unit-card available" onclick="window.location.href='unidad5/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">V</div>
+      <div>
+        <p class="unit-label">Unidad V</p>
+        <h2 class="unit-title">Paradigmas y perspectivas sociológicas</h2>
+      </div>
+      <span class="unit-badge available-badge">Disponible</span>
+    </div>
+    <ul class="unit-topics">
+      <li>Funcionalismo, teoría del conflicto y acción social</li>
+      <li>Nuevos paradigmas: feminismos, teoría crítica, posestructuralismo</li>
+      <li>Globalización y pensamiento sociológico</li>
+      <li>Teoría sociológica clásica y realidad latinoamericana</li>
+      <li>Usos públicos de la sociología</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">8 cartillas</span>
+      <span class="chip">Quiz final</span>
+      <span class="btn-go">Comenzar →</span>
+    </div>
+  </div>
 
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-    }
+  <p class="section-title">Evaluación final</p>
 
-    function toggleMachete() {
-      const box = document.getElementById("macheteBox");
-      const arrow = document.getElementById("macheteArrow");
-      if (!box || !arrow) return;
-      const isOpen = box.style.display === "block";
-      box.style.display = isOpen ? "none" : "block";
-      arrow.textContent = isOpen ? "▼" : "▲";
-    }
+  <!-- SIMULACRO -->
+  <div class="unit-card available simulacro-card" onclick="window.location.href='simulacro/index.html'">
+    <div class="unit-header">
+      <div class="unit-num">★</div>
+      <div>
+        <p class="unit-label">Simulacro</p>
+        <h2 class="unit-title">Simulacro de examen general</h2>
+      </div>
+      <span class="unit-badge available-badge">Disponible</span>
+    </div>
+    <ul class="unit-topics">
+      <li>Preguntas integradoras de todas las unidades</li>
+      <li>Formato similar a una evaluación escrita tipo test</li>
+      <li>Corrección automática, puntaje y retroalimentación</li>
+    </ul>
+    <div class="unit-footer">
+      <span class="chip">+20 preguntas</span>
+      <span class="chip">Resultados al instante</span>
+      <span class="btn-go">Empezar simulacro →</span>
+    </div>
+  </div>
 
-    function updateProgressBar() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      const bar = document.getElementById("progressBar");
-      if (bar) bar.style.width = `${progress}%`;
-    }
+</main>
 
-    function revealSections() {
-      const reveals = document.querySelectorAll(".reveal");
-      reveals.forEach(section => {
-        const windowHeight = window.innerHeight;
-        const elementTop = section.getBoundingClientRect().top;
-        const visiblePoint = 100;
-        if (elementTop < windowHeight - visiblePoint) {
-          section.classList.add("visible");
-        }
-      });
-    }
+<footer class="footer">
+  <p>Herramienta de repaso académico · Introducción a la Sociología</p>
+  <p>Facilitada por la <strong>Prof. Ilda Mayeregger</strong></p>
+  <p>Desarrollado por <strong>SC</strong></p>
+</footer>
 
-    window.addEventListener("scroll", updateProgressBar);
-    window.addEventListener("scroll", revealSections);
-    window.addEventListener("load", () => {
-      updateVisitCounter();
-      updateProgressBar();
-      revealSections();
-    });
-  </script>
 </body>
 </html>
