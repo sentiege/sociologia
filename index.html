@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>App de Estudio – Historia y Sociología</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Barra de progreso existente -->
+  <div class="progress-wrap">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="tag">App de estudio · 2026</div>
+      <h1>Tu cuaderno interactivo de Historia y Sociología</h1>
+      <p class="subtitle">
+        Cartillas, actividades y quizzes en un solo lugar. Pensado para repasar antes del examen sin perder tiempo buscando apuntes.
+      </p>
+      <div class="hero-questions">
+        <span>¿Qué pasó en Europa antes de los viajes de Colón?</span>
+        <span>¿Cómo se define la Sociología como ciencia?</span>
+        <span>¿Qué propone Durkheim, Marx y Weber?</span>
+      </div>
+      <button class="btn" onclick="scrollToSection('modulos')">
+        Empezar a estudiar
+      </button>
+
+      <p style="margin-top:1rem;font-size:0.9rem;color:rgba(255,255,255,0.9);">
+        Visitas en esta sesión: <strong id="visitCounter">1</strong>
+      </p>
+    </div>
+  </header>
+
+  <main class="container" id="modulos">
+    <!-- SECCIÓN HISTORIA -->
+    <section class="section reveal">
+      <div class="card">
+        <div class="section-top">
+          <span class="step-badge">Historia · Europa y la expansión</span>
+          <h2>Unidad – Europa en el siglo XV</h2>
+        </div>
+        <p class="section-intro">
+          Problemas de Europa, avances técnicos, Portugal, Colón y los tratados que repartieron el mundo.
+        </p>
+
+        <div class="grid cards-3">
+          <div class="flashcard" onclick="toggleCard(this)">
+            <div class="front">Problemas de Europa</div>
+            <div class="back">Falta de metales preciosos, rutas comerciales bloqueadas, necesidad de nuevas vías hacia el oriente.</div>
+          </div>
+          <div class="flashcard" onclick="toggleCard(this)">
+            <div class="front">Ciencia y tecnología</div>
+            <div class="back">Instrumentos como brújula, astrolabio y carabelas permitieron navegar mar abierto.</div>
+          </div>
+          <div class="flashcard" onclick="toggleCard(this)">
+            <div class="front">Portugal primero</div>
+            <div class="back">Exploración sistemática de la costa africana bajo Enrique el Navegante.</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <p><strong>Tip:</strong> repasar las tarjetas y luego hacer el quiz mini de Historia para fijar la secuencia de eventos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SOCIOLOGÍA -->
+    <section class="section reveal">
+      <div class="card">
+        <div class="section-top">
+          <span class="step-badge" style="background:#d1fae5;color:#166534;">Sociología · Unidad I</span>
+          <h2>Introducción a la Sociología</h2>
+        </div>
+        <p class="section-intro">
+          Sociología como ciencia, métodos, macro y micro, construcción de la realidad y los clásicos: Durkheim, Marx y Weber.
+        </p>
+
+        <!-- Botón a la Unidad 1 -->
+        <button class="tool-btn" onclick="window.location.href='sociologia/unidad1/index.html'">
+          Ir a la Unidad 1 – Sociología
+        </button>
+
+        <!-- DESPLEGABLE “CONCEPTOS RÁPIDOS” -->
+        <div class="info-box" style="margin-top:1.2rem;">
+          <button
+            class="tool-btn"
+            style="width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;background:linear-gradient(135deg,#eef2ff,#ecfeff);"
+            onclick="toggleMachete()"
+          >
+            <span>📎 Conceptos rápidos (machete de Sociología)</span>
+            <span id="macheteArrow" style="font-size:1.1rem;">▼</span>
+          </button>
+
+          <div id="macheteBox" style="display:none;margin-top:0.9rem;">
+            <ul style="padding-left:1.2rem;display:flex;flex-direction:column;gap:0.4rem;font-size:0.9rem;">
+              <li><strong>Sociología:</strong> estudio científico de la sociedad y de la vida social humana (Macionis &amp; Plummer).</li>
+              <li><strong>Perspectiva sociológica:</strong> ver cómo el contexto social influye en las biografías individuales.</li>
+              <li><strong>Ciencias sociales:</strong> conjunto de disciplinas que estudian distintos aspectos de la realidad social (historia, economía, antropología, derecho, etc.).</li>
+              <li><strong>Continuismo:</strong> el conocimiento se acumula de forma lineal y progresiva, cada momento contiene a los anteriores.</li>
+              <li><strong>Discontinuismo:</strong> nuevas formas de conocer que rompen y redefinen objeto, métodos y alcances de las anteriores.</li>
+              <li><strong>Microsociología:</strong> analiza interacciones cara a cara, experiencias cotidianas y sentido subjetivo.</li>
+              <li><strong>Macrosociología:</strong> estudia grandes estructuras (Estado, economía, clases, instituciones).</li>
+              <li><strong>Objeto de la sociología:</strong> sociedad humana y grupos; explica causas y significados de comportamientos colectivos.</li>
+              <li><strong>Hecho social (Durkheim):</strong> modo de actuar, pensar y sentir externo al individuo y dotado de poder coercitivo.</li>
+              <li><strong>Lucha de clases (Marx):</strong> conflicto entre clases por el control de los medios de producción y la riqueza social.</li>
+              <li><strong>Acción social (Weber):</strong> conducta a la que el actor atribuye un sentido subjetivo y que se orienta a otros.</li>
+              <li><strong>Investigación cuantitativa:</strong> busca explicar y medir con datos numéricos; usa encuestas, cuestionarios estructurados, estadísticas.</li>
+              <li><strong>Investigación cualitativa:</strong> busca comprender significados y procesos; usa entrevistas a profundidad, grupos focales, historias de vida, estudios de caso.</li>
+              <li><strong>Paradigma funcionalista:</strong> ve la sociedad como sistema de partes interdependientes que generan orden y cohesión (Durkheim).</li>
+              <li><strong>Teoría del conflicto:</strong> enfatiza el conflicto de clase y la desigualdad como motor del cambio social (Marx).</li>
+              <li><strong>Teoría de la acción social:</strong> centra el análisis en el sentido subjetivo y en los motivos de la acción (Weber).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PEQUEÑO RECORDATORIO -->
+    <section class="section reveal">
+      <div class="card">
+        <h2>Cómo usar esta app</h2>
+        <p class="section-intro">
+          Primero repasá las cartillas; después hacé los quizzes. El machete de conceptos está para el último repaso antes del examen.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Contador de visitas (solo sesión actual, sin localStorage)
+    let visitCount = 0;
+    function updateVisitCounter() {
+      visitCount++;
+      const span = document.getElementById("visitCounter");
+      if (span) span.textContent = visitCount;
+    }
+    window.addEventListener("load", updateVisitCounter);
+
+    // Desplegable del machete
+    function toggleMachete() {
+      const box = document.getElementById("macheteBox");
+      const arrow = document.getElementById("macheteArrow");
+      if (!box || !arrow) return;
+      const isOpen = box.style.display === "block";
+      box.style.display = isOpen ? "none" : "block";
+      arrow.textContent = isOpen ? "▼" : "▲";
+    }
+  </script>
+</body>
+</html>
