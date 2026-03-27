@@ -28,6 +28,8 @@
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .hero {
@@ -75,6 +77,8 @@
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
+      flex: 1;
+      width: 100%;
     }
 
     .section-title {
@@ -300,6 +304,32 @@
 
     .key { font-weight: 600; }
 
+    /* Footer estilizado */
+    .footer {
+      margin-top: auto;
+      padding: 1.6rem 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(135deg, #0b1220, #020617);
+      color: #e5e7eb;
+      text-align: center;
+      font-size: 0.83rem;
+      line-height: 1.8;
+    }
+
+    .footer strong {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .footer p {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .footer-counter {
+      margin-top: 0.5rem;
+    }
+
     @media (max-width: 520px) {
       .unit-card  { padding: 1.1rem 1rem; }
       .hero       { padding: 2rem 1rem 1.8rem; }
@@ -378,8 +408,17 @@
 
 <footer class="footer">
   <p>Herramienta de repaso académico · Introducción a la Sociología</p>
-  <p>Facilitada por la <strong>Prof. Ilda Mayeregger</strong></p>
-  <p>Desarrollado por <strong>SC</strong></p>
+  <p>Facilitada por la <strong>Prof. Ilda Mayeregger</strong> · Desarrollado por <strong>SC</strong></p>
+
+  <div class="footer-counter">
+    <a href="https://hits.sh/sentiege.github.io/introduccionasociologia/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+      <img
+        src="https://hits.sh/sentiege.github.io/introduccionasociologia/.svg?view=today-total&label=Visitas&color=38bdf8&labelColor=020617"
+        alt="Contador de visitas"
+        style="vertical-align:middle;margin-top:6px;border-radius:4px;"
+      >
+    </a>
+  </div>
 </footer>
 
 </body>
