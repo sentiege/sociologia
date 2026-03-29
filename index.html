@@ -137,7 +137,6 @@
       color: #374151;
     }
 
-    /* Franja "Machete" verde — versión original */
     .machete-container {
       margin-top: 1.2rem;
       border-radius: var(--radius-lg);
@@ -147,13 +146,21 @@
       padding: 1.1rem 1.3rem 1.2rem;
     }
 
-    /* Franja "Machete" azul — versión Mirtha y Saúl */
     .machete-container-alt {
       margin-top: 1.2rem;
       border-radius: var(--radius-lg);
       border: 1px solid #bfdbfe;
       background: #eff6ff;
       box-shadow: 0 8px 24px rgba(59,130,246,0.13);
+      padding: 1.1rem 1.3rem 1.2rem;
+    }
+
+    .machete-container-quiz {
+      margin-top: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid #ddd6fe;
+      background: #f5f3ff;
+      box-shadow: 0 8px 24px rgba(124,58,237,0.11);
       padding: 1.1rem 1.3rem 1.2rem;
     }
 
@@ -177,6 +184,12 @@
       color: #1e3a8a;
     }
 
+    .machete-title-quiz {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #4c1d95;
+    }
+
     .machete-sub {
       font-size: 0.85rem;
       color: #047857;
@@ -186,6 +199,12 @@
     .machete-sub-alt {
       font-size: 0.85rem;
       color: #1d4ed8;
+      margin-top: 0.15rem;
+    }
+
+    .machete-sub-quiz {
+      font-size: 0.85rem;
+      color: #6d28d9;
       margin-top: 0.15rem;
     }
 
@@ -217,6 +236,20 @@
       gap: 0.3rem;
     }
 
+    .machete-toggle-btn-quiz {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #ede9fe;
+      color: #4c1d95;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     .machete-body {
       margin-top: 0.8rem;
       display: none;
@@ -231,17 +264,35 @@
       color: #1e3a8a;
     }
 
+    .machete-body-quiz {
+      margin-top: 0.8rem;
+      display: none;
+      font-size: 0.9rem;
+      color: #2e1065;
+    }
+
     .machete-body h3,
-    .machete-body-alt h3 {
+    .machete-body-alt h3,
+    .machete-body-quiz h3 {
       font-size: 0.95rem;
       margin-top: 0.9rem;
       margin-bottom: 0.2rem;
     }
 
-    .machete-body-alt .badge {
+    .machete-body ul,
+    .machete-body-alt ul {
+      margin-left: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .machete-body li,
+    .machete-body-alt li {
+      margin-bottom: 0.1rem;
+    }
+
+    .machete-body-alt .badge,
+    .badge-quiz {
       display: inline-block;
-      background: #dbeafe;
-      color: #1e40af;
       border-radius: 999px;
       font-size: 0.72rem;
       font-weight: 700;
@@ -252,15 +303,14 @@
       letter-spacing: 0.06em;
     }
 
-    .machete-body ul,
-    .machete-body-alt ul {
-      margin-left: 1.1rem;
-      margin-bottom: 0.25rem;
+    .machete-body-alt .badge {
+      background: #dbeafe;
+      color: #1e40af;
     }
 
-    .machete-body li,
-    .machete-body-alt li {
-      margin-bottom: 0.12rem;
+    .badge-quiz {
+      background: #ede9fe;
+      color: #5b21b6;
     }
 
     .machete-body-alt table {
@@ -288,6 +338,58 @@
       background: #eff6ff;
     }
 
+    .quiz-list {
+      margin-left: 1.2rem;
+    }
+
+    .quiz-list > li {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .respuesta {
+      font-weight: 700;
+      margin-left: 0.4rem;
+      border-radius: 999px;
+      padding: 0.05rem 0.45rem;
+      font-size: 0.82rem;
+    }
+
+    .verdad {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .falso {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .explicacion {
+      display: block;
+      font-size: 0.82rem;
+      color: #6d28d9;
+      margin-top: 0.1rem;
+      margin-left: 0.2rem;
+    }
+
+    .opciones {
+      list-style: none;
+      margin: 0.3rem 0 0 0.5rem;
+      padding: 0;
+    }
+
+    .opciones li {
+      padding: 0.15rem 0;
+      font-size: 0.88rem;
+      color: #3b0764;
+    }
+
+    .opciones li.correcta {
+      font-weight: 700;
+      color: #065f46;
+    }
+
     .footer {
       max-width: 900px;
       margin: 0 auto 1.8rem;
@@ -301,9 +403,15 @@
     }
 
     @media (max-width: 640px) {
-      .hero { padding: 2.4rem 1.1rem 2.1rem; }
-      .main { padding: 0 1.1rem 2.4rem; }
-      .machete-header { align-items: flex-start; }
+      .hero {
+        padding: 2.4rem 1.1rem 2.1rem;
+      }
+      .main {
+        padding: 0 1.1rem 2.4rem;
+      }
+      .machete-header {
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -323,7 +431,9 @@
         <h2>Unidad I — Herramienta de repaso</h2>
         <p>Tarjetas interactivas con los puntos clave: conceptos, origen, escuelas, métodos, técnicas y oficio del sociólogo.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="unidad1/index.html">Ir a la Unidad I →</a>
+          <a class="btn btn-primary" href="unidad1/index.html">
+            Ir a la Unidad I →
+          </a>
         </div>
       </article>
 
@@ -331,19 +441,22 @@
         <h2>Quiz — Unidad I</h2>
         <p>Evaluá lo que recordás de la Unidad I con 10 preguntas automáticas. Ideal para practicar antes del examen.</p>
         <div class="btn-row">
-          <a class="btn btn-secondary" href="quiz/index.html">Hacer el quiz de la Unidad I ✏️</a>
+          <a class="btn btn-secondary" href="quiz/index.html">
+            Hacer el quiz de la Unidad I ✏️
+          </a>
         </div>
       </article>
     </section>
 
-    <!-- ── Machete 1: versión cátedra (verde) ── -->
     <section class="machete-container">
       <div class="machete-header">
         <div>
           <div class="machete-title">Machete rápido — Unidad I</div>
           <div class="machete-sub">Versión extendida de conceptos clave del capítulo 1 (1.1 a 1.4).</div>
         </div>
-        <button class="machete-toggle-btn" id="toggle-machete">📌 Mostrar machete completo</button>
+        <button class="machete-toggle-btn" id="toggle-machete">
+          📌 Mostrar machete completo
+        </button>
       </div>
 
       <div class="machete-body" id="machete-body">
@@ -372,7 +485,7 @@
         <ul>
           <li>Ir de lo <strong>general</strong> (estructuras, instituciones) a lo <strong>particular</strong> (biografías y experiencias individuales).</li>
           <li>Categorías sociales clave: clase, género, edad, etnia, territorio, generación.</li>
-          <li>Dudar de lo "normal": cuestionar lo naturalizado y analizar la influencia de factores sociales.</li>
+          <li>Dudar de lo “normal”: cuestionar lo naturalizado y analizar la influencia de factores sociales.</li>
         </ul>
 
         <h3>5. Objeto, especificidad y especializaciones</h3>
@@ -404,18 +517,18 @@
       </div>
     </section>
 
-    <!-- ── Machete 2: resumen Mirtha y Saúl (azul) ── -->
     <section class="machete-container-alt">
       <div class="machete-header">
         <div>
-          <div class="machete-title-alt">📘 Resumen proveído por Mirtha y Saúl</div>
+          <div class="machete-title-alt">📘 Resumen proveído por Mirtha y Saul</div>
           <div class="machete-sub-alt">Resumen completo de la Unidad I · Basado en el PPT de la docente · MOVER</div>
         </div>
-        <button class="machete-toggle-btn-alt" id="toggle-machete-alt">📋 Mostrar resumen completo</button>
+        <button class="machete-toggle-btn-alt" id="toggle-machete-alt">
+          📋 Mostrar resumen completo
+        </button>
       </div>
 
       <div class="machete-body-alt" id="machete-body-alt">
-
         <h3>1. Sociología como ciencia <span class="badge">Base</span></h3>
         <ul>
           <li>Estudio <strong>científico, sistemático y crítico</strong> de la sociedad.</li>
@@ -430,7 +543,8 @@
           <li>Política → poder</li>
           <li>Historia → pasado</li>
           <li>Psicología → mente individual</li>
-          <li>Sociología → <strong>relaciones sociales</strong> (integra a todas las demás)</li>
+          <li>Sociología → <strong>relaciones sociales</strong></li>
+          <li><strong>Clave:</strong> la sociología integra a todas.</li>
         </ul>
 
         <h3>3. Continuismo vs. Discontinuismo <span class="badge">Clave</span></h3>
@@ -438,28 +552,30 @@
           <tr><th>Continuismo</th><th>Discontinuismo</th></tr>
           <tr><td>Evolución progresiva</td><td>Rupturas en el conocimiento</td></tr>
           <tr><td>Acumulación de conocimiento</td><td>Cambios de paradigma</td></tr>
-          <tr><td>No hay ruptura (= suma)</td><td>Mejora cualitativa (= cambio)</td></tr>
+          <tr><td>No hay ruptura</td><td>Mejora cualitativa</td></tr>
+          <tr><td>Continuismo = suma</td><td>Discontinuismo = cambio</td></tr>
         </table>
 
         <h3>4. Objeto de la Sociología</h3>
         <ul>
           <li>La sociedad y el comportamiento humano en grupo.</li>
-          <li>Busca: explicar conductas colectivas, entender problemas sociales y proponer soluciones.</li>
+          <li>Busca explicar conductas colectivas, entender problemas sociales y proponer soluciones.</li>
         </ul>
 
         <h3>5. Perspectiva sociológica</h3>
         <ul>
           <li>Ver la realidad de forma crítica.</li>
-          <li>Permite cuestionar lo "normal", analizar desigualdades y entender cómo influye la sociedad en nosotros.</li>
-          <li>Idea clave de <strong>Anthony Giddens</strong>: la sociedad influye en nuestras decisiones.</li>
+          <li>Permite cuestionar lo “normal”, analizar desigualdades y entender cómo influye la sociedad en nosotros.</li>
+          <li>Idea clave de Anthony Giddens: la sociedad influye en nuestras decisiones.</li>
         </ul>
 
         <h3>6. Evolución histórica de la sociedad</h3>
         <ul>
           <li><strong>Medioevo:</strong> feudalismo, poder religioso, sociedad rígida.</li>
           <li><strong>Transición:</strong> Revolución Industrial, Reforma Protestante, grandes descubrimientos.</li>
-          <li><strong>Modernidad:</strong> uso de la razón, Ilustración, revoluciones (EE.UU. y Francia), surge la desigualdad social. Clave: <em>progreso</em>.</li>
-          <li><strong>Posmodernidad:</strong> crítica al progreso, fragmentación, importancia de la diferencia social. Clave: <em>cuestionamiento</em>.</li>
+          <li><strong>Modernidad:</strong> uso de la razón, ciencia (Ilustración), revoluciones de EE.UU. y Francia, surge la desigualdad social.</li>
+          <li><strong>Posmodernidad:</strong> crítica al progreso, fragmentación, importancia de la diferencia social.</li>
+          <li><strong>Clave:</strong> Modernidad = progreso; Posmodernidad = cuestionamiento.</li>
         </ul>
 
         <h3>7. Desigualdad social</h3>
@@ -469,22 +585,27 @@
           <li>Idea clave: no todos tienen las mismas oportunidades.</li>
         </ul>
 
-        <h3>8. Micro y Macrosociología <span class="badge">Clave</span></h3>
+        <h3>8. Micro y Macro sociología <span class="badge">Clave</span></h3>
         <ul>
-          <li><strong>Micro</strong> → individuos, vida cotidiana (= pequeño).</li>
-          <li><strong>Macro</strong> → sociedad completa, instituciones (= grande).</li>
+          <li>Micro → individuos (vida cotidiana).</li>
+          <li>Macro → sociedad completa.</li>
+          <li>Micro = pequeño; Macro = grande.</li>
         </ul>
 
         <h3>9. Métodos de investigación</h3>
         <ul>
+          <li>La sociología investiga la realidad.</li>
           <li><strong>Cuantitativa:</strong> datos numéricos, estadísticas, explica.</li>
           <li><strong>Cualitativa:</strong> experiencias, significados, comprende.</li>
-          <li>Ambas se pueden combinar → <strong>método mixto</strong>.</li>
+          <li>Importante: ambas se pueden combinar (método mixto).</li>
         </ul>
 
         <h3>10. Investigación cualitativa <span class="badge">Preguntable</span></h3>
         <ul>
-          <li>Interpretativa, humanista, no generaliza, analiza en profundidad.</li>
+          <li>Interpretativa.</li>
+          <li>Humanista.</li>
+          <li>No generaliza.</li>
+          <li>Analiza en profundidad.</li>
           <li>Busca entender, no medir.</li>
         </ul>
 
@@ -503,16 +624,177 @@
           <tr><td>Inductivo</td><td>Deductivo</td></tr>
         </table>
 
-        <h3>13. Especializaciones de la Sociología</h3>
+        <h3>13. Especializaciones</h3>
         <ul>
-          <li>Urbana, rural, política, jurídica, educación, género.</li>
+          <li>Urbana</li>
+          <li>Rural</li>
+          <li>Política</li>
+          <li>Jurídica</li>
+          <li>Educación</li>
+          <li>Género</li>
         </ul>
 
         <h3>14. Rol del sociólogo</h3>
         <ul>
-          <li>Puede ser: investigador, docente, asesor, analista social.</li>
+          <li>Puede ser investigador, docente, asesor o analista social.</li>
         </ul>
+      </div>
+    </section>
 
+    <section class="machete-container-quiz">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title-quiz">📝 Cuestionario proveído por Mirtha y Saul</div>
+          <div class="machete-sub-quiz">30 preguntas de repaso · Verdadero/Falso + opción múltiple · Unidad I</div>
+        </div>
+        <button class="machete-toggle-btn-quiz" id="toggle-machete-quiz">
+          📋 Mostrar cuestionario
+        </button>
+      </div>
+
+      <div class="machete-body-quiz" id="machete-body-quiz">
+        <h3>Parte A — Verdadero o Falso <span class="badge-quiz">V/F</span></h3>
+        <ol class="quiz-list">
+          <li>La sociología estudia únicamente el comportamiento individual. <span class="respuesta falso">→ F</span><span class="explicacion">Porque estudia las relaciones sociales y la sociedad, no solo individuos aislados.</span></li>
+          <li>La sociología es considerada una ciencia porque utiliza métodos de investigación. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque aplica métodos científicos (observación, análisis, verificación).</span></li>
+          <li>El continuismo plantea que el conocimiento avanza mediante rupturas. <span class="respuesta falso">→ F</span><span class="explicacion">Porque plantea una evolución progresiva y acumulativa, sin rupturas.</span></li>
+          <li>El discontinuismo sostiene que hay cambios y transformaciones en el conocimiento. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque afirma que existen rupturas y nuevos paradigmas.</span></li>
+          <li>La sociología fue desarrollada por Auguste Comte. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque él acuñó el término y la estableció como ciencia.</span></li>
+          <li>La perspectiva sociológica permite analizar críticamente la realidad social. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque ayuda a cuestionar lo naturalizado y entender la sociedad.</span></li>
+          <li>La desigualdad social solo se basa en factores económicos. <span class="respuesta falso">→ F</span><span class="explicacion">Porque también incluye género, edad, etnia, clase social, etc.</span></li>
+          <li>La microsociología estudia grandes estructuras sociales. <span class="respuesta falso">→ F</span><span class="explicacion">Porque estudia interacciones cotidianas entre individuos.</span></li>
+          <li>La macrosociología analiza la sociedad en su conjunto. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque se enfoca en estructuras sociales amplias.</span></li>
+          <li>La investigación cualitativa busca medir fenómenos sociales con números. <span class="respuesta falso">→ F</span><span class="explicacion">Porque busca comprender significados y experiencias, no medir.</span></li>
+          <li>La investigación cuantitativa utiliza estadísticas y datos numéricos. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque se basa en medición y análisis estadístico.</span></li>
+          <li>La sociología no tiene relación con otras ciencias sociales. <span class="respuesta falso">→ F</span><span class="explicacion">Porque se relaciona y complementa con todas ellas.</span></li>
+          <li>La modernidad se caracteriza por el uso de la razón y la ciencia. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque surge con la Ilustración y el pensamiento racional.</span></li>
+          <li>La posmodernidad cuestiona la idea de progreso. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque critica la idea de que el progreso beneficia a todos.</span></li>
+          <li>Las entrevistas son una técnica de investigación cualitativa. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque permiten analizar experiencias y significados en profundidad.</span></li>
+        </ol>
+
+        <h3>Parte B — Opción múltiple <span class="badge-quiz">Múltiple</span></h3>
+        <ol class="quiz-list" start="16">
+          <li>La sociología es:
+            <ul class="opciones">
+              <li>a) Una ciencia natural</li>
+              <li class="correcta">b) Una ciencia social ✔</li>
+              <li>c) Una filosofía religiosa</li>
+              <li>d) Una ciencia exacta</li>
+            </ul>
+          </li>
+          <li>El objeto de estudio de la sociología es:
+            <ul class="opciones">
+              <li>a) El individuo aislado</li>
+              <li>b) La naturaleza</li>
+              <li class="correcta">c) La sociedad y las relaciones sociales ✔</li>
+              <li>d) La mente humana</li>
+            </ul>
+          </li>
+          <li>El continuismo sostiene que:
+            <ul class="opciones">
+              <li>a) Hay rupturas en el conocimiento</li>
+              <li class="correcta">b) El conocimiento avanza progresivamente ✔</li>
+              <li>c) No existe conocimiento</li>
+              <li>d) Todo conocimiento es falso</li>
+            </ul>
+          </li>
+          <li>El discontinuismo plantea que:
+            <ul class="opciones">
+              <li>a) El conocimiento no cambia</li>
+              <li>b) Hay evolución continua</li>
+              <li class="correcta">c) Existen rupturas en el conocimiento ✔</li>
+              <li>d) Todo es igual</li>
+            </ul>
+          </li>
+          <li>La perspectiva sociológica permite:
+            <ul class="opciones">
+              <li>a) Aceptar todo sin cuestionar</li>
+              <li class="correcta">b) Pensar críticamente la realidad ✔</li>
+              <li>c) Ignorar la sociedad</li>
+              <li>d) Estudiar solo números</li>
+            </ul>
+          </li>
+          <li>¿Cuál es un ejemplo de desigualdad social?
+            <ul class="opciones">
+              <li>a) Igualdad de derechos</li>
+              <li class="correcta">b) Diferencias económicas ✔</li>
+              <li>c) Amistad</li>
+              <li>d) Cultura</li>
+            </ul>
+          </li>
+          <li>La microsociología estudia:
+            <ul class="opciones">
+              <li>a) Estados y países</li>
+              <li>b) Grandes estructuras</li>
+              <li class="correcta">c) Interacciones cotidianas ✔</li>
+              <li>d) La economía global</li>
+            </ul>
+          </li>
+          <li>La macrosociología analiza:
+            <ul class="opciones">
+              <li>a) Individuos aislados</li>
+              <li>b) Interacciones personales</li>
+              <li class="correcta">c) Grandes estructuras sociales ✔</li>
+              <li>d) Emociones</li>
+            </ul>
+          </li>
+          <li>La investigación cualitativa se caracteriza por:
+            <ul class="opciones">
+              <li>a) Uso de números</li>
+              <li>b) Medición estadística</li>
+              <li class="correcta">c) Comprensión de experiencias ✔</li>
+              <li>d) Experimentos de laboratorio</li>
+            </ul>
+          </li>
+          <li>¿Cuál es una técnica cualitativa?
+            <ul class="opciones">
+              <li>a) Encuesta</li>
+              <li>b) Estadística</li>
+              <li class="correcta">c) Entrevista en profundidad ✔</li>
+              <li>d) Censo</li>
+            </ul>
+          </li>
+          <li>¿Cuál es una técnica cuantitativa?
+            <ul class="opciones">
+              <li>a) Historia de vida</li>
+              <li>b) Grupo focal</li>
+              <li class="correcta">c) Encuesta ✔</li>
+              <li>d) Observación participante</li>
+            </ul>
+          </li>
+          <li>La modernidad se relaciona con:
+            <ul class="opciones">
+              <li>a) Fe religiosa absoluta</li>
+              <li class="correcta">b) Uso de la razón ✔</li>
+              <li>c) Ignorancia</li>
+              <li>d) Tradición feudal</li>
+            </ul>
+          </li>
+          <li>La posmodernidad se caracteriza por:
+            <ul class="opciones">
+              <li>a) Creencia total en el progreso</li>
+              <li class="correcta">b) Cuestionamiento del progreso ✔</li>
+              <li>c) Dominio religioso</li>
+              <li>d) Feudalismo</li>
+            </ul>
+          </li>
+          <li>La sociología se relaciona con otras ciencias porque:
+            <ul class="opciones">
+              <li>a) Estudia lo mismo que todas</li>
+              <li>b) No tiene relación</li>
+              <li class="correcta">c) Todas estudian al ser humano ✔</li>
+              <li>d) Solo estudia economía</li>
+            </ul>
+          </li>
+          <li>Un sociólogo puede trabajar como:
+            <ul class="opciones">
+              <li>a) Solo profesor</li>
+              <li>b) Solo investigador</li>
+              <li class="correcta">c) Investigador, docente o asesor ✔</li>
+              <li>d) Ninguna de las anteriores</li>
+            </ul>
+          </li>
+        </ol>
       </div>
     </section>
   </main>
@@ -524,10 +806,10 @@
   </footer>
 
   <script>
-    // Machete 1 (verde)
     const toggleBtn = document.getElementById('toggle-machete');
     const macheteBody = document.getElementById('machete-body');
     let macheteVisible = false;
+
     toggleBtn.addEventListener('click', () => {
       macheteVisible = !macheteVisible;
       macheteBody.style.display = macheteVisible ? 'block' : 'none';
@@ -536,16 +818,28 @@
         : '📌 Mostrar machete completo';
     });
 
-    // Machete 2 (azul — Mirtha y Saúl)
     const toggleBtnAlt = document.getElementById('toggle-machete-alt');
     const macheteBodyAlt = document.getElementById('machete-body-alt');
     let macheteVisibleAlt = false;
+
     toggleBtnAlt.addEventListener('click', () => {
       macheteVisibleAlt = !macheteVisibleAlt;
       macheteBodyAlt.style.display = macheteVisibleAlt ? 'block' : 'none';
       toggleBtnAlt.textContent = macheteVisibleAlt
         ? 'Ocultar resumen completo'
         : '📋 Mostrar resumen completo';
+    });
+
+    const toggleBtnQuiz = document.getElementById('toggle-machete-quiz');
+    const macheteBodyQuiz = document.getElementById('machete-body-quiz');
+    let macheteVisibleQuiz = false;
+
+    toggleBtnQuiz.addEventListener('click', () => {
+      macheteVisibleQuiz = !macheteVisibleQuiz;
+      macheteBodyQuiz.style.display = macheteVisibleQuiz ? 'block' : 'none';
+      toggleBtnQuiz.textContent = macheteVisibleQuiz
+        ? 'Ocultar cuestionario'
+        : '📋 Mostrar cuestionario';
     });
   </script>
 </body>
