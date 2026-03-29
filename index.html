@@ -15,6 +15,8 @@
       --accent-blue: #1d4ed8;
       --accent-purple: #7c3aed;
       --accent-amber: #d97706;
+      --accent-pink: #db2777;
+      --accent-sky: #0284c7;
       --text: #111827;
       --muted: #6b7280;
       --bg: #f3f4f6;
@@ -153,17 +155,20 @@
 
     .btn:hover,
     .machete-toggle-btn:hover,
-    .match-item:hover {
+    .match-item:hover,
+    .fill-option:hover,
+    .scenario-option:hover,
+    .memory-card:hover {
       transform: translateY(-1px);
     }
 
     .btn-primary {
-      background: #0f766e;
+      background: var(--primary);
       color: #ecfdf5;
       box-shadow: 0 8px 16px rgba(15,118,110,0.18);
     }
 
-    .btn-primary:hover { background: #0b5e57; }
+    .btn-primary:hover { background: var(--primary-dark); }
 
     .btn-secondary {
       background: #e5e7eb;
@@ -173,7 +178,9 @@
     .machete-container,
     .machete-container-alt,
     .machete-container-quiz,
-    .machete-container-extra {
+    .machete-container-extra,
+    .machete-container-scenario,
+    .machete-container-memory {
       border-radius: var(--radius-lg);
       padding: 1.15rem 1.25rem 1.2rem;
       box-shadow: var(--shadow);
@@ -203,6 +210,16 @@
       background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
     }
 
+    .machete-container-scenario {
+      border-color: #bae6fd;
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .machete-container-memory {
+      border-color: #fecaca;
+      background: linear-gradient(180deg, #fff1f2 0%, #ffe4e6 100%);
+    }
+
     .machete-header {
       display: flex;
       justify-content: space-between;
@@ -214,7 +231,9 @@
     .machete-title,
     .machete-title-alt,
     .machete-title-quiz,
-    .machete-title-extra {
+    .machete-title-extra,
+    .machete-title-scenario,
+    .machete-title-memory {
       font-size: 1.08rem;
       font-weight: 800;
       line-height: 1.3;
@@ -224,11 +243,15 @@
     .machete-title-alt { color: #1e3a8a; }
     .machete-title-quiz { color: #5b21b6; }
     .machete-title-extra { color: #92400e; }
+    .machete-title-scenario { color: #075985; }
+    .machete-title-memory { color: #9f1239; }
 
     .machete-sub,
     .machete-sub-alt,
     .machete-sub-quiz,
-    .machete-sub-extra {
+    .machete-sub-extra,
+    .machete-sub-scenario,
+    .machete-sub-memory {
       font-size: 0.86rem;
       margin-top: 0.2rem;
       line-height: 1.45;
@@ -238,6 +261,8 @@
     .machete-sub-alt { color: #2563eb; }
     .machete-sub-quiz { color: #7c3aed; }
     .machete-sub-extra { color: #b45309; }
+    .machete-sub-scenario { color: #0369a1; }
+    .machete-sub-memory { color: #be123c; }
 
     .machete-toggle-btn {
       border-radius: 999px;
@@ -273,10 +298,22 @@
       color: #92400e;
     }
 
+    .machete-toggle-btn[data-target="machete-body-scenario"] {
+      background: #e0f2fe;
+      color: #075985;
+    }
+
+    .machete-toggle-btn[data-target="machete-body-memory"] {
+      background: #ffe4e6;
+      color: #9f1239;
+    }
+
     .machete-body,
     .machete-body-alt,
     .machete-body-quiz,
-    .machete-body-extra {
+    .machete-body-extra,
+    .machete-body-scenario,
+    .machete-body-memory {
       margin-top: 0.95rem;
       display: none;
       animation: fadeSlide 220ms ease;
@@ -311,7 +348,9 @@
     .machete-body h3 { color: #065f46; }
     .machete-body-alt h3 { color: #1e3a8a; }
     .machete-body-quiz h3 { color: #5b21b6; }
-    .machete-body-extra h3 { color: #92400e; }
+    .machete-body-extra h3,
+    .machete-body-scenario h3,
+    .machete-body-memory h3 { color: #92400e; }
 
     .topic-card ul,
     .topic-card ol,
@@ -523,7 +562,9 @@
       gap: 0.5rem;
     }
 
-    .match-button {
+    .match-button,
+    .scenario-option,
+    .fill-option {
       border-radius: 999px;
       border: none;
       padding: 0.45rem 0.9rem;
@@ -536,9 +577,34 @@
       transition: transform 150ms ease, background 150ms ease;
     }
 
-    .match-button:hover {
+    .match-button:hover,
+    .scenario-option:hover,
+    .fill-option:hover {
       background: #ea580c;
-      transform: translateY(-1px);
+    }
+
+    .scenario-option {
+      background: #e0f2fe;
+      color: #075985;
+      box-shadow: 0 4px 10px rgba(56,189,248,0.45);
+    }
+
+    .scenario-option.correct {
+      background: #dcfce7;
+      color: #166534;
+      box-shadow: 0 4px 10px rgba(74,222,128,0.5);
+    }
+
+    .scenario-option.wrong {
+      background: #fee2e2;
+      color: #991b1b;
+      box-shadow: 0 4px 10px rgba(248,113,113,0.5);
+    }
+
+    .fill-option {
+      background: #facc15;
+      color: #78350f;
+      box-shadow: 0 3px 8px rgba(245,158,11,0.4);
     }
 
     .footer {
@@ -553,6 +619,50 @@
       gap: 0.5rem 1rem;
     }
 
+    /* Memotest */
+    .memory-grid {
+      margin-top: 0.7rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .memory-card {
+      position: relative;
+      height: 90px;
+      border-radius: 16px;
+      background: #f97316;
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(248,113,22,0.45);
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    }
+
+    .memory-card.flipped,
+    .memory-card.matched {
+      background: #f9fafb;
+      color: #111827;
+      box-shadow: 0 4px 10px rgba(148,163,184,0.45);
+    }
+
+    .memory-card.matched {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .memory-meta {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #9f1239;
+    }
+
     @media (max-width: 700px) {
       .hero {
         padding: 2.5rem 1rem 2rem;
@@ -565,7 +675,9 @@
       .machete-container,
       .machete-container-alt,
       .machete-container-quiz,
-      .machete-container-extra {
+      .machete-container-extra,
+      .machete-container-scenario,
+      .machete-container-memory {
         border-radius: 18px;
       }
       .machete-header {
@@ -1061,6 +1173,56 @@
         </div>
       </div>
     </section>
+
+    <!-- Mini-scenario quiz -->
+    <section class="machete-container-scenario" id="machete-scenario">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title-scenario">🌐 Mini-scenario quiz — Aplicar conceptos</div>
+          <div class="machete-sub-scenario">Leé pequeños casos y elegí qué concepto sociológico se aplica. Ideal para entrenar la mirada sociológica.</div>
+        </div>
+        <button class="machete-toggle-btn" data-target="machete-body-scenario">🌍 Mostrar mini-scenarios</button>
+      </div>
+
+      <div class="machete-body-scenario" id="machete-body-scenario">
+        <div class="quiz-panel" style="border-color:#38bdf8;background:rgba(255,255,255,0.9);">
+          <h3 style="margin-top:0;">Escenario <span id="scn-index">1</span> de <span id="scn-total">-</span></h3>
+          <p id="scn-text" style="font-size:0.9rem;color:#0f172a;line-height:1.65;margin-bottom:0.7rem;"></p>
+          <div id="scn-options" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;"></div>
+          <div id="scn-feedback" style="font-size:0.85rem;color:#0369a1;margin-bottom:0.4rem;"></div>
+          <button class="match-button" id="scn-next" style="display:none;background:#0ea5e9;">➡️ Siguiente escenario</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memotest de conceptos -->
+    <section class="machete-container-memory" id="machete-memotest">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title-memory">🧠 Memotest de conceptos — Unidad I</div>
+          <div class="machete-sub-memory">Encontrá las parejas de concepto + definición. Buenísimo para repasar vocabulario clave de forma lúdica.</div>
+        </div>
+        <button class="machete-toggle-btn" data-target="machete-body-memory">🃏 Mostrar memotest</button>
+      </div>
+
+      <div class="machete-body-memory" id="machete-body-memory">
+        <div class="quiz-panel" style="border-color:#fb7185;background:rgba(255,255,255,0.9);">
+          <h3 style="margin-top:0;">Memotest — Encontrá todas las parejas</h3>
+          <p style="font-size:0.86rem;color:#9f1239;margin-bottom:0.4rem;">
+            Instrucciones: hacé clic en dos cartas para darlas vuelta. Si el concepto coincide con su definición, se quedan visibles. Si no, se tapan de nuevo.
+          </p>
+          <div class="memory-grid" id="memory-grid">
+            <!-- Cartas por JS -->
+          </div>
+          <div class="memory-meta">
+            Intentos: <span id="memory-moves">0</span> · Parejas encontradas: <span id="memory-matched">0</span>/<span id="memory-total">0</span>
+          </div>
+          <div class="match-controls">
+            <button class="match-button" id="memory-reset" style="background:#fb7185;">🔄 Reiniciar memotest</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -1086,6 +1248,10 @@
         button.textContent = isVisible ? 'Ocultar ejercicios extra' : '🎲 Mostrar ejercicios extra';
       } else if (target === 'machete-body-completar') {
         button.textContent = isVisible ? 'Ocultar completar definiciones' : '🧠 Mostrar completar definiciones';
+      } else if (target === 'machete-body-scenario') {
+        button.textContent = isVisible ? 'Ocultar mini-scenarios' : '🌍 Mostrar mini-scenarios';
+      } else if (target === 'machete-body-memory') {
+        button.textContent = isVisible ? 'Ocultar memotest' : '🃏 Mostrar memotest';
       }
     }
 
@@ -1159,6 +1325,7 @@
     let pairs = [];
 
     function buildMatchGame() {
+      if (!conceptListEl || !defListEl) return;
       conceptListEl.innerHTML = '';
       defListEl.innerHTML = '';
       feedbackEl.textContent = '';
@@ -1240,15 +1407,16 @@
       }
     }
 
-    conceptListEl.addEventListener('click', handleMatchClick);
-    defListEl.addEventListener('click', handleMatchClick);
+    if (conceptListEl && defListEl) {
+      conceptListEl.addEventListener('click', handleMatchClick);
+      defListEl.addEventListener('click', handleMatchClick);
 
-    document.getElementById('match-reset').addEventListener('click', () => {
+      document.getElementById('match-reset').addEventListener('click', () => {
+        buildMatchGame();
+      });
+
       buildMatchGame();
-    });
-
-    // Construir el juego al cargar
-    buildMatchGame();
+    }
 
     // Juego 2: completar definiciones
     const fillData = [
@@ -1324,6 +1492,7 @@
     const randomizedFill = shuffleArray(fillData);
 
     function renderFillQuestion() {
+      if (!fillSentenceEl) return;
       const item = randomizedFill[fillIndex];
       fillIndexEl.textContent = fillIndex + 1;
       fillTotalEl.textContent = randomizedFill.length;
@@ -1335,10 +1504,7 @@
       const shuffledOpts = shuffleArray(item.options);
       shuffledOpts.forEach(opt => {
         const btn = document.createElement('button');
-        btn.className = 'match-button';
-        btn.style.background = '#facc15';
-        btn.style.boxShadow = '0 3px 8px rgba(245,158,11,0.4)';
-        btn.style.fontSize = '0.83rem';
+        btn.className = 'fill-option';
         btn.textContent = opt;
         btn.addEventListener('click', () => {
           if (opt.toLowerCase() === item.answer.toLowerCase()) {
@@ -1354,13 +1520,200 @@
       });
     }
 
-    fillNextBtn.addEventListener('click', () => {
-      fillIndex = (fillIndex + 1) % randomizedFill.length;
-      renderFillQuestion();
-    });
-
     if (fillSentenceEl) {
+      fillNextBtn.addEventListener('click', () => {
+        fillIndex = (fillIndex + 1) % randomizedFill.length;
+        renderFillQuestion();
+      });
       renderFillQuestion();
+    }
+
+    // Mini-scenario quiz
+    const scenarios = [
+      {
+        text: 'Una investigadora entrevista en profundidad a 10 estudiantes sobre cómo viven la desigualdad entre colegios públicos y privados.',
+        answer: 'Investigación cualitativa',
+        options: ['Investigación cuantitativa', 'Investigación cualitativa', 'Macrosociología', 'Continuismo']
+      },
+      {
+        text: 'Un equipo de sociólogos analiza estadísticas nacionales sobre desempleo juvenil en los últimos 20 años.',
+        answer: 'Investigación cuantitativa',
+        options: ['Investigación cualitativa', 'Microsociología', 'Investigación cuantitativa', 'Historia de vida']
+      },
+      {
+        text: 'Un sociólogo estudia cómo la estructura del Estado y la economía mundial afectan las oportunidades laborales de los jóvenes.',
+        answer: 'Macrosociología',
+        options: ['Microsociología', 'Macrosociología', 'Entrevista en profundidad', 'Grupo focal']
+      },
+      {
+        text: 'Una socióloga observa cómo se saludan, visten y hablan los adolescentes en una plaza para entender sus códigos y significados.',
+        answer: 'Microsociología',
+        options: ['Macrosociología', 'Microsociología', 'Posmodernidad', 'Continuismo']
+      },
+      {
+        text: 'Un investigador sostiene que el conocimiento científico se construye sumando aportes sin rupturas profundas, solo mejorando poco a poco.',
+        answer: 'Continuismo',
+        options: ['Discontinuismo', 'Continuismo', 'Positivismo', 'Antropología']
+      },
+      {
+        text: 'Una socióloga afirma que a lo largo de la historia se producen cambios de paradigma que rompen con formas anteriores de entender la realidad.',
+        answer: 'Discontinuismo',
+        options: ['Continuismo', 'Discontinuismo', 'Funcionalismo', 'Teoría del conflicto']
+      },
+      {
+        text: 'Un estudio analiza cómo las condiciones de clase social, género y etnia limitan el acceso a la universidad para ciertos grupos.',
+        answer: 'Desigualdad social',
+        options: ['Socialización', 'Desigualdad social', 'Microsociología', 'Historia política']
+      },
+      {
+        text: 'Una socióloga aplica encuestas a 500 personas para medir su opinión sobre la reforma educativa.',
+        answer: 'Encuesta (método cuantitativo)',
+        options: ['Entrevista en profundidad (cualitativa)', 'Encuesta (método cuantitativo)', 'Historia de vida', 'Observación participante']
+      }
+    ];
+
+    const scnIndexEl = document.getElementById('scn-index');
+    const scnTotalEl = document.getElementById('scn-total');
+    const scnTextEl = document.getElementById('scn-text');
+    const scnOptionsEl = document.getElementById('scn-options');
+    const scnFeedbackEl = document.getElementById('scn-feedback');
+    const scnNextBtn = document.getElementById('scn-next');
+
+    let scnIndex = 0;
+    const randomizedScenarios = shuffleArray(scenarios);
+
+    function renderScenario() {
+      if (!scnTextEl) return;
+      const item = randomizedScenarios[scnIndex];
+      scnIndexEl.textContent = scnIndex + 1;
+      scnTotalEl.textContent = randomizedScenarios.length;
+      scnTextEl.textContent = item.text;
+      scnFeedbackEl.textContent = '';
+      scnNextBtn.style.display = 'none';
+      scnOptionsEl.innerHTML = '';
+
+      const opts = shuffleArray(item.options);
+      opts.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'scenario-option';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => {
+          const all = scnOptionsEl.querySelectorAll('.scenario-option');
+          all.forEach(b => b.disabled = true);
+          if (opt === item.answer) {
+            btn.classList.add('correct');
+            scnFeedbackEl.textContent = '¡Bien! Este escenario corresponde a: ' + item.answer + '.';
+            scnFeedbackEl.style.color = '#15803d';
+          } else {
+            btn.classList.add('wrong');
+            scnFeedbackEl.textContent = 'No es la mejor opción. La respuesta correcta era: ' + item.answer + '.';
+            scnFeedbackEl.style.color = '#b91c1c';
+          }
+          scnNextBtn.style.display = 'inline-flex';
+        });
+        scnOptionsEl.appendChild(btn);
+      });
+    }
+
+    if (scnTextEl) {
+      scnNextBtn.addEventListener('click', () => {
+        scnIndex = (scnIndex + 1) % randomizedScenarios.length;
+        renderScenario();
+      });
+      renderScenario();
+    }
+
+    // Memotest de conceptos
+    const memoryGrid = document.getElementById('memory-grid');
+    const memoryMovesEl = document.getElementById('memory-moves');
+    const memoryMatchedEl = document.getElementById('memory-matched');
+    const memoryTotalEl = document.getElementById('memory-total');
+    const memoryResetBtn = document.getElementById('memory-reset');
+
+    const memoryPairs = [
+      { id: 'M1', type: 'concept', text: 'Sociología como ciencia' },
+      { id: 'M1', type: 'def', text: 'Estudio científico, sistemático y crítico de la sociedad.' },
+
+      { id: 'M2', type: 'concept', text: 'Desigualdad social' },
+      { id: 'M2', type: 'def', text: 'Diferencias de recursos y oportunidades entre grupos sociales.' },
+
+      { id: 'M3', type: 'concept', text: 'Microsociología' },
+      { id: 'M3', type: 'def', text: 'Estudio de interacciones cotidianas y vida diaria.' },
+
+      { id: 'M4', type: 'concept', text: 'Macrosociología' },
+      { id: 'M4', type: 'def', text: 'Análisis de la sociedad en su conjunto e instituciones.' },
+
+      { id: 'M5', type: 'concept', text: 'Método cualitativo' },
+      { id: 'M5', type: 'def', text: 'Comprende significados y experiencias, no se centra en números.' },
+
+      { id: 'M6', type: 'concept', text: 'Método cuantitativo' },
+      { id: 'M6', type: 'def', text: 'Usa datos numéricos y análisis estadístico.' }
+    ];
+
+    let memoryCards = [];
+    let flippedCards = [];
+    let memoryMoves = 0;
+    let memoryMatched = 0;
+
+    function buildMemoryGame() {
+      if (!memoryGrid) return;
+      memoryCards = shuffleArray(memoryPairs).map((item, index) => ({
+        ...item,
+        index
+      }));
+      memoryGrid.innerHTML = '';
+      memoryMoves = 0;
+      memoryMatched = 0;
+      memoryMovesEl.textContent = '0';
+      memoryMatchedEl.textContent = '0';
+      memoryTotalEl.textContent = memoryPairs.length / 2;
+
+      memoryCards.forEach(card => {
+        const div = document.createElement('div');
+        div.className = 'memory-card';
+        div.dataset.id = card.id;
+        div.dataset.index = card.index;
+        div.dataset.type = card.type;
+        div.textContent = '❓';
+        div.addEventListener('click', () => handleMemoryClick(div, card));
+        memoryGrid.appendChild(div);
+      });
+    }
+
+    function handleMemoryClick(cardEl, card) {
+      if (cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+      if (flippedCards.length === 2) return;
+
+      cardEl.classList.add('flipped');
+      cardEl.textContent = card.text;
+      flippedCards.push({ el: cardEl, data: card });
+
+      if (flippedCards.length === 2) {
+        memoryMoves++;
+        memoryMovesEl.textContent = memoryMoves.toString();
+
+        const [first, second] = flippedCards;
+        if (first.data.id === second.data.id && first.data.type !== second.data.type) {
+          first.el.classList.add('matched');
+          second.el.classList.add('matched');
+          memoryMatched++;
+          memoryMatchedEl.textContent = memoryMatched.toString();
+          flippedCards = [];
+        } else {
+          setTimeout(() => {
+            first.el.classList.remove('flipped');
+            second.el.classList.remove('flipped');
+            first.el.textContent = '❓';
+            second.el.textContent = '❓';
+            flippedCards = [];
+          }, 800);
+        }
+      }
+    }
+
+    if (memoryGrid && memoryResetBtn) {
+      memoryResetBtn.addEventListener('click', buildMemoryGame);
+      buildMemoryGame();
     }
   </script>
 </body>
