@@ -4,24 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Introducción a la Sociología — Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0f766e;
+      --primary-dark: #0b5e57;
       --secondary: #0369a1;
+      --accent-blue: #1d4ed8;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
       --text: #111827;
       --muted: #6b7280;
       --bg: #f3f4f6;
-      --card-bg: #ffffff;
+      --card-bg: rgba(255,255,255,0.92);
       --border: #e5e7eb;
-      --radius-lg: 18px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.08);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow: 0 10px 30px rgba(15,23,42,0.08);
+      --shadow-soft: 0 6px 18px rgba(15,23,42,0.06);
     }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 45%, #e5e7eb 100%);
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top, #dbeafe 0%, #eff6ff 18%, #f3f4f6 42%, #e5e7eb 100%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -29,81 +40,92 @@
     }
 
     .hero {
-      padding: 3.2rem 1.5rem 2.6rem;
+      padding: 3.4rem 1.5rem 2.4rem;
       text-align: center;
     }
 
     .hero-inner {
-      max-width: 720px;
+      max-width: 840px;
       margin: 0 auto;
     }
 
     .hero-tag {
       display: inline-flex;
-      background: rgba(15,118,110,0.08);
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(15,118,110,0.10);
       color: #047857;
+      border: 1px solid rgba(15,118,110,0.12);
       border-radius: 999px;
-      padding: 0.25rem 0.8rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      padding: 0.38rem 0.9rem;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 3rem);
       font-weight: 900;
-      color: #022c22;
-      margin-bottom: 0.35rem;
+      color: #052e2b;
+      letter-spacing: -0.03em;
     }
 
     .hero-sub {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
+      margin: 0.65rem 0 0.35rem;
+      font-size: 1rem;
+      color: #4b5563;
+      font-weight: 600;
     }
 
     .hero-desc {
-      font-size: 0.9rem;
-      color: #4b5563;
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: #556070;
     }
 
     .main {
-      max-width: 900px;
+      width: min(980px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: 0 1.5rem 3rem;
-      flex: 1;
+      padding: 0 0 3rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .card-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
-      margin-top: 1.4rem;
+      margin-top: 0.6rem;
     }
 
     .card {
       background: var(--card-bg);
+      backdrop-filter: blur(10px);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.7);
       box-shadow: var(--shadow);
-      padding: 1.3rem 1.2rem 1.4rem;
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.6rem;
     }
 
     .card h2 {
-      font-size: 1.05rem;
-      margin-bottom: 0.1rem;
+      margin: 0;
+      font-size: 1.06rem;
+      line-height: 1.3;
     }
 
     .card p {
-      font-size: 0.9rem;
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.55;
       color: #4b5563;
     }
 
@@ -111,248 +133,276 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
-      margin-top: 0.7rem;
+      margin-top: 0.75rem;
     }
 
     .btn {
       border: none;
       border-radius: 999px;
-      padding: 0.5rem 1.1rem;
+      padding: 0.7rem 1.15rem;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      justify-content: center;
+      gap: 0.35rem;
       text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover,
+    .machete-toggle-btn:hover,
+    .match-item:hover {
+      transform: translateY(-1px);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: #0f766e;
       color: #ecfdf5;
+      box-shadow: 0 8px 16px rgba(15,118,110,0.18);
     }
+
+    .btn-primary:hover { background: #0b5e57; }
 
     .btn-secondary {
       background: #e5e7eb;
       color: #374151;
     }
 
-    .machete-container {
-      margin-top: 1.2rem;
+    .machete-container,
+    .machete-container-alt,
+    .machete-container-quiz,
+    .machete-container-extra {
       border-radius: var(--radius-lg);
-      border: 1px solid #d1fae5;
-      background: #ecfdf5;
-      box-shadow: 0 8px 24px rgba(16,185,129,0.15);
-      padding: 1.1rem 1.3rem 1.2rem;
+      padding: 1.15rem 1.25rem 1.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      margin-top: 1rem;
+    }
+
+    .machete-container {
+      border-color: #ccebdc;
+      background: linear-gradient(180deg, #f2fff7 0%, #ecfdf5 100%);
     }
 
     .machete-container-alt {
-      margin-top: 1.2rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
-      box-shadow: 0 8px 24px rgba(59,130,246,0.13);
-      padding: 1.1rem 1.3rem 1.2rem;
+      border-color: #cfe0ff;
+      background: linear-gradient(180deg, #f5f9ff 0%, #eff6ff 100%);
     }
 
     .machete-container-quiz {
-      margin-top: 1.2rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid #ddd6fe;
-      background: #f5f3ff;
-      box-shadow: 0 8px 24px rgba(124,58,237,0.11);
-      padding: 1.1rem 1.3rem 1.2rem;
+      border-color: #e4d9ff;
+      background: linear-gradient(180deg, #faf7ff 0%, #f5f3ff 100%);
+    }
+
+    .machete-container-extra {
+      border-color: #fcd34d;
+      background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
     }
 
     .machete-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       flex-wrap: wrap;
     }
 
-    .machete-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #065f46;
+    .machete-title,
+    .machete-title-alt,
+    .machete-title-quiz,
+    .machete-title-extra {
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.3;
     }
 
-    .machete-title-alt {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #1e3a8a;
+    .machete-title { color: #065f46; }
+    .machete-title-alt { color: #1e3a8a; }
+    .machete-title-quiz { color: #5b21b6; }
+    .machete-title-extra { color: #92400e; }
+
+    .machete-sub,
+    .machete-sub-alt,
+    .machete-sub-quiz,
+    .machete-sub-extra {
+      font-size: 0.86rem;
+      margin-top: 0.2rem;
+      line-height: 1.45;
     }
 
-    .machete-title-quiz {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #4c1d95;
-    }
-
-    .machete-sub {
-      font-size: 0.85rem;
-      color: #047857;
-      margin-top: 0.15rem;
-    }
-
-    .machete-sub-alt {
-      font-size: 0.85rem;
-      color: #1d4ed8;
-      margin-top: 0.15rem;
-    }
-
-    .machete-sub-quiz {
-      font-size: 0.85rem;
-      color: #6d28d9;
-      margin-top: 0.15rem;
-    }
+    .machete-sub { color: #047857; }
+    .machete-sub-alt { color: #2563eb; }
+    .machete-sub-quiz { color: #7c3aed; }
+    .machete-sub-extra { color: #b45309; }
 
     .machete-toggle-btn {
       border-radius: 999px;
       border: none;
-      padding: 0.45rem 0.9rem;
+      padding: 0.6rem 0.95rem;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .machete-toggle-btn[data-target="machete-body"] {
       background: #d1fae5;
       color: #065f46;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
     }
 
-    .machete-toggle-btn-alt {
-      border-radius: 999px;
-      border: none;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
+    .machete-toggle-btn[data-target="machete-body-alt"] {
       background: #dbeafe;
       color: #1e3a8a;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
     }
 
-    .machete-toggle-btn-quiz {
-      border-radius: 999px;
-      border: none;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
+    .machete-toggle-btn[data-target="machete-body-quiz"] {
       background: #ede9fe;
-      color: #4c1d95;
+      color: #5b21b6;
+    }
+
+    .machete-toggle-btn[data-target="machete-body-extra"],
+    .machete-toggle-btn[data-target="machete-body-completar"] {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .machete-body,
+    .machete-body-alt,
+    .machete-body-quiz,
+    .machete-body-extra {
+      margin-top: 0.95rem;
+      display: none;
+      animation: fadeSlide 220ms ease;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .machete-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .topic-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.85);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .topic-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.97rem;
+      line-height: 1.35;
+    }
+
+    .machete-body h3 { color: #065f46; }
+    .machete-body-alt h3 { color: #1e3a8a; }
+    .machete-body-quiz h3 { color: #5b21b6; }
+    .machete-body-extra h3 { color: #92400e; }
+
+    .topic-card ul,
+    .topic-card ol,
+    .quiz-list {
+      margin: 0.2rem 0 0 1.05rem;
+      padding: 0;
+    }
+
+    .topic-card li,
+    .quiz-list > li {
+      margin-bottom: 0.32rem;
+      line-height: 1.52;
+      font-size: 0.9rem;
+    }
+
+    .badge,
+    .badge-quiz {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-    }
-
-    .machete-body {
-      margin-top: 0.8rem;
-      display: none;
-      font-size: 0.9rem;
-      color: #064e3b;
-    }
-
-    .machete-body-alt {
-      margin-top: 0.8rem;
-      display: none;
-      font-size: 0.9rem;
-      color: #1e3a8a;
-    }
-
-    .machete-body-quiz {
-      margin-top: 0.8rem;
-      display: none;
-      font-size: 0.9rem;
-      color: #2e1065;
-    }
-
-    .machete-body h3,
-    .machete-body-alt h3,
-    .machete-body-quiz h3 {
-      font-size: 0.95rem;
-      margin-top: 0.9rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .machete-body ul,
-    .machete-body-alt ul {
-      margin-left: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .machete-body li,
-    .machete-body-alt li {
-      margin-bottom: 0.1rem;
-    }
-
-    .machete-body-alt .badge,
-    .badge-quiz {
-      display: inline-block;
       border-radius: 999px;
+      padding: 0.12rem 0.55rem;
       font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.1rem 0.55rem;
-      margin-left: 0.3rem;
-      vertical-align: middle;
+      font-weight: 800;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      margin-left: 0.35rem;
     }
 
-    .machete-body-alt .badge {
+    .badge {
       background: #dbeafe;
       color: #1e40af;
     }
 
     .badge-quiz {
       background: #ede9fe;
-      color: #5b21b6;
+      color: #6d28d9;
     }
 
-    .machete-body-alt table {
+    .summary-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 0.4rem;
-      margin-bottom: 0.3rem;
-      font-size: 0.87rem;
+      margin-top: 0.45rem;
+      font-size: 0.88rem;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 1px #c7d2fe;
     }
 
-    .machete-body-alt th {
-      background: #bfdbfe;
-      color: #1e3a8a;
-      padding: 0.3rem 0.6rem;
+    .summary-table th,
+    .summary-table td {
+      padding: 0.55rem 0.7rem;
       text-align: left;
+      border-bottom: 1px solid #dbeafe;
     }
 
-    .machete-body-alt td {
-      border: 1px solid #bfdbfe;
-      padding: 0.28rem 0.6rem;
+    .summary-table th {
+      background: #dbeafe;
       color: #1e3a8a;
+      font-size: 0.84rem;
     }
 
-    .machete-body-alt tr:nth-child(even) td {
-      background: #eff6ff;
+    .summary-table td {
+      color: #1f3b7a;
+      background: rgba(255,255,255,0.6);
     }
 
-    .quiz-list {
-      margin-left: 1.2rem;
+    .summary-table tr:last-child td { border-bottom: none; }
+
+    .quiz-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.3rem;
     }
 
-    .quiz-list > li {
-      margin-bottom: 0.75rem;
-      line-height: 1.5;
+    .quiz-panel {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.85);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
     }
 
     .respuesta {
-      font-weight: 700;
-      margin-left: 0.4rem;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 800;
+      margin-left: 0.35rem;
       border-radius: 999px;
-      padding: 0.05rem 0.45rem;
-      font-size: 0.82rem;
+      padding: 0.06rem 0.45rem;
+      font-size: 0.78rem;
     }
 
     .verdad {
@@ -369,45 +419,154 @@
       display: block;
       font-size: 0.82rem;
       color: #6d28d9;
-      margin-top: 0.1rem;
-      margin-left: 0.2rem;
+      margin-top: 0.15rem;
+      line-height: 1.45;
     }
 
     .opciones {
       list-style: none;
-      margin: 0.3rem 0 0 0.5rem;
+      margin: 0.35rem 0 0 0.15rem;
       padding: 0;
     }
 
     .opciones li {
-      padding: 0.15rem 0;
+      padding: 0.16rem 0;
+      color: #4c1d95;
       font-size: 0.88rem;
-      color: #3b0764;
     }
 
     .opciones li.correcta {
-      font-weight: 700;
+      font-weight: 800;
       color: #065f46;
     }
 
-    .footer {
-      max-width: 900px;
-      margin: 0 auto 1.8rem;
-      padding: 0 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
+    /* Asociación de conceptos */
+    .match-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    .match-column {
+      background: rgba(255,255,255,0.8);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(254,243,199,0.9);
+      padding: 0.8rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .match-column h4 {
+      margin: 0 0 0.6rem;
+      font-size: 0.9rem;
+      color: #92400e;
+    }
+
+    .match-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .match-item {
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 0.5rem;
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      color: #78350f;
+      transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+    }
+
+    .match-item span.code {
+      font-weight: 700;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .match-item.selected {
+      background: #facc15;
+      border-color: #eab308;
+      color: #451a03;
+    }
+
+    .match-item.correct {
+      background: #dcfce7;
+      border-color: #4ade80;
+      color: #166534;
+    }
+
+    .match-item.wrong {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    .match-feedback {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #92400e;
+    }
+
+    .match-controls {
+      margin-top: 0.7rem;
+      display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    @media (max-width: 640px) {
+    .match-button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: #f59e0b;
+      color: #fff7ed;
+      box-shadow: 0 4px 10px rgba(248,171,56,0.4);
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .match-button:hover {
+      background: #ea580c;
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      width: min(980px, calc(100% - 2rem));
+      margin: 0 auto 1.8rem;
+      padding: 0.25rem 0 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    @media (max-width: 700px) {
       .hero {
-        padding: 2.4rem 1.1rem 2.1rem;
+        padding: 2.5rem 1rem 2rem;
       }
-      .main {
-        padding: 0 1.1rem 2.4rem;
+      .main,
+      .footer {
+        width: min(100%, calc(100% - 1rem));
+      }
+      .card,
+      .machete-container,
+      .machete-container-alt,
+      .machete-container-quiz,
+      .machete-container-extra {
+        border-radius: 18px;
       }
       .machete-header {
         align-items: flex-start;
@@ -421,7 +580,7 @@
       <div class="hero-tag">Facultad de Derecho · Ciencias Políticas</div>
       <h1>Introducción a la Sociología</h1>
       <p class="hero-sub">Prof. Ilda Mayeregger · Año 2026</p>
-      <p class="hero-desc">Material interactivo de repaso basado en el PPT de cátedra y en textos de Macionis &amp; Plummer, Giddens y otros autores.</p>
+      <p class="hero-desc">Material interactivo de repaso basado en el PPT de cátedra y en textos de Macionis &amp; Plummer, Giddens y otros autores. Incluye machetes, cuestionario y ejercicios extra para practicar.</p>
     </div>
   </header>
 
@@ -431,9 +590,7 @@
         <h2>Unidad I — Herramienta de repaso</h2>
         <p>Tarjetas interactivas con los puntos clave: conceptos, origen, escuelas, métodos, técnicas y oficio del sociólogo.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="unidad1/index.html">
-            Ir a la Unidad I →
-          </a>
+          <a class="btn btn-primary" href="unidad1/index.html">Ir a la Unidad I →</a>
         </div>
       </article>
 
@@ -441,359 +598,467 @@
         <h2>Quiz — Unidad I</h2>
         <p>Evaluá lo que recordás de la Unidad I con 10 preguntas automáticas. Ideal para practicar antes del examen.</p>
         <div class="btn-row">
-          <a class="btn btn-secondary" href="quiz/index.html">
-            Hacer el quiz de la Unidad I ✏️
-          </a>
+          <a class="btn btn-secondary" href="quiz/index.html">Hacer el quiz de la Unidad I ✏️</a>
         </div>
       </article>
     </section>
 
-    <section class="machete-container">
+    <!-- Machete rápido -->
+    <section class="machete-container" id="machete-rapido">
       <div class="machete-header">
         <div>
-          <div class="machete-title">Machete rápido — Unidad I</div>
-          <div class="machete-sub">Versión extendida de conceptos clave del capítulo 1 (1.1 a 1.4).</div>
+          <div class="machete-title">🟢 Machete rápido — Unidad I</div>
+          <div class="machete-sub">Versión extendida de conceptos clave del capítulo 1, organizada en bloques cortos para repasar antes de clase o examen.</div>
         </div>
-        <button class="machete-toggle-btn" id="toggle-machete">
-          📌 Mostrar machete completo
-        </button>
+        <button class="machete-toggle-btn" data-target="machete-body">📌 Mostrar machete completo</button>
       </div>
 
       <div class="machete-body" id="machete-body">
-        <h3>1. ¿Qué es la Sociología?</h3>
-        <ul>
-          <li>Ciencia que estudia la sociedad y la vida social humana de forma sistemática, rigurosa y empírica.</li>
-          <li>Etimología: <em>socius</em> (compañero) + <em>logos</em> (tratado, ciencia).</li>
-        </ul>
+        <div class="machete-grid">
+          <article class="topic-card">
+            <h3>1. ¿Qué es la Sociología?</h3>
+            <ul>
+              <li>Ciencia que estudia la sociedad y la vida social humana de forma sistemática, rigurosa y empírica.</li>
+              <li>Etimología: <em>socius</em> (compañero) + <em>logos</em> (tratado, ciencia).</li>
+              <li>Autores: Macionis &amp; Plummer, Giddens, Bourdieu, Horton &amp; Hunt.</li>
+            </ul>
+          </article>
 
-        <h3>2. Origen y evolución</h3>
-        <ul>
-          <li>Contexto: Revolución Industrial, urbanización, Revolución Francesa e independencia de EEUU.</li>
-          <li>Del feudalismo y los estamentos a la sociedad capitalista y de clases.</li>
-          <li>Modernidad: foco en <strong>desigualdad social</strong>. Posmodernidad: foco en <strong>diferencias</strong> e identidades múltiples.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>2. Origen y evolución</h3>
+            <ul>
+              <li>Contexto: Revolución Industrial, urbanización, Revolución Francesa e independencia de EEUU.</li>
+              <li>Del feudalismo y los estamentos a la sociedad capitalista y de clases.</li>
+              <li>Modernidad: foco en desigualdad social. Posmodernidad: foco en diferencias e identidades múltiples.</li>
+            </ul>
+          </article>
 
-        <h3>3. Escuelas y paradigmas</h3>
-        <ul>
-          <li><strong>Funcionalismo:</strong> sociedad como sistema de partes interdependientes que buscan orden y estabilidad.</li>
-          <li><strong>Teoría del conflicto:</strong> desigualdades estructurales, lucha de clases y otros grupos por poder y recursos.</li>
-          <li><strong>Interaccionismo simbólico / acción social:</strong> significados que las personas construyen en la interacción cotidiana.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>3. Escuelas y paradigmas</h3>
+            <ul>
+              <li><strong>Funcionalismo:</strong> orden y estabilidad.</li>
+              <li><strong>Teoría del conflicto:</strong> poder, desigualdad y lucha por recursos.</li>
+              <li><strong>Interaccionismo simbólico:</strong> significados construidos en la vida cotidiana.</li>
+            </ul>
+          </article>
 
-        <h3>4. Bases de la Sociología</h3>
-        <ul>
-          <li>Ir de lo <strong>general</strong> (estructuras, instituciones) a lo <strong>particular</strong> (biografías y experiencias individuales).</li>
-          <li>Categorías sociales clave: clase, género, edad, etnia, territorio, generación.</li>
-          <li>Dudar de lo “normal”: cuestionar lo naturalizado y analizar la influencia de factores sociales.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>4. Bases de la Sociología</h3>
+            <ul>
+              <li>Ir de lo general a lo particular.</li>
+              <li>Categorías clave: clase, género, edad, etnia, territorio y generación.</li>
+              <li>Cuestionar lo “normal” y analizar lo social detrás de lo cotidiano.</li>
+            </ul>
+          </article>
 
-        <h3>5. Objeto, especificidad y especializaciones</h3>
-        <ul>
-          <li>Objeto: sociedad humana, grupos sociales, comportamientos colectivos y sus significados.</li>
-          <li>Especificidad: mirada relacional y estructural, en diálogo con otras ciencias sociales.</li>
-          <li>Especializaciones: sociología urbana, rural, educación, jurídica, género, política, arte, clínica, entre otras.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>5. Objeto y especializaciones</h3>
+            <ul>
+              <li>Objeto: sociedad humana, grupos sociales, comportamientos colectivos y significados.</li>
+              <li>Especializaciones: urbana, rural, educación, jurídica, género, política y más.</li>
+            </ul>
+          </article>
 
-        <h3>6. Macro y microsociología</h3>
-        <ul>
-          <li><strong>Macro:</strong> Estado, economía, clases, instituciones; racionalidad colectiva.</li>
-          <li><strong>Micro:</strong> interacción cara a cara, significados, identidades; experiencias cotidianas.</li>
-          <li>Ambos niveles se complementan para explicar la realidad social.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>6. Macro y microsociología</h3>
+            <ul>
+              <li><strong>Macro:</strong> Estado, economía, clases, instituciones.</li>
+              <li><strong>Micro:</strong> interacción cara a cara, identidades y experiencias cotidianas.</li>
+              <li>Ambos niveles se complementan.</li>
+            </ul>
+          </article>
 
-        <h3>7. Métodos, técnicas y enfoques</h3>
-        <ul>
-          <li><strong>Cuantitativo:</strong> explicar y medir; encuestas, cuestionarios, muestras grandes; enfoque positivista.</li>
-          <li><strong>Cualitativo:</strong> comprender significados; entrevistas en profundidad, grupos focales, historias de vida, estudios de caso.</li>
-          <li>Investigación mixta: combina técnicas cuantitativas y cualitativas.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>7. Métodos y técnicas</h3>
+            <ul>
+              <li><strong>Cuantitativo:</strong> medir y explicar con encuestas, cuestionarios y estadísticas.</li>
+              <li><strong>Cualitativo:</strong> comprender significados con entrevistas, grupos focales e historias de vida.</li>
+              <li>También puede usarse investigación mixta.</li>
+            </ul>
+          </article>
 
-        <h3>8. Oficio del sociólogo</h3>
-        <ul>
-          <li>Roles: investigador, docente, asesor/consultor, coordinador de proyectos, generador de opinión.</li>
-          <li>Ámbitos: ministerios, municipios, ONGs, organismos internacionales, universidades, empresas.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>8. Oficio del sociólogo</h3>
+            <ul>
+              <li>Roles: investigador, docente, asesor, consultor, coordinador de proyectos y generador de opinión.</li>
+              <li>Ámbitos: ministerios, municipios, ONGs, universidades, organismos y empresas.</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="machete-container-alt">
+    <!-- Resumen Mirtha y Saul -->
+    <section class="machete-container-alt" id="machete-resumen">
       <div class="machete-header">
         <div>
-          <div class="machete-title-alt">📘 Resumen proveído por Mirtha y Saul</div>
-          <div class="machete-sub-alt">Resumen completo de la Unidad I · Basado en el PPT de la docente · MOVER</div>
+          <div class="machete-title-alt">🔵 Resumen proveído por Mirtha y Saul</div>
+          <div class="machete-sub-alt">Contenido completo de la Unidad I preparado a partir del material proveído por la docente, con énfasis en conceptos preguntables.</div>
         </div>
-        <button class="machete-toggle-btn-alt" id="toggle-machete-alt">
-          📋 Mostrar resumen completo
-        </button>
+        <button class="machete-toggle-btn" data-target="machete-body-alt">📋 Mostrar resumen completo</button>
       </div>
 
       <div class="machete-body-alt" id="machete-body-alt">
-        <h3>1. Sociología como ciencia <span class="badge">Base</span></h3>
-        <ul>
-          <li>Estudio <strong>científico, sistemático y crítico</strong> de la sociedad.</li>
-          <li>Creada por <strong>Auguste Comte</strong>.</li>
-          <li>Es ciencia porque: observa, investiga y verifica datos.</li>
-          <li>Usa métodos científicos, analiza relaciones humanas y busca explicar problemas sociales.</li>
-        </ul>
+        <div class="machete-grid">
+          <article class="topic-card">
+            <h3>1. Sociología como ciencia <span class="badge">Base</span></h3>
+            <ul>
+              <li>Es el estudio científico, sistemático y crítico de la sociedad.</li>
+              <li>Fue creada por Auguste Comte.</li>
+              <li>Es ciencia porque observa, investiga y verifica datos.</li>
+              <li>Usa métodos científicos, analiza relaciones humanas y busca explicar problemas sociales.</li>
+            </ul>
+          </article>
 
-        <h3>2. Diferencia con otras ciencias sociales</h3>
-        <ul>
-          <li>Economía → producción y riqueza</li>
-          <li>Política → poder</li>
-          <li>Historia → pasado</li>
-          <li>Psicología → mente individual</li>
-          <li>Sociología → <strong>relaciones sociales</strong></li>
-          <li><strong>Clave:</strong> la sociología integra a todas.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>2. Diferencia con otras ciencias sociales</h3>
+            <ul>
+              <li>Economía: producción y riqueza.</li>
+              <li>Política: poder.</li>
+              <li>Historia: pasado.</li>
+              <li>Psicología: mente individual.</li>
+              <li>Sociología: relaciones sociales; integra a todas.</li>
+            </ul>
+          </article>
 
-        <h3>3. Continuismo vs. Discontinuismo <span class="badge">Clave</span></h3>
-        <table>
-          <tr><th>Continuismo</th><th>Discontinuismo</th></tr>
-          <tr><td>Evolución progresiva</td><td>Rupturas en el conocimiento</td></tr>
-          <tr><td>Acumulación de conocimiento</td><td>Cambios de paradigma</td></tr>
-          <tr><td>No hay ruptura</td><td>Mejora cualitativa</td></tr>
-          <tr><td>Continuismo = suma</td><td>Discontinuismo = cambio</td></tr>
-        </table>
+          <article class="topic-card" style="grid-column: 1 / -1;">
+            <h3>3. Continuismo vs. Discontinuismo <span class="badge">Clave</span></h3>
+            <table class="summary-table">
+              <tr><th>Continuismo</th><th>Discontinuismo</th></tr>
+              <tr><td>Evolución progresiva</td><td>Rupturas en el conocimiento</td></tr>
+              <tr><td>Acumulación de conocimiento</td><td>Cambios de paradigma</td></tr>
+              <tr><td>No hay ruptura</td><td>Mejora cualitativa</td></tr>
+              <tr><td>Continuismo = suma</td><td>Discontinuismo = cambio</td></tr>
+            </table>
+          </article>
 
-        <h3>4. Objeto de la Sociología</h3>
-        <ul>
-          <li>La sociedad y el comportamiento humano en grupo.</li>
-          <li>Busca explicar conductas colectivas, entender problemas sociales y proponer soluciones.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>4. Objeto de la sociología</h3>
+            <ul>
+              <li>La sociedad y el comportamiento humano en grupo.</li>
+              <li>Explica conductas colectivas, entiende problemas sociales y propone soluciones.</li>
+            </ul>
+          </article>
 
-        <h3>5. Perspectiva sociológica</h3>
-        <ul>
-          <li>Ver la realidad de forma crítica.</li>
-          <li>Permite cuestionar lo “normal”, analizar desigualdades y entender cómo influye la sociedad en nosotros.</li>
-          <li>Idea clave de Anthony Giddens: la sociedad influye en nuestras decisiones.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>5. Perspectiva sociológica</h3>
+            <ul>
+              <li>Ver la realidad de forma crítica.</li>
+              <li>Permite cuestionar lo “normal”, analizar desigualdades y entender cómo influye la sociedad.</li>
+              <li>Anthony Giddens: la sociedad influye en nuestras decisiones.</li>
+            </ul>
+          </article>
 
-        <h3>6. Evolución histórica de la sociedad</h3>
-        <ul>
-          <li><strong>Medioevo:</strong> feudalismo, poder religioso, sociedad rígida.</li>
-          <li><strong>Transición:</strong> Revolución Industrial, Reforma Protestante, grandes descubrimientos.</li>
-          <li><strong>Modernidad:</strong> uso de la razón, ciencia (Ilustración), revoluciones de EE.UU. y Francia, surge la desigualdad social.</li>
-          <li><strong>Posmodernidad:</strong> crítica al progreso, fragmentación, importancia de la diferencia social.</li>
-          <li><strong>Clave:</strong> Modernidad = progreso; Posmodernidad = cuestionamiento.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>6. Evolución histórica</h3>
+            <ul>
+              <li><strong>Medioevo:</strong> feudalismo, poder religioso, sociedad rígida.</li>
+              <li><strong>Transición:</strong> Revolución industrial, Reforma protestante y grandes descubrimientos.</li>
+              <li><strong>Modernidad:</strong> razón, ciencia y desigualdad social.</li>
+              <li><strong>Posmodernidad:</strong> cuestionamiento del progreso y fragmentación.</li>
+            </ul>
+          </article>
 
-        <h3>7. Desigualdad social</h3>
-        <ul>
-          <li>Diferencias entre grupos sociales.</li>
-          <li>Tipos: económica (riqueza), género, edad, étnica.</li>
-          <li>Idea clave: no todos tienen las mismas oportunidades.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>7. Desigualdad social</h3>
+            <ul>
+              <li>Diferencias entre grupos sociales.</li>
+              <li>Puede ser económica, de género, edad o étnica.</li>
+              <li>No todos tienen las mismas oportunidades.</li>
+            </ul>
+          </article>
 
-        <h3>8. Micro y Macro sociología <span class="badge">Clave</span></h3>
-        <ul>
-          <li>Micro → individuos (vida cotidiana).</li>
-          <li>Macro → sociedad completa.</li>
-          <li>Micro = pequeño; Macro = grande.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>8. Micro y Macro sociología <span class="badge">Clave</span></h3>
+            <ul>
+              <li>Micro: individuos y vida cotidiana.</li>
+              <li>Macro: sociedad completa.</li>
+              <li>Micro = pequeño, Macro = grande.</li>
+            </ul>
+          </article>
 
-        <h3>9. Métodos de investigación</h3>
-        <ul>
-          <li>La sociología investiga la realidad.</li>
-          <li><strong>Cuantitativa:</strong> datos numéricos, estadísticas, explica.</li>
-          <li><strong>Cualitativa:</strong> experiencias, significados, comprende.</li>
-          <li>Importante: ambas se pueden combinar (método mixto).</li>
-        </ul>
+          <article class="topic-card">
+            <h3>9. Métodos de investigación</h3>
+            <ul>
+              <li>Cuantitativa: datos numéricos, estadísticas, explica.</li>
+              <li>Cualitativa: experiencias, significados, comprende.</li>
+              <li>Ambas pueden combinarse en método mixto.</li>
+            </ul>
+          </article>
 
-        <h3>10. Investigación cualitativa <span class="badge">Preguntable</span></h3>
-        <ul>
-          <li>Interpretativa.</li>
-          <li>Humanista.</li>
-          <li>No generaliza.</li>
-          <li>Analiza en profundidad.</li>
-          <li>Busca entender, no medir.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>10. Investigación cualitativa <span class="badge">Preguntable</span></h3>
+            <ul>
+              <li>Interpretativa y humanista.</li>
+              <li>No generaliza.</li>
+              <li>Analiza en profundidad.</li>
+              <li>Busca entender, no medir.</li>
+            </ul>
+          </article>
 
-        <h3>11. Técnicas <span class="badge">Muy preguntable</span></h3>
-        <ul>
-          <li><strong>Cualitativas:</strong> entrevista, grupo focal, historia de vida, estudio de caso.</li>
-          <li><strong>Cuantitativas:</strong> encuestas, cuestionarios, estadísticas.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>11. Técnicas <span class="badge">Muy preguntable</span></h3>
+            <ul>
+              <li><strong>Cualitativas:</strong> entrevista, grupo focal, historia de vida, estudio de caso.</li>
+              <li><strong>Cuantitativas:</strong> encuestas, cuestionarios, estadísticas.</li>
+            </ul>
+          </article>
 
-        <h3>12. Enfoques metodológicos</h3>
-        <table>
-          <tr><th>Cualitativo</th><th>Cuantitativo</th></tr>
-          <tr><td>Subjetivo</td><td>Objetivo</td></tr>
-          <tr><td>Comprende</td><td>Mide</td></tr>
-          <tr><td>Flexible</td><td>Rígido</td></tr>
-          <tr><td>Inductivo</td><td>Deductivo</td></tr>
-        </table>
+          <article class="topic-card" style="grid-column: 1 / -1;">
+            <h3>12. Enfoques metodológicos</h3>
+            <table class="summary-table">
+              <tr><th>Cualitativo</th><th>Cuantitativo</th></tr>
+              <tr><td>Subjetivo</td><td>Objetivo</td></tr>
+              <tr><td>Comprende</td><td>Mide</td></tr>
+              <tr><td>Flexible</td><td>Rígido</td></tr>
+              <tr><td>Inductivo</td><td>Deductivo</td></tr>
+            </table>
+          </article>
 
-        <h3>13. Especializaciones</h3>
-        <ul>
-          <li>Urbana</li>
-          <li>Rural</li>
-          <li>Política</li>
-          <li>Jurídica</li>
-          <li>Educación</li>
-          <li>Género</li>
-        </ul>
+          <article class="topic-card">
+            <h3>13. Especializaciones</h3>
+            <ul>
+              <li>Urbana</li>
+              <li>Rural</li>
+              <li>Política</li>
+              <li>Jurídica</li>
+              <li>Educación</li>
+              <li>Género</li>
+            </ul>
+          </article>
 
-        <h3>14. Rol del sociólogo</h3>
-        <ul>
-          <li>Puede ser investigador, docente, asesor o analista social.</li>
-        </ul>
+          <article class="topic-card">
+            <h3>14. Rol del sociólogo</h3>
+            <ul>
+              <li>Puede trabajar como investigador, docente, asesor o analista social.</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="machete-container-quiz">
+    <!-- Cuestionario Mirtha y Saul -->
+    <section class="machete-container-quiz" id="machete-cuestionario">
       <div class="machete-header">
         <div>
-          <div class="machete-title-quiz">📝 Cuestionario proveído por Mirtha y Saul</div>
-          <div class="machete-sub-quiz">30 preguntas de repaso · Verdadero/Falso + opción múltiple · Unidad I</div>
+          <div class="machete-title-quiz">🟣 Cuestionario proveído por Mirtha y Saul</div>
+          <div class="machete-sub-quiz">30 preguntas de repaso de Unidad I, separadas en verdadero/falso y opción múltiple para practicar más rápido.</div>
         </div>
-        <button class="machete-toggle-btn-quiz" id="toggle-machete-quiz">
-          📋 Mostrar cuestionario
-        </button>
+        <button class="machete-toggle-btn" data-target="machete-body-quiz">📋 Mostrar cuestionario</button>
       </div>
 
       <div class="machete-body-quiz" id="machete-body-quiz">
-        <h3>Parte A — Verdadero o Falso <span class="badge-quiz">V/F</span></h3>
-        <ol class="quiz-list">
-          <li>La sociología estudia únicamente el comportamiento individual. <span class="respuesta falso">→ F</span><span class="explicacion">Porque estudia las relaciones sociales y la sociedad, no solo individuos aislados.</span></li>
-          <li>La sociología es considerada una ciencia porque utiliza métodos de investigación. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque aplica métodos científicos (observación, análisis, verificación).</span></li>
-          <li>El continuismo plantea que el conocimiento avanza mediante rupturas. <span class="respuesta falso">→ F</span><span class="explicacion">Porque plantea una evolución progresiva y acumulativa, sin rupturas.</span></li>
-          <li>El discontinuismo sostiene que hay cambios y transformaciones en el conocimiento. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque afirma que existen rupturas y nuevos paradigmas.</span></li>
-          <li>La sociología fue desarrollada por Auguste Comte. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque él acuñó el término y la estableció como ciencia.</span></li>
-          <li>La perspectiva sociológica permite analizar críticamente la realidad social. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque ayuda a cuestionar lo naturalizado y entender la sociedad.</span></li>
-          <li>La desigualdad social solo se basa en factores económicos. <span class="respuesta falso">→ F</span><span class="explicacion">Porque también incluye género, edad, etnia, clase social, etc.</span></li>
-          <li>La microsociología estudia grandes estructuras sociales. <span class="respuesta falso">→ F</span><span class="explicacion">Porque estudia interacciones cotidianas entre individuos.</span></li>
-          <li>La macrosociología analiza la sociedad en su conjunto. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque se enfoca en estructuras sociales amplias.</span></li>
-          <li>La investigación cualitativa busca medir fenómenos sociales con números. <span class="respuesta falso">→ F</span><span class="explicacion">Porque busca comprender significados y experiencias, no medir.</span></li>
-          <li>La investigación cuantitativa utiliza estadísticas y datos numéricos. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque se basa en medición y análisis estadístico.</span></li>
-          <li>La sociología no tiene relación con otras ciencias sociales. <span class="respuesta falso">→ F</span><span class="explicacion">Porque se relaciona y complementa con todas ellas.</span></li>
-          <li>La modernidad se caracteriza por el uso de la razón y la ciencia. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque surge con la Ilustración y el pensamiento racional.</span></li>
-          <li>La posmodernidad cuestiona la idea de progreso. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque critica la idea de que el progreso beneficia a todos.</span></li>
-          <li>Las entrevistas son una técnica de investigación cualitativa. <span class="respuesta verdad">→ V</span><span class="explicacion">Porque permiten analizar experiencias y significados en profundidad.</span></li>
-        </ol>
+        <div class="quiz-columns">
+          <section class="quiz-panel">
+            <h3>Parte A — Verdadero o Falso <span class="badge-quiz">V/F</span></h3>
+            <ol class="quiz-list">
+              <li>La sociología estudia únicamente el comportamiento individual. <span class="respuesta falso">F</span><span class="explicacion">Porque estudia las relaciones sociales y la sociedad, no solo individuos aislados.</span></li>
+              <li>La sociología es considerada una ciencia porque utiliza métodos de investigación. <span class="respuesta verdad">V</span><span class="explicacion">Porque aplica métodos científicos como observación, análisis y verificación.</span></li>
+              <li>El continuismo plantea que el conocimiento avanza mediante rupturas. <span class="respuesta falso">F</span><span class="explicacion">Porque plantea una evolución progresiva y acumulativa.</span></li>
+              <li>El discontinuismo sostiene que hay cambios y transformaciones en el conocimiento. <span class="respuesta verdad">V</span><span class="explicacion">Porque afirma que existen rupturas y nuevos paradigmas.</span></li>
+              <li>La sociología fue desarrollada por Auguste Comte. <span class="respuesta verdad">V</span><span class="explicacion">Porque él acuñó el término y la estableció como ciencia.</span></li>
+              <li>La perspectiva sociológica permite analizar críticamente la realidad social. <span class="respuesta verdad">V</span><span class="explicacion">Porque ayuda a cuestionar lo naturalizado.</span></li>
+              <li>La desigualdad social solo se basa en factores económicos. <span class="respuesta falso">F</span><span class="explicacion">Porque también incluye género, edad, etnia y clase social.</span></li>
+              <li>La microsociología estudia grandes estructuras sociales. <span class="respuesta falso">F</span><span class="explicacion">Porque estudia interacciones cotidianas entre individuos.</span></li>
+              <li>La macrosociología analiza la sociedad en su conjunto. <span class="respuesta verdad">V</span><span class="explicacion">Porque se enfoca en estructuras sociales amplias.</span></li>
+              <li>La investigación cualitativa busca medir fenómenos sociales con números. <span class="respuesta falso">F</span><span class="explicacion">Porque busca comprender significados y experiencias.</span></li>
+              <li>La investigación cuantitativa utiliza estadísticas y datos numéricos. <span class="respuesta verdad">V</span><span class="explicacion">Porque se basa en medición y análisis estadístico.</span></li>
+              <li>La sociología no tiene relación con otras ciencias sociales. <span class="respuesta falso">F</span><span class="explicacion">Porque se relaciona y complementa con todas ellas.</span></li>
+              <li>La modernidad se caracteriza por el uso de la razón y la ciencia. <span class="respuesta verdad">V</span><span class="explicacion">Porque surge con la Ilustración y el pensamiento racional.</span></li>
+              <li>La posmodernidad cuestiona la idea de progreso. <span class="respuesta verdad">V</span><span class="explicacion">Porque critica la idea de que el progreso beneficia a todos.</span></li>
+              <li>Las entrevistas son una técnica de investigación cualitativa. <span class="respuesta verdad">V</span><span class="explicacion">Porque permiten analizar experiencias y significados en profundidad.</span></li>
+            </ol>
+          </section>
 
-        <h3>Parte B — Opción múltiple <span class="badge-quiz">Múltiple</span></h3>
-        <ol class="quiz-list" start="16">
-          <li>La sociología es:
-            <ul class="opciones">
-              <li>a) Una ciencia natural</li>
-              <li class="correcta">b) Una ciencia social ✔</li>
-              <li>c) Una filosofía religiosa</li>
-              <li>d) Una ciencia exacta</li>
+          <section class="quiz-panel">
+            <h3>Parte B — Opción múltiple <span class="badge-quiz">Múltiple</span></h3>
+            <ol class="quiz-list" start="16">
+              <li>La sociología es:
+                <ul class="opciones">
+                  <li>a) Una ciencia natural</li>
+                  <li class="correcta">b) Una ciencia social ✔</li>
+                  <li>c) Una filosofía religiosa</li>
+                  <li>d) Una ciencia exacta</li>
+                </ul>
+              </li>
+              <li>El objeto de estudio de la sociología es:
+                <ul class="opciones">
+                  <li>a) El individuo aislado</li>
+                  <li>b) La naturaleza</li>
+                  <li class="correcta">c) La sociedad y las relaciones sociales ✔</li>
+                  <li>d) La mente humana</li>
+                </ul>
+              </li>
+              <li>El continuismo sostiene que:
+                <ul class="opciones">
+                  <li>a) Hay rupturas en el conocimiento</li>
+                  <li class="correcta">b) El conocimiento avanza progresivamente ✔</li>
+                  <li>c) No existe conocimiento</li>
+                  <li>d) Todo conocimiento es falso</li>
+                </ul>
+              </li>
+              <li>El discontinuismo plantea que:
+                <ul class="opciones">
+                  <li>a) El conocimiento no cambia</li>
+                  <li>b) Hay evolución continua</li>
+                  <li class="correcta">c) Existen rupturas en el conocimiento ✔</li>
+                  <li>d) Todo es igual</li>
+                </ul>
+              </li>
+              <li>La perspectiva sociológica permite:
+                <ul class="opciones">
+                  <li>a) Aceptar todo sin cuestionar</li>
+                  <li class="correcta">b) Pensar críticamente la realidad ✔</li>
+                  <li>c) Ignorar la sociedad</li>
+                  <li>d) Estudiar solo números</li>
+                </ul>
+              </li>
+              <li>¿Cuál es un ejemplo de desigualdad social?
+                <ul class="opciones">
+                  <li>a) Igualdad de derechos</li>
+                  <li class="correcta">b) Diferencias económicas ✔</li>
+                  <li>c) Amistad</li>
+                  <li>d) Cultura</li>
+                </ul>
+              </li>
+              <li>La microsociología estudia:
+                <ul class="opciones">
+                  <li>a) Estados y países</li>
+                  <li>b) Grandes estructuras</li>
+                  <li class="correcta">c) Interacciones cotidianas ✔</li>
+                  <li>d) La economía global</li>
+                </ul>
+              </li>
+              <li>La macrosociología analiza:
+                <ul class="opciones">
+                  <li>a) Individuos aislados</li>
+                  <li>b) Interacciones personales</li>
+                  <li class="correcta">c) Grandes estructuras sociales ✔</li>
+                  <li>d) Emociones</li>
+                </ul>
+              </li>
+              <li>La investigación cualitativa se caracteriza por:
+                <ul class="opciones">
+                  <li>a) Uso de números</li>
+                  <li>b) Medición estadística</li>
+                  <li class="correcta">c) Comprensión de experiencias ✔</li>
+                  <li>d) Experimentos de laboratorio</li>
+                </ul>
+              </li>
+              <li>¿Cuál es una técnica cualitativa?
+                <ul class="opciones">
+                  <li>a) Encuesta</li>
+                  <li>b) Estadística</li>
+                  <li class="correcta">c) Entrevista en profundidad ✔</li>
+                  <li>d) Censo</li>
+                </ul>
+              </li>
+              <li>¿Cuál es una técnica cuantitativa?
+                <ul class="opciones">
+                  <li>a) Historia de vida</li>
+                  <li>b) Grupo focal</li>
+                  <li class="correcta">c) Encuesta ✔</li>
+                  <li>d) Observación participante</li>
+                </ul>
+              </li>
+              <li>La modernidad se relaciona con:
+                <ul class="opciones">
+                  <li>a) Fe religiosa absoluta</li>
+                  <li class="correcta">b) Uso de la razón ✔</li>
+                  <li>c) Ignorancia</li>
+                  <li>d) Tradición feudal</li>
+                </ul>
+              </li>
+              <li>La posmodernidad se caracteriza por:
+                <ul class="opciones">
+                  <li>a) Creencia total en el progreso</li>
+                  <li class="correcta">b) Cuestionamiento del progreso ✔</li>
+                  <li>c) Dominio religioso</li>
+                  <li>d) Feudalismo</li>
+                </ul>
+              </li>
+              <li>La sociología se relaciona con otras ciencias porque:
+                <ul class="opciones">
+                  <li>a) Estudia lo mismo que todas</li>
+                  <li>b) No tiene relación</li>
+                  <li class="correcta">c) Todas estudian al ser humano ✔</li>
+                  <li>d) Solo estudia economía</li>
+                </ul>
+              </li>
+              <li>Un sociólogo puede trabajar como:
+                <ul class="opciones">
+                  <li>a) Solo profesor</li>
+                  <li>b) Solo investigador</li>
+                  <li class="correcta">c) Investigador, docente o asesor ✔</li>
+                  <li>d) Ninguna de las anteriores</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejercicios extra: asociación de conceptos -->
+    <section class="machete-container-extra" id="machete-ejercicios">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title-extra">🟡 Ejercicios extra — Asociación de conceptos</div>
+          <div class="machete-sub-extra">Juego interactivo para asociar conceptos básicos de la Unidad I con sus definiciones. Ideal para memorizar rápido.</div>
+        </div>
+        <button class="machete-toggle-btn" data-target="machete-body-extra">🎲 Mostrar ejercicios extra</button>
+      </div>
+
+      <div class="machete-body-extra" id="machete-body-extra">
+        <p style="font-size:0.88rem;color:#92400e;margin-bottom:0.4rem;">
+          Instrucciones: hacé clic primero en un <strong>concepto</strong> (columna izquierda) y luego en una <strong>definición</strong> (columna derecha). Si la pareja es correcta, se marcará en verde. Si no, en rojo.
+        </p>
+
+        <div class="match-layout">
+          <div class="match-column">
+            <h4>Conceptos</h4>
+            <ul class="match-list" id="match-concepts">
+              <!-- Se llenan por JS -->
             </ul>
-          </li>
-          <li>El objeto de estudio de la sociología es:
-            <ul class="opciones">
-              <li>a) El individuo aislado</li>
-              <li>b) La naturaleza</li>
-              <li class="correcta">c) La sociedad y las relaciones sociales ✔</li>
-              <li>d) La mente humana</li>
+          </div>
+
+          <div class="match-column">
+            <h4>Definiciones</h4>
+            <ul class="match-list" id="match-defs">
+              <!-- Se llenan por JS -->
             </ul>
-          </li>
-          <li>El continuismo sostiene que:
-            <ul class="opciones">
-              <li>a) Hay rupturas en el conocimiento</li>
-              <li class="correcta">b) El conocimiento avanza progresivamente ✔</li>
-              <li>c) No existe conocimiento</li>
-              <li>d) Todo conocimiento es falso</li>
-            </ul>
-          </li>
-          <li>El discontinuismo plantea que:
-            <ul class="opciones">
-              <li>a) El conocimiento no cambia</li>
-              <li>b) Hay evolución continua</li>
-              <li class="correcta">c) Existen rupturas en el conocimiento ✔</li>
-              <li>d) Todo es igual</li>
-            </ul>
-          </li>
-          <li>La perspectiva sociológica permite:
-            <ul class="opciones">
-              <li>a) Aceptar todo sin cuestionar</li>
-              <li class="correcta">b) Pensar críticamente la realidad ✔</li>
-              <li>c) Ignorar la sociedad</li>
-              <li>d) Estudiar solo números</li>
-            </ul>
-          </li>
-          <li>¿Cuál es un ejemplo de desigualdad social?
-            <ul class="opciones">
-              <li>a) Igualdad de derechos</li>
-              <li class="correcta">b) Diferencias económicas ✔</li>
-              <li>c) Amistad</li>
-              <li>d) Cultura</li>
-            </ul>
-          </li>
-          <li>La microsociología estudia:
-            <ul class="opciones">
-              <li>a) Estados y países</li>
-              <li>b) Grandes estructuras</li>
-              <li class="correcta">c) Interacciones cotidianas ✔</li>
-              <li>d) La economía global</li>
-            </ul>
-          </li>
-          <li>La macrosociología analiza:
-            <ul class="opciones">
-              <li>a) Individuos aislados</li>
-              <li>b) Interacciones personales</li>
-              <li class="correcta">c) Grandes estructuras sociales ✔</li>
-              <li>d) Emociones</li>
-            </ul>
-          </li>
-          <li>La investigación cualitativa se caracteriza por:
-            <ul class="opciones">
-              <li>a) Uso de números</li>
-              <li>b) Medición estadística</li>
-              <li class="correcta">c) Comprensión de experiencias ✔</li>
-              <li>d) Experimentos de laboratorio</li>
-            </ul>
-          </li>
-          <li>¿Cuál es una técnica cualitativa?
-            <ul class="opciones">
-              <li>a) Encuesta</li>
-              <li>b) Estadística</li>
-              <li class="correcta">c) Entrevista en profundidad ✔</li>
-              <li>d) Censo</li>
-            </ul>
-          </li>
-          <li>¿Cuál es una técnica cuantitativa?
-            <ul class="opciones">
-              <li>a) Historia de vida</li>
-              <li>b) Grupo focal</li>
-              <li class="correcta">c) Encuesta ✔</li>
-              <li>d) Observación participante</li>
-            </ul>
-          </li>
-          <li>La modernidad se relaciona con:
-            <ul class="opciones">
-              <li>a) Fe religiosa absoluta</li>
-              <li class="correcta">b) Uso de la razón ✔</li>
-              <li>c) Ignorancia</li>
-              <li>d) Tradición feudal</li>
-            </ul>
-          </li>
-          <li>La posmodernidad se caracteriza por:
-            <ul class="opciones">
-              <li>a) Creencia total en el progreso</li>
-              <li class="correcta">b) Cuestionamiento del progreso ✔</li>
-              <li>c) Dominio religioso</li>
-              <li>d) Feudalismo</li>
-            </ul>
-          </li>
-          <li>La sociología se relaciona con otras ciencias porque:
-            <ul class="opciones">
-              <li>a) Estudia lo mismo que todas</li>
-              <li>b) No tiene relación</li>
-              <li class="correcta">c) Todas estudian al ser humano ✔</li>
-              <li>d) Solo estudia economía</li>
-            </ul>
-          </li>
-          <li>Un sociólogo puede trabajar como:
-            <ul class="opciones">
-              <li>a) Solo profesor</li>
-              <li>b) Solo investigador</li>
-              <li class="correcta">c) Investigador, docente o asesor ✔</li>
-              <li>d) Ninguna de las anteriores</li>
-            </ul>
-          </li>
-        </ol>
+          </div>
+        </div>
+
+        <div class="match-controls">
+          <button class="match-button" id="match-reset">🔄 Reiniciar juego</button>
+        </div>
+        <div class="match-feedback" id="match-feedback"></div>
+      </div>
+    </section>
+
+    <!-- Ejercicios extra 2: completar definiciones -->
+    <section class="machete-container-extra" id="machete-completar">
+      <div class="machete-header">
+        <div>
+          <div class="machete-title-extra">🧩 Ejercicios extra — Completar definiciones</div>
+          <div class="machete-sub-extra">Elegí la palabra correcta para completar la definición. Ideal para fijar vocabulario clave.</div>
+        </div>
+        <button class="machete-toggle-btn" data-target="machete-body-completar">🧠 Mostrar completar definiciones</button>
+      </div>
+
+      <div class="machete-body-extra" id="machete-body-completar">
+        <p style="font-size:0.88rem;color:#92400e;margin-bottom:0.4rem;">
+          Instrucciones: leé la frase y hacé clic en la opción que creas correcta. El sistema te indica si acertaste y pasa a la siguiente.
+        </p>
+
+        <div class="quiz-panel" style="border-color:#facc15;background:rgba(255,255,255,0.9);">
+          <h3 style="margin-top:0;">Pregunta <span id="fill-index">1</span> de <span id="fill-total">-</span></h3>
+          <p id="fill-sentence" style="font-size:0.9rem;color:#78350f;line-height:1.6;margin-bottom:0.7rem;"></p>
+          <div id="fill-options" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;"></div>
+          <div id="fill-feedback" style="font-size:0.85rem;color:#92400e;margin-bottom:0.4rem;"></div>
+          <button class="match-button" id="fill-next" style="display:none;">➡️ Siguiente</button>
+        </div>
       </div>
     </section>
   </main>
@@ -801,45 +1066,302 @@
   <footer class="footer">
     <span>Introducción a la Sociología · Unidad I</span>
     <span>Sitio de estudiante — uso académico</span>
-    <span>Herramienta desarrollado por SC con materiales de los Delegados Mirtha y Saul - Movimiento estudiantil MOVER</span>
+    <span>Herramienta desarrollada por SC con materiales de los Delegados Mirtha y Saul - Movimiento estudiantil MOVER</span>
   </footer>
 
   <script>
-    const toggleBtn = document.getElementById('toggle-machete');
-    const macheteBody = document.getElementById('machete-body');
-    let macheteVisible = false;
+    // Toggle de machetes
+    const toggleButtons = document.querySelectorAll('.machete-toggle-btn');
 
-    toggleBtn.addEventListener('click', () => {
-      macheteVisible = !macheteVisible;
-      macheteBody.style.display = macheteVisible ? 'block' : 'none';
-      toggleBtn.textContent = macheteVisible
-        ? 'Ocultar machete completo'
-        : '📌 Mostrar machete completo';
+    function setPanelState(button, panel, isVisible) {
+      panel.style.display = isVisible ? 'block' : 'none';
+      const target = button.dataset.target;
+      if (target === 'machete-body') {
+        button.textContent = isVisible ? 'Ocultar machete completo' : '📌 Mostrar machete completo';
+      } else if (target === 'machete-body-alt') {
+        button.textContent = isVisible ? 'Ocultar resumen completo' : '📋 Mostrar resumen completo';
+      } else if (target === 'machete-body-quiz') {
+        button.textContent = isVisible ? 'Ocultar cuestionario' : '📋 Mostrar cuestionario';
+      } else if (target === 'machete-body-extra') {
+        button.textContent = isVisible ? 'Ocultar ejercicios extra' : '🎲 Mostrar ejercicios extra';
+      } else if (target === 'machete-body-completar') {
+        button.textContent = isVisible ? 'Ocultar completar definiciones' : '🧠 Mostrar completar definiciones';
+      }
+    }
+
+    toggleButtons.forEach((button) => {
+      const panel = document.getElementById(button.dataset.target);
+      let visible = false;
+      button.addEventListener('click', () => {
+        visible = !visible;
+        setPanelState(button, panel, visible);
+      });
     });
 
-    const toggleBtnAlt = document.getElementById('toggle-machete-alt');
-    const macheteBodyAlt = document.getElementById('machete-body-alt');
-    let macheteVisibleAlt = false;
+    // Juego de asociación de conceptos
+    const conceptsData = [
+      {
+        id: 'C1',
+        text: 'Sociología como ciencia',
+        def: 'Estudio científico, sistemático y crítico de la sociedad.'
+      },
+      {
+        id: 'C2',
+        text: 'Continuismo',
+        def: 'Plantea una evolución progresiva y acumulativa del conocimiento, sin rupturas.'
+      },
+      {
+        id: 'C3',
+        text: 'Discontinuismo',
+        def: 'Sostiene que hay rupturas, cambios de paradigma y saltos cualitativos en el conocimiento.'
+      },
+      {
+        id: 'C4',
+        text: 'Perspectiva sociológica',
+        def: 'Mirada crítica que permite cuestionar lo “normal” y entender cómo la sociedad influye en nuestras decisiones.'
+      },
+      {
+        id: 'C5',
+        text: 'Desigualdad social',
+        def: 'Diferencias entre grupos sociales en términos de recursos y oportunidades (clase, género, edad, etnia, etc.).'
+      },
+      {
+        id: 'C6',
+        text: 'Microsociología',
+        def: 'Estudia interacciones cotidianas entre individuos y la vida diaria.'
+      },
+      {
+        id: 'C7',
+        text: 'Macrosociología',
+        def: 'Analiza la sociedad en su conjunto: Estado, economía, clases e instituciones.'
+      },
+      {
+        id: 'C8',
+        text: 'Investigación cualitativa',
+        def: 'Busca comprender significados y experiencias, es interpretativa, humanista y en profundidad.'
+      }
+    ];
 
-    toggleBtnAlt.addEventListener('click', () => {
-      macheteVisibleAlt = !macheteVisibleAlt;
-      macheteBodyAlt.style.display = macheteVisibleAlt ? 'block' : 'none';
-      toggleBtnAlt.textContent = macheteVisibleAlt
-        ? 'Ocultar resumen completo'
-        : '📋 Mostrar resumen completo';
+    function shuffle(array) {
+      const arr = array.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    const conceptListEl = document.getElementById('match-concepts');
+    const defListEl = document.getElementById('match-defs');
+    const feedbackEl = document.getElementById('match-feedback');
+    let selectedConcept = null;
+    let selectedDef = null;
+    let pairs = [];
+
+    function buildMatchGame() {
+      conceptListEl.innerHTML = '';
+      defListEl.innerHTML = '';
+      feedbackEl.textContent = '';
+      selectedConcept = null;
+      selectedDef = null;
+      pairs = conceptsData.map(c => ({ id: c.id, def: c.def }));
+
+      const shuffledConcepts = shuffle(conceptsData);
+      const shuffledDefs = shuffle(pairs);
+
+      shuffledConcepts.forEach((c, idx) => {
+        const li = document.createElement('li');
+        li.className = 'match-item';
+        li.dataset.type = 'concept';
+        li.dataset.id = c.id;
+        li.innerHTML = `<span>${c.text}</span><span class="code">${idx + 1}</span>`;
+        conceptListEl.appendChild(li);
+      });
+
+      shuffledDefs.forEach((d, idx) => {
+        const li = document.createElement('li');
+        li.className = 'match-item';
+        li.dataset.type = 'def';
+        li.dataset.id = d.id;
+        li.innerHTML = `<span>${d.def}</span><span class="code">D${idx + 1}</span>`;
+        defListEl.appendChild(li);
+      });
+    }
+
+    function handleMatchClick(e) {
+      const item = e.target.closest('.match-item');
+      if (!item || item.classList.contains('correct')) return;
+
+      const type = item.dataset.type;
+
+      if (type === 'concept') {
+        if (selectedConcept === item) {
+          item.classList.remove('selected');
+          selectedConcept = null;
+          return;
+        }
+        document.querySelectorAll('.match-item[data-type="concept"]').forEach(el => el.classList.remove('selected'));
+        item.classList.add('selected');
+        selectedConcept = item;
+      } else {
+        if (selectedDef === item) {
+          item.classList.remove('selected');
+          selectedDef = null;
+          return;
+        }
+        document.querySelectorAll('.match-item[data-type="def"]').forEach(el => el.classList.remove('selected'));
+        item.classList.add('selected');
+        selectedDef = item;
+      }
+
+      if (selectedConcept && selectedDef) {
+        const conceptId = selectedConcept.dataset.id;
+        const defId = selectedDef.dataset.id;
+
+        if (conceptId === defId) {
+          selectedConcept.classList.remove('selected');
+          selectedDef.classList.remove('selected');
+          selectedConcept.classList.add('correct');
+          selectedDef.classList.add('correct');
+          feedbackEl.textContent = '¡Correcto! Seguí así.';
+          feedbackEl.style.color = '#15803d';
+        } else {
+          selectedConcept.classList.add('wrong');
+          selectedDef.classList.add('wrong');
+          feedbackEl.textContent = 'Esa combinación no corresponde. Probá de nuevo.';
+          feedbackEl.style.color = '#b91c1c';
+          setTimeout(() => {
+            selectedConcept.classList.remove('selected', 'wrong');
+            selectedDef.classList.remove('selected', 'wrong');
+          }, 700);
+        }
+        selectedConcept = null;
+        selectedDef = null;
+      }
+    }
+
+    conceptListEl.addEventListener('click', handleMatchClick);
+    defListEl.addEventListener('click', handleMatchClick);
+
+    document.getElementById('match-reset').addEventListener('click', () => {
+      buildMatchGame();
     });
 
-    const toggleBtnQuiz = document.getElementById('toggle-machete-quiz');
-    const macheteBodyQuiz = document.getElementById('machete-body-quiz');
-    let macheteVisibleQuiz = false;
+    // Construir el juego al cargar
+    buildMatchGame();
 
-    toggleBtnQuiz.addEventListener('click', () => {
-      macheteVisibleQuiz = !macheteVisibleQuiz;
-      macheteBodyQuiz.style.display = macheteVisibleQuiz ? 'block' : 'none';
-      toggleBtnQuiz.textContent = macheteVisibleQuiz
-        ? 'Ocultar cuestionario'
-        : '📋 Mostrar cuestionario';
+    // Juego 2: completar definiciones
+    const fillData = [
+      {
+        sentence: 'La _______ es el estudio científico, sistemático y crítico de la sociedad.',
+        answer: 'sociología',
+        options: ['economía', 'sociología', 'psicología', 'historia']
+      },
+      {
+        sentence: 'El _______ sostiene que el conocimiento avanza de forma progresiva y acumulativa, sin rupturas.',
+        answer: 'continuismo',
+        options: ['continuismo', 'discontinuismo', 'positivismo', 'humanismo']
+      },
+      {
+        sentence: 'El _______ plantea que hay rupturas, cambios de paradigma y saltos cualitativos en el conocimiento.',
+        answer: 'discontinuismo',
+        options: ['continuismo', 'discontinuismo', 'estructuralismo', 'empirismo']
+      },
+      {
+        sentence: 'La _______ social se refiere a las diferencias entre grupos en términos de recursos y oportunidades.',
+        answer: 'desigualdad',
+        options: ['igualdad', 'desigualdad', 'socialización', 'movilidad']
+      },
+      {
+        sentence: 'La _______ estudia interacciones cotidianas entre individuos y la vida diaria.',
+        answer: 'microsociología',
+        options: ['macrosociología', 'microsociología', 'antropología', 'filosofía']
+      },
+      {
+        sentence: 'La _______ analiza la sociedad en su conjunto: Estado, economía, clases e instituciones.',
+        answer: 'macrosociología',
+        options: ['microsociología', 'macrosociología', 'psicología social', 'historiografía']
+      },
+      {
+        sentence: 'La investigación _______ busca comprender significados y experiencias en profundidad.',
+        answer: 'cualitativa',
+        options: ['cuantitativa', 'cualitativa', 'experimental', 'estadística']
+      },
+      {
+        sentence: 'La investigación _______ utiliza datos numéricos y análisis estadístico.',
+        answer: 'cuantitativa',
+        options: ['cualitativa', 'cuantitativa', 'etnográfica', 'histórica']
+      },
+      {
+        sentence: 'La _______ es una técnica cualitativa que permite explorar experiencias en profundidad.',
+        answer: 'entrevista',
+        options: ['encuesta', 'entrevista', 'censo', 'experimento']
+      },
+      {
+        sentence: 'La _______ es una técnica cuantitativa basada en preguntas estandarizadas a muchas personas.',
+        answer: 'encuesta',
+        options: ['entrevista en profundidad', 'grupo focal', 'encuesta', 'historia de vida']
+      }
+    ];
+
+    function shuffleArray(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    let fillIndex = 0;
+    const fillIndexEl = document.getElementById('fill-index');
+    const fillTotalEl = document.getElementById('fill-total');
+    const fillSentenceEl = document.getElementById('fill-sentence');
+    const fillOptionsEl = document.getElementById('fill-options');
+    const fillFeedbackEl = document.getElementById('fill-feedback');
+    const fillNextBtn = document.getElementById('fill-next');
+
+    const randomizedFill = shuffleArray(fillData);
+
+    function renderFillQuestion() {
+      const item = randomizedFill[fillIndex];
+      fillIndexEl.textContent = fillIndex + 1;
+      fillTotalEl.textContent = randomizedFill.length;
+      fillSentenceEl.textContent = item.sentence;
+      fillFeedbackEl.textContent = '';
+      fillNextBtn.style.display = 'none';
+      fillOptionsEl.innerHTML = '';
+
+      const shuffledOpts = shuffleArray(item.options);
+      shuffledOpts.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'match-button';
+        btn.style.background = '#facc15';
+        btn.style.boxShadow = '0 3px 8px rgba(245,158,11,0.4)';
+        btn.style.fontSize = '0.83rem';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => {
+          if (opt.toLowerCase() === item.answer.toLowerCase()) {
+            fillFeedbackEl.textContent = '¡Correcto! La respuesta es "' + item.answer + '".';
+            fillFeedbackEl.style.color = '#15803d';
+          } else {
+            fillFeedbackEl.textContent = 'Respuesta incorrecta. La correcta era "' + item.answer + '".';
+            fillFeedbackEl.style.color = '#b91c1c';
+          }
+          fillNextBtn.style.display = 'inline-flex';
+        });
+        fillOptionsEl.appendChild(btn);
+      });
+    }
+
+    fillNextBtn.addEventListener('click', () => {
+      fillIndex = (fillIndex + 1) % randomizedFill.length;
+      renderFillQuestion();
     });
+
+    if (fillSentenceEl) {
+      renderFillQuestion();
+    }
   </script>
 </body>
 </html>
