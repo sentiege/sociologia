@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Casos sociales — ¿Qué dirían?</title>
+  <title>¿Qué dirían? — Marx, Durkheim y Weber</title>
   <style>
     :root {
       --primary: #0f766e;
@@ -90,49 +90,79 @@
     .case-text {
       font-size:0.93rem;
       color:#374151;
-      margin-bottom:0.8rem;
+      margin-bottom:0.9rem;
     }
 
     .thinkers-row {
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:0.8rem;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:0.9rem;
       margin-top:0.4rem;
     }
-    .thinker-mini {
+    .thinker-card {
       background:#f9fafb;
       border-radius:var(--radius-md);
       border:1px solid #e5e7eb;
-      padding:0.8rem 0.8rem 0.9rem;
-      font-size:0.88rem;
+      padding:0.9rem 0.9rem 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
     }
-    .thinker-label {
+    .thinker-header {
+      display:flex;
+      gap:0.6rem;
+      align-items:center;
+    }
+    .thinker-img {
+      width:50px;
+      height:50px;
+      border-radius:999px;
+      overflow:hidden;
+      border:2px solid #e5e7eb;
+      background:#e5e7eb;
+      flex-shrink:0;
+    }
+    .thinker-img img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .thinker-info {
+      display:flex;
+      flex-direction:column;
+      gap:0.15rem;
+    }
+    .thinker-name {
       font-weight:700;
       font-size:0.9rem;
-      margin-bottom:0.2rem;
-      display:flex;
-      align-items:center;
-      gap:0.3rem;
     }
-    .dot-marx { width:10px; height:10px; border-radius:999px; background:#ef4444; }
-    .dot-durkheim { width:10px; height:10px; border-radius:999px; background:#3b82f6; }
-    .dot-weber { width:10px; height:10px; border-radius:999px; background:#22c55e; }
+    .thinker-tag {
+      font-size:0.78rem;
+      border-radius:999px;
+      padding:0.05rem 0.5rem;
+      display:inline-block;
+    }
+    .tag-marx { background:#fee2e2; color:#b91c1c; }
+    .tag-durkheim { background:#dbeafe; color:#1d4ed8; }
+    .tag-weber { background:#dcfce7; color:#15803d; }
 
     .btn-toggle {
-      margin-top:0.45rem;
+      align-self:flex-start;
+      margin-top:0.3rem;
       border:none;
       border-radius:999px;
       padding:0.3rem 0.8rem;
-      font-size:0.82rem;
+      font-size:0.8rem;
       font-weight:600;
       cursor:pointer;
       background:linear-gradient(to right,#0f766e,#0369a1);
       color:white;
     }
-    .btn-toggle:hover { opacity:0.9; }
+    .btn-toggle:hover { opacity:0.92; }
 
     .response-box {
-      margin-top:0.6rem;
+      margin-top:0.5rem;
       font-size:0.86rem;
       color:#374151;
       background:white;
@@ -171,8 +201,8 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-tag">Unidad I · Aplicación</div>
-      <h1>Casos sociales: ¿Qué dirían Marx, Durkheim y Weber?</h1>
-      <p>Hacé clic en cada botón para ver cómo interpretaría el caso cada autor clásico.</p>
+      <h1>¿Qué dirían Marx, Durkheim y Weber?</h1>
+      <p>Cartillas rápidas para interpretar situaciones de la realidad paraguaya desde tres teorías clásicas.</p>
     </div>
   </header>
 
@@ -181,58 +211,82 @@
     <section class="case-card">
       <div class="case-header">
         <h2 class="case-title">🧩 Educación pública deficiente</h2>
-        <span class="case-tag">Paraguay</span>
+        <span class="case-tag">Escuelas públicas con pocos recursos</span>
       </div>
       <p class="case-text">
-        Escuelas públicas con infraestructura deteriorada, falta de docentes y recursos, sobre todo en el interior. 
+        Escuelas públicas con infraestructura deteriorada, falta de docentes y materiales, sobre todo en el interior.
         Sus egresados llegan con menos herramientas que quienes estudian en colegios privados, lo que se traduce en menor acceso a la universidad y a trabajos de calidad.
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “La educación reproduce desigualdades”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“La educación reproduce desigualdades”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="edu-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="edu-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
-              La escuela pública débil no es un accidente: es una forma en que el capitalismo reproduce la desigualdad.
-              Forma mano de obra barata con pocas credenciales, mientras la educación privada prepara a las élites para ocupar los mejores puestos.
+              La escuela pública débil no es un accidente: es una pieza del engranaje capitalista que reproduce la desigualdad.
+              Forma trabajadores con menos credenciales y menos poder de negociación, mientras la educación privada prepara a las élites.
+            </p>
+            <p>
+              Así, el sistema educativo legitima la idea de que “cada uno llega hasta donde puede”, ocultando que el punto de partida ya está marcado por la clase social.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “La educación débil rompe la cohesión social”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“La educación débil rompe la cohesión social”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="edu-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="edu-durkheim">
             <div class="response-title">Lectura desde Durkheim</div>
             <p>
-              La escuela debería transmitir valores comunes y sentido de pertenencia.
-              Cuando falla, muchos jóvenes quedan sin orientación ni integración social, lo que debilita la solidaridad y aumenta la frustración colectiva.
+              La escuela debería transmitir normas, valores y sentido de pertenencia a la sociedad.
+              Cuando la educación pública falla, muchos jóvenes quedan sin orientación ni integración, lo que fragiliza la cohesión social.
+            </p>
+            <p>
+              A largo plazo, esta debilidad educativa puede traducirse en mayor conflicto, desconfianza y dificultad para compartir un proyecto colectivo.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “El sistema no está bien administrado ni regulado”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“El sistema no está bien administrado”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="edu-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="edu-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
-              El problema es de gestión: falta una burocracia profesionalizada, meritocrática y bien planificada.
-              La ineficiencia administrativa impide que la educación funcione como un servicio público racional y accesible.
+              El problema es de organización: falta una burocracia educativa profesionalizada, con reglas claras, planificación y evaluación.
+              Sin una administración racional, la educación pública no puede garantizar igualdad de oportunidades.
+            </p>
+            <p>
+              Para Weber, mejorar la educación implica reformar la gestión del sistema, no solo “buena voluntad” o discursos.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -248,50 +302,74 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “El capitalismo genera trabajadores sin protección”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“El capitalismo genera trabajadores sin protección”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="inf-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="inf-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
-              La informalidad muestra que el capitalismo no puede absorber a todos con empleo digno.
-              Estos trabajadores son un “ejército de reserva” siempre disponible y vulnerable, lo que ayuda a mantener bajos los salarios y aumenta la explotación.
+              La informalidad muestra que el capitalismo no puede dar empleo digno a todos.
+              Estos trabajadores forman un “ejército de reserva” que presiona a la baja los salarios y mantiene la vulnerabilidad.
+            </p>
+            <p>
+              Es una forma de explotación: el riesgo de la vida cotidiana recae sobre el trabajador, mientras las ganancias se concentran en pocos.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “La sociedad pierde orden y regulación”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“La sociedad pierde orden y regulación”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="inf-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="inf-durkheim">
             <div class="response-title">Lectura desde Durkheim</div>
             <p>
-              El trabajo informal deja a muchas personas fuera de las reglas laborales formales.
-              Esa ausencia de normas compartidas genera anomia: incertidumbre, inseguridad y sensación de desorden en la vida cotidiana.
+              Quedar fuera del trabajo formal significa quedar fuera de reglas claras y derechos reconocidos.
+              Esa falta de normas compartidas genera anomia: inseguridad, incertidumbre y sensación de desorden.
+            </p>
+            <p>
+              La informalidad erosiona la integración social porque muchas personas viven “al margen” de las instituciones.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “El problema es la debilidad institucional”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“El problema es la debilidad institucional”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="inf-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="inf-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
-              La informalidad revela que el Estado no consigue regular ni formalizar la economía.
-              Una burocracia ineficiente o fragmentada no logra aplicar las leyes laborales, mostrando un déficit de organización y capacidad administrativa.
+              La informalidad muestra que el Estado no logra regular la economía ni hacer cumplir las leyes laborales.
+              Una burocracia ineficiente o capturada por intereses particulares no puede ordenar el mercado de trabajo.
+            </p>
+            <p>
+              La solución, para Weber, pasa por fortalecer instituciones y procedimientos, más que por discursos morales.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -307,50 +385,74 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “La desigualdad genera delito”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“La desigualdad genera delito”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="ins-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="ins-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
               La delincuencia se vincula con pobreza, falta de oportunidades y exclusión.
-              En un sistema que concentra riqueza, algunos recurren al delito como forma de sobrevivir o acceder a bienes negados.
+              En un sistema que concentra riqueza, algunos recurren al delito como forma de acceso a bienes negados o como estrategia de supervivencia.
+            </p>
+            <p>
+              El crimen es síntoma de una estructura social injusta, no solo un problema de “malas personas”.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Cuando la sociedad se desordena, crece el crimen”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Cuando la sociedad se desordena, crece el crimen”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="ins-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="ins-durkheim">
             <div class="response-title">Lectura desde Durkheim</div>
             <p>
-              El aumento del delito indica anomia: normas débiles, contradictorias o poco respetadas.
-              Cuando el sistema normativo pierde fuerza, crecen los comportamientos desviados y la sensación de desorden.
+              El aumento del delito es indicador de anomia: normas débiles, contradictorias o poco respetadas.
+              Cuando la regulación social se deteriora, se vuelve más probable el comportamiento desviado.
+            </p>
+            <p>
+              Para él, fortalecer las normas compartidas y la integración es clave para reducir la criminalidad.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “El Estado no está ejerciendo bien su autoridad”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“El Estado no ejerce bien su autoridad”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="ins-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="ins-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
               La inseguridad muestra que el Estado no controla de forma efectiva el monopolio legítimo de la fuerza.
-              Si policía y justicia no actúan con eficacia y legitimidad, la ciudadanía deja de confiar en las instituciones encargadas de la seguridad.
+              Si policía y justicia no actúan con eficacia y legitimidad, otros actores (bandas, mafias) ocupan ese espacio.
+            </p>
+            <p>
+              Es una crisis de autoridad estatal, más que solo un problema individual.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -366,50 +468,74 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “La gente migra porque el sistema rural no le permite vivir”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“El sistema rural no les permite vivir”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="mig-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="mig-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
-              La migración se debe a la desigualdad en la distribución de la tierra y los recursos.
-              La concentración de la propiedad expulsa a campesinos y jóvenes, que se ven obligados a vender su fuerza de trabajo en la ciudad.
+              La migración se debe a la concentración de la tierra y la riqueza en pocas manos.
+              Al no poder sostenerse en el campo, las personas se ven forzadas a vender su fuerza de trabajo en la ciudad.
+            </p>
+            <p>
+              Es un desplazamiento producido por la lógica del capital, no solo “decisiones individuales”.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Se pierde la cohesión social y aparece desorientación”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Se pierde la cohesión social”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="mig-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="mig-durkheim">
             <div class="response-title">Lectura desde Durkheim</div>
             <p>
-              El paso del campo a la ciudad rompe lazos tradicionales de comunidad y familia.
-              En la ciudad pueden faltar redes de apoyo claras, lo que genera anomia y desorientación hasta que se construyan nuevas formas de solidaridad.
+              El paso del campo a la ciudad rompe lazos tradicionales de comunidad, parentesco y religión.
+              Quienes migran pueden quedar desorientados, sin redes claras ni normas que los guíen.
+            </p>
+            <p>
+              El desafío es crear nuevas formas de solidaridad en la sociedad urbana para evitar la anomia.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “Es parte de la modernización, pero mal gestionado”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“Modernización mal gestionada”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="mig-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="mig-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
-              La migración refleja un proceso de racionalización y urbanización.
-              El problema aparece cuando el Estado no planifica vivienda, servicios y trabajo para quienes llegan, mostrando un déficit de organización racional del territorio.
+              La migración refleja un proceso de modernización y urbanización de la sociedad.
+              El problema surge cuando el Estado y las instituciones no planifican vivienda, servicios y empleo para quienes llegan.
+            </p>
+            <p>
+              No es la modernización en sí, sino su mala gestión burocrática lo que genera conflicto.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -417,7 +543,7 @@
     <section class="case-card">
       <div class="case-header">
         <h2 class="case-title">🧩 Nepotismo en cargos públicos</h2>
-        <span class="case-tag">Estado paraguayo</span>
+        <span class="case-tag">Familiares en el Estado</span>
       </div>
       <p class="case-text">
         Autoridades nombran a familiares y amigos en puestos del Estado, sin concursos ni criterios claros de mérito.
@@ -425,25 +551,38 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “El poder se concentra en grupos cerrados”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“El poder se concentra en grupos cerrados”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="nep-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="nep-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
-              El nepotismo muestra cómo las clases dominantes se reparten el Estado como si fuera propio.
+              El nepotismo muestra cómo las clases dominantes se reparten el Estado como patrimonio propio.
               Los cargos se usan para asegurar privilegios y mantener cerrada la élite política y económica.
             </p>
+            <p>
+              El Estado aparece como herramienta de clase, no como “árbitro neutral”.
+            </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “La gente deja de creer en el sistema”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“La gente deja de creer en el sistema”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="nep-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="nep-durkheim">
@@ -452,23 +591,34 @@
               Cuando se premia el parentesco y no la competencia, se traicionan normas de igualdad y justicia.
               Esto erosiona la confianza en las instituciones y debilita la cohesión social.
             </p>
+            <p>
+              El nepotismo es un factor de desintegración moral de la comunidad política.
+            </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “No hay meritocracia, sino favoritismo”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“No hay meritocracia, sino favoritismo”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="nep-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="nep-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
-              En una burocracia moderna los cargos deben asignarse por competencia y reglas impersonales.
+              En una burocracia moderna los cargos deben asignarse según competencia y reglas impersonales.
               El nepotismo introduce criterios personales y tradicionales, haciendo al Estado menos eficiente y menos legítimo.
             </p>
+            <p>
+              Debilita la racionalidad del aparato administrativo y fomenta la desconfianza.
+            </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -484,10 +634,15 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “La salud refleja la desigualdad de clases”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“La salud refleja la desigualdad de clases”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="sal-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="sal-marx">
@@ -497,12 +652,17 @@
               La vida y la muerte se convierten en cuestión de capacidad de pago, expresando la desigualdad estructural del sistema.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Se rompe la cohesión social”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Se rompe la cohesión social”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="sal-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="sal-durkheim">
@@ -512,12 +672,17 @@
               Las personas sienten abandono y frustración, lo que puede aumentar el conflicto social.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “Falla la burocracia del sistema de salud”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“Falla la burocracia del sistema de salud”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="sal-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="sal-weber">
@@ -527,7 +692,7 @@
               Una burocracia poco profesional o descoordinada no logra responder a la demanda y hace ineficiente el sistema.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -543,10 +708,15 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “Es la reacción de los oprimidos”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“Es la reacción de los oprimidos”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="pro-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="pro-marx">
@@ -556,12 +726,17 @@
               Son momentos en los que los sectores subalternos cuestionan el orden vigente y pueden impulsar cambios estructurales.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “La sociedad está desajustada”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“La sociedad está desajustada”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="pro-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="pro-durkheim">
@@ -571,12 +746,17 @@
               Son síntomas de tensiones entre las expectativas colectivas y la forma en que las instituciones responden.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “El poder pierde legitimidad”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“El poder pierde legitimidad”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="pro-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="pro-weber">
@@ -586,7 +766,7 @@
               El problema central es de legitimidad del poder y de credibilidad de quienes gobiernan.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -602,10 +782,15 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “Sirve a intereses de poder”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“Sirve a intereses de poder”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="red-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="red-marx">
@@ -615,12 +800,17 @@
               Sirven para mantener o disputar hegemonía, orientando la opinión pública según intereses de clase.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Se pierde la verdad compartida”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Se pierde la verdad compartida”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="red-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="red-durkheim">
@@ -630,12 +820,17 @@
               La proliferación de noticias falsas debilita la confianza y los valores compartidos, afectando la cohesión social.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “Falta regulación y autoridad informativa”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“Falta regulación y autoridad informativa”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="red-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="red-weber">
@@ -645,7 +840,7 @@
               La ausencia de marcos legales y organismos confiables de verificación agrava el problema de la desinformación.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -661,10 +856,15 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “El sistema genera desigualdad estructural”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“El sistema genera desigualdad estructural”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="des-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="des-marx">
@@ -674,12 +874,17 @@
               Los sectores de mayor ingreso compran servicios superiores, consolidando su posición de clase y profundizando la desigualdad.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Afecta la cohesión social”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Afecta la cohesión social”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="des-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="des-durkheim">
@@ -689,12 +894,17 @@
               Esto puede generar resentimiento y pérdida de confianza en las instituciones, debilitando la cohesión social.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “Falla el modelo burocrático estatal”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“Falla el modelo burocrático estatal”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="des-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="des-weber">
@@ -704,7 +914,7 @@
               Falta profesionalización, meritocracia y buena gestión de recursos en la burocracia estatal.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -712,7 +922,7 @@
     <section class="case-card">
       <div class="case-header">
         <h2 class="case-title">🧩 Juventud sin oportunidades</h2>
-        <span class="case-tag">Paraguay</span>
+        <span class="case-tag">Jóvenes en Paraguay</span>
       </div>
       <p class="case-text">
         Jóvenes que terminan el colegio (o lo abandonan) y no encuentran trabajo estable ni acceso a educación superior.
@@ -720,10 +930,15 @@
       </p>
       <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-marx"></span>
-            <span>Marx · “El sistema deja fuera a los jóvenes”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">“El sistema deja fuera a los jóvenes”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="juv-marx">¿Qué diría Marx?</button>
           <div class="response-box" id="juv-marx">
@@ -733,12 +948,17 @@
               Se produce una generación excluida de los beneficios del crecimiento, como parte de una marginación estructural.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Durkheim -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-durkheim"></span>
-            <span>Durkheim · “Los jóvenes quedan desorientados”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Émile Durkheim</div>
+              <span class="thinker-tag tag-durkheim">“Los jóvenes quedan desorientados”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="juv-durkheim">¿Qué diría Durkheim?</button>
           <div class="response-box" id="juv-durkheim">
@@ -748,12 +968,17 @@
               Esto potencia conductas autodestructivas o antisociales, indicando un fallo en la integración social.
             </p>
           </div>
-        </div>
+        </article>
         <!-- Weber -->
-        <div class="thinker-mini">
-          <div class="thinker-label">
-            <span class="dot-weber"></span>
-            <span>Weber · “No hay organización eficaz para integrarlos”</span>
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">“No hay organización eficaz para integrarlos”</span>
+            </div>
           </div>
           <button class="btn-toggle" data-target="juv-weber">¿Qué diría Weber?</button>
           <div class="response-box" id="juv-weber">
@@ -763,7 +988,7 @@
               Falta coordinación racional entre escuela, Estado y empresas para incluir a los jóvenes en proyectos de vida estables.
             </p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
