@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>¿Qué dirían? — Durkheim, Marx y Weber</title>
+  <title>Casos sociales — ¿Qué dirían?</title>
   <style>
     :root {
       --primary: #0f766e;
@@ -29,7 +29,7 @@
       text-align: center;
     }
     .hero-inner {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
     }
     .hero-tag {
@@ -50,7 +50,7 @@
     .hero p { font-size:0.95rem; opacity:0.9; }
 
     .main {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 2rem 1.2rem 3rem;
       display:flex;
@@ -58,95 +58,72 @@
       gap:1.5rem;
     }
 
-    .card {
+    .case-card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       border:1px solid var(--border);
-      padding:1.6rem 1.4rem;
+      padding:1.6rem 1.4rem 1.4rem;
     }
-
+    .case-header {
+      display:flex;
+      justify-content:space-between;
+      gap:0.75rem;
+      align-items:flex-start;
+      margin-bottom:0.6rem;
+      flex-wrap:wrap;
+    }
     .case-title {
-      font-size:1.1rem;
+      font-size:1.05rem;
       font-weight:700;
-      margin-bottom:0.5rem;
     }
     .case-tag {
-      display:inline-block;
-      font-size:0.78rem;
+      font-size:0.8rem;
       text-transform:uppercase;
       letter-spacing:0.08em;
       color:#047857;
       background:#dcfce7;
       border-radius:999px;
       padding:0.15rem 0.7rem;
-      margin-bottom:0.5rem;
+      white-space:nowrap;
     }
-    .case-text { font-size:0.95rem; color:#374151; margin-top:0.4rem; }
-
-    .thinkers-title {
-      text-align:center;
-      font-size:1.2rem;
-      font-weight:800;
-      margin-top:0.4rem;
-      margin-bottom:0.2rem;
-    }
-    .thinkers-sub {
-      text-align:center;
-      font-size:0.9rem;
-      color:#6b7280;
+    .case-text {
+      font-size:0.93rem;
+      color:#374151;
       margin-bottom:0.8rem;
     }
 
-    .thinkers-grid {
+    .thinkers-row {
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:1rem;
+      gap:0.8rem;
+      margin-top:0.4rem;
     }
-    .thinker-card {
+    .thinker-mini {
       background:#f9fafb;
       border-radius:var(--radius-md);
       border:1px solid #e5e7eb;
-      padding:1rem 0.9rem 1.2rem;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:0.5rem;
+      padding:0.8rem 0.8rem 0.9rem;
+      font-size:0.88rem;
     }
-    .thinker-img {
-      width:120px;
-      height:120px;
-      border-radius:999px;
-      overflow:hidden;
-      border:2px solid #e5e7eb;
-      margin-bottom:0.4rem;
-      background:#e5e7eb;
-    }
-    .thinker-img img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .thinker-name {
+    .thinker-label {
       font-weight:700;
-      font-size:0.95rem;
+      font-size:0.9rem;
+      margin-bottom:0.2rem;
+      display:flex;
+      align-items:center;
+      gap:0.3rem;
     }
-    .thinker-tag {
-      font-size:0.8rem;
-      color:#0369a1;
-      background:#e0f2fe;
-      border-radius:999px;
-      padding:0.15rem 0.6rem;
-    }
+    .dot-marx { width:10px; height:10px; border-radius:999px; background:#ef4444; }
+    .dot-durkheim { width:10px; height:10px; border-radius:999px; background:#3b82f6; }
+    .dot-weber { width:10px; height:10px; border-radius:999px; background:#22c55e; }
 
     .btn-toggle {
-      margin-top:0.55rem;
+      margin-top:0.45rem;
       border:none;
       border-radius:999px;
-      padding:0.4rem 0.9rem;
-      font-size:0.85rem;
+      padding:0.3rem 0.8rem;
+      font-size:0.82rem;
       font-weight:600;
       cursor:pointer;
       background:linear-gradient(to right,#0f766e,#0369a1);
@@ -155,28 +132,27 @@
     .btn-toggle:hover { opacity:0.9; }
 
     .response-box {
-      margin-top:0.8rem;
-      text-align:left;
-      font-size:0.9rem;
+      margin-top:0.6rem;
+      font-size:0.86rem;
       color:#374151;
       background:white;
       border-radius:var(--radius-md);
       border:1px solid #e5e7eb;
-      padding:0.7rem 0.8rem;
+      padding:0.6rem 0.7rem;
       display:none;
     }
     .response-title {
-      font-size:0.8rem;
+      font-size:0.78rem;
       text-transform:uppercase;
       letter-spacing:0.08em;
       color:#6b7280;
-      margin-bottom:0.2rem;
+      margin-bottom:0.15rem;
     }
 
     .back-link {
-      margin-top:1rem;
       text-align:right;
-      font-size:0.85rem;
+      font-size:0.86rem;
+      margin-top:0.5rem;
     }
     .back-link a {
       color:#0369a1;
@@ -187,108 +163,613 @@
 
     @media (max-width:640px) {
       .hero { padding:2rem 1.2rem; }
-      .card { padding:1.4rem 1.1rem; }
+      .case-card { padding:1.4rem 1.1rem; }
     }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="hero-inner">
-      <div class="hero-tag">Unidad I · Actividad extra</div>
-      <h1>¿Qué dirían Durkheim, Marx y Weber?</h1>
-      <p>Un caso social paraguayo leído desde tres teorías clásicas de la sociología.</p>
+      <div class="hero-tag">Unidad I · Aplicación</div>
+      <h1>Casos sociales: ¿Qué dirían Marx, Durkheim y Weber?</h1>
+      <p>Hacé clic en cada botón para ver cómo interpretaría el caso cada autor clásico.</p>
     </div>
   </header>
 
   <main class="main">
-    <!-- Caso social paraguayo -->
-    <section class="card">
-      <span class="case-tag">Caso · Paraguay actual</span>
-      <h2 class="case-title">Juventud, trabajo precario y migración interna</h2>
+    <!-- 1. Educación pública deficiente -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Educación pública deficiente</h2>
+        <span class="case-tag">Paraguay</span>
+      </div>
       <p class="case-text">
-        En los últimos años, miles de jóvenes de distintos departamentos del Paraguay se mudan a Asunción y al área metropolitana buscando trabajo y estudio.
-        Muchos terminan en empleos precarios de servicios (delivery, call centers, comercio informal) con jornadas extensas, sin seguro social ni salario digno.
+        Escuelas públicas con infraestructura deteriorada, falta de docentes y recursos, sobre todo en el interior. 
+        Sus egresados llegan con menos herramientas que quienes estudian en colegios privados, lo que se traduce en menor acceso a la universidad y a trabajos de calidad.
       </p>
-      <p class="case-text">
-        Las familias quedan “partidas” entre el campo y la ciudad, aumenta el costo de vida para quienes migran y se profundiza la desigualdad entre quienes acceden
-        a educación superior y empleos formales y quienes quedan atrapados en la informalidad o el desempleo.
-      </p>
-    </section>
-
-    <!-- ¿Qué dirían? -->
-    <section class="card">
-      <h2 class="thinkers-title">¿Qué dirían?</h2>
-      <p class="thinkers-sub">Imaginá cómo interpretaría este caso cada clásico de la sociología.</p>
-
-      <div class="thinkers-grid">
+      <div class="thinkers-row">
         <!-- Marx -->
-        <div class="thinker-card">
-          <div class="thinker-img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “La educación reproduce desigualdades”</span>
           </div>
-          <div class="thinker-name">Karl Marx</div>
-          <div class="thinker-tag">Teoría del conflicto</div>
-          <button class="btn-toggle" data-target="marx-respuesta">¿Qué diría Marx?</button>
-          <div class="response-box" id="marx-respuesta">
+          <button class="btn-toggle" data-target="edu-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="edu-marx">
             <div class="response-title">Lectura desde Marx</div>
             <p>
-              Marx vería la migración juvenil y el trabajo precario como resultado de las <strong>contradicciones del capitalismo</strong>.
-              El campo se vacía porque la tierra y los recursos están concentrados, obligando a los jóvenes a vender su fuerza de trabajo en la ciudad.
-            </p>
-            <p>
-              Interpretaría el empleo informal y los bajos salarios como formas de <strong>explotación y plusvalía</strong>: pocos se benefician del crecimiento urbano,
-              mientras la mayoría vive en condiciones de inseguridad económica, sin derechos laborales plenos.
+              La escuela pública débil no es un accidente: es una forma en que el capitalismo reproduce la desigualdad.
+              Forma mano de obra barata con pocas credenciales, mientras la educación privada prepara a las élites para ocupar los mejores puestos.
             </p>
           </div>
         </div>
-
         <!-- Durkheim -->
-        <div class="thinker-card">
-          <div class="thinker-img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “La educación débil rompe la cohesión social”</span>
           </div>
-          <div class="thinker-name">Émile Durkheim</div>
-          <div class="thinker-tag">Funcionalismo</div>
-          <button class="btn-toggle" data-target="durkheim-respuesta">¿Qué diría Durkheim?</button>
-          <div class="response-box" id="durkheim-respuesta">
+          <button class="btn-toggle" data-target="edu-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="edu-durkheim">
             <div class="response-title">Lectura desde Durkheim</div>
             <p>
-              Durkheim se preguntaría cómo afectan estos cambios a la <strong>cohesión social</strong>. La migración masiva y el trabajo precario pueden generar
-              <strong>anomia</strong>: pérdida de normas claras, sensación de desorientación y aumento de problemas como depresión, violencia o consumo problemático.
-            </p>
-            <p>
-              También analizaría qué nuevas formas de <strong>solidaridad</strong> surgen en barrios populares urbanos, organizaciones juveniles o redes de apoyo,
-              y qué instituciones (Estado, escuela, sindicatos, iglesias) ayudan —o no— a integrar a estos jóvenes a la vida social.
+              La escuela debería transmitir valores comunes y sentido de pertenencia.
+              Cuando falla, muchos jóvenes quedan sin orientación ni integración social, lo que debilita la solidaridad y aumenta la frustración colectiva.
             </p>
           </div>
         </div>
-
         <!-- Weber -->
-        <div class="thinker-card">
-          <div class="thinker-img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “El sistema no está bien administrado ni regulado”</span>
           </div>
-          <div class="thinker-name">Max Weber</div>
-          <div class="thinker-tag">Acción social</div>
-          <button class="btn-toggle" data-target="weber-respuesta">¿Qué diría Weber?</button>
-          <div class="response-box" id="weber-respuesta">
+          <button class="btn-toggle" data-target="edu-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="edu-weber">
             <div class="response-title">Lectura desde Weber</div>
             <p>
-              Weber miraría el <strong>sentido subjetivo</strong> de la acción de los jóvenes: algunos migran buscando “progreso” y ascenso social (acción racional con arreglo a fines),
-              otros guiados por valores familiares (“ayudar en casa”) o por expectativas culturales sobre el éxito.
-            </p>
-            <p>
-              Analizaría también cómo las <strong>burocracias</strong> (Estado, universidades, empresas) regulan su acceso a derechos y oportunidades,
-              y qué tipo de <strong>dominación</strong> predomina: reglas impersonales racional‑legales, clientelismo tradicional o liderazgos carismáticos locales.
+              El problema es de gestión: falta una burocracia profesionalizada, meritocrática y bien planificada.
+              La ineficiencia administrativa impide que la educación funcione como un servicio público racional y accesible.
             </p>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="back-link">
-        <a href="index.html">⬅ Volver al repaso de la Unidad I</a>
+    <!-- 2. Informalidad laboral -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Informalidad laboral</h2>
+        <span class="case-tag">Venta ambulante, trabajos sin contrato</span>
+      </div>
+      <p class="case-text">
+        Una gran parte de la población trabaja en venta ambulante, changas o empleos sin contrato.
+        No tienen seguro social, vacaciones pagadas ni estabilidad, y dependen del día a día para sobrevivir.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “El capitalismo genera trabajadores sin protección”</span>
+          </div>
+          <button class="btn-toggle" data-target="inf-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="inf-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              La informalidad muestra que el capitalismo no puede absorber a todos con empleo digno.
+              Estos trabajadores son un “ejército de reserva” siempre disponible y vulnerable, lo que ayuda a mantener bajos los salarios y aumenta la explotación.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “La sociedad pierde orden y regulación”</span>
+          </div>
+          <button class="btn-toggle" data-target="inf-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="inf-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              El trabajo informal deja a muchas personas fuera de las reglas laborales formales.
+              Esa ausencia de normas compartidas genera anomia: incertidumbre, inseguridad y sensación de desorden en la vida cotidiana.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “El problema es la debilidad institucional”</span>
+          </div>
+          <button class="btn-toggle" data-target="inf-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="inf-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La informalidad revela que el Estado no consigue regular ni formalizar la economía.
+              Una burocracia ineficiente o fragmentada no logra aplicar las leyes laborales, mostrando un déficit de organización y capacidad administrativa.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- 3. Inseguridad / delincuencia -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Inseguridad y delincuencia</h2>
+        <span class="case-tag">Barrios urbanos</span>
+      </div>
+      <p class="case-text">
+        Aumentan robos, asaltos y hechos de violencia en barrios urbanos y periurbanos.
+        Muchas personas sienten que “ya no se puede salir tranquilo” y desconfían tanto de los vecinos como de las instituciones encargadas de la seguridad.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “La desigualdad genera delito”</span>
+          </div>
+          <button class="btn-toggle" data-target="ins-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="ins-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              La delincuencia se vincula con pobreza, falta de oportunidades y exclusión.
+              En un sistema que concentra riqueza, algunos recurren al delito como forma de sobrevivir o acceder a bienes negados.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Cuando la sociedad se desordena, crece el crimen”</span>
+          </div>
+          <button class="btn-toggle" data-target="ins-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="ins-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              El aumento del delito indica anomia: normas débiles, contradictorias o poco respetadas.
+              Cuando el sistema normativo pierde fuerza, crecen los comportamientos desviados y la sensación de desorden.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “El Estado no está ejerciendo bien su autoridad”</span>
+          </div>
+          <button class="btn-toggle" data-target="ins-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="ins-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La inseguridad muestra que el Estado no controla de forma efectiva el monopolio legítimo de la fuerza.
+              Si policía y justicia no actúan con eficacia y legitimidad, la ciudadanía deja de confiar en las instituciones encargadas de la seguridad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Migración campo-ciudad -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Migración del campo a la ciudad</h2>
+        <span class="case-tag">Hacia Asunción</span>
+      </div>
+      <p class="case-text">
+        Familias y jóvenes dejan comunidades rurales con pocas oportunidades de trabajo y servicios,
+        para instalarse en barrios periféricos del área metropolitana, enfrentando problemas de vivienda, empleo y pertenencia.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “La gente migra porque el sistema rural no le permite vivir”</span>
+          </div>
+          <button class="btn-toggle" data-target="mig-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="mig-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              La migración se debe a la desigualdad en la distribución de la tierra y los recursos.
+              La concentración de la propiedad expulsa a campesinos y jóvenes, que se ven obligados a vender su fuerza de trabajo en la ciudad.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Se pierde la cohesión social y aparece desorientación”</span>
+          </div>
+          <button class="btn-toggle" data-target="mig-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="mig-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              El paso del campo a la ciudad rompe lazos tradicionales de comunidad y familia.
+              En la ciudad pueden faltar redes de apoyo claras, lo que genera anomia y desorientación hasta que se construyan nuevas formas de solidaridad.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “Es parte de la modernización, pero mal gestionado”</span>
+          </div>
+          <button class="btn-toggle" data-target="mig-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="mig-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La migración refleja un proceso de racionalización y urbanización.
+              El problema aparece cuando el Estado no planifica vivienda, servicios y trabajo para quienes llegan, mostrando un déficit de organización racional del territorio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Nepotismo -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Nepotismo en cargos públicos</h2>
+        <span class="case-tag">Estado paraguayo</span>
+      </div>
+      <p class="case-text">
+        Autoridades nombran a familiares y amigos en puestos del Estado, sin concursos ni criterios claros de mérito.
+        Esto genera malestar ciudadano y sensación de injusticia y privilegio.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “El poder se concentra en grupos cerrados”</span>
+          </div>
+          <button class="btn-toggle" data-target="nep-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="nep-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              El nepotismo muestra cómo las clases dominantes se reparten el Estado como si fuera propio.
+              Los cargos se usan para asegurar privilegios y mantener cerrada la élite política y económica.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “La gente deja de creer en el sistema”</span>
+          </div>
+          <button class="btn-toggle" data-target="nep-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="nep-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Cuando se premia el parentesco y no la competencia, se traicionan normas de igualdad y justicia.
+              Esto erosiona la confianza en las instituciones y debilita la cohesión social.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “No hay meritocracia, sino favoritismo”</span>
+          </div>
+          <button class="btn-toggle" data-target="nep-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="nep-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              En una burocracia moderna los cargos deben asignarse por competencia y reglas impersonales.
+              El nepotismo introduce criterios personales y tradicionales, haciendo al Estado menos eficiente y menos legítimo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Sistema de salud pública saturado -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Sistema de salud pública saturado</h2>
+        <span class="case-tag">Hospitales públicos</span>
+      </div>
+      <p class="case-text">
+        Hospitales públicos llenos, largas filas y falta de medicamentos.
+        Quien tiene recursos recurre a servicios privados; quien no, depende de un sistema sobrecargado y muchas veces insuficiente.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “La salud refleja la desigualdad de clases”</span>
+          </div>
+          <button class="btn-toggle" data-target="sal-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="sal-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              El acceso desigual a la salud muestra cómo la clase con dinero puede comprar mejores servicios.
+              La vida y la muerte se convierten en cuestión de capacidad de pago, expresando la desigualdad estructural del sistema.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Se rompe la cohesión social”</span>
+          </div>
+          <button class="btn-toggle" data-target="sal-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="sal-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Cuando el sistema de salud no responde, se debilita la confianza en una institución clave de la solidaridad.
+              Las personas sienten abandono y frustración, lo que puede aumentar el conflicto social.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “Falla la burocracia del sistema de salud”</span>
+          </div>
+          <button class="btn-toggle" data-target="sal-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="sal-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La saturación refleja problemas de organización y gestión de recursos.
+              Una burocracia poco profesional o descoordinada no logra responder a la demanda y hace ineficiente el sistema.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Protestas ciudadanas -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Protestas ciudadanas</h2>
+        <span class="case-tag">Movilización social</span>
+      </div>
+      <p class="case-text">
+        Marchas y manifestaciones contra corrupción, suba de precios o recortes en políticas sociales,
+        donde participan jóvenes, organizaciones barriales y sindicatos.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “Es la reacción de los oprimidos”</span>
+          </div>
+          <button class="btn-toggle" data-target="pro-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="pro-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              Las protestas son expresión del conflicto de clases y de la resistencia frente a la explotación.
+              Son momentos en los que los sectores subalternos cuestionan el orden vigente y pueden impulsar cambios estructurales.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “La sociedad está desajustada”</span>
+          </div>
+          <button class="btn-toggle" data-target="pro-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="pro-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Las protestas indican que algo no funciona en la integración o la regulación social.
+              Son síntomas de tensiones entre las expectativas colectivas y la forma en que las instituciones responden.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “El poder pierde legitimidad”</span>
+          </div>
+          <button class="btn-toggle" data-target="pro-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="pro-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              Las movilizaciones muestran que una parte de la ciudadanía ya no reconoce como legítimas ciertas decisiones o autoridades.
+              El problema central es de legitimidad del poder y de credibilidad de quienes gobiernan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Redes sociales y fake news -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Redes sociales y fake news</h2>
+        <span class="case-tag">Información digital</span>
+      </div>
+      <p class="case-text">
+        Circulan informaciones falsas o manipuladas sobre política, salud y temas sensibles.
+        Muchas personas se informan más por redes que por medios tradicionales, lo que genera confusión y polarización.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “Sirve a intereses de poder”</span>
+          </div>
+          <button class="btn-toggle" data-target="red-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="red-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              Las fake news pueden ser instrumentos de manipulación ideológica.
+              Sirven para mantener o disputar hegemonía, orientando la opinión pública según intereses de clase.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Se pierde la verdad compartida”</span>
+          </div>
+          <button class="btn-toggle" data-target="red-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="red-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              La sociedad necesita ciertas referencias comunes para mantenerse unida.
+              La proliferación de noticias falsas debilita la confianza y los valores compartidos, afectando la cohesión social.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “Falta regulación y autoridad informativa”</span>
+          </div>
+          <button class="btn-toggle" data-target="red-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="red-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La circulación masiva de información sin filtros institucionales muestra una racionalidad limitada.
+              La ausencia de marcos legales y organismos confiables de verificación agrava el problema de la desinformación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Desigualdad sector público / privado -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Desigualdad entre sector público y privado</h2>
+        <span class="case-tag">Servicios básicos</span>
+      </div>
+      <p class="case-text">
+        Servicios públicos (educación, salud, transporte) presentan menor calidad que servicios privados.
+        Quien puede pagar accede a mejores opciones; quien no, depende de lo público.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “El sistema genera desigualdad estructural”</span>
+          </div>
+          <button class="btn-toggle" data-target="des-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="des-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              Las diferencias entre lo público y lo privado reflejan la lógica del capital.
+              Los sectores de mayor ingreso compran servicios superiores, consolidando su posición de clase y profundizando la desigualdad.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Afecta la cohesión social”</span>
+          </div>
+          <button class="btn-toggle" data-target="des-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="des-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Cuando amplios sectores perciben que el sistema trata mejor a unos que a otros, se resiente el sentido de justicia.
+              Esto puede generar resentimiento y pérdida de confianza en las instituciones, debilitando la cohesión social.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “Falla el modelo burocrático estatal”</span>
+          </div>
+          <button class="btn-toggle" data-target="des-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="des-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              Las diferencias pueden interpretarse como problemas de organización y eficiencia del sector público.
+              Falta profesionalización, meritocracia y buena gestión de recursos en la burocracia estatal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Juventud sin oportunidades -->
+    <section class="case-card">
+      <div class="case-header">
+        <h2 class="case-title">🧩 Juventud sin oportunidades</h2>
+        <span class="case-tag">Paraguay</span>
+      </div>
+      <p class="case-text">
+        Jóvenes que terminan el colegio (o lo abandonan) y no encuentran trabajo estable ni acceso a educación superior.
+        Muchos quedan en la informalidad, el desempleo o migran a otras zonas o países.
+      </p>
+      <div class="thinkers-row">
+        <!-- Marx -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-marx"></span>
+            <span>Marx · “El sistema deja fuera a los jóvenes”</span>
+          </div>
+          <button class="btn-toggle" data-target="juv-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="juv-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              La falta de empleo digno para jóvenes muestra que el capitalismo no integra a toda la fuerza de trabajo.
+              Se produce una generación excluida de los beneficios del crecimiento, como parte de una marginación estructural.
+            </p>
+          </div>
+        </div>
+        <!-- Durkheim -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-durkheim"></span>
+            <span>Durkheim · “Los jóvenes quedan desorientados”</span>
+          </div>
+          <button class="btn-toggle" data-target="juv-durkheim">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="juv-durkheim">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Sin trabajo ni proyectos claros, los jóvenes pueden experimentar anomia: falta de sentido y de rumbo.
+              Esto potencia conductas autodestructivas o antisociales, indicando un fallo en la integración social.
+            </p>
+          </div>
+        </div>
+        <!-- Weber -->
+        <div class="thinker-mini">
+          <div class="thinker-label">
+            <span class="dot-weber"></span>
+            <span>Weber · “No hay organización eficaz para integrarlos”</span>
+          </div>
+          <button class="btn-toggle" data-target="juv-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="juv-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              La situación refleja ausencia de planificación estatal en educación, empleo y políticas juveniles.
+              Falta coordinación racional entre escuela, Estado y empresas para incluir a los jóvenes en proyectos de vida estables.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="back-link">
+      <a href="index.html">⬅ Volver al repaso de la Unidad I</a>
+    </div>
   </main>
 
   <script>
