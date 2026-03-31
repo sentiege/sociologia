@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¿Qué dirían? — Durkheim, Marx y Weber</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --secondary: #0369a1;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: #111827;
+      min-height: 100vh;
+    }
+    .hero {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 45%, #0369a1 100%);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display:inline-block;
+      padding:0.25rem 0.9rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.3);
+      background:rgba(255,255,255,0.15);
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      margin-bottom:0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom:0.4rem;
+    }
+    .hero p { font-size:0.95rem; opacity:0.9; }
+
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
+      display:flex;
+      flex-direction:column;
+      gap:1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border:1px solid var(--border);
+      padding:1.6rem 1.4rem;
+    }
+
+    .case-title {
+      font-size:1.1rem;
+      font-weight:700;
+      margin-bottom:0.5rem;
+    }
+    .case-tag {
+      display:inline-block;
+      font-size:0.78rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:#047857;
+      background:#dcfce7;
+      border-radius:999px;
+      padding:0.15rem 0.7rem;
+      margin-bottom:0.5rem;
+    }
+    .case-text { font-size:0.95rem; color:#374151; margin-top:0.4rem; }
+
+    .thinkers-title {
+      text-align:center;
+      font-size:1.2rem;
+      font-weight:800;
+      margin-top:0.4rem;
+      margin-bottom:0.2rem;
+    }
+    .thinkers-sub {
+      text-align:center;
+      font-size:0.9rem;
+      color:#6b7280;
+      margin-bottom:0.8rem;
+    }
+
+    .thinkers-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+    }
+    .thinker-card {
+      background:#f9fafb;
+      border-radius:var(--radius-md);
+      border:1px solid #e5e7eb;
+      padding:1rem 0.9rem 1.2rem;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0.5rem;
+    }
+    .thinker-img {
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      overflow:hidden;
+      border:2px solid #e5e7eb;
+      margin-bottom:0.4rem;
+      background:#e5e7eb;
+    }
+    .thinker-img img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .thinker-name {
+      font-weight:700;
+      font-size:0.95rem;
+    }
+    .thinker-tag {
+      font-size:0.8rem;
+      color:#0369a1;
+      background:#e0f2fe;
+      border-radius:999px;
+      padding:0.15rem 0.6rem;
+    }
+
+    .btn-toggle {
+      margin-top:0.55rem;
+      border:none;
+      border-radius:999px;
+      padding:0.4rem 0.9rem;
+      font-size:0.85rem;
+      font-weight:600;
+      cursor:pointer;
+      background:linear-gradient(to right,#0f766e,#0369a1);
+      color:white;
+    }
+    .btn-toggle:hover { opacity:0.9; }
+
+    .response-box {
+      margin-top:0.8rem;
+      text-align:left;
+      font-size:0.9rem;
+      color:#374151;
+      background:white;
+      border-radius:var(--radius-md);
+      border:1px solid #e5e7eb;
+      padding:0.7rem 0.8rem;
+      display:none;
+    }
+    .response-title {
+      font-size:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:#6b7280;
+      margin-bottom:0.2rem;
+    }
+
+    .back-link {
+      margin-top:1rem;
+      text-align:right;
+      font-size:0.85rem;
+    }
+    .back-link a {
+      color:#0369a1;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .back-link a:hover { text-decoration:underline; }
+
+    @media (max-width:640px) {
+      .hero { padding:2rem 1.2rem; }
+      .card { padding:1.4rem 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Unidad I · Actividad extra</div>
+      <h1>¿Qué dirían Durkheim, Marx y Weber?</h1>
+      <p>Un caso social paraguayo leído desde tres teorías clásicas de la sociología.</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Caso social paraguayo -->
+    <section class="card">
+      <span class="case-tag">Caso · Paraguay actual</span>
+      <h2 class="case-title">Juventud, trabajo precario y migración interna</h2>
+      <p class="case-text">
+        En los últimos años, miles de jóvenes de distintos departamentos del Paraguay se mudan a Asunción y al área metropolitana buscando trabajo y estudio.
+        Muchos terminan en empleos precarios de servicios (delivery, call centers, comercio informal) con jornadas extensas, sin seguro social ni salario digno.
+      </p>
+      <p class="case-text">
+        Las familias quedan “partidas” entre el campo y la ciudad, aumenta el costo de vida para quienes migran y se profundiza la desigualdad entre quienes acceden
+        a educación superior y empleos formales y quienes quedan atrapados en la informalidad o el desempleo.
+      </p>
+    </section>
+
+    <!-- ¿Qué dirían? -->
+    <section class="card">
+      <h2 class="thinkers-title">¿Qué dirían?</h2>
+      <p class="thinkers-sub">Imaginá cómo interpretaría este caso cada clásico de la sociología.</p>
+
+      <div class="thinkers-grid">
+        <!-- Marx -->
+        <div class="thinker-card">
+          <div class="thinker-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+          </div>
+          <div class="thinker-name">Karl Marx</div>
+          <div class="thinker-tag">Teoría del conflicto</div>
+          <button class="btn-toggle" data-target="marx-respuesta">¿Qué diría Marx?</button>
+          <div class="response-box" id="marx-respuesta">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              Marx vería la migración juvenil y el trabajo precario como resultado de las <strong>contradicciones del capitalismo</strong>.
+              El campo se vacía porque la tierra y los recursos están concentrados, obligando a los jóvenes a vender su fuerza de trabajo en la ciudad.
+            </p>
+            <p>
+              Interpretaría el empleo informal y los bajos salarios como formas de <strong>explotación y plusvalía</strong>: pocos se benefician del crecimiento urbano,
+              mientras la mayoría vive en condiciones de inseguridad económica, sin derechos laborales plenos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Durkheim -->
+        <div class="thinker-card">
+          <div class="thinker-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Portrait_of_Emile_Durkheim_in_%22a_collection_of_essays%2C_with_translations_and_a_bibliography%22_%28cropped%29.jpg" alt="Émile Durkheim">
+          </div>
+          <div class="thinker-name">Émile Durkheim</div>
+          <div class="thinker-tag">Funcionalismo</div>
+          <button class="btn-toggle" data-target="durkheim-respuesta">¿Qué diría Durkheim?</button>
+          <div class="response-box" id="durkheim-respuesta">
+            <div class="response-title">Lectura desde Durkheim</div>
+            <p>
+              Durkheim se preguntaría cómo afectan estos cambios a la <strong>cohesión social</strong>. La migración masiva y el trabajo precario pueden generar
+              <strong>anomia</strong>: pérdida de normas claras, sensación de desorientación y aumento de problemas como depresión, violencia o consumo problemático.
+            </p>
+            <p>
+              También analizaría qué nuevas formas de <strong>solidaridad</strong> surgen en barrios populares urbanos, organizaciones juveniles o redes de apoyo,
+              y qué instituciones (Estado, escuela, sindicatos, iglesias) ayudan —o no— a integrar a estos jóvenes a la vida social.
+            </p>
+          </div>
+        </div>
+
+        <!-- Weber -->
+        <div class="thinker-card">
+          <div class="thinker-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+          </div>
+          <div class="thinker-name">Max Weber</div>
+          <div class="thinker-tag">Acción social</div>
+          <button class="btn-toggle" data-target="weber-respuesta">¿Qué diría Weber?</button>
+          <div class="response-box" id="weber-respuesta">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              Weber miraría el <strong>sentido subjetivo</strong> de la acción de los jóvenes: algunos migran buscando “progreso” y ascenso social (acción racional con arreglo a fines),
+              otros guiados por valores familiares (“ayudar en casa”) o por expectativas culturales sobre el éxito.
+            </p>
+            <p>
+              Analizaría también cómo las <strong>burocracias</strong> (Estado, universidades, empresas) regulan su acceso a derechos y oportunidades,
+              y qué tipo de <strong>dominación</strong> predomina: reglas impersonales racional‑legales, clientelismo tradicional o liderazgos carismáticos locales.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="back-link">
+        <a href="index.html">⬅ Volver al repaso de la Unidad I</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.btn-toggle');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const box = document.getElementById(targetId);
+        const isVisible = box.style.display === 'block';
+        box.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
