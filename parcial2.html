@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introducción a la Sociología – Unidades III y IV</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #283593;
+      --accent: #e53935;
+      --accent2: #ff9800;
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #212121;
+      --muted: #5c6bc0;
+      --badge-exam: #e53935;
+      --badge-bg: #fff3e0;
+      --green: #2e7d32;
+      --light-blue: #e8eaf6;
+      --teal: #00695c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO (shifts with sidebar) ── */
+    .hero {
+      background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #3949ab 100%);
+      color: #fff;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+    .hero .uni { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; margin-bottom: 8px; }
+    .hero h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+    .hero .sub { font-size: 1.1rem; opacity: 0.85; margin-bottom: 18px; }
+    .hero .tags span {
+      display: inline-block; margin: 4px;
+      background: rgba(255,255,255,0.15); border-radius: 20px;
+      padding: 4px 14px; font-size: 0.85rem;
+    }
+
+    /* ── EXAM NOTICE ── */
+    .exam-notice {
+      background: #fff3e0; border-left: 6px solid var(--accent2);
+      margin: 30px auto; max-width: 960px; border-radius: 8px;
+      padding: 18px 24px; display: flex; align-items: flex-start; gap: 14px;
+    }
+    .exam-notice .icon { font-size: 2rem; }
+    .exam-notice strong { color: var(--accent); }
+
+    /* ── SIDEBAR NAV (fixed, fuera del flujo) ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 230px;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--secondary);
+      box-shadow: 2px 0 10px rgba(0,0,0,0.22);
+      z-index: 100;
+    }
+    nav .nav-title {
+      padding: 16px 16px 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 4px;
+    }
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav ul li a {
+      display: block; padding: 8px 18px; color: #fff; text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; transition: background 0.2s;
+      border-left: 3px solid transparent;
+      line-height: 1.35;
+    }
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.13);
+      border-left-color: rgba(255,255,255,0.7);
+    }
+    nav ul li.nav-section > a {
+      font-weight: 800;
+      font-size: 0.78rem;
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    nav ul li.nav-sub > a {
+      padding-left: 28px;
+      font-size: 0.79rem;
+      color: rgba(255,255,255,0.8);
+    }
+    nav::-webkit-scrollbar { width: 4px; }
+    nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+    /* ── PAGE WRAP: todo el contenido se desplaza a la derecha del sidebar ── */
+    .page-wrap { margin-left: 230px; }
+    .layout { /* contenedor flex interior */ }
+
+    /* ── MAIN ── */
+    main { max-width: 900px; margin: 0 auto; padding: 30px 32px 60px; }
+
+    /* ── MOBILE ── */
+    .hamburger {
+      display: none; position: fixed; top: 10px; left: 10px; z-index: 200;
+      background: var(--primary); border: none; border-radius: 8px;
+      padding: 7px 12px; cursor: pointer; color: #fff; font-size: 1.3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    @media(max-width: 768px){
+      nav { left: -240px; transition: left 0.28s ease; }
+      nav.open { left: 0; box-shadow: 4px 0 20px rgba(0,0,0,0.35); }
+      .page-wrap { margin-left: 0; }
+      .layout { margin-left: 0; }
+      main { padding: 20px 16px 60px; }
+      .hamburger { display: block; }
+    }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 50px; }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      border-bottom: 3px solid var(--primary); margin-bottom: 22px; padding-bottom: 10px;
+    }
+    .section-header .num {
+      background: var(--primary); color: #fff;
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .section-header h2 { font-size: 1.45rem; color: var(--primary); }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card); border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+      padding: 22px 26px; margin-bottom: 20px;
+    }
+    .card h3 { color: var(--secondary); font-size: 1.1rem; margin-bottom: 12px; }
+    .card p { margin-bottom: 10px; }
+    .card ul, .card ol { padding-left: 22px; margin-bottom: 10px; }
+    .card li { margin-bottom: 6px; }
+
+    /* ── EXAM BADGE ── */
+    .exam-badge {
+      display: inline-block; background: var(--badge-exam); color: #fff;
+      font-size: 0.72rem; font-weight: 700; padding: 2px 10px;
+      border-radius: 12px; margin-left: 10px; vertical-align: middle;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    /* Highlight exam-related cards */
+    .card.exam {
+      border-left: 5px solid var(--accent);
+      background: #fffdf9;
+    }
+    .card.exam h3::after {
+      content: " 📋 EN EL CUESTIONARIO";
+      font-size: 0.7rem; font-weight: 700; color: var(--accent);
+      margin-left: 8px; letter-spacing: 0.5px;
+    }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 14px 0; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 0.9rem;
+    }
+    thead th {
+      background: var(--primary); color: #fff;
+      padding: 10px 14px; text-align: left;
+    }
+    tbody tr:nth-child(even) { background: var(--light-blue); }
+    tbody td { padding: 9px 14px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+
+    /* ── DEFINITION BOX ── */
+    .def-box {
+      background: #e8eaf6; border-left: 4px solid var(--primary);
+      border-radius: 6px; padding: 14px 18px; margin: 12px 0;
+      font-style: italic;
+    }
+    .def-box strong { font-style: normal; color: var(--primary); }
+
+    /* ── PENSADOR BOX ── */
+    .thinker {
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      border-left: 5px solid var(--teal);
+      border-radius: 8px; padding: 16px 20px; margin: 14px 0;
+    }
+    .thinker .thinker-name {
+      font-weight: 800; color: var(--teal); font-size: 1rem; margin-bottom: 6px;
+    }
+
+    /* ── FOUCAULT – exam highlight ── */
+    .thinker.exam-thinker {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border-left: 5px solid var(--accent);
+    }
+    .thinker.exam-thinker .thinker-name { color: var(--accent); }
+    .thinker.exam-thinker::before {
+      content: "📋 SALE EN EL CUESTIONARIO";
+      display: block; font-size: 0.72rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 8px; letter-spacing: 1px;
+    }
+
+    /* ── KEYWORD ── */
+    .kw { background: #e3f2fd; border-radius: 3px; padding: 1px 6px; font-weight: 600; color: #1565c0; }
+
+    /* ── TWO COLUMNS ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media(max-width: 600px){ .two-col { grid-template-columns: 1fr; } }
+
+    /* ── PILL LIST ── */
+    .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .pill {
+      background: var(--light-blue); color: var(--primary);
+      border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; font-weight: 600;
+    }
+
+    /* ── ACCORDION ── */
+    details { background: var(--card); border-radius: 8px; margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    summary {
+      cursor: pointer; padding: 14px 18px; font-weight: 700;
+      color: var(--secondary); font-size: 1rem; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    summary::after { content: "▼"; font-size: 0.8rem; }
+    details[open] summary::after { content: "▲"; }
+    details .det-body { padding: 4px 18px 18px; }
+
+    /* ── CUESTIONARIO SECTION ── */
+    .quiz-section { background: #fff8e1; border-radius: 10px; padding: 24px; margin-top: 10px; }
+    .quiz-q { margin-bottom: 20px; }
+    .quiz-q .q-num { font-weight: 800; color: var(--accent); margin-bottom: 6px; }
+    .quiz-q .options { padding-left: 16px; }
+    .quiz-q .options .correct { color: var(--green); font-weight: 700; }
+
+    /* ── BACK TO TOP ── */
+    .back-top {
+      text-align: center; margin-top: 40px;
+    }
+    .back-top a {
+      background: var(--primary); color: #fff; padding: 10px 28px;
+      border-radius: 25px; text-decoration: none; font-weight: 700;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 20px;
+      font-size: 0.82rem; color: #888; background: #e8eaf6;
+    }
+
+    /* ── NO DESARROLLADO ── */
+    .nd-badge {
+      display: inline-block; background: #6a1b9a; color: #fff;
+      font-size: 0.72rem; font-weight: 700; padding: 3px 12px;
+      border-radius: 12px; margin-left: 10px; vertical-align: middle;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .card.nd {
+      border-left: 5px solid #6a1b9a;
+      background: #f3e5f5;
+    }
+    .card.nd .nd-label {
+      display: inline-block;
+      background: #6a1b9a; color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 14px; letter-spacing: 1px;
+    }
+    .thinker.nd-thinker {
+      background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 100%);
+      border-left: 5px solid #6a1b9a;
+    }
+    .thinker.nd-thinker .thinker-name { color: #6a1b9a; }
+    .thinker.nd-thinker::before {
+      content: "📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT";
+      display: block; font-size: 0.72rem; font-weight: 700; color: #6a1b9a;
+      margin-bottom: 8px; letter-spacing: 0.5px;
+    }
+    .card.nd h3::before {
+      content: "📌 MENCIONADO PERO NO DESARROLLADO · ";
+      font-size: 0.72rem; font-weight: 800; color: #6a1b9a; letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="page-wrap"><header class="hero">
+  <p class="uni">Universidad Nacional de Asunción · Escuela de Ciencias Sociales y Ciencia Política</p>
+  <h1>Introducción a la Sociología</h1>
+  <p class="sub">Prof. Ilda Mayeregger · Año 2026 · Primer Semestre</p>
+  <div class="tags">
+    <span>📚 Unidad III – La Investigación Sociológica</span>
+    <span>🏛️ Unidad IV – Estructura Social</span>
+    <span>📋 Cuestionario 2ª Parcial</span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#aviso">⚠️ Temas del Cuestionario</a></li>
+    <li><a href="#u3">📌 Unidad III</a></li>
+    <li><a href="#enfoques">Enfoques</a></li>
+    <li><a href="#cualitativa">Investigación Cualitativa</a></li>
+    <li><a href="#cuantitativa">Cuantitativa vs Cualitativa</a></li>
+    <li><a href="#u4">📌 Unidad IV</a></li>
+    <li><a href="#estructura">Estructura Social</a></li>
+    <li><a href="#sistema-mundo">Sistema-Mundo</a></li>
+    <li><a href="#sociedad">Tipos de Sociedad</a></li>
+    <li><a href="#moderno">Mundo Moderno</a></li>
+    <li><a href="#sociologos">Sociólogos Contemporáneos</a></li>
+    <li><a href="#cultura">Cultura</a></li>
+    <li><a href="#socializacion">Socialización</a></li>
+    <li><a href="#movilidad">Movilidad Social</a></li>
+    <li><a href="#control">Control Social</a></li>
+    <li><a href="#estratificacion">🟣 Estratificación Social</a></li>
+    <li><a href="#cuestionario">📋 Cuestionario</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- AVISO TEMAS DEL CUESTIONARIO -->
+<div class="exam-notice" id="aviso">
+  <div class="icon">📋</div>
+  <div>
+    <strong>TEMAS QUE SALEN EN EL CUESTIONARIO DE LA 2ª PARCIAL</strong>
+    <ul style="margin-top:8px; padding-left:18px;">
+      <li><strong>Evolución de las sociedades</strong> – cómo se produce el cambio social (proceso en el tiempo)</li>
+      <li><strong>Tipos de sociedad</strong> – coexistencia de lo nuevo y lo viejo en cada tipo</li>
+      <li><strong>Sociedad moderna</strong> – su reconfiguración según modelos culturales</li>
+      <li><strong>Michel Foucault y el poder</strong> – el poder en las instituciones de encierro (cárceles, hospitales, escuelas)</li>
+      <li><strong>Evaluación objetiva: la sociedad contemporánea</strong> – globalización, modernidad líquida, desigualdad</li>
+      <li><strong>Cuadro comparativo: Investigación Cualitativa vs. Cuantitativa</strong> – diferencias de enfoque, metodología y perspectiva</li>
+    </ul>
+    <p style="margin-top:10px; font-size:0.9rem;">En cada sección, los temas del cuestionario están marcados con 🟥 y la leyenda <strong style="color:#e53935;">📋 EN EL CUESTIONARIO</strong>.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--          UNIDAD III                        -->
+<!-- ══════════════════════════════════════════ -->
+<section id="u3">
+  <div class="section-header">
+    <div class="num">III</div>
+    <h2>UNIDAD III – La Investigación Sociológica</h2>
+  </div>
+
+  <div class="card">
+    <p>La investigación sociológica es el proceso sistemático mediante el cual los sociólogos recopilan, analizan e interpretan datos sobre la realidad social. Toda investigación implica decisiones de tres tipos: <span class="kw">epistemológicas</span> (qué tipo de verdad se busca), <span class="kw">metodológicas</span> (con qué herramientas) y <span class="kw">éticas y políticas</span> (para qué y con qué consecuencias).</p>
+  </div>
+
+  <!-- ASPECTOS FUNDAMENTALES -->
+  <div class="card" id="aspectos">
+    <h3>Aspectos Fundamentales en la Investigación Sociológica</h3>
+    <div class="two-col">
+      <div>
+        <strong style="color:#1a237e;">🔵 EPISTEMOLÓGICO</strong><br>
+        Refiere al <em>tipo de verdad</em> que se intenta producir. Puede basarse en:
+        <ul>
+          <li>Creencia o fe</li>
+          <li>Juicio de expertos</li>
+          <li>Acuerdos o entendimientos comunes</li>
+        </ul>
+        <p style="margin-top:8px; font-size:0.9rem;">Las verdades son distintas en distintas sociedades.</p>
+      </div>
+      <div>
+        <strong style="color:#00695c;">🟢 TÉCNICO / METODOLÓGICO</strong><br>
+        Refiere a los <em>métodos y herramientas</em> que demuestren la validez del estudio:
+        <ul>
+          <li>Emplear herramientas adecuadas y correctas para cada estudio</li>
+          <li>Garantizar la validez de los resultados</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <strong style="color:#e53935;">🔴 ÉTICO Y POLÍTICO</strong><br>
+      Refiere al <em>objetivo</em> que impulsa la investigación y sus consecuencias:
+      <ul>
+        <li>Para la sociedad en general</li>
+        <li>Para las personas que participan en la investigación</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ENFOQUES -->
+  <div id="enfoques">
+    <div class="section-header" style="border-bottom-color: #00695c;">
+      <div class="num" style="background:#00695c;">🔬</div>
+      <h2 style="color:#00695c;">Enfoques de Investigación</h2>
+    </div>
+
+    <div class="card">
+      <p>Toda investigación social se enmarca en uno de tres grandes enfoques, que determinan cómo se recopilan y analizan los datos:</p>
+      <div class="three-col" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:14px;">
+        <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+          <strong style="color:#1a237e;">CUANTITATIVO</strong>
+          <hr style="margin:8px 0;">
+          Niveles de investigación:
+          <ul style="font-size:0.88rem;">
+            <li>Exploratorio</li>
+            <li>Analítico</li>
+            <li>Correlacional</li>
+            <li>Comparativo</li>
+            <li>Diferencia de grupos</li>
+            <li>Experimental / Cuasiexperimental</li>
+            <li>Metaanálisis</li>
+          </ul>
+        </div>
+        <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+          <strong style="color:#2e7d32;">CUALITATIVO</strong>
+          <hr style="margin:8px 0;">
+          Clasificación:
+          <ul style="font-size:0.88rem;">
+            <li>Participativa</li>
+            <li>Acción participativa</li>
+            <li>Etnográfica</li>
+            <li>Estudios de casos</li>
+            <li>Documentales</li>
+            <li>Históricos</li>
+            <li>Criminológicos</li>
+            <li>Psicológicos</li>
+            <li>Antropológicos</li>
+          </ul>
+        </div>
+        <div style="background:#fff3e0; border-radius:8px; padding:14px;">
+          <strong style="color:#e65100;">MIXTO</strong>
+          <hr style="margin:8px 0;">
+          <p style="font-size:0.88rem;">Combinación de los enfoques cualitativo y cuantitativo.</p>
+          <p style="font-size:0.88rem; margin-top:8px;"><strong>Fórmula de triangulación:</strong> uso simultáneo de ambas perspectivas para obtener mayor validez y riqueza de datos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA COMPARATIVA ABORDAJES -->
+  <div class="card exam" id="cuantitativa">
+    <h3>Abordajes Metodológicos: Perspectiva Humanista vs. Positivista</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>🟣 Perspectiva Humanista / Cualitativa</th>
+            <th>🔵 Perspectiva Positivista / Cuantitativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Enfoque</strong></td>
+            <td>Particular e ideográfico. Centrado en la experiencia humana. Dimensión interna: lo subjetivo, los sentimientos.</td>
+            <td>General y nomotético. Centrado en las estructuras sociales. Dimensión externa: lo objetivo, los hechos y las cosas.</td>
+          </tr>
+          <tr>
+            <td><strong>Epistemología</strong></td>
+            <td>Fenomenológica. Relativista. Perspectivista.</td>
+            <td>Realista. Empírica. Esencialista. Positivismo lógico.</td>
+          </tr>
+          <tr>
+            <td><strong>Objetivo</strong></td>
+            <td>Interpretar. Entender. Describir. Observar.</td>
+            <td>Explicar. Medir.</td>
+          </tr>
+          <tr>
+            <td><strong>Estilo</strong></td>
+            <td>Imaginativo. Válido, real, rico en detalles.</td>
+            <td>Sistemático. Frío. Validez, fiabilidad, austeridad en detalles.</td>
+          </tr>
+          <tr>
+            <td><strong>Teoría</strong></td>
+            <td>Inductiva y enraizada en la realidad. Narra hechos y experiencias.</td>
+            <td>Deductiva y abstracta. Operacionaliza variables.</td>
+          </tr>
+          <tr>
+            <td><strong>Valores</strong></td>
+            <td>Ética y políticamente comprometida. Igualitarismo.</td>
+            <td>Ética y políticamente neutral. Expertos y élites.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px; font-size:0.9rem; color:#555;">Los <strong>abordajes mixtos</strong> (cuali-cuantitativa) combinan ambas perspectivas mediante la <em>fórmula de triangulación</em>, integrando la riqueza interpretativa de lo cualitativo con el rigor medible de lo cuantitativo.</p>
+  </div>
+
+  <!-- INVESTIGACION CUALITATIVA -->
+  <div id="cualitativa">
+    <div class="section-header" style="border-bottom-color:#2e7d32; margin-top:30px;">
+      <div class="num" style="background:#2e7d32;">📖</div>
+      <h2 style="color:#2e7d32;">Investigación Cualitativa</h2>
+    </div>
+
+    <div class="card">
+      <h3>Características de la Investigación Cualitativa</h3>
+      <ul>
+        <li>Trata de conocer los <strong>hechos, procesos, estructuras y personas en su totalidad</strong>.</li>
+        <li>Tiene un <strong>enfoque humanista y comprensivo</strong> del sujeto.</li>
+        <li>Parte del <strong>mundo conocido</strong>, no de las teorías abstractas.</li>
+        <li>Usa procedimientos que intentan <strong>describir</strong>, no generalizar.</li>
+        <li>Tiene carácter <strong>fenomenológico</strong>, de interaccionismo simbólico y hermenéutica social.</li>
+        <li>Involucra tanto al <strong>investigador como al investigado</strong> en la producción del conocimiento.</li>
+        <li>Su intención es colocar el <strong>estado de la cuestión</strong> de un problema: se pretende <em>comprender</em> la situación problemática.</li>
+      </ul>
+    </div>
+
+    <!-- TIPOS DE ESTUDIOS -->
+    <div class="card">
+      <h3>Tipos de Estudios</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+        <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+          <strong style="color:#1a237e;">a) Exploratorios</strong>
+          <ul style="font-size:0.88rem; margin-top:6px;">
+            <li><strong>Propósito:</strong> Indagar sobre temas poco estudiados, generar hipótesis iniciales.</li>
+            <li><strong>Valor:</strong> Abre camino a investigaciones más profundas.</li>
+          </ul>
+        </div>
+        <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+          <strong style="color:#2e7d32;">b) Descriptivos</strong>
+          <ul style="font-size:0.88rem; margin-top:6px;">
+            <li><strong>Propósito:</strong> Detallar cómo es un fenómeno o situación social.</li>
+            <li><strong>Valor:</strong> Ofrece un cuadro preciso de la realidad estudiada.</li>
+          </ul>
+        </div>
+        <div style="background:#fff3e0; border-radius:8px; padding:14px;">
+          <strong style="color:#e65100;">c) Explicativos</strong>
+          <ul style="font-size:0.88rem; margin-top:6px;">
+            <li><strong>Propósito:</strong> Busca las causas y factores de un fenómeno.</li>
+            <li><strong>Valor:</strong> Permite entender el <em>por qué</em> de los hechos sociales.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERRAMIENTAS CUALITATIVAS -->
+    <div class="card">
+      <h3>Herramientas / Técnicas de la Investigación Cualitativa</h3>
+      <p style="margin-bottom:14px;">Varias de estas herramientas pueden aplicarse también como metodología, según amerite el estudio:</p>
+      <div class="two-col">
+        <div>
+          <strong>📄 Investigación Documental</strong>
+          <ul style="font-size:0.9rem; margin-top:6px;">
+            <li>Diarios</li>
+            <li>Cartas</li>
+            <li>Videos y películas</li>
+            <li>Fotografías</li>
+            <li>Documentos escritos (actas, grabaciones, etc.)</li>
+          </ul>
+        </div>
+        <div>
+          <strong>👥 Técnicas Directas</strong>
+          <ul style="font-size:0.9rem; margin-top:6px;">
+            <li>Focus Group / Grupo Focal</li>
+            <li>Observación participante</li>
+            <li>Estudios de casos</li>
+            <li>Historias de vida</li>
+            <li>Investigación Acción Participativa</li>
+            <li>Entrevista semiestructurada</li>
+            <li>Entrevista en profundidad</li>
+          </ul>
+        </div>
+      </div>
+      <div style="background:#fce4ec; border-radius:6px; padding:12px; margin-top:14px;">
+        <strong style="color:#880e4f;">🔍 La investigación feminista</strong> plantea cuestiones que afectan críticamente a la investigación social: cuestiona la supuesta neutralidad del investigador, visibiliza el sesgo de género en los métodos y las categorías usadas para analizar la realidad.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!--          UNIDAD IV                         -->
+<!-- ══════════════════════════════════════════ -->
+<section id="u4">
+  <div class="section-header">
+    <div class="num">IV</div>
+    <h2>UNIDAD IV – Estructura Social: Sociedad, Evolución, Componentes, Perspectiva Global</h2>
+  </div>
+  <div class="card" style="background:#e8eaf6;">
+    <strong>Índice de la Unidad IV:</strong>
+    <ol style="margin-top:8px; padding-left:20px; font-size:0.95rem; line-height:2;">
+      <li>Estructura social: concepto y componentes clave</li>
+      <li>Concepto de Sociedad, tipos y evolución</li>
+      <li>Cultura: características, clasificación y análisis</li>
+      <li>Sistema-mundo y su transformación</li>
+      <li>Desigualdad: perspectiva global – Nuevo Orden Mundial</li>
+      <li>Socialización: teorías, rol, estatus, socialización del género</li>
+      <li>Movilidad social, migraciones, ciudades</li>
+      <li>Estratificación social: bases, estratos, clases sociales, género</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ESTRUCTURA SOCIAL -->
+<section id="estructura">
+  <div class="section-header">
+    <div class="num">4.1</div>
+    <h2>Estructura Social: Concepto y Componentes Clave</h2>
+  </div>
+  <div class="card">
+    <div class="def-box">
+      <strong>Estructura social:</strong> La organización estable en la que el orden de las relaciones sociales en una comunidad está formada por individuos, grupos, normas y valores.
+    </div>
+    <p>En ciencias políticas, la estructura social refiere a los <strong>patrones organizados de relaciones interpersonales e instituciones sociales</strong> que dan forma a una sociedad. Resalta la organización jerárquica de los individuos en diversas clases según factores como la riqueza, el poder o los roles sociales.</p>
+  </div>
+  <div class="card">
+    <h3>Componentes Clave de la Estructura Social</h3>
+    <div class="pill-list">
+      <span class="pill">🎭 Roles</span>
+      <span class="pill">🏅 Estatus</span>
+      <span class="pill">👥 Grupos</span>
+      <span class="pill">🏛️ Instituciones</span>
+      <span class="pill">🎨 Cultura</span>
+    </div>
+    <p style="margin-top:14px;">Estos componentes <strong>interactúan</strong> para dar forma y estabilidad a la vida cotidiana. Permiten la convivencia mediante instituciones que regulan el comportamiento y establecen la <em>estratificación social</em>.</p>
+  </div>
+</section>
+
+<!-- TIPOS DE SOCIEDAD -->
+<section id="sociedad">
+  <div class="section-header">
+    <div class="num">4.2</div>
+    <h2>Concepto de Sociedad y Tipos / Evolución <span class="exam-badge">📋 Cuestionario</span></h2>
+  </div>
+
+  <div class="card">
+    <div class="def-box">
+      <strong>Sociedad:</strong> Conjunto de individuos que comparten un territorio, una cultura común y un sistema de instituciones que regula sus relaciones. Su evolución se produce <em>en forma de proceso en el tiempo</em>, de manera lenta y cambiante, nunca de forma inmediata ni aislada.
+    </div>
+  </div>
+
+  <div class="card exam">
+    <h3>Tipos de Sociedades Humanas Premodernas (Giddens, 2010)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Período</th>
+            <th>Características</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cazadores y recolectores</strong></td>
+            <td>Desde ~50.000 a.n.c. hasta la actualidad (casi desaparecidas)</td>
+            <td>Pequeños grupos. Sustento: caza, pesca y recolección. Pocas desigualdades; diferencias solo por edad y sexo.</td>
+          </tr>
+          <tr>
+            <td><strong>Agrarias</strong></td>
+            <td>Desde ~12.000 a.n.c. hasta hoy (perdiendo identidad diferenciada)</td>
+            <td>Comunidades rurales sin pueblos ni ciudades. Vida agrícola (con caza y recolección). Más desigualdades. Gobernadas por jefes tribales.</td>
+          </tr>
+          <tr>
+            <td><strong>Pastores</strong></td>
+            <td>Desde ~12.000 a.n.c. hasta hoy (parte de estados más grandes)</td>
+            <td>Cuidan animales domésticos. Grupos de cientos a miles. Ciertas desigualdades. Gobernados por jefes tribales o reyes guerreros.</td>
+          </tr>
+          <tr>
+            <td><strong>Civilizaciones no industriales</strong></td>
+            <td>Desde ~6.000 a.n.c. hasta el siglo XIX (desaparecidas)</td>
+            <td>Basadas en agricultura. Primeras ciudades para comercio y manufactura. Millones de habitantes. Gobierno con rey o emperador. Importantes desigualdades de clase.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:10px; font-size:0.88rem; color:#555;">💡 <strong>Clave del cuestionario:</strong> Cada tipo de sociedad es una sociedad "en la que cohabitan lo nuevo y lo viejo" — las formas antiguas no desaparecen de golpe, sino que conviven con las nuevas mientras la transición se produce.</p>
+  </div>
+
+  <!-- MUNDO MODERNO -->
+  <div class="card exam" id="moderno">
+    <h3>Tipos de Sociedades del Mundo Moderno</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Período</th>
+            <th>Características</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primer Mundo</strong></td>
+            <td>Desde el siglo XVIII hasta hoy</td>
+            <td>Producción industrial y libre mercado. Mayoría vive en centros urbanos. Importantes desigualdades de clase. Países occidentales.</td>
+          </tr>
+          <tr>
+            <td><strong>Segundo Mundo</strong></td>
+            <td>Desde 1917 (Revolución Rusa) hasta principios de los años 90</td>
+            <td>Industria con planificación centralizada. URSS y Europa del Este. Desde 1989, se transformaron en economías de mercado.</td>
+          </tr>
+          <tr>
+            <td><strong>Tercer Mundo / En vías de desarrollo</strong></td>
+            <td>Desde el siglo XVIII (colonizados) hasta el presente</td>
+            <td>Mayoría trabaja en agricultura con métodos tradicionales. Parte de la producción agrícola va a mercados mundiales. China, India, países africanos y sudamericanos.</td>
+          </tr>
+          <tr>
+            <td><strong>Países de reciente industrialización</strong></td>
+            <td>Desde los años 70 hasta la fecha</td>
+            <td>Evolución de países en desarrollo hacia la producción industrial. Profundas desigualdades. Hong Kong, Corea del Sur, Singapur, Taiwán, Brasil, México.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#fff8e1; border-radius:6px; padding:12px; margin-top:12px;">
+      💡 <strong>Clave del cuestionario:</strong> La <strong>sociedad moderna</strong> se caracteriza por una <em>reconfiguración según sus modelos culturales</em> — no sólo económica o política, sino una transformación profunda de los valores, identidades y formas de vida que organiza la cultura.
+    </div>
+  </div>
+
+  <!-- GLOBALIZACIÓN -->
+  <div class="card">
+    <h3>🌐 Globalización – Conformación del Orden Mundial (Immanuel Wallerstein)</h3>
+    <p>La globalización refiere a la manera en que <strong>individuos, grupos y naciones se hacen más interdependientes</strong> (Giddens, 2010). Wallerstein la analiza desde el <strong>capitalismo financiero</strong> y la teoría del sistema-mundo.</p>
+    <div class="two-col" style="margin-top:14px;">
+      <div>
+        <strong>Factores que impulsan la globalización:</strong>
+        <ul style="font-size:0.9rem; margin-top:6px;">
+          <li>Avances en tecnología de la información y el conocimiento</li>
+          <li>Flujo de información global</li>
+          <li>Corporaciones multinacionales</li>
+          <li>La economía electrónica</li>
+          <li>Cambios políticos internacionales</li>
+          <li>Redes y cadenas globales</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Impactos y debates:</strong>
+        <ul style="font-size:0.9rem; margin-top:6px;">
+          <li>Reconfiguración del nuevo orden mundial</li>
+          <li>Tensión entre integración económica y desigualdad</li>
+          <li>Debate sobre soberanía de los estados-nación</li>
+          <li>Desigualdad: perspectiva global</li>
+          <li>Sistema-mundo y su transformación</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SISTEMA MUNDO - ND -->
+  <div class="card nd" id="sistema-mundo">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Sistema-Mundo y su Transformación (Immanuel Wallerstein)</h3>
+    <p>Wallerstein desarrolló la <strong>Teoría del Sistema-Mundo</strong> para explicar cómo el capitalismo funciona como un sistema global único, no como una suma de economías nacionales independientes. El mundo capitalista moderno se organiza en tres zonas:</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:14px 0;">
+      <div style="background:#ffebee; border-radius:8px; padding:14px;">
+        <strong style="color:#c62828;">🔴 Centro (Core)</strong><br>
+        <span style="font-size:0.88rem;">Países industrializados y poderosos (EE.UU., Europa Occidental, Japón). Controlan las finanzas, la tecnología y la producción de alto valor agregado. Extraen plusvalía de la periferia.</span>
+      </div>
+      <div style="background:#fff3e0; border-radius:8px; padding:14px;">
+        <strong style="color:#e65100;">🟠 Semiperiferia</strong><br>
+        <span style="font-size:0.88rem;">Países intermedios (Brasil, México, India, China). Dominados por el centro pero dominan a la periferia. Cumplen una función estabilizadora del sistema.</span>
+      </div>
+      <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+        <strong style="color:#2e7d32;">🟢 Periferia</strong><br>
+        <span style="font-size:0.88rem;">Países pobres y dependientes. Proveen materias primas y mano de obra barata. Sus economías están condicionadas por las demandas del centro.</span>
+      </div>
+    </div>
+    <p><strong>Transformación del sistema-mundo:</strong> Wallerstein argumenta que el capitalismo global está en una fase de <em>crisis estructural</em> desde los años 70. Los movimientos antisistémicos (movimientos sociales, anticoloniales, feministas) y la incapacidad del centro de mantener la hegemonía generan una transición hacia un sistema aún incierto. La globalización neoliberal es la respuesta del centro a esta crisis: busca abrir mercados y reducir barreras para mantener la acumulación.</p>
+  </div>
+
+  <!-- DESIGUALDAD GLOBAL - ND -->
+  <div class="card nd" id="desigualdad">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Desigualdad: Perspectiva Global y Nuevo Orden Mundial</h3>
+    <p>La desigualdad global refiere a las <strong>diferencias sistemáticas de riqueza, poder y bienestar entre países y dentro de ellos</strong>. Se analiza desde tres perspectivas:</p>
+    <div class="two-col" style="margin:12px 0;">
+      <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+        <strong style="color:#1a237e;">Desigualdad entre naciones</strong>
+        <ul style="font-size:0.88rem; margin-top:6px;">
+          <li>La brecha entre países ricos y pobres se amplió con la globalización neoliberal</li>
+          <li>Medida con el Índice de Desarrollo Humano (IDH) del PNUD</li>
+          <li>El 10% más rico concentra más del 50% de la riqueza mundial (Banco Mundial)</li>
+        </ul>
+      </div>
+      <div style="background:#fce4ec; border-radius:8px; padding:14px;">
+        <strong style="color:#880e4f;">Desigualdad dentro de las naciones</strong>
+        <ul style="font-size:0.88rem; margin-top:6px;">
+          <li>Medida con el coeficiente de Gini</li>
+          <li>América Latina es la región más desigual del mundo (CEPAL)</li>
+          <li>Desigualdad de género, étnica y territorial se superponen</li>
+        </ul>
+      </div>
+    </div>
+    <p><strong>Nuevo Orden Mundial:</strong> tras el fin de la Guerra Fría (1989), el mundo pasó de un orden bipolar (EE.UU. vs URSS) a un orden <em>multipolar</em> en transición. La hegemonía de EE.UU. es disputada por China, la Unión Europea y potencias emergentes. Las instituciones internacionales (FMI, Banco Mundial, OMC) han sido cuestionadas por perpetuar la dependencia de los países periféricos.</p>
+  </div>
+
+</section>
+
+<!-- SOCIÓLOGOS CONTEMPORÁNEOS -->
+<section id="sociologos">
+  <div class="section-header">
+    <div class="num">📜</div>
+    <h2>Visión de los Sociólogos Contemporáneos</h2>
+  </div>
+  <p style="margin-bottom:18px;">El análisis de la sociedad moderna fue enriquecido por Marx y Weber, y luego profundizado por pensadores del siglo XX. Cada uno ofrece una clave de lectura distinta sobre la modernidad.</p>
+
+
+  <!-- MARX Y WEBER -->
+  <div class="thinker nd-thinker">
+    <div class="thinker-name">Karl Marx y Max Weber – Configuración del Mundo Moderno</div>
+    <p><strong>Karl Marx (1818–1883)</strong> interpretó la modernidad como el resultado del <strong>capitalismo industrial</strong>: un sistema en el que la burguesía (dueña de los medios de producción) explota al proletariado (que solo posee su fuerza de trabajo). Para Marx, la <span class="kw">lucha de clases</span> es el motor de la historia. El capitalismo genera inevitablemente <em>alienación</em> (el trabajador pierde el vínculo con el producto de su trabajo y consigo mismo), <em>plusvalía</em> (el excedente que el capitalista se apropia), y crisis cíclicas que tarde o temprano llevarán a su superación mediante la revolución.</p>
+    <ul>
+      <li><strong>Superestructura e infraestructura:</strong> la base económica (infraestructura) determina las instituciones políticas, jurídicas y culturales (superestructura).</li>
+      <li><strong>Ideología:</strong> las ideas dominantes de cada época son las ideas de la clase dominante — el sistema cultural legitima la desigualdad.</li>
+      <li><strong>Materialismo histórico:</strong> la historia se explica por los cambios en los modos de producción (esclavismo → feudalismo → capitalismo → socialismo).</li>
+    </ul>
+    <p style="margin-top:10px;"><strong>Max Weber (1864–1920)</strong> dialogó críticamente con Marx y añadió dimensiones que el marxismo descuidaba. Para Weber, la modernidad no se explica solo por la economía: también intervienen la <span class="kw">cultura</span>, las <span class="kw">ideas</span> y la <span class="kw">religión</span>.</p>
+    <ul>
+      <li><strong>La ética protestante y el capitalismo:</strong> el protestantismo calvinista — con su énfasis en el trabajo, el ahorro y el éxito como señal de predestinación divina — generó el "espíritu del capitalismo".</li>
+      <li><strong>Tipos de dominación:</strong> Weber distingue tres formas de autoridad legítima: <em>tradicional</em> (costumbre), <em>carismática</em> (cualidades personales del líder) y <em>racional-legal</em> (normas impersonales, burocracia). La modernidad se caracteriza por el triunfo de la dominación racional-legal.</li>
+      <li><strong>Racionalización:</strong> proceso histórico por el cual las sociedades modernas sustituyen la magia y la tradición por el cálculo, la eficiencia y las reglas formales — lo que Weber llamó el "desencantamiento del mundo".</li>
+      <li><strong>Burocracia:</strong> el tipo de organización más eficiente y racional, pero también una "jaula de hierro" que atrapa al individuo moderno en procedimientos impersonales.</li>
+      <li><strong>Estratificación multidimensional:</strong> a diferencia de Marx (que solo veía la clase económica), Weber propuso tres dimensiones: clase (riqueza), <em>estatus</em> (prestigio social) y <em>partido</em> (poder político).</li>
+    </ul>
+  </div>
+
+  <!-- FOUCAULT - EXAM -->
+  <div class="thinker exam-thinker" id="foucault">
+    <div class="thinker-name">Michel Foucault (1925–1984) – La Posmodernidad y el Poder</div>
+    <p>Foucault analizó <strong>cómo las interpretaciones separan nuestro mundo del pensamiento de épocas anteriores</strong>. Estudió instituciones modernas —cárceles, hospitales, escuelas— como instrumentos de <strong>control y seguimiento de la población</strong>.</p>
+    <ul style="margin-top:8px;">
+      <li>Demostró que las ideas de <strong>libertad individual</strong> tienen "otra vertiente": la disciplina y la vigilancia.</li>
+      <li>El <strong>PODER opera mediante el discurso</strong> — formas de habla o pensamiento sobre determinados asuntos, unidas por presupuestos comunes — para conformar actitudes de la población hacia fenómenos como la delincuencia, la locura o la sexualidad.</li>
+      <li>Los discursos son <strong>herramientas de control social</strong>: restringen formas alternativas de pensamiento; el conocimiento se convierte en una fuerza de poder.</li>
+      <li>Vincula <strong>poder y conocimiento</strong> con tecnologías de vigilancia, disciplina y aplicación de la ley.</li>
+      <li>Su teoría social se denomina <em>"Arqueología del saber"</em>: no busca explicar lo desconocido, sino encontrar sentido a lo familiar ahondando en el pasado.</li>
+    </ul>
+    <div style="background:#fff; border-radius:6px; padding:10px; margin-top:12px; border-left:4px solid #e53935;">
+      📋 <strong>Respuesta clave para el cuestionario:</strong> Para Foucault, el poder se centra en <strong>las instituciones de encierro: cárceles y otras modalidades</strong>, así como en hospitales y escuelas, que disciplinan y vigilan los cuerpos y mentes.
+    </div>
+  </div>
+
+  <div class="thinker">
+    <div class="thinker-name">Jürgen Habermas – La Democracia y la Esfera Pública</div>
+    <ul>
+      <li>Reconoce que muchas ideas de Marx quedaron obsoletas; busca en Weber alternativas sin abandonar los principios básicos del marxismo.</li>
+      <li>El capitalismo es <em>absorbente</em> por su capacidad de producir riquezas, pero genera <em>depresiones y crisis económicas</em>.</li>
+      <li>Propone recuperar la <strong>"Esfera pública"</strong> (el marco de la democracia) para retomar el control sobre los procesos económicos.</li>
+      <li>Los procedimientos democráticos tradicionales (parlamento y partidos) <em>no nos proporcionan bases suficientes</em> para la toma de decisiones colectivas.</li>
+      <li>Impulsa una participación más coherente de órganos comunitarios y grupos locales.</li>
+      <li>Los medios de comunicación (radios y TV públicas) pueden tener papel fundamental en la democracia.</li>
+      <li>Su gran obra: <em>Teoría de la acción comunicativa</em>.</li>
+    </ul>
+
+    <div style="background:#e8f5e9; border-radius:6px; padding:12px; margin-top:12px; border-left:4px solid #6a1b9a;">
+      <strong style="color:#6a1b9a;">📌 MENCIONADO PERO NO DESARROLLADO — Teoría de la Acción Comunicativa</strong>
+      <p style="margin-top:6px; font-size:0.92rem;">La <em>Teoría de la Acción Comunicativa</em> (1981) es la obra central de Habermas. Distingue dos tipos de racionalidad:</p>
+      <ul style="font-size:0.9rem;">
+        <li><strong>Racionalidad instrumental (sistema):</strong> orientada a la eficiencia, el control y los resultados. Propia del mercado y del Estado burocrático. Rige mediante el dinero y el poder.</li>
+        <li><strong>Racionalidad comunicativa (mundo de vida):</strong> orientada al entendimiento mutuo entre personas mediante el diálogo racional y libre. Es la base de la democracia y la solidaridad.</li>
+      </ul>
+      <p style="font-size:0.9rem; margin-top:6px;">El problema de la modernidad es que el <strong>sistema coloniza el mundo de vida</strong>: la lógica del mercado y la burocracia invaden esferas que deberían regirse por el diálogo libre (familia, comunidad, educación). La solución de Habermas es fortalecer la <em>esfera pública deliberativa</em>: espacios donde los ciudadanos debaten racionalmente y producen consensos legítimos.</p>
+    </div>
+    <div style="background:#fce4ec; border-radius:6px; padding:12px; margin-top:10px; border-left:4px solid #880e4f;">
+      <strong style="color:#880e4f;">📌 MENCIONADO PERO NO DESARROLLADO — Crítica del Feminismo a Habermas</strong>
+      <p style="margin-top:6px; font-size:0.9rem;">Las teóricas feministas (principalmente Nancy Fraser) critican a Habermas señalando que:</p>
+      <ul style="font-size:0.9rem;">
+        <li>Su concepto de <em>esfera pública</em> históricamente excluyó a las mujeres, los pobres y las minorías.</li>
+        <li>La distinción entre sistema y mundo de vida ignora que el hogar (mundo de vida) también está atravesado por relaciones de dominación de género.</li>
+        <li>La pretensión de neutralidad y universalidad del diálogo racional encubre posiciones de poder: no todos hablan desde el mismo lugar social.</li>
+        <li>Fraser propone las "contrapúblicas subalternas": espacios donde grupos marginados desarrollan sus propios discursos antes de interactuar con la esfera pública dominante.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="thinker">
+    <div class="thinker-name">Ulrich Beck – La Sociedad Global del Riesgo</div>
+    <ul>
+      <li><strong>Segunda modernidad:</strong> las instituciones modernas se hacen cada vez más globales, mientras la vida cotidiana se libera del control de tradiciones y costumbres.</li>
+      <li>La vieja sociedad industrial desaparece y es sustituida por la <strong>"sociedad del riesgo"</strong>.</li>
+      <li>Lo que ha cambiado no es la existencia del riesgo, sino su <em>carácter</em>: los riesgos actuales proceden de <strong>incertidumbres creadas por el propio desarrollo social y por la ciencia y la tecnología</strong> (ej. alteración genética).</li>
+      <li>Los riesgos ya no están restringidos espacial, temporal ni socialmente: tienen <strong>consecuencias globales</strong> (ej. Chernóbil, 11-S, calentamiento global).</li>
+      <li>El Estado-nación ya no puede manejar solo el riesgo; se requiere <strong>cooperación internacional</strong>.</li>
+      <li>Surgen nuevas formas de activismo: la <em>"subpolítica"</em> (consumidores, movimientos de derechos, etc.) puede influir en mecanismos políticos tradicionales.</li>
+    </ul>
+  </div>
+
+  <div class="thinker">
+    <div class="thinker-name">Manuel Castells – La Economía en Red</div>
+    <ul>
+      <li>Se concentró en los impactos de los <strong>medios de comunicación y las tecnologías de la información</strong>.</li>
+      <li>La sociedad de la información se define por el ascenso de las redes y la aparición de una <strong>economía en red</strong>.</li>
+      <li>Las bases de la producción ya no son, como creía Marx, la clase obrera o los materiales manufacturados: son las <strong>telecomunicaciones y los ordenadores</strong> — teoría de la <em>"sociedad en red"</em>.</li>
+    </ul>
+  </div>
+
+  <div class="thinker">
+    <div class="thinker-name">Anthony Giddens – La Reflexividad Social</div>
+    <ul>
+      <li>La <strong>confianza</strong> debe recuperarse en las personas y en las instituciones (fiarse de sistemas abstractos: organismos que regulan alimentos, agua, banca).</li>
+      <li>La confianza se basaba antes en la comunidad; en la era global se fue diluyendo.</li>
+      <li>La era de la información genera un incremento de la <strong>reflexividad social</strong>: pensar y reflexionar sobre cómo desarrollaremos nuestras vidas.</li>
+      <li>Las naciones han perdido poder: sus decisiones económicas dependen del mercado internacional.</li>
+      <li>La democracia no puede limitarse a la esfera pública; debe incluir la <em>democracia emocional</em> y la democracia de la vida privada.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CULTURA -->
+<section id="cultura">
+  <div class="section-header">
+    <div class="num">4.3</div>
+    <h2>Cultura – Componentes, Diversidad y Análisis</h2>
+  </div>
+  <div class="card">
+    <h3>Concepto y Componentes de la Cultura</h3>
+    <div class="def-box">
+      La <strong>cultura</strong> es el sistema de normas, valores, costumbres, tradiciones, instituciones y leyes que una sociedad comparte y transmite a sus miembros.
+    </div>
+    <div class="two-col" style="margin-top:14px;">
+      <div>
+        <strong>Cultura como sistema de normas:</strong>
+        <ul>
+          <li>Costumbres y tradiciones</li>
+          <li>Instituciones</li>
+          <li>Leyes</li>
+          <li>Valores</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Estructura de la cultura:</strong>
+        <ul>
+          <li>Rasgos y complejos culturales</li>
+          <li>Subcultura y contracultura</li>
+          <li>Integración cultural</li>
+          <li>Relativismo cultural</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Análisis Teórico Sociológico de la Cultura</h3>
+    <div class="two-col">
+      <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+        <strong style="color:#1a237e;">Perspectiva Funcionalista</strong><br>
+        La cultura cumple funciones que mantienen la cohesión y estabilidad social. Las normas y valores compartidos integran a los miembros de la sociedad.
+      </div>
+      <div style="background:#fce4ec; border-radius:8px; padding:14px;">
+        <strong style="color:#880e4f;">Perspectiva del Conflicto</strong><br>
+        La cultura puede ser un instrumento de dominación: los grupos poderosos imponen sus valores y normas como si fueran universales, legitimando así las desigualdades existentes.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIALIZACIÓN -->
+<section id="socializacion">
+  <div class="section-header">
+    <div class="num">4.4</div>
+    <h2>Socialización</h2>
+  </div>
+  <div class="card">
+    <div class="def-box">
+      <strong>Socialización:</strong> Proceso mediante el cual una persona, desde el nacimiento (como ser indefenso), se convierte en un individuo con conciencia de sí mismo, capaz de manejar y reproducir las formas culturales en las que nació.
+    </div>
+    <p>La <strong>reproducción cultural</strong> es el proceso por el que las sociedades manifiestan su continuidad estructural a lo largo del tiempo. Todas las sociedades tienen características que perduran gracias a este proceso.</p>
+  </div>
+  <div class="card">
+    <h3>Elementos de la Socialización</h3>
+    <div class="two-col">
+      <div>
+        <strong>Agentes de socialización:</strong>
+        <ul>
+          <li>Familia (agente primario)</li>
+          <li>Relaciones que se van construyendo</li>
+          <li>Instituciones formales (escuela, iglesia)</li>
+          <li>Medios de comunicación</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Otras dimensiones:</strong>
+        <ul>
+          <li><strong>Ciclo vital:</strong> la socialización continúa a lo largo de toda la vida</li>
+          <li><strong>Resocialización:</strong> proceso de abandono de pautas antiguas y adopción de nuevas</li>
+          <li><strong>Socialización del género:</strong> aprendizaje de los roles asignados por la sociedad según el género</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Posiciones Sociales: Rol y Estatus</h3>
+    <div class="two-col">
+      <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+        <strong style="color:#2e7d32;">ROL</strong><br>
+        El conjunto de comportamientos y expectativas asociados a una posición social determinada. Ej.: el rol de estudiante, de madre, de juez.
+      </div>
+      <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+        <strong style="color:#1a237e;">ESTATUS</strong><br>
+        La posición social que una persona ocupa dentro de la estructura, que puede ser adscrito (de nacimiento) o adquirido (por logros propios).
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOVILIDAD SOCIAL -->
+<section id="movilidad">
+  <div class="section-header">
+    <div class="num">4.5</div>
+    <h2>Movilidad Social y Migraciones</h2>
+  </div>
+  <div class="card">
+    <div class="def-box">
+      <strong>Movilidad social:</strong> Desplazamiento de individuos o grupos dentro de la estructura socioeconómica, reflejando cambios en su estatus, ingresos o nivel educativo respecto a su origen.
+    </div>
+    <div class="two-col" style="margin-top:14px;">
+      <div>
+        <strong>Tipos de movilidad:</strong>
+        <ul>
+          <li><strong>Ascendente:</strong> mejora en la escala social</li>
+          <li><strong>Descendente:</strong> bajada en la escala social</li>
+          <li><strong>Horizontal:</strong> cambio sin ascenso ni descenso de estrato</li>
+          <li><strong>Intergeneracional:</strong> cambio entre generaciones (padres-hijos)</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Migraciones:</strong>
+        <ul>
+          <li>Desplazamientos globales de población</li>
+          <li>Inmigraciones y emigraciones</li>
+          <li>Costos y ventajas para los países receptores</li>
+          <li>Relación con el crecimiento de las ciudades y sus modelos de expansión</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDEN Y CONTROL SOCIAL -->
+<section id="control">
+  <div class="section-header">
+    <div class="num">4.6</div>
+    <h2>Orden Social y Control Social</h2>
+  </div>
+  <div class="card">
+    <h3>Desviación: Conceptos Básicos</h3>
+    <p>La <span class="kw">desviación social</span> refiere a las conductas que violan las normas establecidas por una sociedad. Su estudio implica preguntarse <em>quién define</em> lo que es desviado y <em>con qué criterios</em>.</p>
+  </div>
+  <div class="card">
+    <h3>Teorías sobre la Conducta Desviada y el Control Social</h3>
+    <details>
+      <summary>Paradigma Funcionalista</summary>
+      <div class="det-body">
+        <p>Desde Durkheim, la desviación cumple funciones sociales: delimita los límites normativos y reafirma la cohesión del grupo. La anomia (ausencia de normas claras) genera desviación cuando la sociedad no provee medios legítimos para alcanzar las metas culturales.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Teoría del Conflicto</summary>
+      <div class="det-body">
+        <p>La conducta desviada se define por quienes detentan el poder. Las normas y leyes reflejan los intereses de los grupos dominantes. El conflicto social es inherente a las sociedades desiguales.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Teoría del Etiquetaje (Labeling Theory)</summary>
+      <div class="det-body">
+        <p>Una persona no es desviada "por naturaleza": lo es porque otros la <em>etiquetan</em> como tal. El proceso de etiquetamiento social puede llevar a la persona a interiorizar esa identidad y a continuar con el comportamiento desviado.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Conflicto Social: Tipos y Teorías</summary>
+      <div class="det-body">
+        <p>El conflicto social puede ser de clase (Marx), racial, de género, generacional, etc. Las teorías del conflicto analizan cómo las tensiones entre grupos sociales generan cambios o mantienen el statu quo.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+<!-- ESTRATIFICACIÓN SOCIAL -->
+<section id="estratificacion">
+  <div class="section-header">
+    <div class="num" style="background:#6a1b9a;">4.8</div>
+    <h2 style="color:#6a1b9a;">Estratificación Social <span class="nd-badge">📌 No desarrollado en el PPT</span></h2>
+  </div>
+
+  <div class="card nd">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Concepto y Bases Dinámicas de la Estratificación</h3>
+    <div class="def-box">
+      <strong>Estratificación social:</strong> Sistema por el cual una sociedad clasifica a sus miembros en capas o estratos jerárquicos, asignando de modo desigual recursos, poder, prestigio y oportunidades.
+    </div>
+    <p>La estratificación no es un hecho natural ni inevitable: es una <strong>construcción social histórica</strong> que varía según el tipo de sociedad. Sus bases dinámicas son:</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:14px 0;">
+      <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+        <strong style="color:#1a237e;">💰 Riqueza y Propiedad</strong>
+        <p style="font-size:0.88rem; margin-top:6px;">Ingresos, patrimonio y acceso a recursos materiales. Base principal para Marx.</p>
+      </div>
+      <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+        <strong style="color:#2e7d32;">🏅 Prestigio / Estatus</strong>
+        <p style="font-size:0.88rem; margin-top:6px;">Valoración social de una persona o grupo. Puede coincidir con la riqueza o no (ej. un sacerdote o un maestro). Base enfatizada por Weber.</p>
+      </div>
+      <div style="background:#fff3e0; border-radius:8px; padding:14px;">
+        <strong style="color:#e65100;">⚡ Poder Político</strong>
+        <p style="font-size:0.88rem; margin-top:6px;">Capacidad de imponer la propia voluntad sobre otros. Weber añade esta dimensión a la de clase y estatus.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card nd">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Sistemas Históricos de Estratificación</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Sistema</th><th>Descripción</th><th>Movilidad</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Esclavitud</strong></td>
+            <td>Forma extrema: algunos individuos son propiedad de otros. Presente en civilizaciones antiguas y en el período colonial americano.</td>
+            <td>Nula o casi nula</td>
+          </tr>
+          <tr>
+            <td><strong>Castas</strong></td>
+            <td>Sistema basado en el nacimiento y la herencia. Clásico en la India (brahmanes, chatrias, vaisias, sudras, intocables). Endogamia obligatoria.</td>
+            <td>Prácticamente nula</td>
+          </tr>
+          <tr>
+            <td><strong>Estamentos</strong></td>
+            <td>Europa feudal: nobleza, clero y estado llano (burguesía y campesinado). Definidos por la ley y el nacimiento, pero con cierta movilidad vía matrimonio o mérito.</td>
+            <td>Muy limitada</td>
+          </tr>
+          <tr>
+            <td><strong>Clases sociales</strong></td>
+            <td>Sistema de las sociedades modernas capitalistas. Definido principalmente por la posición económica, no por nacimiento o ley. Permite movilidad social.</td>
+            <td>Posible, pero condicionada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card nd">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Clases Sociales</h3>
+    <p>Las clases sociales son los grandes grupos que integran la estratificación en las sociedades capitalistas modernas. Aunque los autores difieren, la clasificación más usual distingue:</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0;">
+      <div style="background:#ffebee; border-radius:8px; padding:14px;">
+        <strong style="color:#c62828;">Clase alta</strong>
+        <p style="font-size:0.88rem; margin-top:4px;">Gran riqueza heredada o acumulada. Propietarios de medios de producción, grandes empresas, grupos financieros. Pequeño porcentaje de la población con enorme influencia política y cultural.</p>
+      </div>
+      <div style="background:#e8eaf6; border-radius:8px; padding:14px;">
+        <strong style="color:#1a237e;">Clase media</strong>
+        <p style="font-size:0.88rem; margin-top:4px;">Profesionales, técnicos, pequeños empresarios, empleados de cuello blanco. Heterogénea; es el grupo más amplio en los países industrializados. Acceso a educación y consumo como diferenciadores.</p>
+      </div>
+      <div style="background:#e8f5e9; border-radius:8px; padding:14px;">
+        <strong style="color:#2e7d32;">Clase trabajadora</strong>
+        <p style="font-size:0.88rem; margin-top:4px;">Trabajadores manuales, obreros, empleados de servicios de baja calificación. Venden su fuerza de trabajo. Vulnerable a los ciclos económicos y la automatización.</p>
+      </div>
+      <div style="background:#fff3e0; border-radius:8px; padding:14px;">
+        <strong style="color:#e65100;">Infraclase / Pobreza</strong>
+        <p style="font-size:0.88rem; margin-top:4px;">Personas en situación de exclusión social crónica, desempleo estructural, sin acceso a servicios básicos. Concepto debatido: algunos hablan de "precariado" (Guy Standing) en la era global.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card nd">
+    <div class="nd-label">📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT</div>
+    <h3>Género y Estratificación</h3>
+    <p>El género es una dimensión transversal de la estratificación: las mujeres no solo pertenecen a una clase social, sino que dentro de esa clase enfrentan <strong>desigualdades adicionales</strong> por ser mujeres. Este fenómeno se analiza con el concepto de <span class="kw">interseccionalidad</span> (Kimberlé Crenshaw): clase, género, raza y etnia se cruzan para producir formas complejas de desventaja social.</p>
+    <ul>
+      <li><strong>Brecha salarial de género:</strong> las mujeres ganan sistemáticamente menos que los hombres por igual trabajo (en promedio, entre el 70% y 85% del salario masculino en América Latina según la OIT).</li>
+      <li><strong>Techo de cristal:</strong> barreras invisibles que impiden a las mujeres ascender a posiciones de liderazgo.</li>
+      <li><strong>División sexual del trabajo:</strong> las tareas domésticas y de cuidado (no remuneradas) recaen desproporcionadamente sobre las mujeres — lo que Hochschild llamó la "doble jornada".</li>
+      <li><strong>Feminización de la pobreza:</strong> las mujeres, especialmente madres solas, representan una proporción desproporcionada de las personas en situación de pobreza.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CUESTIONARIO -->
+<section id="cuestionario">
+  <div class="section-header">
+    <div class="num" style="background:#e53935;">📋</div>
+    <h2 style="color:#e53935;">CUESTIONARIO DE LA 2ª PARCIAL</h2>
+  </div>
+  <p style="margin-bottom:18px;">A continuación se reproduce el cuestionario tal como está en la hoja entregada. Los contenidos que pone a prueba están señalados a lo largo de esta página con 🔴.</p>
+
+  <div class="quiz-section">
+    <h3 style="color:#1a237e; margin-bottom:18px;">I. Selección Múltiple (2 pts. cada ítem)</h3>
+
+    <div class="quiz-q">
+      <div class="q-num">1. La evolución de las sociedades se produce:</div>
+      <div class="options">
+        <div>a. En forma rápida y segura</div>
+        <div>b. Lenta y cambiante</div>
+        <div class="correct">✅ c. En forma de proceso en el tiempo <span style="font-size:0.82rem;">(← RESPUESTA CORRECTA)</span></div>
+        <div>d. En forma inmediata</div>
+      </div>
+      <div style="background:#e8f5e9; border-radius:6px; padding:8px; margin-top:8px; font-size:0.88rem;">
+        📚 <strong>Repaso:</strong> El cambio social no es ni inmediato ni meramente lento y cambiante como dato aislado; es un <em>proceso histórico</em> que avanza a través del tiempo con continuidades y rupturas.
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <div class="q-num">2. Cada tipo de sociedad son:</div>
+      <div class="options">
+        <div>a. Únicas y totales en los cambios</div>
+        <div class="correct">✅ b. Sociedades en la que cohabitan lo nuevo y lo viejo <span style="font-size:0.82rem;">(← RESPUESTA CORRECTA)</span></div>
+        <div>c. Sociedades abiertas y cerradas</div>
+        <div>d. Sociedades pluriétnicas</div>
+      </div>
+      <div style="background:#e8f5e9; border-radius:6px; padding:8px; margin-top:8px; font-size:0.88rem;">
+        📚 <strong>Repaso:</strong> Ningún tipo de sociedad desaparece de golpe. Las sociedades agrarias, de pastores, etc., coexistieron con tipos más nuevos durante siglos.
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <div class="q-num">3. La sociedad moderna se caracteriza por:</div>
+      <div class="options">
+        <div>a. Una reconfiguración según el orden social</div>
+        <div>b. Una configuración conservadora y estoica</div>
+        <div>c. Una reconfiguración según el orden de economía</div>
+        <div class="correct">✅ d. Una reconfiguración según sus modelos culturales <span style="font-size:0.82rem;">(← RESPUESTA CORRECTA)</span></div>
+      </div>
+      <div style="background:#e8f5e9; border-radius:6px; padding:8px; margin-top:8px; font-size:0.88rem;">
+        📚 <strong>Repaso:</strong> La modernidad no solo transforma la economía: reordena identidades, valores, formas de vida y significados — es decir, los <em>modelos culturales</em>.
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <div class="q-num">4. Para Michel Foucault el poder se centra en:</div>
+      <div class="options">
+        <div>a. El discurso de los decidores (gobernantes y quienes ostentan poder)</div>
+        <div>b. El lenguaje común de las sociedades</div>
+        <div>c. La estructura de los gobiernos de mandos medios</div>
+        <div>d. La institución educativa</div>
+        <div class="correct">✅ e. En las instituciones de encierro — cárceles y otras modalidades <span style="font-size:0.82rem;">(← RESPUESTA CORRECTA)</span></div>
+      </div>
+      <div style="background:#e8f5e9; border-radius:6px; padding:8px; margin-top:8px; font-size:0.88rem;">
+        📚 <strong>Repaso:</strong> Foucault analizó cómo las cárceles, hospitales y escuelas son instrumentos de disciplina y vigilancia, es decir, mecanismos del poder moderno para controlar los cuerpos y las mentes.
+      </div>
+    </div>
+
+    <hr style="margin: 24px 0;">
+    <h3 style="color:#1a237e; margin-bottom:14px;">II. Evaluación Objetiva: La Sociedad Contemporánea (5 pts.)</h3>
+    <div class="card" style="background:#fffde7;">
+      <p>Se te pedirá redactar un <strong>análisis objetivo de la sociedad contemporánea</strong>. Los elementos clave que debes incluir:</p>
+      <ul style="margin-top:8px;">
+        <li><strong>Transición:</strong> del modelo industrial al modelo basado en información y conocimiento</li>
+        <li><strong>Redes digitales</strong> como nuevo modo de interacción</li>
+        <li><strong>Modernidad líquida</strong> (Bauman): fragmentación de lazos sociales tradicionales, instituciones que pierden solidez</li>
+        <li><strong>Hiperconectividad</strong> conviviendo con desigualdad estructural</li>
+        <li><strong>Crisis ambientales globales</strong></li>
+        <li>El reto de <strong>humanizar la técnica</strong> y reconstruir la cohesión social</li>
+      </ul>
+    </div>
+
+    <hr style="margin: 24px 0;">
+    <h3 style="color:#1a237e; margin-bottom:14px;">III. Cuadro Comparativo: Investigación Cualitativa vs. Cuantitativa (5 pts.)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>🟣 Investigación Cualitativa (Humanista)</th>
+            <th>🔵 Investigación Cuantitativa (Positivista)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Objetivo</strong></td>
+            <td>Comprender significados, experiencias y contextos profundos.</td>
+            <td>Medir variables, establecer leyes generales y causalidades.</td>
+          </tr>
+          <tr>
+            <td><strong>Metodología</strong></td>
+            <td>Flexible, inductiva, basada en observación participativa o entrevistas.</td>
+            <td>Estructurada, deductiva, basada en estadísticas o encuestas masivas.</td>
+          </tr>
+          <tr>
+            <td><strong>Perspectiva</strong></td>
+            <td>Subjetiva: importa la visión del actor social.</td>
+            <td>Objetiva: busca la neutralidad del investigador y datos numéricos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#e8f5e9; border-radius:6px; padding:12px; margin-top:12px; font-size:0.92rem;">
+      💡 <strong>Conclusión para cerrar el cuadro:</strong> Ambas metodologías son <em>complementarias</em>, no excluyentes. La cuantitativa ofrece el "cuánto" y la magnitud de los fenómenos; la cualitativa brinda el "por qué" y el "cómo". Los <strong>métodos mixtos</strong> integran ambas perspectivas para una visión más completa de la realidad social.
+    </div>
+  </div>
+</section>
+
+<!-- BACK TO TOP -->
+<div class="back-top"><a href="#">↑ Volver al inicio</a></div>
+
+</main>
+
+</div><!-- /.layout --></div><!-- /.page-wrap -->
+
+<footer>
+  Universidad Nacional de Asunción · Escuela de Ciencias Sociales y Ciencia Política · Introducción a la Sociología 2026
+</footer>
+
+</body>
+</html>
