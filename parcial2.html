@@ -5,298 +5,422 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Introducción a la Sociología – Unidades III y IV</title>
   <style>
-    :root {
-      --primary: #1a237e;
-      --secondary: #283593;
-      --accent: #e53935;
-      --accent2: #ff9800;
-      --bg: #f4f6fb;
-      --card: #ffffff;
-      --text: #212121;
-      --muted: #5c6bc0;
-      --badge-exam: #e53935;
-      --badge-bg: #fff3e0;
-      --green: #2e7d32;
-      --light-blue: #e8eaf6;
-      --teal: #00695c;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
+  :root {
+    --primary: #1a237e;
+    --secondary: #283593;
+    --accent: #e53935;
+    --accent2: #ff9800;
+    --bg: #f0f2f8;
+    --card: #ffffff;
+    --text: #212121;
+    --muted: #5c6bc0;
+    --green: #2e7d32;
+    --teal: #00695c;
+    --purple: #6a1b9a;
+    --light-blue: #e8eaf6;
+    --sidebar-w: 250px;
+  }
 
-    /* ── HERO (shifts with sidebar) ── */
-    .hero {
-      background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #3949ab 100%);
-      color: #fff;
-      padding: 60px 20px 40px;
-      text-align: center;
-    }
-    .hero .uni { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; margin-bottom: 8px; }
-    .hero h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
-    .hero .sub { font-size: 1.1rem; opacity: 0.85; margin-bottom: 18px; }
-    .hero .tags span {
-      display: inline-block; margin: 4px;
-      background: rgba(255,255,255,0.15); border-radius: 20px;
-      padding: 4px 14px; font-size: 0.85rem;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── EXAM NOTICE ── */
-    .exam-notice {
-      background: #fff3e0; border-left: 6px solid var(--accent2);
-      margin: 30px auto; max-width: 960px; border-radius: 8px;
-      padding: 18px 24px; display: flex; align-items: flex-start; gap: 14px;
-    }
-    .exam-notice .icon { font-size: 2rem; }
-    .exam-notice strong { color: var(--accent); }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
 
-    /* ── SIDEBAR NAV (fixed, fuera del flujo) ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 230px;
-      height: 100vh;
-      overflow-y: auto;
-      background: var(--secondary);
-      box-shadow: 2px 0 10px rgba(0,0,0,0.22);
-      z-index: 100;
-    }
-    nav .nav-title {
-      padding: 16px 16px 10px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 4px;
-    }
-    nav ul { list-style: none; padding: 0; margin: 0; }
-    nav ul li a {
-      display: block; padding: 8px 18px; color: #fff; text-decoration: none;
-      font-size: 0.82rem; font-weight: 500; transition: background 0.2s;
-      border-left: 3px solid transparent;
-      line-height: 1.35;
-    }
-    nav ul li a:hover {
-      background: rgba(255,255,255,0.13);
-      border-left-color: rgba(255,255,255,0.7);
-    }
-    nav ul li.nav-section > a {
-      font-weight: 800;
-      font-size: 0.78rem;
-      color: #fff;
-      background: rgba(255,255,255,0.08);
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    nav ul li.nav-sub > a {
-      padding-left: 28px;
-      font-size: 0.79rem;
-      color: rgba(255,255,255,0.8);
-    }
-    nav::-webkit-scrollbar { width: 4px; }
-    nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+  /* ════════════════════════════════
+     SIDEBAR
+  ════════════════════════════════ */
+  #sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
+    overflow-y: auto; overflow-x: hidden;
+    z-index: 200;
+    box-shadow: 3px 0 12px rgba(0,0,0,0.25);
+    transition: left 0.28s ease;
+  }
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
 
-    /* ── PAGE WRAP: todo el contenido se desplaza a la derecha del sidebar ── */
-    .page-wrap { margin-left: 230px; }
-    .layout { /* contenedor flex interior */ }
+  .sb-brand {
+    padding: 18px 16px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 6px;
+  }
+  .sb-brand .sb-title { font-size: 0.75rem; font-weight: 800; color: rgba(255,255,255,0.9); letter-spacing: 1px; text-transform: uppercase; }
+  .sb-brand .sb-sub   { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
 
-    /* ── MAIN ── */
-    main { max-width: 900px; margin: 0 auto; padding: 30px 32px 60px; }
+  /* Groups */
+  .sb-group { margin-bottom: 2px; }
 
-    /* ── MOBILE ── */
-    .hamburger {
-      display: none; position: fixed; top: 10px; left: 10px; z-index: 200;
-      background: var(--primary); border: none; border-radius: 8px;
-      padding: 7px 12px; cursor: pointer; color: #fff; font-size: 1.3rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    @media(max-width: 768px){
-      nav { left: -240px; transition: left 0.28s ease; }
-      nav.open { left: 0; box-shadow: 4px 0 20px rgba(0,0,0,0.35); }
-      .page-wrap { margin-left: 0; }
-      .layout { margin-left: 0; }
-      main { padding: 20px 16px 60px; }
-      .hamburger { display: block; }
-    }
+  .sb-group-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 14px 9px 12px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid transparent;
+    user-select: none;
+    transition: background 0.18s;
+  }
+  .sb-group-header:hover { background: rgba(255,255,255,0.12); }
+  .sb-group-header.open  { background: rgba(255,255,255,0.1); border-left-color: var(--accent2); }
 
-    /* ── SECTION ── */
-    section { margin-bottom: 50px; }
-    .section-header {
-      display: flex; align-items: center; gap: 14px;
-      border-bottom: 3px solid var(--primary); margin-bottom: 22px; padding-bottom: 10px;
-    }
-    .section-header .num {
-      background: var(--primary); color: #fff;
-      width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; font-weight: 800; flex-shrink: 0;
-    }
-    .section-header h2 { font-size: 1.45rem; color: var(--primary); }
+  .sb-group-header .gh-label {
+    font-size: 0.78rem; font-weight: 800; color: #fff;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .sb-group-header .gh-arrow {
+    font-size: 0.65rem; color: rgba(255,255,255,0.5);
+    transition: transform 0.22s;
+  }
+  .sb-group-header.open .gh-arrow { transform: rotate(90deg); }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--card); border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(26,35,126,0.08);
-      padding: 22px 26px; margin-bottom: 20px;
-    }
-    .card h3 { color: var(--secondary); font-size: 1.1rem; margin-bottom: 12px; }
-    .card p { margin-bottom: 10px; }
-    .card ul, .card ol { padding-left: 22px; margin-bottom: 10px; }
-    .card li { margin-bottom: 6px; }
+  .sb-group-items {
+    display: none;
+    background: rgba(0,0,0,0.15);
+  }
+  .sb-group-items.open { display: block; }
 
-    /* ── EXAM BADGE ── */
-    .exam-badge {
-      display: inline-block; background: var(--badge-exam); color: #fff;
-      font-size: 0.72rem; font-weight: 700; padding: 2px 10px;
-      border-radius: 12px; margin-left: 10px; vertical-align: middle;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    /* Highlight exam-related cards */
-    .card.exam {
-      border-left: 5px solid var(--accent);
-      background: #fffdf9;
-    }
-    .card.exam h3::after {
-      content: " 📋 EN EL CUESTIONARIO";
-      font-size: 0.7rem; font-weight: 700; color: var(--accent);
-      margin-left: 8px; letter-spacing: 0.5px;
-    }
+  .sb-item a {
+    display: block;
+    padding: 7px 14px 7px 26px;
+    font-size: 0.79rem; color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.16s;
+    line-height: 1.35;
+  }
+  .sb-item a:hover { color: #fff; background: rgba(255,255,255,0.08); border-left-color: rgba(255,255,255,0.4); }
 
-    /* ── TABLE ── */
-    .table-wrap { overflow-x: auto; margin: 14px 0; }
-    table {
-      width: 100%; border-collapse: collapse; font-size: 0.9rem;
-    }
-    thead th {
-      background: var(--primary); color: #fff;
-      padding: 10px 14px; text-align: left;
-    }
-    tbody tr:nth-child(even) { background: var(--light-blue); }
-    tbody td { padding: 9px 14px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  /* Direct (non-group) links */
+  .sb-direct a {
+    display: block; padding: 9px 14px;
+    font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.9);
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: all 0.18s;
+  }
+  .sb-direct a:hover { background: rgba(255,255,255,0.1); border-left-color: #fff; color: #fff; }
 
-    /* ── DEFINITION BOX ── */
-    .def-box {
-      background: #e8eaf6; border-left: 4px solid var(--primary);
-      border-radius: 6px; padding: 14px 18px; margin: 12px 0;
-      font-style: italic;
-    }
-    .def-box strong { font-style: normal; color: var(--primary); }
+  /* Practice links */
+  .sb-practice { padding: 12px 12px 4px; }
+  .sb-practice .sb-practice-label { font-size: 0.66rem; font-weight: 800; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .sb-practice-link {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    font-size: 0.82rem; font-weight: 700; text-decoration: none;
+    margin-bottom: 6px; transition: all 0.18s;
+  }
+  .sb-practice-link.int { background: rgba(255,152,0,0.18); color: #ffcc80; border: 1px solid rgba(255,152,0,0.35); }
+  .sb-practice-link.int:hover { background: rgba(255,152,0,0.3); color: #fff; }
+  .sb-practice-link.dif { background: rgba(229,57,53,0.18); color: #ef9a9a; border: 1px solid rgba(229,57,53,0.35); }
+  .sb-practice-link.dif:hover { background: rgba(229,57,53,0.3); color: #fff; }
 
-    /* ── PENSADOR BOX ── */
-    .thinker {
-      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-      border-left: 5px solid var(--teal);
-      border-radius: 8px; padding: 16px 20px; margin: 14px 0;
-    }
-    .thinker .thinker-name {
-      font-weight: 800; color: var(--teal); font-size: 1rem; margin-bottom: 6px;
-    }
+  /* ════════════════════════════════
+     HAMBURGER
+  ════════════════════════════════ */
+  #hamburger {
+    display: none; position: fixed; top: 12px; left: 12px; z-index: 300;
+    background: var(--primary); border: none; border-radius: 8px;
+    padding: 8px 13px; cursor: pointer; color: #fff; font-size: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
+  #overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+    z-index: 199; cursor: pointer;
+  }
 
-    /* ── FOUCAULT – exam highlight ── */
-    .thinker.exam-thinker {
-      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-      border-left: 5px solid var(--accent);
-    }
-    .thinker.exam-thinker .thinker-name { color: var(--accent); }
-    .thinker.exam-thinker::before {
-      content: "📋 SALE EN EL CUESTIONARIO";
-      display: block; font-size: 0.72rem; font-weight: 700; color: var(--accent);
-      margin-bottom: 8px; letter-spacing: 1px;
-    }
+  /* ════════════════════════════════
+     PAGE WRAP
+  ════════════════════════════════ */
+  #page-wrap { margin-left: var(--sidebar-w); }
 
-    /* ── KEYWORD ── */
-    .kw { background: #e3f2fd; border-radius: 3px; padding: 1px 6px; font-weight: 600; color: #1565c0; }
+  /* ════════════════════════════════
+     HERO
+  ════════════════════════════════ */
+  .hero {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #3949ab 100%);
+    color: #fff; padding: 50px 40px 36px; text-align: center;
+  }
+  .hero .uni { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-bottom: 8px; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+  .hero .sub { font-size: 1rem; opacity: 0.82; margin-bottom: 16px; }
+  .hero .tags span { display: inline-block; margin: 3px; background: rgba(255,255,255,0.14); border-radius: 20px; padding: 4px 13px; font-size: 0.82rem; }
 
-    /* ── TWO COLUMNS ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    @media(max-width: 600px){ .two-col { grid-template-columns: 1fr; } }
+  /* ════════════════════════════════
+     EXAM NOTICE
+  ════════════════════════════════ */
+  .exam-notice {
+    background: #fff8e1; border-left: 6px solid var(--accent2);
+    margin: 30px auto; max-width: 860px; border-radius: 10px;
+    padding: 18px 24px; display: flex; align-items: flex-start; gap: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  .exam-notice .icon { font-size: 2rem; }
+  .exam-notice strong { color: var(--accent); }
 
-    /* ── PILL LIST ── */
-    .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .pill {
-      background: var(--light-blue); color: var(--primary);
-      border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; font-weight: 600;
-    }
+  /* ════════════════════════════════
+     MAIN CONTENT
+  ════════════════════════════════ */
+  main { max-width: 880px; margin: 0 auto; padding: 30px 28px 70px; }
 
-    /* ── ACCORDION ── */
-    details { background: var(--card); border-radius: 8px; margin-bottom: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
-    summary {
-      cursor: pointer; padding: 14px 18px; font-weight: 700;
-      color: var(--secondary); font-size: 1rem; list-style: none;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    summary::after { content: "▼"; font-size: 0.8rem; }
-    details[open] summary::after { content: "▲"; }
-    details .det-body { padding: 4px 18px 18px; }
+  section { margin-bottom: 50px; }
 
-    /* ── CUESTIONARIO SECTION ── */
-    .quiz-section { background: #fff8e1; border-radius: 10px; padding: 24px; margin-top: 10px; }
-    .quiz-q { margin-bottom: 20px; }
-    .quiz-q .q-num { font-weight: 800; color: var(--accent); margin-bottom: 6px; }
-    .quiz-q .options { padding-left: 16px; }
-    .quiz-q .options .correct { color: var(--green); font-weight: 700; }
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 3px solid var(--primary); margin-bottom: 22px; padding-bottom: 10px;
+  }
+  .section-header .num {
+    background: var(--primary); color: #fff;
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 800; flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35rem; color: var(--primary); }
 
-    /* ── BACK TO TOP ── */
-    .back-top {
-      text-align: center; margin-top: 40px;
-    }
-    .back-top a {
-      background: var(--primary); color: #fff; padding: 10px 28px;
-      border-radius: 25px; text-decoration: none; font-weight: 700;
-    }
+  /* ════════════════════════════════
+     CARDS
+  ════════════════════════════════ */
+  .card {
+    background: var(--card); border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(26,35,126,0.08);
+    padding: 22px 26px; margin-bottom: 20px;
+    border-top: 3px solid transparent;
+  }
+  .card:hover { box-shadow: 0 4px 18px rgba(26,35,126,0.13); transition: box-shadow 0.2s; }
+  .card h3 { color: var(--secondary); font-size: 1.05rem; margin-bottom: 12px; }
+  .card p  { margin-bottom: 10px; }
+  .card ul, .card ol { padding-left: 20px; margin-bottom: 10px; }
+  .card li { margin-bottom: 6px; }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center; padding: 20px;
-      font-size: 0.82rem; color: #888; background: #e8eaf6;
-    }
+  .card.exam { border-left: 5px solid var(--accent); border-top: none; background: #fffdf9; }
+  .card.exam h3::after { content: " 📋 EN EL CUESTIONARIO"; font-size: 0.68rem; font-weight: 700; color: var(--accent); margin-left: 8px; letter-spacing: 0.5px; }
 
-    /* ── NO DESARROLLADO ── */
-    .nd-badge {
-      display: inline-block; background: #6a1b9a; color: #fff;
-      font-size: 0.72rem; font-weight: 700; padding: 3px 12px;
-      border-radius: 12px; margin-left: 10px; vertical-align: middle;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    .card.nd {
-      border-left: 5px solid #6a1b9a;
-      background: #f3e5f5;
-    }
-    .card.nd .nd-label {
-      display: inline-block;
-      background: #6a1b9a; color: #fff;
-      font-size: 0.75rem; font-weight: 800;
-      padding: 4px 14px; border-radius: 20px;
-      margin-bottom: 14px; letter-spacing: 1px;
-    }
-    .thinker.nd-thinker {
-      background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 100%);
-      border-left: 5px solid #6a1b9a;
-    }
-    .thinker.nd-thinker .thinker-name { color: #6a1b9a; }
-    .thinker.nd-thinker::before {
-      content: "📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT";
-      display: block; font-size: 0.72rem; font-weight: 700; color: #6a1b9a;
-      margin-bottom: 8px; letter-spacing: 0.5px;
-    }
-    .card.nd h3::before {
-      content: "📌 MENCIONADO PERO NO DESARROLLADO · ";
-      font-size: 0.72rem; font-weight: 800; color: #6a1b9a; letter-spacing: 0.5px;
-    }
-  </style>
+  .card.nd { border-left: 5px solid var(--purple); border-top: none; background: #faf5ff; }
+  .card.nd .nd-label { display: inline-block; background: var(--purple); color: #fff; font-size: 0.72rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.5px; }
+  .card.nd h3::before { content: "📌 NO DESARROLLADO · "; font-size: 0.68rem; font-weight: 800; color: var(--purple); letter-spacing: 0.5px; }
+
+  /* ════════════════════════════════
+     DEFINITION BOX
+  ════════════════════════════════ */
+  .def-box {
+    background: var(--light-blue); border-left: 4px solid var(--primary);
+    border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-style: italic;
+  }
+  .def-box strong { font-style: normal; color: var(--primary); }
+
+  /* ════════════════════════════════
+     THINKERS
+  ════════════════════════════════ */
+  .thinker {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    border-left: 5px solid var(--teal);
+    border-radius: 10px; padding: 18px 22px; margin: 14px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .thinker .thinker-name { font-weight: 800; color: var(--teal); font-size: 1rem; margin-bottom: 8px; }
+  .thinker p  { margin-bottom: 8px; }
+  .thinker ul { padding-left: 18px; }
+  .thinker li { margin-bottom: 5px; }
+
+  .thinker.exam-thinker { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-left-color: var(--accent); }
+  .thinker.exam-thinker .thinker-name { color: var(--accent); }
+  .thinker.exam-thinker::before { content: "📋 SALE EN EL CUESTIONARIO"; display: block; font-size: 0.68rem; font-weight: 800; color: var(--accent); margin-bottom: 8px; letter-spacing: 1px; }
+
+  .thinker.nd-thinker { background: linear-gradient(135deg, #f3e5f5, #ede7f6); border-left-color: var(--purple); }
+  .thinker.nd-thinker .thinker-name { color: var(--purple); }
+  .thinker.nd-thinker::before { content: "📌 MENCIONADO PERO NO DESARROLLADO EN EL PPT"; display: block; font-size: 0.68rem; font-weight: 800; color: var(--purple); margin-bottom: 8px; letter-spacing: 0.5px; }
+
+  /* ════════════════════════════════
+     BADGES / KEYWORDS
+  ════════════════════════════════ */
+  .exam-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.8px; }
+  .nd-badge   { display: inline-block; background: var(--purple); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.8px; }
+  .kw { background: #e3f2fd; border-radius: 4px; padding: 1px 6px; font-weight: 700; color: #1565c0; font-size: 0.93em; }
+
+  /* ════════════════════════════════
+     TABLES
+  ════════════════════════════════ */
+  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  thead th { background: var(--primary); color: #fff; padding: 11px 14px; text-align: left; }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child  { border-radius: 0 8px 0 0; }
+  tbody tr:nth-child(even) { background: var(--light-blue); }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+
+  /* ════════════════════════════════
+     PILLS
+  ════════════════════════════════ */
+  .pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .pill { background: var(--light-blue); color: var(--primary); border-radius: 20px; padding: 4px 14px; font-size: 0.84rem; font-weight: 600; }
+
+  /* ════════════════════════════════
+     TWO / THREE COL
+  ════════════════════════════════ */
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  @media(max-width:640px){ .two-col, .three-col { grid-template-columns: 1fr; } }
+
+  /* ════════════════════════════════
+     ACCORDION (details/summary)
+  ════════════════════════════════ */
+  details { background: var(--card); border-radius: 10px; margin-bottom: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.07); border-left: 3px solid var(--muted); }
+  summary { cursor: pointer; padding: 13px 18px; font-weight: 700; color: var(--secondary); font-size: 0.95rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::after { content: "▼"; font-size: 0.75rem; color: var(--muted); }
+  details[open] summary::after { content: "▲"; }
+  details .det-body { padding: 4px 18px 18px; }
+
+  /* ════════════════════════════════
+     QUIZ
+  ════════════════════════════════ */
+  .quiz-tabs { display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
+  .quiz-tab { padding: 10px 22px; border-radius: 25px; border: 2px solid; cursor: pointer; font-size: 0.9rem; font-weight: 700; transition: all 0.2s; background: #fff; }
+  .quiz-tab.intermedio { border-color: #ff9800; color: #e65100; }
+  .quiz-tab.dificil    { border-color: #e53935; color: #c62828; }
+  .quiz-tab.active.intermedio { background: #ff9800; color: #fff; }
+  .quiz-tab.active.dificil    { background: #e53935; color: #fff; }
+
+  .quiz-panel { display: none; }
+  .quiz-panel.active { display: block; }
+
+  .quiz-progress { background: #e0e0e0; border-radius: 10px; height: 7px; margin-bottom: 20px; }
+  .quiz-progress-bar { height: 7px; border-radius: 10px; background: linear-gradient(90deg, #1a237e, #5c6bc0); transition: width 0.35s; }
+
+  .quiz-q-block { display: none; }
+  .quiz-q-block.active { display: block; animation: fadeIn 0.28s; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+  .quiz-q-num  { font-size: 0.78rem; color: #999; margin-bottom: 6px; }
+  .quiz-q-text { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; line-height: 1.5; }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 9px; }
+  .quiz-option  { background: #f7f8fc; border: 2px solid #e0e0e0; border-radius: 10px; padding: 11px 15px; cursor: pointer; font-size: 0.9rem; transition: all 0.16s; text-align: left; display: flex; align-items: center; gap: 10px; }
+  .quiz-option:hover:not(:disabled) { background: var(--light-blue); border-color: var(--muted); }
+  .quiz-option .opt-letter { background: #e0e0e0; color: #666; border-radius: 50%; width: 27px; height: 27px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; flex-shrink: 0; }
+  .quiz-option.correct { background: #e8f5e9 !important; border-color: #2e7d32 !important; }
+  .quiz-option.correct .opt-letter { background: #2e7d32; color: #fff; }
+  .quiz-option.wrong   { background: #ffebee !important; border-color: #c62828 !important; }
+  .quiz-option.wrong   .opt-letter { background: #c62828; color: #fff; }
+  .quiz-option:disabled { cursor: default; }
+
+  .quiz-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; display: none; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: #e8f5e9; color: #1b5e20; border-left: 4px solid #2e7d32; }
+  .quiz-feedback.wrong   { background: #ffebee; color: #b71c1c; border-left: 4px solid #c62828; }
+
+  .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+  .quiz-btn { padding: 10px 24px; border-radius: 20px; border: none; cursor: pointer; font-size: 0.88rem; font-weight: 700; transition: all 0.2s; }
+  .quiz-btn.next { background: var(--primary); color: #fff; }
+  .quiz-btn.next:hover { background: var(--secondary); }
+  .quiz-btn.next:disabled { background: #bdbdbd; cursor: default; }
+
+  .quiz-score-box { display: none; text-align: center; padding: 36px 20px; background: linear-gradient(135deg, #1a237e, #3949ab); border-radius: 14px; color: #fff; }
+  .quiz-score-box .score-num   { font-size: 3.2rem; font-weight: 800; }
+  .quiz-score-box .score-msg   { font-size: 1rem; margin-top: 8px; opacity: 0.9; }
+  .quiz-score-box .score-stars { font-size: 2rem; margin: 10px 0; }
+
+  /* ════════════════════════════════
+     QUIZ CUESTIONARIO PARCIAL
+  ════════════════════════════════ */
+  .quiz-section { background: #fffde7; border-radius: 12px; padding: 24px; margin-top: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .quiz-q .q-num { font-weight: 800; color: var(--accent); margin-bottom: 6px; }
+  .quiz-q .options { padding-left: 16px; margin-bottom: 6px; }
+  .quiz-q .correct { color: var(--green); font-weight: 700; }
+  .quiz-q { margin-bottom: 22px; }
+
+  /* ════════════════════════════════
+     BACK TO TOP / FOOTER
+  ════════════════════════════════ */
+  .back-top { text-align: center; margin-top: 40px; }
+  .back-top a { background: var(--primary); color: #fff; padding: 10px 28px; border-radius: 25px; text-decoration: none; font-weight: 700; }
+  footer { text-align: center; padding: 18px; font-size: 0.8rem; color: #999; background: #e8eaf6; }
+
+  /* ════════════════════════════════
+     MOBILE
+  ════════════════════════════════ */
+  @media(max-width: 768px){
+    #sidebar { left: calc(-1 * var(--sidebar-w)); }
+    #sidebar.open { left: 0; }
+    #overlay.show { display: block; }
+    #page-wrap { margin-left: 0; }
+    #hamburger { display: block; }
+    main { padding: 20px 14px 60px; }
+    .hero { padding: 50px 20px 28px; }
+    .hero h1 { font-size: 1.6rem; }
+  }
+</style>
 </head>
 <body>
 
 <!-- HERO -->
-<div class="page-wrap"><header class="hero">
+<button id="hamburger" onclick="toggleSidebar()">☰</button>
+<div id="overlay" onclick="toggleSidebar()"></div>
+
+<nav id="sidebar">
+  <div class="sb-brand">
+    <div class="sb-title">Intro a la Sociología</div>
+    <div class="sb-sub">UNA · 2026 · Prof. Mayeregger</div>
+  </div>
+
+  <div class="sb-direct"><a href="#aviso">⚠️ Temas del Cuestionario</a></div>
+
+  <!-- UNIDAD III -->
+  <div class="sb-group">
+    <div class="sb-group-header open" onclick="toggleGroup(this)">
+      <span class="gh-label">📌 Unidad III</span>
+      <span class="gh-arrow">▶</span>
+    </div>
+    <div class="sb-group-items open">
+      <div class="sb-item"><a href="#aspectos">Aspectos fundamentales</a></div>
+      <div class="sb-item"><a href="#enfoques">Enfoques de investigación</a></div>
+      <div class="sb-item"><a href="#cuantitativa">Cualitativa vs Cuantitativa</a></div>
+      <div class="sb-item"><a href="#cualitativa">Investigación Cualitativa</a></div>
+    </div>
+  </div>
+
+  <!-- UNIDAD IV -->
+  <div class="sb-group">
+    <div class="sb-group-header open" onclick="toggleGroup(this)">
+      <span class="gh-label">📌 Unidad IV</span>
+      <span class="gh-arrow">▶</span>
+    </div>
+    <div class="sb-group-items open">
+      <div class="sb-item"><a href="#estructura">Estructura Social</a></div>
+      <div class="sb-item"><a href="#sociedad">Tipos de Sociedad 📋</a></div>
+      <div class="sb-item"><a href="#moderno">Mundo Moderno 📋</a></div>
+      <div class="sb-item"><a href="#sistema-mundo">Sistema-Mundo 📌</a></div>
+      <div class="sb-item"><a href="#desigualdad">Desigualdad Global 📌</a></div>
+      <div class="sb-item"><a href="#sociologos">Sociólogos Contemporáneos</a></div>
+      <div class="sb-item"><a href="#foucault">↳ Foucault 📋</a></div>
+      <div class="sb-item"><a href="#cultura">Cultura</a></div>
+      <div class="sb-item"><a href="#socializacion">Socialización</a></div>
+      <div class="sb-item"><a href="#movilidad">Movilidad Social</a></div>
+      <div class="sb-item"><a href="#control">Control Social</a></div>
+      <div class="sb-item"><a href="#estratificacion">Estratificación Social 📌</a></div>
+    </div>
+  </div>
+
+  <!-- PRÁCTICA -->
+  <div class="sb-group">
+    <div class="sb-group-header open" onclick="toggleGroup(this)">
+      <span class="gh-label">🧠 Cuestionarios</span>
+      <span class="gh-arrow">▶</span>
+    </div>
+    <div class="sb-group-items open">
+      <div class="sb-item"><a href="#cuestionario">📋 Cuestionario Parcial</a></div>
+      <div class="sb-item"><a href="#quiz-interactivo" onclick="switchTab('intermedio')">🟠 Práctica Intermedia</a></div>
+      <div class="sb-item"><a href="#quiz-interactivo" onclick="switchTab('dificil')">🔴 Práctica Difícil</a></div>
+    </div>
+  </div>
+
+</nav>
+<div id="page-wrap"><header class="hero">
   <p class="uni">Universidad Nacional de Asunción · Escuela de Ciencias Sociales y Ciencia Política</p>
   <h1>Introducción a la Sociología</h1>
   <p class="sub">Prof. Ilda Mayeregger · Año 2026 · Primer Semestre</p>
@@ -308,27 +432,7 @@
 </header>
 
 <!-- NAV -->
-<nav>
-  <ul>
-    <li><a href="#aviso">⚠️ Temas del Cuestionario</a></li>
-    <li><a href="#u3">📌 Unidad III</a></li>
-    <li><a href="#enfoques">Enfoques</a></li>
-    <li><a href="#cualitativa">Investigación Cualitativa</a></li>
-    <li><a href="#cuantitativa">Cuantitativa vs Cualitativa</a></li>
-    <li><a href="#u4">📌 Unidad IV</a></li>
-    <li><a href="#estructura">Estructura Social</a></li>
-    <li><a href="#sistema-mundo">Sistema-Mundo</a></li>
-    <li><a href="#sociedad">Tipos de Sociedad</a></li>
-    <li><a href="#moderno">Mundo Moderno</a></li>
-    <li><a href="#sociologos">Sociólogos Contemporáneos</a></li>
-    <li><a href="#cultura">Cultura</a></li>
-    <li><a href="#socializacion">Socialización</a></li>
-    <li><a href="#movilidad">Movilidad Social</a></li>
-    <li><a href="#control">Control Social</a></li>
-    <li><a href="#estratificacion">🟣 Estratificación Social</a></li>
-    <li><a href="#cuestionario">📋 Cuestionario</a></li>
-  </ul>
-</nav>
+
 
 <main>
 
@@ -1177,6 +1281,691 @@
   </div>
 </section>
 
+
+<!-- QUIZ INTERACTIVO -->
+<section id="quiz-interactivo" style="margin-bottom:60px;">
+  <div class="section-header">
+    <div class="num" style="background:#e65100;">🧠</div>
+    <h2>Cuestionarios de Práctica</h2>
+  </div>
+  <p style="margin-bottom:20px;">Ponete a prueba con los cuestionarios interactivos. Seleccioná tu nivel y respondé cada pregunta — al finalizar verás tu puntaje y una retroalimentación por cada respuesta.</p>
+
+  <div class="quiz-tabs">
+    <button class="quiz-tab intermedio active" id="tab-intermedio" onclick="switchTab('intermedio')">🟠 Intermedio (15 preguntas)</button>
+    <button class="quiz-tab dificil" id="tab-dificil" onclick="switchTab('dificil')">🔴 Difícil (15 preguntas)</button>
+  </div>
+
+  <div class="card" style="padding:24px;">
+    <div class="quiz-container">
+      <div class="quiz-panel active" id="qi">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <span style="font-size:1.05rem; font-weight:800; color:#ff9800;">🟠 Nivel Intermedio</span>
+        <span id="qi-score-inline" style="font-size:0.85rem; color:#888;"></span>
+      </div>
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="qi-bar" style="width:7%;"></div></div>
+      <div id="qi-questions"><div class="quiz-q-block active" id="qi-q0" data-correct="1">
+          <div class="quiz-q-num">Pregunta 1 de 15</div>
+          <div class="quiz-q-text">¿Cuál es el objetivo principal de la investigación cualitativa?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',0,this)">
+              <span class="opt-letter">A</span>Medir variables y establecer leyes generales
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',0,this)">
+              <span class="opt-letter">B</span>Interpretar, entender y describir la experiencia humana
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',0,this)">
+              <span class="opt-letter">C</span>Operacionalizar hipótesis mediante estadísticas
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',0,this)">
+              <span class="opt-letter">D</span>Reproducir experimentos controlados en laboratorio
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb0"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q1" data-correct="2">
+          <div class="quiz-q-num">Pregunta 2 de 15</div>
+          <div class="quiz-q-text">¿Cuál de las siguientes opciones corresponde a un nivel de investigación CUANTITATIVO?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',1,this)">
+              <span class="opt-letter">A</span>Etnográfico
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',1,this)">
+              <span class="opt-letter">B</span>Estudios de casos
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',1,this)">
+              <span class="opt-letter">C</span>Metaanálisis
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',1,this)">
+              <span class="opt-letter">D</span>Acción participativa
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb1"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q2" data-correct="1">
+          <div class="quiz-q-num">Pregunta 3 de 15</div>
+          <div class="quiz-q-text">Los tres aspectos fundamentales de toda investigación sociológica son:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',2,this)">
+              <span class="opt-letter">A</span>Histórico, geográfico y demográfico
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',2,this)">
+              <span class="opt-letter">B</span>Epistemológico, técnico-metodológico y ético-político
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',2,this)">
+              <span class="opt-letter">C</span>Descriptivo, explicativo y correlacional
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',2,this)">
+              <span class="opt-letter">D</span>Inductivo, deductivo y abductivo
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb2"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q3" data-correct="1">
+          <div class="quiz-q-num">Pregunta 4 de 15</div>
+          <div class="quiz-q-text">La 'fórmula de triangulación' en la investigación social refiere a:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',3,this)">
+              <span class="opt-letter">A</span>Usar tres investigadores distintos para el mismo estudio
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',3,this)">
+              <span class="opt-letter">B</span>Combinar los enfoques cualitativo y cuantitativo en un mismo estudio
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',3,this)">
+              <span class="opt-letter">C</span>Aplicar tres entrevistas en profundidad a cada participante
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',3,this)">
+              <span class="opt-letter">D</span>Dividir la muestra en tres grupos experimentales
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb3"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q4" data-correct="2">
+          <div class="quiz-q-num">Pregunta 5 de 15</div>
+          <div class="quiz-q-text">¿Cuál tipo de sociedad premoderna se basa principalmente en el cuidado de animales domésticos?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',4,this)">
+              <span class="opt-letter">A</span>Sociedades agrarias
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',4,this)">
+              <span class="opt-letter">B</span>Civilizaciones no industriales
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',4,this)">
+              <span class="opt-letter">C</span>Sociedades de pastores
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',4,this)">
+              <span class="opt-letter">D</span>Sociedades de cazadores y recolectores
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb4"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q5" data-correct="1">
+          <div class="quiz-q-num">Pregunta 6 de 15</div>
+          <div class="quiz-q-text">Según Michel Foucault, el poder en la sociedad moderna opera principalmente mediante:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',5,this)">
+              <span class="opt-letter">A</span>La fuerza militar del Estado
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',5,this)">
+              <span class="opt-letter">B</span>El discurso y las instituciones de vigilancia (cárceles, hospitales, escuelas)
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',5,this)">
+              <span class="opt-letter">C</span>El control exclusivo de los medios de producción
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',5,this)">
+              <span class="opt-letter">D</span>Los tratados internacionales entre gobiernos
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb5"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q6" data-correct="2">
+          <div class="quiz-q-num">Pregunta 7 de 15</div>
+          <div class="quiz-q-text">¿Qué sociólogo desarrolló el concepto de 'sociedad del riesgo'?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',6,this)">
+              <span class="opt-letter">A</span>Anthony Giddens
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',6,this)">
+              <span class="opt-letter">B</span>Manuel Castells
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',6,this)">
+              <span class="opt-letter">C</span>Ulrich Beck
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',6,this)">
+              <span class="opt-letter">D</span>Jürgen Habermas
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb6"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q7" data-correct="1">
+          <div class="quiz-q-num">Pregunta 8 de 15</div>
+          <div class="quiz-q-text">La socialización es el proceso por el cual una persona:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',7,this)">
+              <span class="opt-letter">A</span>Elige libremente su clase social
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',7,this)">
+              <span class="opt-letter">B</span>Se convierte en individuo con conciencia de sí mismo capaz de manejar y reproducir su cultura
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',7,this)">
+              <span class="opt-letter">C</span>Adquiere capital económico suficiente para ascender socialmente
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',7,this)">
+              <span class="opt-letter">D</span>Aprende técnicas de investigación sociológica
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb7"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q8" data-correct="1">
+          <div class="quiz-q-num">Pregunta 9 de 15</div>
+          <div class="quiz-q-text">La movilidad social INTERGENERACIONAL refiere a:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',8,this)">
+              <span class="opt-letter">A</span>El desplazamiento de personas entre países
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',8,this)">
+              <span class="opt-letter">B</span>El cambio de posición social entre generaciones (padres e hijos)
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',8,this)">
+              <span class="opt-letter">C</span>El ascenso dentro de la misma generación por mérito propio
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',8,this)">
+              <span class="opt-letter">D</span>El movimiento horizontal entre ocupaciones del mismo estrato
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb8"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q9" data-correct="2">
+          <div class="quiz-q-num">Pregunta 10 de 15</div>
+          <div class="quiz-q-text">Según la teoría del Sistema-Mundo de Wallerstein, los países periféricos se caracterizan por:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',9,this)">
+              <span class="opt-letter">A</span>Controlar las finanzas y la tecnología global
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',9,this)">
+              <span class="opt-letter">B</span>Cumplir una función estabilizadora entre centro y periferia
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',9,this)">
+              <span class="opt-letter">C</span>Proveer materias primas y mano de obra barata al centro
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',9,this)">
+              <span class="opt-letter">D</span>Disputar la hegemonía al centro mediante producción industrial
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb9"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q10" data-correct="1">
+          <div class="quiz-q-num">Pregunta 11 de 15</div>
+          <div class="quiz-q-text">¿Cuál es la 'esfera pública' según Habermas?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',10,this)">
+              <span class="opt-letter">A</span>El conjunto de medios de comunicación estatales
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',10,this)">
+              <span class="opt-letter">B</span>El marco de la democracia: espacio donde ciudadanos debaten racionalmente y producen consensos
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',10,this)">
+              <span class="opt-letter">C</span>El sistema de partidos políticos y el parlamento
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',10,this)">
+              <span class="opt-letter">D</span>El mercado económico abierto y libre
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb10"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q11" data-correct="1">
+          <div class="quiz-q-num">Pregunta 12 de 15</div>
+          <div class="quiz-q-text">El Focus Group o Grupo Focal es una herramienta de investigación:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',11,this)">
+              <span class="opt-letter">A</span>Cuantitativa, basada en encuestas masivas
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',11,this)">
+              <span class="opt-letter">B</span>Cualitativa, que reúne a un grupo pequeño para discutir un tema en profundidad
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',11,this)">
+              <span class="opt-letter">C</span>Experimental, que aplica estímulos controlados a grupos
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',11,this)">
+              <span class="opt-letter">D</span>Documental, que analiza registros históricos escritos
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb11"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q12" data-correct="1">
+          <div class="quiz-q-num">Pregunta 13 de 15</div>
+          <div class="quiz-q-text">Para Anthony Giddens, la 'reflexividad social' en la era de la información implica:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',12,this)">
+              <span class="opt-letter">A</span>La vuelta a las tradiciones y costumbres como guía de vida
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',12,this)">
+              <span class="opt-letter">B</span>El incremento de la capacidad de pensar y reflexionar críticamente sobre las propias decisiones vitales
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',12,this)">
+              <span class="opt-letter">C</span>La dependencia total de los sistemas expertos sin cuestionarlos
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',12,this)">
+              <span class="opt-letter">D</span>El declive de la participación política en democracias modernas
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb12"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q13" data-correct="1">
+          <div class="quiz-q-num">Pregunta 14 de 15</div>
+          <div class="quiz-q-text">¿Cuál es la principal diferencia entre subcultura y contracultura?</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',13,this)">
+              <span class="opt-letter">A</span>La subcultura es exclusiva de clases altas; la contracultura, de clases bajas
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',13,this)">
+              <span class="opt-letter">B</span>La subcultura comparte valores básicos con la cultura dominante; la contracultura los desafía activamente
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',13,this)">
+              <span class="opt-letter">C</span>La subcultura es un fenómeno urbano; la contracultura, rural
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',13,this)">
+              <span class="opt-letter">D</span>No existe diferencia: son sinónimos en sociología
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb13"></div>
+        </div>
+<div class="quiz-q-block " id="qi-q14" data-correct="2">
+          <div class="quiz-q-num">Pregunta 15 de 15</div>
+          <div class="quiz-q-text">La estratificación social en sociedades modernas capitalistas se organiza principalmente en forma de:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qi',14,this)">
+              <span class="opt-letter">A</span>Castas hereditarias cerradas
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qi',14,this)">
+              <span class="opt-letter">B</span>Estamentos definidos por la ley
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qi',14,this)">
+              <span class="opt-letter">C</span>Clases sociales basadas en la posición económica, con posibilidad de movilidad
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qi',14,this)">
+              <span class="opt-letter">D</span>Esclavitud formal regulada por el Estado
+            </button>
+</div>
+          <div class="quiz-feedback" id="qi-fb14"></div>
+        </div>
+</div>
+      <div class="quiz-nav">
+        <span id="qi-counter" style="font-size:0.85rem; color:#888;">1 / 15</span>
+        <button class="quiz-btn next" id="qi-next" onclick="nextQ('qi',15)" disabled>Siguiente →</button>
+      </div>
+      <div class="quiz-score-box" id="qi-result">
+        <div class="score-stars" id="qi-stars"></div>
+        <div class="score-num" id="qi-final"></div>
+        <div class="score-msg" id="qi-msg"></div>
+        <button class="quiz-btn restart" style="margin-top:20px; background:rgba(255,255,255,0.2); color:#fff;" onclick="restartQuiz('qi',15)">🔄 Reintentar</button>
+      </div>
+    </div>
+      <div class="quiz-panel " id="qd">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <span style="font-size:1.05rem; font-weight:800; color:#e53935;">🔴 Nivel Difícil</span>
+        <span id="qd-score-inline" style="font-size:0.85rem; color:#888;"></span>
+      </div>
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="qd-bar" style="width:7%;"></div></div>
+      <div id="qd-questions"><div class="quiz-q-block active" id="qd-q0" data-correct="1">
+          <div class="quiz-q-num">Pregunta 1 de 15</div>
+          <div class="quiz-q-text">La 'Arqueología del Saber' de Foucault es una teoría social que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',0,this)">
+              <span class="opt-letter">A</span>Explica el origen biológico de las estructuras sociales
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',0,this)">
+              <span class="opt-letter">B</span>Busca encontrar sentido a lo familiar ahondando en el pasado, no explicar lo desconocido
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',0,this)">
+              <span class="opt-letter">C</span>Propone una cronología lineal del progreso de las sociedades humanas
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',0,this)">
+              <span class="opt-letter">D</span>Analiza los documentos históricos para reconstruir hechos objetivos
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb0"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q1" data-correct="1">
+          <div class="quiz-q-num">Pregunta 2 de 15</div>
+          <div class="quiz-q-text">Según Habermas, la 'colonización del mundo de vida' describe el proceso por el cual:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',1,this)">
+              <span class="opt-letter">A</span>Las culturas indígenas son absorbidas por la cultura occidental globalizada
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',1,this)">
+              <span class="opt-letter">B</span>La lógica instrumental del mercado y la burocracia invade esferas que deberían regirse por el diálogo libre
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',1,this)">
+              <span class="opt-letter">C</span>Los medios de comunicación sustituyen la experiencia directa por la realidad virtual
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',1,this)">
+              <span class="opt-letter">D</span>Los partidos políticos cooptan los movimientos sociales de base
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb1"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q2" data-correct="1">
+          <div class="quiz-q-num">Pregunta 3 de 15</div>
+          <div class="quiz-q-text">La crítica de Nancy Fraser a Habermas señala principalmente que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',2,this)">
+              <span class="opt-letter">A</span>La esfera pública habermasiana ignora la dimensión económica de la desigualdad
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',2,this)">
+              <span class="opt-letter">B</span>El concepto de esfera pública históricamente excluyó a mujeres, pobres y minorías, encubriendo relaciones de poder
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',2,this)">
+              <span class="opt-letter">C</span>La teoría de la acción comunicativa es incompatible con el método científico
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',2,this)">
+              <span class="opt-letter">D</span>Habermas sobrevalora el papel de los movimientos sociales en la democracia
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb2"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q3" data-correct="1">
+          <div class="quiz-q-num">Pregunta 4 de 15</div>
+          <div class="quiz-q-text">La 'subpolítica' en la teoría de Ulrich Beck se refiere a:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',3,this)">
+              <span class="opt-letter">A</span>Los gobiernos de nivel municipal o local en oposición al Estado nacional
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',3,this)">
+              <span class="opt-letter">B</span>Formas de activismo y acción colectiva fuera de los canales políticos tradicionales que gestionan los riesgos globales
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',3,this)">
+              <span class="opt-letter">C</span>Las políticas públicas de seguridad social implementadas por organismos subnacionales
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',3,this)">
+              <span class="opt-letter">D</span>El sistema de partidos menores que no alcanzan representación parlamentaria
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb3"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q4" data-correct="1">
+          <div class="quiz-q-num">Pregunta 5 de 15</div>
+          <div class="quiz-q-text">La teoría de la 'sociedad en red' de Manuel Castells sostiene que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',4,this)">
+              <span class="opt-letter">A</span>La clase obrera industrial sigue siendo el motor del cambio social en el capitalismo tardío
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',4,this)">
+              <span class="opt-letter">B</span>Las bases de la producción capitalista ya no son los materiales manufacturados sino las telecomunicaciones y los ordenadores
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',4,this)">
+              <span class="opt-letter">C</span>Las redes sociales digitales generan cohesión comunitaria y reducen la desigualdad
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',4,this)">
+              <span class="opt-letter">D</span>El Estado-nación se fortalece gracias a las tecnologías de la información
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb4"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q5" data-correct="1">
+          <div class="quiz-q-num">Pregunta 6 de 15</div>
+          <div class="quiz-q-text">En la estratificación social, la interseccionalidad (Kimberlé Crenshaw) implica que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',5,this)">
+              <span class="opt-letter">A</span>La clase social es la única variable que explica la desigualdad en toda sociedad
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',5,this)">
+              <span class="opt-letter">B</span>Clase, género, raza y etnia se cruzan para producir formas complejas e irreductibles de desventaja social
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',5,this)">
+              <span class="opt-letter">C</span>La desigualdad de género desaparece al ascender de clase socioeconómica
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',5,this)">
+              <span class="opt-letter">D</span>Las categorías de análisis social deben estudiarse siempre de forma separada
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb5"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q6" data-correct="2">
+          <div class="quiz-q-num">Pregunta 7 de 15</div>
+          <div class="quiz-q-text">La teoría del etiquetaje (labeling theory) sostiene que la desviación social:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',6,this)">
+              <span class="opt-letter">A</span>Es una patología biológica o psicológica inherente al individuo infractor
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',6,this)">
+              <span class="opt-letter">B</span>No existe como categoría analítica válida en sociología
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',6,this)">
+              <span class="opt-letter">C</span>No es una cualidad del acto sino el resultado de un proceso social de definición y estigmatización
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',6,this)">
+              <span class="opt-letter">D</span>Se origina exclusivamente en la desigualdad económica estructural
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb6"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q7" data-correct="2">
+          <div class="quiz-q-num">Pregunta 8 de 15</div>
+          <div class="quiz-q-text">Según Max Weber, la dominación racional-legal se distingue de la carismática porque:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',7,this)">
+              <span class="opt-letter">A</span>Se basa en las cualidades excepcionales de un líder individual
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',7,this)">
+              <span class="opt-letter">B</span>Se apoya en la costumbre y la tradición ancestral de la comunidad
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',7,this)">
+              <span class="opt-letter">C</span>Se funda en normas impersonales, procedimientos formales y la burocracia como organización
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',7,this)">
+              <span class="opt-letter">D</span>Requiere el consenso explícito de todos los ciudadanos en cada decisión
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb7"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q8" data-correct="2">
+          <div class="quiz-q-num">Pregunta 9 de 15</div>
+          <div class="quiz-q-text">En el sistema-mundo de Wallerstein, la semiperiferia cumple la función de:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',8,this)">
+              <span class="opt-letter">A</span>Proporcionar materia prima al centro sin posibilidad de ascenso
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',8,this)">
+              <span class="opt-letter">B</span>Dominar completamente el sistema financiero global
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',8,this)">
+              <span class="opt-letter">C</span>Estabilizar el sistema: es dominada por el centro pero domina a la periferia, amortiguando conflictos
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',8,this)">
+              <span class="opt-letter">D</span>Desafiar la hegemonía del centro mediante alianzas con países periféricos
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb8"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q9" data-correct="1">
+          <div class="quiz-q-num">Pregunta 10 de 15</div>
+          <div class="quiz-q-text">El 'desencantamiento del mundo' para Max Weber describe:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',9,this)">
+              <span class="opt-letter">A</span>La pérdida de fe religiosa provocada por los escándalos de la Iglesia medieval
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',9,this)">
+              <span class="opt-letter">B</span>El proceso histórico de sustitución de la magia, la tradición y el misterio por el cálculo racional y la burocracia
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',9,this)">
+              <span class="opt-letter">C</span>La decepción de la clase obrera ante el fracaso del movimiento socialista
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',9,this)">
+              <span class="opt-letter">D</span>La crisis de valores morales en las sociedades posmodernas según Foucault
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb9"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q10" data-correct="2">
+          <div class="quiz-q-num">Pregunta 11 de 15</div>
+          <div class="quiz-q-text">La epistemología fenomenológica, base de la investigación cualitativa, sostiene que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',10,this)">
+              <span class="opt-letter">A</span>La realidad social existe objetivamente y puede medirse con instrumentos precisos
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',10,this)">
+              <span class="opt-letter">B</span>El conocimiento válido solo proviene de la experimentación controlada en laboratorio
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',10,this)">
+              <span class="opt-letter">C</span>La realidad debe comprenderse desde la experiencia vivida y subjetiva de los actores sociales
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',10,this)">
+              <span class="opt-letter">D</span>Los datos estadísticos son la única fuente legítima de conocimiento sociológico
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb10"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q11" data-correct="1">
+          <div class="quiz-q-num">Pregunta 12 de 15</div>
+          <div class="quiz-q-text">El materialismo histórico de Marx establece que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',11,this)">
+              <span class="opt-letter">A</span>Las ideas y la cultura determinan el modo de producción económico
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',11,this)">
+              <span class="opt-letter">B</span>La base económica (infraestructura) determina las instituciones políticas, jurídicas y culturales (superestructura)
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',11,this)">
+              <span class="opt-letter">C</span>El Estado es una institución neutral que arbitra entre clases sociales
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',11,this)">
+              <span class="opt-letter">D</span>La historia avanza por ciclos culturales independientes de las condiciones materiales
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb11"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q12" data-correct="1">
+          <div class="quiz-q-num">Pregunta 13 de 15</div>
+          <div class="quiz-q-text">La 'democracia emocional' en Giddens refiere a:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',12,this)">
+              <span class="opt-letter">A</span>Un sistema político basado en encuestas de opinión y reacciones emocionales de la ciudadanía
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',12,this)">
+              <span class="opt-letter">B</span>La extensión de principios democráticos —respeto, autonomía, diálogo— a las relaciones íntimas y la vida privada
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',12,this)">
+              <span class="opt-letter">C</span>La manipulación emocional de los votantes por parte de los medios de comunicación
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',12,this)">
+              <span class="opt-letter">D</span>La participación de psicólogos y terapeutas en el diseño de políticas públicas
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb12"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q13" data-correct="1">
+          <div class="quiz-q-num">Pregunta 14 de 15</div>
+          <div class="quiz-q-text">La perspectiva positivista en investigación social considera que:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',13,this)">
+              <span class="opt-letter">A</span>El investigador forma parte del fenómeno estudiado y debe involucrarse subjetivamente
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',13,this)">
+              <span class="opt-letter">B</span>Los hechos sociales deben tratarse como cosas objetivas, externas al investigador, medibles y verificables
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',13,this)">
+              <span class="opt-letter">C</span>La realidad social es construida intersubjetivamente y no puede generalizarse
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',13,this)">
+              <span class="opt-letter">D</span>Las emociones del investigado son la fuente principal de datos válidos
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb13"></div>
+        </div>
+<div class="quiz-q-block " id="qd-q14" data-correct="1">
+          <div class="quiz-q-num">Pregunta 15 de 15</div>
+          <div class="quiz-q-text">El concepto de 'alienación' en Marx describe:</div>
+          <div class="quiz-options"><button class="quiz-option" data-idx="0" onclick="selectOpt('qd',14,this)">
+              <span class="opt-letter">A</span>La marginación política de los inmigrantes en sociedades receptoras
+            </button>
+<button class="quiz-option" data-idx="1" onclick="selectOpt('qd',14,this)">
+              <span class="opt-letter">B</span>El proceso por el que el trabajador pierde la conexión con el producto de su trabajo, con otros trabajadores y consigo mismo
+            </button>
+<button class="quiz-option" data-idx="2" onclick="selectOpt('qd',14,this)">
+              <span class="opt-letter">C</span>La pérdida de identidad cultural de los pueblos colonizados
+            </button>
+<button class="quiz-option" data-idx="3" onclick="selectOpt('qd',14,this)">
+              <span class="opt-letter">D</span>El estado psicológico de anomia en sociedades industriales avanzadas
+            </button>
+</div>
+          <div class="quiz-feedback" id="qd-fb14"></div>
+        </div>
+</div>
+      <div class="quiz-nav">
+        <span id="qd-counter" style="font-size:0.85rem; color:#888;">1 / 15</span>
+        <button class="quiz-btn next" id="qd-next" onclick="nextQ('qd',15)" disabled>Siguiente →</button>
+      </div>
+      <div class="quiz-score-box" id="qd-result">
+        <div class="score-stars" id="qd-stars"></div>
+        <div class="score-num" id="qd-final"></div>
+        <div class="score-msg" id="qd-msg"></div>
+        <button class="quiz-btn restart" style="margin-top:20px; background:rgba(255,255,255,0.2); color:#fff;" onclick="restartQuiz('qd',15)">🔄 Reintentar</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<script>
+var quizState = {
+  qi: { current: 0, score: 0, answered: [], total: 15 },
+  qd: { current: 0, score: 0, answered: [], total: 15 }
+};
+var answers = { qi: [1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2], qd: [1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 2, 1, 1, 1, 1] };
+var feedbacks = { qi: ["La investigaci\u00f3n cualitativa es de car\u00e1cter humanista: busca interpretar y comprender la experiencia humana desde adentro, no medir ni generalizar.", "El metaan\u00e1lisis es un nivel del enfoque cuantitativo que analiza y combina resultados de m\u00faltiples estudios previos.", "Toda investigaci\u00f3n implica decisiones sobre qu\u00e9 tipo de verdad se busca (epistemol\u00f3gico), con qu\u00e9 herramientas (t\u00e9cnico-metodol\u00f3gico) y para qu\u00e9 fines y con qu\u00e9 consecuencias (\u00e9tico-pol\u00edtico).", "La triangulaci\u00f3n consiste en el uso simult\u00e1neo de los enfoques cualitativo y cuantitativo (abordaje mixto) para obtener mayor validez y riqueza de datos.", "Las sociedades de pastores dependen del cuidado de animales dom\u00e9sticos para su subsistencia. Existieron desde ~12.000 a.n.c. y a\u00fan hoy forman parte de estados m\u00e1s grandes.", "Para Foucault, el poder opera mediante el discurso \u2014formas de habla y pensamiento con presupuestos comunes\u2014 y se ejerce a trav\u00e9s de instituciones de encierro que disciplinan y vigilan a la poblaci\u00f3n.", "Ulrich Beck acu\u00f1\u00f3 el concepto 'sociedad del riesgo' para describir la segunda modernidad, donde los peligros ya no son naturales sino manufacturados por la propia ciencia y tecnolog\u00eda, con consecuencias globales.", "La socializaci\u00f3n transforma al reci\u00e9n nacido \u2014un ser indefenso\u2014 en un individuo con conciencia de s\u00ed mismo, capaz de manejar las formas culturales en las que naci\u00f3 y reproducirlas.", "La movilidad intergeneracional compara la posici\u00f3n socioecon\u00f3mica de los hijos respecto a la de sus padres, siendo un indicador clave de la igualdad de oportunidades en una sociedad.", "La periferia est\u00e1 compuesta por pa\u00edses pobres y dependientes cuyas econom\u00edas est\u00e1n condicionadas por las demandas del centro: proveen recursos naturales y trabajo poco calificado.", "Para Habermas, la esfera p\u00fablica es el espacio de deliberaci\u00f3n democr\u00e1tica donde los ciudadanos, libres de coerci\u00f3n, debaten racionalmente los asuntos colectivos y producen legitimidad pol\u00edtica.", "El Focus Group es una t\u00e9cnica cualitativa que re\u00fane entre 6 y 12 personas para debatir un tema guiadas por un moderador, permitiendo capturar significados, actitudes y percepciones compartidas.", "Giddens sostiene que la era del conocimiento genera reflexividad: ya no seguimos la costumbre ciegamente, sino que pensamos activamente sobre c\u00f3mo vivir, qu\u00e9 decidir y c\u00f3mo relacionarnos.", "La subcultura mantiene adhesi\u00f3n parcial a los valores dominantes (ej. una tribu urbana); la contracultura los rechaza y propone valores alternativos de manera activa (ej. el movimiento hippie).", "Las clases sociales del capitalismo se definen principalmente por la riqueza y la posici\u00f3n en el mercado laboral, no por el nacimiento o la ley, lo que permite \u2014aunque no garantiza\u2014 la movilidad social."], qd: ["La Arqueolog\u00eda del Saber no intenta dar sentido a lo desconocido; al contrario, busca desnaturalizar lo familiar \u2014lo que damos por evidente\u2014 rastreando c\u00f3mo se formaron hist\u00f3ricamente los discursos y saberes que nos parecen obvios.", "Habermas llama 'colonizaci\u00f3n del mundo de vida' a la penetraci\u00f3n de la racionalidad instrumental \u2014propia del sistema econ\u00f3mico y burocr\u00e1tico\u2014 en espacios que deber\u00edan organizarse por la comunicaci\u00f3n libre: familia, educaci\u00f3n, comunidad.", "Fraser argumenta que la esfera p\u00fablica 'universal' de Habermas fue hist\u00f3ricamente excluyente. Propone el concepto de 'contrap\u00fablicas subalternas': espacios donde grupos marginados desarrollan sus propios discursos antes de ingresar al debate p\u00fablico dominante.", "Beck usa 'subpol\u00edtica' para referirse a nuevas formas de acci\u00f3n colectiva \u2014movimientos de consumidores, ecologistas, feministas, etc.\u2014 que operan fuera del sistema pol\u00edtico formal pero influyen significativamente en las decisiones colectivas sobre el riesgo.", "Castells propone que el capitalismo informacional se organiza en torno a redes digitales: la riqueza ya no se genera principalmente con trabajo manual o materias primas, sino con informaci\u00f3n, conocimiento y conectividad tecnol\u00f3gica.", "La interseccionalidad rechaza el an\u00e1lisis en variables aisladas: una mujer afrodescendiente de clase trabajadora enfrenta desventajas que no son simplemente la suma de ser mujer + negra + pobre, sino una experiencia espec\u00edfica e irreductible producto del cruce de esas dimensiones.", "El etiquetaje (Becker, Lemert) plantea que nadie es 'desviado' por naturaleza: la desviaci\u00f3n emerge cuando la sociedad aplica esa etiqueta a una conducta o persona. El peligro es la 'desviaci\u00f3n secundaria': el individuo internaliza la etiqueta y act\u00faa conforme a ella.", "Weber distingue tres tipos puros de dominaci\u00f3n leg\u00edtima: tradicional (costumbre), carism\u00e1tica (cualidades del l\u00edder) y racional-legal (normas abstractas e impersonales). La modernidad se caracteriza por el predominio de esta \u00faltima, encarnada en la burocracia.", "La semiperiferia \u2014pa\u00edses como Brasil, India, M\u00e9xico, China\u2014 ocupa una posici\u00f3n intermedia que estabiliza el sistema: absorbe las tensiones entre el centro y la periferia y permite que el capitalismo global funcione sin colapsar ante las contradicciones extremas.", "Weber describe la modernidad como un proceso de 'racionalizaci\u00f3n' que elimina el encanto, la magia y lo sagrado de la vida cotidiana, reemplaz\u00e1ndolos por normas formales, c\u00e1lculo instrumental y organizaciones burocr\u00e1ticas \u2014lo que \u00e9l llam\u00f3 la 'jaula de hierro'.", "La fenomenolog\u00eda (Husserl, Schutz) plantea que para comprender lo social hay que acceder al 'mundo de vida' de los actores: sus experiencias, significados y perspectivas subjetivas. La realidad social no existe independientemente de quienes la viven e interpretan.", "El materialismo hist\u00f3rico invierte el idealismo hegeliano: no son las ideas las que mueven la historia, sino las condiciones materiales de producci\u00f3n. La superestructura (derecho, religi\u00f3n, pol\u00edtica, cultura) es determinada \u2014aunque no mec\u00e1nicamente\u2014 por la infraestructura econ\u00f3mica.", "Giddens argumenta que la democracia no puede limitarse a la esfera p\u00fablica institucional: debe penetrar en las relaciones \u00edntimas \u2014pareja, familia, amistad\u2014 donde tambi\u00e9n existen estructuras de poder. La 'democracia emocional' exige relaciones basadas en autonom\u00eda, igualdad y di\u00e1logo aut\u00e9ntico.", "El positivismo sociol\u00f3gico (Comte, Durkheim) sostiene que la sociedad puede estudiarse con la misma metodolog\u00eda que las ciencias naturales: los hechos sociales son externos, objetivos y coercitivos. El investigador debe mantenerse neutral y sus m\u00e9todos deben garantizar replicabilidad.", "En el capitalismo, el trabajador no posee lo que produce (el producto pertenece al capitalista), no controla el proceso productivo, se aisla de sus compa\u00f1eros por la competencia y pierde su esencia humana creativa. Este extra\u00f1amiento total respecto al trabajo y a s\u00ed mismo es lo que Marx llama alienaci\u00f3n."] };
+
+function switchTab(tab) {
+  document.querySelectorAll('.quiz-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.quiz-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById(tab === 'intermedio' ? 'qi' : 'qd').classList.add('active');
+}
+
+function selectOpt(qid, qnum, btn) {
+  var state = quizState[qid];
+  if (state.answered.includes(qnum)) return;
+  state.answered.push(qnum);
+  var correct = answers[qid][qnum];
+  var chosen  = parseInt(btn.getAttribute('data-idx'));
+  var block   = document.getElementById(qid + '-q' + qnum);
+  var btns    = block.querySelectorAll('.quiz-option');
+  btns.forEach(function(b) { b.disabled = true; });
+  btns[correct].classList.add('correct');
+  var fb = document.getElementById(qid + '-fb' + qnum);
+  if (chosen === correct) {
+    state.score++;
+    btn.classList.add('correct');
+    fb.textContent = '✅ ' + feedbacks[qid][qnum];
+    fb.className = 'quiz-feedback show correct';
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '❌ ' + feedbacks[qid][qnum];
+    fb.className = 'quiz-feedback show wrong';
+  }
+  document.getElementById(qid + '-next').disabled = false;
+}
+
+function nextQ(qid, total) {
+  var state = quizState[qid];
+  var next  = state.current + 1;
+  if (next >= total) {
+    showResult(qid, total); return;
+  }
+  document.getElementById(qid + '-q' + state.current).classList.remove('active');
+  state.current = next;
+  document.getElementById(qid + '-q' + next).classList.add('active');
+  document.getElementById(qid + '-next').disabled = true;
+  document.getElementById(qid + '-counter').textContent = (next+1) + ' / ' + total;
+  var pct = Math.round((next+1)/total*100);
+  document.getElementById(qid + '-bar').style.width = pct + '%';
+}
+
+function showResult(qid, total) {
+  document.getElementById(qid + '-questions').style.display = 'none';
+  document.querySelector('#' + qid + ' .quiz-nav').style.display = 'none';
+  var box = document.getElementById(qid + '-result');
+  box.style.display = 'block';
+  var s = quizState[qid].score;
+  var pct = Math.round(s/total*100);
+  document.getElementById(qid + '-final').textContent = s + ' / ' + total + ' (' + pct + '%)';
+  var stars = pct >= 80 ? '⭐⭐⭐' : pct >= 60 ? '⭐⭐' : '⭐';
+  var msg = pct >= 80 ? '¡Excelente dominio del material!' : pct >= 60 ? 'Buen trabajo, repasa los temas erróneos.' : 'Seguí estudiando, ¡vas a lograrlo!';
+  document.getElementById(qid + '-stars').textContent = stars;
+  document.getElementById(qid + '-msg').textContent = msg;
+}
+
+function restartQuiz(qid, total) {
+  quizState[qid] = { current: 0, score: 0, answered: [], total: total };
+  var id = qid;
+  document.getElementById(id + '-questions').style.display = '';
+  document.querySelector('#' + id + ' .quiz-nav').style.display = '';
+  document.getElementById(id + '-result').style.display = 'none';
+  document.querySelectorAll('#' + id + ' .quiz-q-block').forEach(function(b,i) {
+    b.classList.toggle('active', i===0);
+  });
+  document.querySelectorAll('#' + id + ' .quiz-option').forEach(function(b) {
+    b.disabled = false;
+    b.classList.remove('correct','wrong');
+  });
+  document.querySelectorAll('#' + id + ' .quiz-feedback').forEach(function(f) {
+    f.className = 'quiz-feedback';
+  });
+  document.getElementById(id + '-next').disabled = true;
+  document.getElementById(id + '-counter').textContent = '1 / ' + total;
+  document.getElementById(id + '-bar').style.width = Math.round(1/total*100) + '%';
+}
+</script>
+
 <!-- CUESTIONARIO -->
 <section id="cuestionario">
   <div class="section-header">
@@ -1296,11 +2085,22 @@
 
 </main>
 
-</div><!-- /.layout --></div><!-- /.page-wrap -->
+</div><!-- /#page-wrap -->
 
 <footer>
   Universidad Nacional de Asunción · Escuela de Ciencias Sociales y Ciencia Política · Introducción a la Sociología 2026
 </footer>
 
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function toggleGroup(header){
+  header.classList.toggle('open');
+  var items = header.nextElementSibling;
+  items.classList.toggle('open');
+}
+</script>
 </body>
 </html>
