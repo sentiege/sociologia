@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introducción a la Sociología — Material Completo</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --bg:#f7f6f2;--surface:#f0ede8;--surface-2:#e8e4dd;--border:#d4cfc7;
+  --text:#1a1814;--muted:#6b6760;--faint:#b0ada8;
+  --primary:#01696f;--primary-bg:#e0f0ef;
+  --accent:#8b4513;--accent-bg:#f5e6d8;
+  --gold:#b8860b;--gold-bg:#fdf3d0;
+  --purple:#6b3fa0;--purple-bg:#ede8f5;
+  --red:#c0392b;--red-bg:#fdecea;
+  --green:#2d7a4f;--green-bg:#e3f5ec;
+  --shadow:0 2px 8px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06);
+  --radius:10px;--radius-sm:6px;
+  --font-body:'Satoshi',system-ui,sans-serif;
+  --font-display:'Cabinet Grotesk',system-ui,sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0f0e0c;--surface:#171614;--surface-2:#1e1c1a;--border:#2e2b28;
+  --text:#d8d5d0;--muted:#7a7874;--faint:#4a4845;
+  --primary:#4f98a3;--primary-bg:#182428;
+  --accent:#e07b3a;--accent-bg:#261a10;
+  --gold:#d4a50a;--gold-bg:#1e1a08;
+  --purple:#9b72d0;--purple-bg:#1e1828;
+  --red:#e05252;--red-bg:#2a1010;
+  --green:#4faa7a;--green-bg:#0e2018;
+  --shadow:0 2px 8px rgba(0,0,0,.4);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.65;font-size:16px;min-height:100vh}
+img{display:block;max-width:100%}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:16px;height:60px}
+.nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--primary);white-space:nowrap;letter-spacing:-.02em}
+.nav-logo span{color:var(--muted);font-weight:400}
+.nav-pills{display:flex;gap:4px;overflow-x:auto;flex:1;padding:4px 0;scrollbar-width:none}
+.nav-pills::-webkit-scrollbar{display:none}
+.pill{padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:500;border:none;background:transparent;color:var(--muted);white-space:nowrap;transition:all .18s}
+.pill:hover{background:var(--surface-2);color:var(--text)}
+.pill.active{background:var(--primary);color:#fff}
+.theme-btn{margin-left:auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+.theme-btn:hover{color:var(--text);border-color:var(--primary)}
+
+/* HERO */
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:48px 20px 40px}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary-bg);color:var(--primary);font-size:.78rem;font-weight:600;padding:4px 12px;border-radius:100px;margin-bottom:16px;border:1px solid color-mix(in oklch,var(--primary) 25%,transparent)}
+.hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--text);margin-bottom:12px}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero p{font-size:1rem;color:var(--muted);max-width:620px;line-height:1.7}
+.hero-meta{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted)}
+.meta-item svg{color:var(--primary)}
+
+/* LAYOUT */
+.layout{max-width:1100px;margin:0 auto;padding:32px 20px;display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+@media(max-width:768px){.layout{grid-template-columns:1fr}.sidebar{display:none}}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:76px}
+.sidebar-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:10px;padding:0 8px}
+.toc-item{display:block;padding:7px 12px;border-radius:var(--radius-sm);font-size:.84rem;color:var(--muted);border:none;background:none;text-align:left;width:100%;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
+.toc-item:hover{background:var(--surface-2);color:var(--text)}
+.toc-item.active{background:var(--primary-bg);color:var(--primary);border-left-color:var(--primary);font-weight:600}
+.toc-sub{padding-left:24px}
+.toc-sub .toc-item{font-size:.8rem}
+.sidebar-divider{height:1px;background:var(--border);margin:10px 8px}
+
+/* CONTENT */
+.content{}
+.unit-section{margin-bottom:60px}
+
+/* CARDS */
+.unit-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;box-shadow:var(--shadow)}
+.unit-number{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:8px}
+.unit-title{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--text)}
+.unit-subtitle{font-size:.9rem;color:var(--muted);margin-top:6px;line-height:1.6}
+
+/* TOPICS */
+.topic{margin-bottom:24px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.topic-header{padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;background:var(--surface);transition:background .15s}
+.topic-header:hover{background:var(--surface-2)}
+.topic-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.topic-title{font-weight:700;font-size:.95rem;flex:1;color:var(--text)}
+.topic-toggle{color:var(--faint);transition:transform .25s}
+.topic-header.open .topic-toggle{transform:rotate(180deg)}
+.topic-body{display:none;padding:0 20px 20px;animation:fadeIn .2s}
+.topic-header.open + .topic-body{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* COLOR ICONS */
+.icon-blue{background:var(--primary-bg);color:var(--primary)}
+.icon-orange{background:var(--accent-bg);color:var(--accent)}
+.icon-gold{background:var(--gold-bg);color:var(--gold)}
+.icon-purple{background:var(--purple-bg);color:var(--purple)}
+.icon-red{background:var(--red-bg);color:var(--red)}
+.icon-green{background:var(--green-bg);color:var(--green)}
+
+/* TYPOGRAPHY CONTENT */
+.topic-body h3{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);margin:20px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.topic-body h4{font-weight:700;font-size:.88rem;color:var(--primary);margin:16px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+.topic-body p{font-size:.9rem;color:var(--text);margin-bottom:10px;line-height:1.7;max-width:72ch}
+.topic-body ul,.topic-body ol{padding-left:20px;margin-bottom:12px}
+.topic-body li{font-size:.88rem;color:var(--text);margin-bottom:5px;line-height:1.6}
+.topic-body strong{color:var(--text);font-weight:700}
+
+/* CALLOUTS */
+.callout{border-radius:var(--radius-sm);padding:14px 16px;margin:14px 0;border-left:3px solid}
+.callout-def{background:var(--primary-bg);border-color:var(--primary)}
+.callout-def .callout-label{color:var(--primary);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.callout-def p{color:var(--text);margin:0;font-size:.88rem}
+.callout-warn{background:var(--gold-bg);border-color:var(--gold)}
+.callout-warn .callout-label{color:var(--gold);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.callout-key{background:var(--accent-bg);border-color:var(--accent)}
+.callout-key .callout-label{color:var(--accent);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.callout-tip{background:var(--green-bg);border-color:var(--green)}
+.callout-tip .callout-label{color:var(--green);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:14px 0}
+.compare-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.compare-table th{background:var(--surface-2);padding:10px 12px;text-align:left;font-weight:700;color:var(--primary);border-bottom:2px solid var(--primary);white-space:nowrap}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--surface-2)}
+
+/* AUTHOR CARDS */
+.author-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:14px 0}
+.author-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.author-name{font-weight:700;font-size:.9rem;margin-bottom:2px;color:var(--text)}
+.author-dates{font-size:.75rem;color:var(--muted);margin-bottom:8px}
+.author-tag{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:100px;margin-bottom:8px}
+.tag-func{background:var(--primary-bg);color:var(--primary)}
+.tag-conf{background:var(--red-bg);color:var(--red)}
+.tag-acc{background:var(--purple-bg);color:var(--purple)}
+.tag-col{background:var(--green-bg);color:var(--green)}
+.tag-pos{background:var(--gold-bg);color:var(--gold)}
+.author-card p{font-size:.82rem;color:var(--muted);line-height:1.5;margin:0}
+
+/* TIMELINE */
+.timeline{margin:14px 0;padding-left:20px;border-left:2px solid var(--border)}
+.tl-item{position:relative;padding:0 0 16px 20px}
+.tl-item::before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid var(--bg)}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.tl-text{font-size:.85rem;color:var(--text);line-height:1.5}
+
+/* BADGES */
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:100px;font-size:.76rem;font-weight:600;border:1px solid}
+
+/* PROGRESS / STAGES */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:500px){.stages{grid-template-columns:1fr}}
+.stage{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;text-align:center}
+.stage-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--primary);line-height:1}
+.stage-name{font-weight:700;font-size:.85rem;margin:6px 0 4px;color:var(--text)}
+.stage-desc{font-size:.78rem;color:var(--muted);line-height:1.4}
+
+/* PARADIGM COLUMNS */
+.paradigm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:14px 0}
+.paradigm-card{border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;background:var(--surface-2)}
+.paradigm-card h4{font-weight:700;font-size:.85rem;margin-bottom:6px}
+.paradigm-card p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.5}
+
+/* QUOTE */
+.quote-block{background:var(--surface-2);border-left:3px solid var(--primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 18px;margin:14px 0;font-style:italic;font-size:.88rem;color:var(--text)}
+.quote-block cite{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:6px;font-weight:600}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:24px 20px;text-align:center;font-size:.8rem;color:var(--muted);margin-top:60px}
+footer strong{color:var(--primary)}
+
+/* SEARCH */
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;margin-bottom:24px}
+.search-bar input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:inherit;font-size:.88rem}
+.search-bar input::placeholder{color:var(--faint)}
+
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:1.1rem;box-shadow:var(--shadow-lg);cursor:pointer;opacity:0;transition:opacity .25s;display:flex;align-items:center;justify-content:center;z-index:200}
+#scrollTop.visible{opacity:1}
+
+/* PRINT */
+@media print{nav,#scrollTop,.sidebar,.theme-btn{display:none!important}.layout{display:block}.topic-body{display:block!important}.topic-toggle{display:none}}
+
+/* VOICE READER */
+.voice-bar{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:300;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);transition:all .3s;white-space:nowrap}
+.voice-bar.hidden{transform:translateX(-50%) translateY(120px);opacity:0;pointer-events:none}
+.vbtn{width:36px;height:36px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .18s;font-size:.85rem}
+.vbtn-play{background:var(--primary);color:#fff}
+.vbtn-play:hover{background:var(--primary-hover)}
+.vbtn-stop{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+.vbtn-stop:hover{background:var(--red-bg);color:var(--red);border-color:var(--red)}
+.vbtn-close{background:transparent;color:var(--muted);border:none;font-size:1rem;padding:0 4px}
+.vbtn-close:hover{color:var(--text)}
+.voice-label{font-size:.8rem;color:var(--text);font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.voice-sub{font-size:.72rem;color:var(--muted)}
+.voice-speed{background:var(--surface-2);border:1px solid var(--border);border-radius:100px;font-size:.75rem;padding:4px 10px;color:var(--text);cursor:pointer;font-family:var(--font-body)}
+.voice-speed:hover{border-color:var(--primary);color:var(--primary)}
+/* Highlight de texto leyendo */
+.speaking-highlight{background:color-mix(in oklch,var(--gold) 25%,transparent);border-radius:3px;transition:background .2s}
+/* Botón flotante de activar lector (cuando barra está oculta) */
+#voice-fab{position:fixed;bottom:24px;right:70px;z-index:300;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-lg);transition:all .18s;font-size:1.1rem}
+#voice-fab:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+
+/* ===== HIGHLIGHTER ===== */
+#hl-fab{position:fixed;bottom:24px;right:116px;z-index:300;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-lg);transition:all .18s;font-size:1.1rem}
+#hl-fab:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+#hl-fab.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+#hl-toolbar{position:fixed;bottom:78px;right:116px;z-index:300;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow-lg);display:none;flex-direction:column;gap:10px;min-width:180px}
+#hl-toolbar.open{display:flex}
+
+.hl-toolbar-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:0 2px}
+.hl-colors{display:flex;gap:6px;flex-wrap:wrap}
+.hl-color-btn{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform .15s,border-color .15s;position:relative}
+.hl-color-btn:hover{transform:scale(1.2)}
+.hl-color-btn.selected{border-color:var(--text);transform:scale(1.15)}
+.hl-color-btn .hl-check{display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:.65rem;color:#000}
+.hl-color-btn.selected .hl-check{display:flex}
+
+.hl-action-row{display:flex;gap:6px}
+.hl-action-btn{flex:1;padding:7px 6px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:.75rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .15s;text-align:center}
+.hl-action-btn:hover{border-color:var(--primary);color:var(--primary)}
+.hl-action-btn.danger:hover{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+
+.hl-note-row{display:flex;flex-direction:column;gap:4px}
+.hl-note-input{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 8px;font-size:.78rem;color:var(--text);font-family:var(--font-body);resize:none;min-height:52px;outline:none;transition:border-color .15s}
+.hl-note-input:focus{border-color:var(--primary)}
+.hl-note-input::placeholder{color:var(--faint)}
+.hl-note-btn{background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);padding:6px;font-size:.76rem;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:background .15s}
+.hl-note-btn:hover{background:var(--primary-hover)}
+
+.hl-stats{font-size:.72rem;color:var(--muted);text-align:center;padding-top:2px;border-top:1px solid var(--border)}
+
+/* Highlight marks */
+mark.hl{border-radius:2px;cursor:pointer;transition:opacity .15s;padding:1px 0;position:relative}
+mark.hl:hover{opacity:.8}
+mark.hl-y{background:#fde68a;color:#1a1814}
+mark.hl-g{background:#a7f3d0;color:#1a1814}
+mark.hl-b{background:#bfdbfe;color:#1a1814}
+mark.hl-p{background:#ddd6fe;color:#1a1814}
+mark.hl-r{background:#fecaca;color:#1a1814}
+mark.hl-o{background:#fed7aa;color:#1a1814}
+
+/* Tooltip de nota */
+.hl-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 10px;font-size:.75rem;color:var(--text);white-space:nowrap;box-shadow:var(--shadow-md);z-index:400;pointer-events:none;max-width:220px;white-space:normal;display:none}
+mark.hl:hover .hl-tooltip{display:block}
+
+</style>
+</head>
+<body>
+
+
+
+<!-- HIGHLIGHTER FAB -->
+<button id="hl-fab" title="Resaltador de texto" onclick="toggleHighlighter()">🖊️</button>
+
+<!-- HIGHLIGHTER TOOLBAR -->
+<div id="hl-toolbar">
+  <div class="hl-toolbar-title">🖊️ Resaltador</div>
+
+  <div>
+    <div class="hl-toolbar-title" style="margin-bottom:6px">Color</div>
+    <div class="hl-colors">
+      <button class="hl-color-btn selected" style="background:#fde68a" data-color="hl-y" onclick="selectColor(this)" title="Amarillo"><span class="hl-check">✓</span></button>
+      <button class="hl-color-btn" style="background:#a7f3d0" data-color="hl-g" onclick="selectColor(this)" title="Verde"><span class="hl-check">✓</span></button>
+      <button class="hl-color-btn" style="background:#bfdbfe" data-color="hl-b" onclick="selectColor(this)" title="Azul"><span class="hl-check">✓</span></button>
+      <button class="hl-color-btn" style="background:#ddd6fe" data-color="hl-p" onclick="selectColor(this)" title="Violeta"><span class="hl-check">✓</span></button>
+      <button class="hl-color-btn" style="background:#fecaca" data-color="hl-r" onclick="selectColor(this)" title="Rojo"><span class="hl-check">✓</span></button>
+      <button class="hl-color-btn" style="background:#fed7aa" data-color="hl-o" onclick="selectColor(this)" title="Naranja"><span class="hl-check">✓</span></button>
+    </div>
+  </div>
+
+  <div class="hl-note-row">
+    <div class="hl-toolbar-title">Nota (opcional)</div>
+    <textarea class="hl-note-input" id="hl-note-input" placeholder="Agrega una nota al resaltado..."></textarea>
+  </div>
+
+  <div class="hl-action-row">
+    <button class="hl-action-btn" onclick="applyHighlight()">✦ Resaltar</button>
+    <button class="hl-action-btn danger" onclick="removeAllHighlights()">✕ Borrar todo</button>
+  </div>
+
+  <div class="hl-stats" id="hl-stats">Sin resaltados guardados</div>
+</div>
+
+<!-- VOICE FAB -->
+<button id="voice-fab" title="Lector de voz" onclick="activateReader()">🔊</button>
+
+<!-- VOICE BAR -->
+<div class="voice-bar hidden" id="voice-bar">
+  <button class="vbtn vbtn-play" id="vbtn-play" onclick="togglePlay()" title="Reproducir/Pausar">
+    <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+  </button>
+  <button class="vbtn vbtn-stop" onclick="stopReading()" title="Detener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+  </button>
+  <div style="display:flex;flex-direction:column;gap:1px;min-width:120px;max-width:180px">
+    <div class="voice-label" id="voice-label">Lector de texto</div>
+    <div class="voice-sub" id="voice-sub">Seleccioná una sección</div>
+  </div>
+  <select class="voice-speed" id="voice-speed" onchange="changeSpeed(this.value)" title="Velocidad">
+    <option value="0.8">0.8×</option>
+    <option value="1" selected>1×</option>
+    <option value="1.2">1.2×</option>
+    <option value="1.5">1.5×</option>
+    <option value="1.8">1.8×</option>
+  </select>
+  <div style="width:1px;height:20px;background:var(--border)"></div>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <div style="font-size:.65rem;color:var(--muted);text-align:center">Sección</div>
+    <div style="display:flex;gap:4px">
+      <button class="vbtn vbtn-stop" onclick="prevSection()" title="Sección anterior" style="width:28px;height:28px;font-size:.8rem">‹</button>
+      <button class="vbtn vbtn-stop" onclick="nextSection()" title="Sección siguiente" style="width:28px;height:28px;font-size:.8rem">›</button>
+    </div>
+  </div>
+  <button class="vbtn-close" onclick="deactivateReader()" title="Cerrar">✕</button>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Sociología <span>UNA 2026</span></div>
+    <div class="nav-pills">
+      <button class="pill active" onclick="scrollToUnit('u1')">I</button>
+      <button class="pill" onclick="scrollToUnit('u2')">II</button>
+      <button class="pill" onclick="scrollToUnit('u3')">III</button>
+      <button class="pill" onclick="scrollToUnit('u4')">IV</button>
+      <button class="pill" onclick="scrollToUnit('u5')">V</button>
+      <button class="pill" onclick="scrollToUnit('u6')">VI</button>
+      <button class="pill" onclick="scrollToUnit('u7')">VII</button>
+      <button class="pill" onclick="scrollToUnit('quiz')">🎯 Test</button>
+    </div>
+    <button class="theme-btn" data-theme-toggle aria-label="Cambiar tema">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Material para FINALES — Prof. Ilda Mayeregger
+    </div>
+    <h1>Introducción a la <em>Sociología</em></h1>
+    <p>Material de estudio completo — 7 Unidades. Facultad de Derecho y Ciencias Sociales, Escuela de Ciencias Políticas. Universidad Nacional de Asunción 2026.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Primer Semestre 2026</div>
+      <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>7 Unidades · Giddens · Macionis · Ritzer</div>
+      <div class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Material completo para examen final</div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">Contenido</div>
+    <button class="toc-item active" onclick="scrollToUnit('u1')">I · La Sociología y Ciencias Sociales</button>
+    <button class="toc-item" onclick="scrollToUnit('u2')">II · Métodos de Investigación</button>
+    <button class="toc-item" onclick="scrollToUnit('u3')">III · Sociedad, Cultura y Orden Social</button>
+    <button class="toc-item" onclick="scrollToUnit('u4')">IV · Estructura Social y Desigualdad</button>
+    <button class="toc-item" onclick="scrollToUnit('u5')">V · Pensamiento Sociológico Clásico</button>
+    <button class="toc-item" onclick="scrollToUnit('u6')">VI · Instituciones Sociales</button>
+    <button class="toc-item" onclick="scrollToUnit('u7')">VII · Cambio Social</button>
+    <button class="toc-item" onclick="scrollToUnit('quiz')">🎯 Test de Conocimientos</button>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-title">Autores clave</div>
+    <button class="toc-item toc-sub" onclick="scrollToUnit('u5')">Comte · Durkheim · Marx · Weber</button>
+    <button class="toc-item toc-sub" onclick="scrollToUnit('u3')">Foucault · Habermas · Beck · Giddens</button>
+  </aside>
+
+  <main class="content">
+
+    <!-- ======================== UNIDAD I ======================== -->
+    <section class="unit-section" id="u1">
+      <div class="unit-header">
+        <div class="unit-number">Unidad I</div>
+        <div class="unit-title">La Sociología y las Ciencias Sociales</div>
+        <div class="unit-subtitle">Concepto, objeto, campo de estudio, perspectivas sociológicas y contexto social del individuo</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">🔭</div>
+          <div class="topic-title">¿Qué es la Sociología?</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Definición</div>
+            <p><strong>Giddens (2010):</strong> "Es el estudio de la vida social humana, de sus grupos y sociedades."</p>
+            <p><strong>Macionis & Plummer (2013):</strong> "Es el estudio sistemático, riguroso y científico de la sociedad."</p>
+          </div>
+          <h3>Ciencias Sociales — Fenómenos que explican</h3>
+          <p>Las ciencias sociales explican fenómenos como: poder, identidad, relaciones humanas, desarrollo cultural, diversidad social, economías, medios de comunicación, impacto de la tecnología, salud, educación, democracia, derechos humanos, medio ambiente, desempleo, pobreza, marginación, intolerancia y libertad.</p>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Economía</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Ciencias Políticas</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Antropología</span>
+            <span class="badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green)">Psicología Social</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Comunicación</span>
+          </div>
+          <h4>Objeto / Campo / Métodos</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Dimensión</th><th>Descripción</th></tr>
+          <tr><td><strong>Objeto de estudio</strong></td><td>Seres humanos, formas de organización social y prácticas cotidianas</td></tr>
+          <tr><td><strong>Campo de estudio</strong></td><td>Comportamientos y prácticas de individuos, grupos, comunidades, culturas y organizaciones</td></tr>
+          <tr><td><strong>Propósitos</strong></td><td>Explicativo · Interpretativo · Reflexivo · Crítico</td></tr></table></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-orange">🧠</div>
+          <div class="topic-title">La Perspectiva Sociológica</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <p>La perspectiva sociológica propone <strong>escapar de la jaula</strong> e imaginarnos sociológicamente la sociedad. Nos lleva a:</p>
+          <ul>
+            <li>Despojarse de las circunstancias personales y ver <strong>lo general en lo particular</strong></li>
+            <li>Generalizar (no es lo mismo que estereotipar)</li>
+            <li>Reconocer que el individuo es único, pero sus experiencias vitales dependen de la categoría social a la que pertenece (rol, status)</li>
+            <li>Ser críticos y cuestionar conceptos, normas y valores</li>
+          </ul>
+          <div class="callout callout-key"><div class="callout-label">💡 Ejemplo clásico — "Tomar café"</div>
+            <p>Un simple acto como "tomar café" engloba: valor simbólico, relaciones económicas, proceso de desarrollo productivo, consumo social masivo. La sociología analiza esas capas ocultas de sentido detrás de lo cotidiano.</p>
+          </div>
+          <h3>Sistemas de análisis del entorno humano</h3>
+          <div class="stages">
+            <div class="stage"><div class="stage-num">Micro</div><div class="stage-name">Microsistema</div><div class="stage-desc">Familia, comunidad, barrio — la persona participa directamente</div></div>
+            <div class="stage"><div class="stage-num">Meso</div><div class="stage-name">Mesosistema</div><div class="stage-desc">Entorno donde las personas participan activamente</div></div>
+            <div class="stage"><div class="stage-num">Exo</div><div class="stage-name">Exosistema</div><div class="stage-desc">Entorno que afecta a la persona aunque no participe directamente</div></div>
+          </div>
+          <div class="callout callout-def"><div class="callout-label">📌 Macro</div>
+            <p><strong>Macrosistema:</strong> entorno global donde otros toman las decisiones (religión, ideología, política). La persona participa pero no controla.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">⚡</div>
+          <div class="topic-title">Estructura Social y Cambio Social</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Estructura Social</div>
+            <p>Diferentes hechos y diversos contextos componen las acciones y acontecimientos humanos. Las sociedades están en <strong>constante estructuración</strong>, la reconstruyen cada momento.</p>
+          </div>
+          <div class="callout callout-key"><div class="callout-label">📖 Cambio Social</div>
+            <p>Es la dinámica permanente de una situación a otra por diversos factores causales: económicos, políticos, sociales, tecnológicos y otros.</p>
+          </div>
+          <p>El objeto de la sociología es investigar los factores que inciden u originan los cambios, y determinar la conexión que existe entre <em>lo que hace la sociedad de nosotros</em> y <em>lo que hacemos de nosotros mismos</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD II ======================== -->
+    <section class="unit-section" id="u2">
+      <div class="unit-header">
+        <div class="unit-number">Unidad II</div>
+        <div class="unit-title">Métodos Científicos y Medios de Estudio</div>
+        <div class="unit-subtitle">Investigación cualitativa y cuantitativa — enfoques, tipos de estudios, técnicas e instrumentos</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-purple">🔬</div>
+          <div class="topic-title">Investigación Cualitativa (Perspectiva Humanista)</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <p>Busca <strong>comprender e interpretar</strong> la realidad desde adentro. Trabaja con significados, experiencias y perspectivas subjetivas.</p>
+          <h4>Características</h4>
+          <ul>
+            <li>Trata de conocer hechos, procesos y personas <strong>en su totalidad</strong></li>
+            <li>Enfoque humanista y comprensivo del sujeto</li>
+            <li>Parte del mundo conocido, no de las teorías</li>
+            <li>Usa procedimientos descriptivos, no generalizadores</li>
+            <li>Carácter fenomenológico, interaccionismo simbólico, hermenéutica social</li>
+            <li>Tanto investigador como investigado participan en la producción de conocimiento</li>
+          </ul>
+          <h4>Tipos de estudios cualitativos</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Tipo</th><th>Propósito</th></tr>
+          <tr><td><strong>Exploratorios</strong></td><td>Aproximación inicial a fenómenos poco conocidos; valor heurístico</td></tr>
+          <tr><td><strong>Descriptivos</strong></td><td>Describir características de fenómenos o situaciones; valor comprensivo</td></tr>
+          <tr><td><strong>Explicativos</strong></td><td>Identificar causas y procesos; valor analítico y crítico</td></tr></table></div>
+          <h4>Herramientas y técnicas</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Focus group</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Observación participante</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Estudio de casos</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Historias de vida</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Entrevista a profundidad</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">IAP (Investigación Acción Participativa)</span>
+          </div>
+          <div class="callout callout-def"><div class="callout-label">📌 Aspectos fundamentales en la investigación</div>
+            <p><strong>Epistemológico:</strong> tipo de verdad que se intenta producir. <strong>Técnico/Metodológico:</strong> métodos y herramientas que demuestren validez. <strong>Ético y Político:</strong> objetivos e impacto de la investigación en la sociedad y en los participantes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">📊</div>
+          <div class="topic-title">Investigación Cuantitativa (Perspectiva Positivista)</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <p>Permite recabar y analizar <strong>datos numéricos</strong> sobre variables previamente establecidas. Totalmente objetivable.</p>
+          <h4>Características</h4>
+          <ul>
+            <li>Naturaleza descriptiva y predictiva</li>
+            <li>Métodos: experimentos, encuestas, análisis estadístico</li>
+            <li>Resultados generalizables</li>
+            <li>Relación numérica entre variables cuantificables</li>
+            <li>Más propio de ciencias exactas (física, química, biología)</li>
+          </ul>
+          <h4>Niveles de investigación cuantitativa</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Exploratorio</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Analítico</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Correlacional</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Comparativo</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Experimental</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Cuasiexperimental</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Metaanálisis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-green">⚖️</div>
+          <div class="topic-title">Diferencias entre Enfoques — Cuadro Comparativo</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Dimensión</th><th>Cualitativo</th><th>Cuantitativo</th></tr>
+          <tr><td><strong>Enfoque</strong></td><td>Particular, ideográfico; experiencia humana</td><td>General, nomotético; estructuras sociales</td></tr>
+          <tr><td><strong>Dimensión</strong></td><td>Interna: lo subjetivo, sentimientos</td><td>Externa: lo objetivo, hechos y cosas</td></tr>
+          <tr><td><strong>Epistemología</strong></td><td>Fenomenológica, relativista, perspectivista</td><td>Realista, empírica, positivismo lógico</td></tr>
+          <tr><td><strong>Objetivo</strong></td><td>Interpretar, entender, describir</td><td>Explicar, medir, predecir</td></tr>
+          <tr><td><strong>Teoría</strong></td><td>Inductiva, enraizada en la realidad</td><td>Deductiva, abstracta, operacionalizable</td></tr>
+          <tr><td><strong>Valores</strong></td><td>Comprometida éticamente</td><td>Neutral, expertos</td></tr>
+          <tr><td><strong>Triangulación</strong></td><td colspan="2" style="text-align:center">Abordaje <strong>mixto</strong> (cuali-cuantitativo): combina ambas perspectivas</td></tr></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD III ======================== -->
+    <section class="unit-section" id="u3">
+      <div class="unit-header">
+        <div class="unit-number">Unidad III</div>
+        <div class="unit-title">Sociedad, Cultura, Orden y Control Social</div>
+        <div class="unit-subtitle">Evolución de tipos de sociedades · Cultura y sus componentes · Orden social · Desviación · Conflicto · Teorías contemporáneas</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">🌐</div>
+          <div class="topic-title">Concepto de Sociedad y Tipos Históricos</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Definiciones</div>
+            <p><strong>Fichter (1986):</strong> "Un gran número de seres humanos que obran conjuntamente para satisfacer sus necesidades sociales y comparten una cultura en común."</p>
+            <p><strong>Giddens (2000):</strong> "Un sistema de interrelaciones que vincula a los individuos."</p>
+            <p><strong>Plummer & Macionis (2011):</strong> "Las personas que interactúan en un espacio definido y comparten una cultura."</p>
+          </div>
+          <h3>Tipos de sociedades — Evolución histórica</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Tipo</th><th>Período</th><th>Características clave</th></tr>
+          <tr><td><strong>Cazadoras y recolectoras</strong></td><td>Desde 50.000 a.C.</td><td>Grupos pequeños; caza, pesca, recolección; pocas desigualdades</td></tr>
+          <tr><td><strong>Pastoras</strong></td><td>Desde 12.000 a.C.</td><td>Ganadería; ciertas desigualdades; gobernadas por jefes</td></tr>
+          <tr><td><strong>Agrarias</strong></td><td>Desde 12.000 a.C.</td><td>Agricultura; comunidades rurales sin ciudades; más desigualdades</td></tr>
+          <tr><td><strong>Civilizaciones tradicionales</strong></td><td>6.000 a.C. — s. XIX</td><td>Millones de personas; ciudades; Estado con rey/emperador</td></tr>
+          <tr><td><strong>Primer Mundo (industriales)</strong></td><td>Desde s. XVIII</td><td>Libre mercado; centros urbanos; importantes desigualdades de clase</td></tr>
+          <tr><td><strong>Segundo Mundo</strong></td><td>S. XX hasta 1989</td><td>Planificación centralizada; URSS y Europa del Este</td></tr>
+          <tr><td><strong>Tercer Mundo (en vías de desarrollo)</strong></td><td>Desde s. XVIII hasta hoy</td><td>Mayoría en agricultura; China, India, África, Sudamérica</td></tr>
+          <tr><td><strong>Países de reciente industrialización</strong></td><td>Desde los años 70</td><td>Hong Kong, Corea del Sur, Singapur, Taiwán, Brasil, México</td></tr></table></div>
+          <div class="callout callout-def"><div class="callout-label">🌍 Globalización</div>
+            <p><strong>Giddens (2000):</strong> "La globalización refiere a la manera en que las personas, grupos y naciones se hacen más interdependientes." Es la interconectividad creciente de las sociedades. El mundo se ha convertido en un sistema social único.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">🎭</div>
+          <div class="topic-title">Cultura — Componentes y Diversidad</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Definición</div>
+            <p>La cultura son los "diseños de formas de vida": los valores, las creencias, la conducta, las costumbres y los objetos materiales que constituyen la forma de vida de un pueblo. <strong>Geertz:</strong> "el hombre es un animal suspendido en redes de significados que él mismo ha tejido — la cultura es esa red."</p>
+          </div>
+          <h4>Tipos de cultura</h4>
+          <ul>
+            <li><strong>Cultura material:</strong> objetos tangibles — herramientas, tecnología, construcciones</li>
+            <li><strong>Cultura no material:</strong> ideas intangibles — valores, creencias, normas, símbolos</li>
+          </ul>
+          <h3>Componentes principales de la cultura</h3>
+          <div class="paradigm-grid">
+            <div class="paradigm-card"><h4 style="color:var(--primary)">1. Símbolos</h4><p>Cualquier cosa que contiene un significado especial reconocido por quienes comparten una cultura. Varían entre culturas y dentro de la misma sociedad.</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--gold)">2. Lenguaje</h4><p>Sistema de símbolos que permite comunicarse. El componente más importante. Existen ~6.912 lenguas en el mundo (Gordon, 2005).</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--purple)">3. Valores y Creencias</h4><p><strong>Valores:</strong> pautas morales de lo bueno/malo. <strong>Creencias:</strong> declaraciones que las personas consideran verdaderas. Los valores son los principios que subyacen a las creencias.</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--red)">4. Normas</h4><p>Reglas y expectativas por las cuales la sociedad guía la conducta. <strong>Prescriptivas</strong> (lo que se debe hacer) vs. <strong>Proscriptivas</strong> (lo que se prohíbe).</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--green)">5. Costumbres (Mores)</h4><p>Normas esenciales para mantener un modo de vida — alta carga moral, se defienden públicamente. Sumner, 1906.</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--accent)">6. Usos populares (Folkways)</h4><p>Costumbres de rutina e interacción ocasional. Menor carga moral. Ej.: ropa adecuada, saludos apropiados.</p></div>
+          </div>
+          <h3>Conceptos culturales importantes</h3>
+          <ul>
+            <li><strong>Subcultura:</strong> grupo con valores y normas particulares dentro de una cultura mayor</li>
+            <li><strong>Contracultura:</strong> desacuerdo con la forma de vida convencional</li>
+            <li><strong>Etnocentrismo:</strong> juzgar otra cultura según los estándares de la propia — genera incomprensión y conflicto</li>
+            <li><strong>Relativismo cultural:</strong> juzgar una cultura según sus propios estándares — alternativa al etnocentrismo</li>
+            <li><strong>Multiculturalismo:</strong> esfuerzos educativos por mejorar el conocimiento y la apreciación de la diversidad cultural</li>
+            <li><strong>Desajuste cultural:</strong> cuando partes del sistema cultural cambian a velocidades diferentes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-red">⚖️</div>
+          <div class="topic-title">Orden Social, Control Social y Desviación</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Control Social</div>
+            <p>Conjunto de mecanismos mediante los cuales la sociedad regula el comportamiento de sus miembros para mantener el orden establecido. Puede ser formal (leyes, policía) o informal (normas sociales, familia).</p>
+          </div>
+          <h4>Teorías sobre la conducta desviada</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Perspectiva</th><th>Enfoque principal</th></tr>
+          <tr><td><strong>Funcionalista (Durkheim)</strong></td><td>La desviación cumple funciones: refuerza límites morales, promueve cohesión social. La anomia (ausencia de normas) genera desviación masiva (suicidio, crimen).</td></tr>
+          <tr><td><strong>Teoría del Conflicto</strong></td><td>Las leyes reflejan los intereses de los poderosos. El crimen es producto de la desigualdad y la opresión de clase.</td></tr>
+          <tr><td><strong>Teoría del Etiquetaje</strong></td><td>La desviación no es intrínseca a un acto — surge cuando la sociedad "etiqueta" a una persona como desviada. (Becker, Lemert)</td></tr>
+          <tr><td><strong>Interaccionismo simbólico</strong></td><td>La desviación se aprende a través de la interacción social y la adopción de significados culturales</td></tr></table></div>
+          <h3>Conflicto Social</h3>
+          <ul>
+            <li><strong>Conflicto social:</strong> enfrentamiento entre grupos o clases con intereses opuestos</li>
+            <li>Para <strong>Marx:</strong> el conflicto de clases es el motor de la historia (burguesía vs. proletariado)</li>
+            <li>Para <strong>Weber:</strong> el conflicto surge de diferencias en clase, estatus y poder (partido)</li>
+            <li>Para <strong>Simmel:</strong> el conflicto es una forma de socialización — puede tener efectos integradores</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-green">🌱</div>
+          <div class="topic-title">Sociólogos Contemporáneos — Postmodernidad y Globalización</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="author-grid">
+            <div class="author-card">
+              <div class="author-name">Michel Foucault</div>
+              <div class="author-dates">1925 – 1984 · Francia</div>
+              <span class="author-tag tag-col">Postmoderno</span>
+              <p>Analizó la función de las instituciones modernas (cárceles, hospitales, escuelas) como herramientas de control. "El poder opera mediante el discurso." La <strong>Arqueología del saber:</strong> buscar sentido en lo familiar ahondando en el pasado.</p>
+            </div>
+            <div class="author-card">
+              <div class="author-name">Jürgen Habermas</div>
+              <div class="author-dates">1929 – · Alemania</div>
+              <span class="author-tag tag-acc">Teoría Crítica</span>
+              <p>Introduce el concepto de <strong>esfera pública</strong> — espacio donde se asienta la libre interacción democrática. <strong>Teoría de la acción comunicativa:</strong> la democracia necesita debate público racional y ampliado.</p>
+            </div>
+            <div class="author-card">
+              <div class="author-name">Ulrich Beck</div>
+              <div class="author-dates">1944 – 2015 · Alemania</div>
+              <span class="author-tag tag-col">Sociedad del riesgo</span>
+              <p>La "sociedad del riesgo": los peligros actuales (terrorismo, cambio climático, alteración genética) no tienen fronteras. La <strong>subpolítica</strong> — nuevas formas de activismo ciudadano — cobra relevancia.</p>
+            </div>
+            <div class="author-card">
+              <div class="author-name">Manuel Castells</div>
+              <div class="author-dates">1942 – · España</div>
+              <span class="author-tag tag-func">Sociedad en Red</span>
+              <p>La <strong>sociedad de la información</strong> se define por el ascenso de las redes y la economía en red. Las bases de producción ya no son la clase obrera material sino las <strong>telecomunicaciones y los ordenadores</strong>.</p>
+            </div>
+            <div class="author-card">
+              <div class="author-name">Anthony Giddens</div>
+              <div class="author-dates">1938 – · Reino Unido</div>
+              <span class="author-tag tag-acc">Reflexividad Social</span>
+              <p>La <strong>reflexividad social:</strong> con la globalización y la información, las personas reflexionan constantemente sobre sus decisiones. La confianza en instituciones abstractas es fundamental. "Tercera vía" política.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD IV ======================== -->
+    <section class="unit-section" id="u4">
+      <div class="unit-header">
+        <div class="unit-number">Unidad IV</div>
+        <div class="unit-title">Estructura Social, Desigualdad y Estratificación</div>
+        <div class="unit-subtitle">Estratificación · Clases · Género · Raza · Migración · Pobreza · Movilidad Social</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-orange">🏗️</div>
+          <div class="topic-title">Estructura Social — Concepto y Componentes</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Definición</div>
+            <p>La estructura social es la organización estable donde el orden de las relaciones sociales define a una comunidad, formada por individuos, grupos, normas y valores. Resalta la organización <strong>jerárquica</strong> de individuos según riqueza, poder o roles.</p>
+          </div>
+          <h4>Componentes clave</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">Roles</span>
+            <span class="badge" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">Estatus</span>
+            <span class="badge" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">Grupos</span>
+            <span class="badge" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">Instituciones</span>
+            <span class="badge" style="background:var(--accent-bg);color:var(--accent);border-color:var(--accent)">Cultura</span>
+          </div>
+          <h4>Niveles de interacción social</h4>
+          <ul>
+            <li><strong>Nivel micro-social:</strong> interacción cara a cara, rutinas en grupos pequeños</li>
+            <li><strong>Nivel meso-social:</strong> roles en organizaciones y grupos secundarios</li>
+            <li><strong>Nivel macro-social:</strong> posiciones sociales + sistema de valores + instituciones</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-red">📊</div>
+          <div class="topic-title">Sistemas de Estratificación Social</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Estratificación Social</div>
+            <p>Clasificación o jerarquización de los individuos según la categoría a la que pertenecen (status) o se les asigna. Es una característica de la <strong>sociedad</strong>, no solo de diferencias individuales. Persiste a través de las generaciones.</p>
+          </div>
+          <h4>5 Principios básicos de la estratificación</h4>
+          <ol>
+            <li>Es una <strong>característica de la sociedad</strong>, no solo reflejo de diferencias individuales</li>
+            <li><strong>Persiste a través de las generaciones</strong> — los padres legan su posición social a sus hijos</li>
+            <li>Es <strong>universal pero variable</strong> — existe en todas las sociedades, pero varía en forma</li>
+            <li>Implica <strong>no solo desigualdades sino también creencias</strong> que las justifican (ideología, hegemonía)</li>
+            <li>Genera <strong>identidades compartidas</strong> que ubican a las personas en categorías sociales</li>
+          </ol>
+          <h3>Los 4 sistemas de estratificación</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Sistema</th><th>Tipo</th><th>Características</th></tr>
+          <tr><td><strong>Esclavitud</strong></td><td>Cerrado</td><td>Personas como propiedad. Sistema totalmente cerrado — sin posibilidad de cambio. Antigüedad, conquista de América.</td></tr>
+          <tr><td><strong>Casta</strong></td><td>Cerrado</td><td>Estatus heredado, inmutable. El nacimiento determina el destino. Ejemplo: sistema de castas de India.</td></tr>
+          <tr><td><strong>Estamento</strong></td><td>Semiabierto</td><td>Europa medieval: nobleza, clero, campesinado. Derechos y obligaciones diferenciados. Jerarquía rígida.</td></tr>
+          <tr><td><strong>Clase</strong></td><td>Relativamente abierto</td><td>Resultado de la industrialización. Distribución desigual de riqueza, poder y prestigio. Sistema más abierto aunque con grandes barreras.</td></tr></table></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-purple">🧩</div>
+          <div class="topic-title">Teorías de la Estratificación: Marx, Weber y Olin Wright</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Karl Marx — Teoría de las Clases</h4>
+          <p>Marx define las clases en términos de su relación con los <strong>medios de producción</strong>. Dos clases fundamentales y antagónicas:</p>
+          <ul>
+            <li><strong>Burguesía:</strong> propietaria de los medios de producción; acumula capital</li>
+            <li><strong>Proletariado:</strong> vende su fuerza de trabajo; sufre explotación (plusvalía)</li>
+          </ul>
+          <div class="callout callout-key"><div class="callout-label">⚡ Conceptos clave de Marx</div>
+            <p><strong>Plusvalía:</strong> diferencia entre lo que produce el trabajador y lo que recibe como salario — origen de la ganancia capitalista.</p>
+            <p><strong>Conciencia de clase:</strong> identidad de clase + comprensión de la propia explotación = condición para la revolución.</p>
+            <p><strong>Falsa conciencia:</strong> justificación de los problemas sociales como problemas individuales.</p>
+          </div>
+          <h4>Max Weber — Estratificación Multidimensional</h4>
+          <p>Weber rechaza reducir la estratificación solo a factores económicos. Distingue <strong>tres dimensiones</strong>:</p>
+          <div class="stages">
+            <div class="stage"><div class="stage-num" style="font-size:1.5rem">Clase</div><div class="stage-name">Dimensión Económica</div><div class="stage-desc">Desigualdades derivadas de la propiedad y del mercado de trabajo (incluye cualificaciones y credenciales)</div></div>
+            <div class="stage"><div class="stage-num" style="font-size:1.5rem">Estatus</div><div class="stage-name">Prestigio Social</div><div class="stage-desc">Diferencias de reputación y honor concedidos por los demás. Grupos de estatus alto y grupos "parias"</div></div>
+            <div class="stage"><div class="stage-num" style="font-size:1.5rem">Partido</div><div class="stage-name">Poder Político</div><div class="stage-desc">Grupos que trabajan juntos por intereses comunes; puede basarse en religión, nación o ideología</div></div>
+          </div>
+          <div class="callout callout-warn"><div class="callout-label">⚠️ Marx vs. Weber</div>
+            <p>Para <strong>Marx</strong>, la estratificación desaparecería aboliendo la propiedad privada. Para <strong>Weber</strong>, esto solo reduciría la desigualdad económica pero el poder burocrático crearía nuevas jerarquías — como demostró la URSS.</p>
+          </div>
+          <h4>Erik Olin Wright — Síntesis Marx–Weber</h4>
+          <p>Wright identifica tres dimensiones del control sobre los recursos económicos: <strong>(1)</strong> control sobre inversiones/capital, <strong>(2)</strong> control sobre medios físicos de producción, <strong>(3)</strong> control sobre la fuerza de trabajo. Introduce las <strong>"situaciones contradictorias de clase"</strong> — ej.: empleados de cuello blanco que son ni capitalistas ni obreros.</p>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-green">👫</div>
+          <div class="topic-title">Género y Estratificación · Pobreza · Movilidad Social</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Género y Estratificación</h4>
+          <p>No hay sociedad en que el hombre no tenga, en ciertos aspectos, más riqueza, estatus o influencia que la mujer. Las desigualdades de género tienen mayor raigambre histórica que los sistemas de clases — existen incluso en sociedades cazadoras-recolectoras sin clases.</p>
+          <div class="callout callout-key"><div class="callout-label">💡 Interseccionalidad de género</div>
+            <p>La pobreza tiene rostro de mujer. En los países más pobres son las mujeres quienes cargan con las mayores dificultades: acceso a salud, ingresos muy por debajo de lo normal. Las desigualdades de clase y género se refuerzan mutuamente.</p>
+          </div>
+          <h4>Movilidad Social</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Tipo</th><th>Descripción</th></tr>
+          <tr><td><strong>Vertical ascendente</strong></td><td>Subir en la jerarquía social — ej.: de obrero a empresario</td></tr>
+          <tr><td><strong>Vertical descendente</strong></td><td>Bajar en la jerarquía — ej.: empresario que quiebra</td></tr>
+          <tr><td><strong>Horizontal</strong></td><td>Cambio de ocupación similar sin alterar la posición social</td></tr>
+          <tr><td><strong>Intrageneracional</strong></td><td>Cambios dentro de la vida laboral de una misma persona</td></tr>
+          <tr><td><strong>Intergeneracional</strong></td><td>Diferencias de posición entre padres e hijos</td></tr>
+          <tr><td><strong>Lateral</strong></td><td>Traslación geográfica que a menudo se combina con movilidad vertical</td></tr></table></div>
+          <h4>Pobreza</h4>
+          <ul>
+            <li><strong>Pobreza absoluta:</strong> carencia de recursos que amenaza la vida (menos de $1 internacional/día) — en muchos países africanos y asiáticos la mediana de fallecimiento es inferior a los 10 años</li>
+            <li><strong>Pobreza relativa:</strong> carencia definida en relación al nivel de vida de la mayoría de la sociedad — existe en todos los países</li>
+            <li><strong>Causas y consecuencias:</strong> exclusión social, drogadicción, violencia, suicidio. La pobreza es una <strong>problemática social</strong>, no una condición individual.</li>
+          </ul>
+          <h4>Raza, Etnicidad y Migración</h4>
+          <p><strong>Raza:</strong> categoría basada en rasgos físicos hereditarios considerados socialmente significativos (color de piel, rasgos faciales). En rigor, no existen "razas" biológicamente puras — es una construcción social.</p>
+          <p><strong>Etnia:</strong> personas que comparten una herencia cultural, lengua, religión, antepasados comunes. Hace referencia a factores <em>culturales</em>, no biológicos.</p>
+          <p><strong>Prejuicio → Estereotipo → Discriminación:</strong> los prejuicios forman imágenes distorsionadas (estereotipos) que se traducen en trato diferencial (discriminación). El <strong>etnocentrismo</strong> juzga otras culturas desde la propia.</p>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">🧬</div>
+          <div class="topic-title">Socialización — Proceso, Agentes y Ciclo Vital</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Definición</div>
+            <p>Proceso mediante el cual una persona desde el nacimiento (indefensa) se convierte en persona con conciencia de sí misma, capaz de manejar y reproducir las formas culturales en las que nació. Es también la <strong>reproducción cultural</strong> — cómo las sociedades manifiestan su continuidad estructural a lo largo del tiempo.</p>
+          </div>
+          <h4>Agentes de socialización</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Familia</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Escuela</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Grupos de pares</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Medios de comunicación</span>
+            <span class="badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green)">Religión</span>
+          </div>
+          <h4>Socialización del género</h4>
+          <p>Proceso por el cual los individuos aprenden los comportamientos, actitudes y valores considerados apropiados para su género en una cultura determinada. Ocurre desde los primeros años de vida a través de la familia, los juguetes, los libros, los medios y la escuela.</p>
+          <div class="callout callout-key"><div class="callout-label">💡 Resocialización</div>
+            <p>Proceso de adquisición de nuevas normas y valores que reemplazan los anteriores, generalmente en instituciones totales (ejército, cárcel, conventos). Goffman describe cómo las instituciones "desnudan" la identidad previa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD V ======================== -->
+    <section class="unit-section" id="u5">
+      <div class="unit-header">
+        <div class="unit-number">Unidad V (= Unidad II del Desarrollo del Pensamiento)</div>
+        <div class="unit-title">Desarrollo del Pensamiento Sociológico — Los Clásicos</div>
+        <div class="unit-subtitle">Comte · Durkheim · Marx · Weber · Paradigmas y Teorías Sociológicas</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">🔭</div>
+          <div class="topic-title">Teoría y Paradigma Sociológico</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Teoría</div>
+            <p>Enunciado que expresa cómo y por qué unos determinados hechos están relacionados. Los enfoques teóricos son válidos si somos capaces de probarlos mediante la investigación.</p>
+          </div>
+          <div class="callout callout-key"><div class="callout-label">📖 Paradigma Sociológico</div>
+            <p><strong>Macionnis y Plummer (2018):</strong> "Es una imagen de la sociedad que guía no solo la investigación (qué temas son más relevantes) sino también las reflexiones teóricas del investigador."</p>
+          </div>
+          <h3>Grandes paradigmas (teorías)</h3>
+          <div class="paradigm-grid">
+            <div class="paradigm-card"><h4 style="color:var(--primary)">Funcionalismo Estructural</h4><p>La sociedad es un sistema complejo cuyas partes funcionan para generar estabilidad y solidaridad. <strong>Comte, Durkheim, Parsons, Merton.</strong></p></div>
+            <div class="paradigm-card"><h4 style="color:var(--red)">Sociología del Conflicto</h4><p>Analiza desigualdad, fragmentación y cambio. Las estructuras sociales perpetúan distribución desigual. <strong>Marx, Engels, teorías feministas.</strong></p></div>
+            <div class="paradigm-card"><h4 style="color:var(--purple)">Teorías de la Acción</h4><p>Las acciones individuales y sus significados van configurando la sociedad. <strong>Weber, Interaccionismo simbólico (G.H. Mead), Goffman.</strong></p></div>
+            <div class="paradigm-card"><h4 style="color:var(--green)">Teorías Críticas</h4><p>Escuela de Frankfurt, Habermas. Crítica de la razón instrumental y defensa de la emancipación social.</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--accent)">Feminismo Sociológico</h4><p>Cuestiona el androcentrismo en la ciencia. Martineau, Gilman, Addams, Cooper. Desde 1630 en adelante.</p></div>
+            <div class="paradigm-card"><h4 style="color:var(--gold)">Pensamiento Decolonial</h4><p>Perspectiva crítica desde América Latina y el Caribe. Retoma colonialismo, filosofía de la liberación, pedagogía crítica y teoría de la dependencia.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">1️⃣</div>
+          <div class="topic-title">Auguste Comte — El Positivismo y la fundación de la Sociología</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="author-card" style="margin-bottom:16px">
+            <div class="author-name">Auguste Comte</div>
+            <div class="author-dates">1798 – 1857 · Francia</div>
+            <span class="author-tag tag-pos">Positivismo</span>
+            <p>Acuñó el término "Sociología" y fundó el positivismo. Dividió la sociología en <strong>Estática Social</strong> (orden) y <strong>Dinámica Social</strong> (progreso).</p>
+          </div>
+          <h3>Ley de los Tres Estadios</h3>
+          <div class="stages">
+            <div class="stage"><div class="stage-num">I</div><div class="stage-name">Teológico</div><div class="stage-desc">Las personas dan explicaciones mágicas y religiosas. Agentes sobrenaturales.</div></div>
+            <div class="stage"><div class="stage-num">II</div><div class="stage-name">Metafísico</div><div class="stage-desc">Explicaciones racionales con entidades abstractas, esencias y sustancias.</div></div>
+            <div class="stage"><div class="stage-num">III</div><div class="stage-name">Positivo</div><div class="stage-desc">El conocimiento se basa en la observación y experiencia. Método científico.</div></div>
+          </div>
+          <h4>Metodología de Comte</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Observación</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Experimentación</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Comparación</span>
+          </div>
+          <h4>División de la Sociología de Comte</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>División</th><th>Objeto</th></tr>
+          <tr><td><strong>Estática Social</strong></td><td>Condiciones de existencia de la sociedad; mecanismos de cohesión; estructura (individuo, familia, colectividades)</td></tr>
+          <tr><td><strong>Dinámica Social</strong></td><td>Movimiento, evolución y progreso; etapas del desarrollo histórico</td></tr></table></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">2️⃣</div>
+          <div class="topic-title">Émile Durkheim — El Funcionalismo y los Hechos Sociales</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="author-card" style="margin-bottom:16px">
+            <div class="author-name">Émile Durkheim</div>
+            <div class="author-dates">1858 – 1917 · Francia</div>
+            <span class="author-tag tag-func">Funcionalismo</span>
+            <p>Padre fundador de la sociología científica. Creó la primera revista de sociología (L'Année Sociologique). "La sociología es la ciencia de los hechos sociales."</p>
+          </div>
+          <div class="callout callout-def"><div class="callout-label">📖 Hecho Social (Durkheim)</div>
+            <p>"Consisten en modos de actuar, de sentir y de pensar, que se le imponen al individuo humano en forma coactiva, siendo exteriores a sí mismo."</p>
+          </div>
+          <h4>Características de los Hechos Sociales</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Exteriores (preexisten al individuo)</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Coercitivos (ejercen presión)</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Colectivos (parte de la cultura)</span>
+          </div>
+          <h3>Dos tipos de Solidaridad Social</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Solidaridad</th><th>Contexto</th><th>Características</th><th>Derecho</th></tr>
+          <tr><td><strong>Mecánica</strong></td><td>Sociedades tradicionales, clanes</td><td>Mismos sentimientos, mismos valores, religión común. Los individuos son similares entre sí.</td><td>Represivo (castigo, sanción)</td></tr>
+          <tr><td><strong>Orgánica</strong></td><td>Sociedad industrial</td><td>División del trabajo; los individuos son diferentes y complementarios. Interdependencia.</td><td>Restitutivo (devolver al estado anterior)</td></tr></table></div>
+          <h3>Obras principales de Durkheim</h3>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-year">1893</div><div class="tl-text"><strong>La División del Trabajo Social</strong> — analiza los vínculos sociales y cómo cambian con la complejidad de la sociedad</div></div>
+            <div class="tl-item"><div class="tl-year">1895</div><div class="tl-text"><strong>Las Reglas del Método Sociológico</strong> — los hechos sociales deben estudiarse como "cosas" externas, con método objetivo</div></div>
+            <div class="tl-item"><div class="tl-year">1897</div><div class="tl-text"><strong>El Suicidio</strong> — demuestra que el suicidio es un fenómeno social (no solo psicológico). Introduce el concepto de <strong>anomia</strong>: ausencia de normas</div></div>
+            <div class="tl-item"><div class="tl-year">1912</div><div class="tl-text"><strong>Las Formas Elementales de la Vida Religiosa</strong> — la religión como fuente de cohesión social; sociologización de los hechos sociales</div></div>
+          </div>
+          <h4>Funcionalismo (Talcott Parsons y Robert Merton)</h4>
+          <ul>
+            <li><strong>Funciones manifiestas:</strong> consecuencias reconocidas y buscadas por los participantes</li>
+            <li><strong>Funciones latentes:</strong> consecuencias no deliberadas ni reconocidas</li>
+            <li><strong>Disfunciones:</strong> rasgos que representan un desafío al orden establecido (ej.: guerras religiosas)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-red">3️⃣</div>
+          <div class="topic-title">Karl Marx — Materialismo Histórico y Teoría del Conflicto</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="author-card" style="margin-bottom:16px">
+            <div class="author-name">Karl Marx</div>
+            <div class="author-dates">1818 – 1883 · Tréveris, Prusia</div>
+            <span class="author-tag tag-conf">Teoría del Conflicto</span>
+            <p>Historiador, economista, teórico social y revolucionario. Obras: "El Capital", "El Manifiesto Comunista", "La Ideología Alemana", "Contribución a la Crítica de la Economía Política".</p>
+          </div>
+          <h3>Conceptos fundamentales del pensamiento marxista</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Concepto</th><th>Definición</th></tr>
+          <tr><td><strong>Medios de producción</strong></td><td>Todo lo que se usa para producir: tierra, fábricas, herramientas, maquinaria</td></tr>
+          <tr><td><strong>Relaciones de producción</strong></td><td>Relaciones entre propietarios (burguesía) y no propietarios (proletariado)</td></tr>
+          <tr><td><strong>Modo de producción</strong></td><td>Manera en que las personas producen y establecen relaciones (feudal, capitalista, etc.)</td></tr>
+          <tr><td><strong>Infraestructura</strong></td><td>Base económica: fuerzas productivas + relaciones de producción = determinante de la sociedad</td></tr>
+          <tr><td><strong>Superestructura</strong></td><td>Instituciones: política, religión, educación, familia — reflejo de la infraestructura</td></tr>
+          <tr><td><strong>Plusvalía</strong></td><td>Diferencia entre lo que produce el obrero y el salario que recibe — fuente de acumulación capitalista</td></tr>
+          <tr><td><strong>Alienación</strong></td><td>El trabajador no controla el producto de su trabajo; el trabajo se convierte en algo externo y ajeno</td></tr></table></div>
+          <h3>Modos de Producción en la Historia</h3>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Comunismo primitivo</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Esclavismo</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Feudalismo</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Capitalismo industrial</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Capitalismo financiero</span>
+          </div>
+          <h3>El Método Dialéctico</h3>
+          <p>Marx retoma la dialéctica de Hegel pero elimina toda interpretación religiosa, aplicándola al mundo material e histórico.</p>
+          <div class="stages">
+            <div class="stage"><div class="stage-num" style="color:var(--red)">Tesis</div><div class="stage-name">Afirmación</div><div class="stage-desc">Una realidad existente; estado inicial</div></div>
+            <div class="stage"><div class="stage-num" style="color:var(--red)">Antítesis</div><div class="stage-name">Negación</div><div class="stage-desc">Contradicción interna que emerge; conflicto</div></div>
+            <div class="stage"><div class="stage-num" style="color:var(--red)">Síntesis</div><div class="stage-name">Nueva realidad</div><div class="stage-desc">Integración que supera a las dos anteriores; nueva tesis</div></div>
+          </div>
+          <div class="callout callout-warn"><div class="callout-label">⚠️ Evaluación del marxismo</div>
+            <p>Sistemas como el soviético y el cubano intentaron aplicar sus principios. El eurocomunismo (Francia, España, Italia) propuso el <strong>socialismo democrático</strong> rechazando la vía violenta y apostando por la persuasión democrática.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-purple">4️⃣</div>
+          <div class="topic-title">Max Weber — La Acción Social, Burocracia y Racionalización</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="author-card" style="margin-bottom:16px">
+            <div class="author-name">Max Weber</div>
+            <div class="author-dates">1864 – 1920 · Alemania</div>
+            <span class="author-tag tag-acc">Teoría de la Acción</span>
+            <p>La figura más influyente de la teoría sociológica. Obras: "La Ética Protestante y el Espíritu del Capitalismo" (1905), "Economía y Sociedad" (póstumo). Antipositivista, idealista y hermenéutico.</p>
+          </div>
+          <div class="callout callout-def"><div class="callout-label">📖 Acción Social (Weber)</div>
+            <p>"Se comprende por acción aquella conducta humana que su propio agente o agentes entienden como subjetivamente significativa, y en la medida en que lo es. La acción social está referida a la conducta de otros."</p>
+          </div>
+          <h3>Los 4 Tipos de Acción Social</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Tipo</th><th>Motivación</th><th>Ejemplo</th></tr>
+          <tr><td><strong>Racional con arreglo a fines</strong></td><td>Cálculo racional de medios para alcanzar una meta. Más racional de todas.</td><td>Invertir dinero para obtener ganancia</td></tr>
+          <tr><td><strong>Racional con arreglo a valores</strong></td><td>Convicciones religiosas, morales o políticas previas. Racional en los medios, no en los fines.</td><td>Cumplir un voto religioso a cualquier costo</td></tr>
+          <tr><td><strong>Afectiva</strong></td><td>Estado emotivo del momento; no hay horizonte valorativo consciente.</td><td>Reacción de ira o amor espontáneo</td></tr>
+          <tr><td><strong>Tradicional</strong></td><td>Hábito, costumbre arraigada; acción determinada por la rutina.</td><td>Celebrar tradiciones familiares sin cuestionarlas</td></tr></table></div>
+          <h3>Tipos Ideales y Dominación</h3>
+          <p>Los <strong>tipos ideales</strong> son constructos conceptuales para analizar la realidad. Tipos de <strong>dominación legítima:</strong></p>
+          <div class="stages">
+            <div class="stage"><div class="stage-num" style="font-size:1.3rem">Legal</div><div class="stage-name">Dominación Racional</div><div class="stage-desc">Obediencia por estatuto — a las leyes y normas escritas. Base de la burocracia moderna.</div></div>
+            <div class="stage"><div class="stage-num" style="font-size:1.3rem">Tradición</div><div class="stage-name">Dominación Tradicional</div><div class="stage-desc">Obediencia por costumbre — ej.: respeto al padre, al rey</div></div>
+            <div class="stage"><div class="stage-num" style="font-size:1.3rem">Carisma</div><div class="stage-name">Dominación Carismática</div><div class="stage-desc">Obediencia por dotes sobrenaturales, heroísmo, poder intelectual — ej.: líderes políticos carismáticos</div></div>
+          </div>
+          <h3>La Burocracia</h3>
+          <p>Weber usó "burocracia" para designar el desarrollo de los medios de administración en las sociedades industriales. Características:</p>
+          <ul>
+            <li>Jerarquía de cargos y cadena de mando</li>
+            <li>Reglas impersonales; racionalidad; meritocracia</li>
+            <li>Especialización y profesionalización</li>
+            <li>Procedimientos estandarizados</li>
+          </ul>
+          <div class="callout callout-warn"><div class="callout-label">⚠️ La jaula de hierro — El "desencanto"</div>
+            <p>Weber veía la racionalización como un proceso de organización de la vida social en función de la eficiencia y los conocimientos técnicos. Su expansión genera una <strong>"jaula de hierro"</strong> — la burocracia tiene potencial asfixiante y deshumanizador para la democracia.</p>
+          </div>
+          <h3>Hecho Social (Durkheim) vs. Acción Social (Weber)</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Dimensión</th><th>Durkheim</th><th>Weber</th></tr>
+          <tr><td><strong>Enfoque</strong></td><td>Objetivo — el hecho social existe fuera del individuo</td><td>Subjetivo — la acción tiene sentido para el actor</td></tr>
+          <tr><td><strong>Concepto central</strong></td><td>Hecho Social: externo, coercitivo, colectivo</td><td>Acción Social: orientada por la conducta de otros</td></tr>
+          <tr><td><strong>Método</strong></td><td>Positivo-científico; estudiar hechos como "cosas"</td><td>Comprensivo (Verstehen); entender el significado</td></tr></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD VI ======================== -->
+    <section class="unit-section" id="u6">
+      <div class="unit-header">
+        <div class="unit-number">Unidad VI</div>
+        <div class="unit-title">Instituciones Sociales</div>
+        <div class="unit-subtitle">Educación · Familia · Salud · Religión · Medios de Comunicación</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">🎓</div>
+          <div class="topic-title">Educación — Teorías y Análisis Sociológico</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Teorías de la educación</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Teórico</th><th>Propuesta</th></tr>
+          <tr><td><strong>Iván Illich</strong></td><td>Crítica a la escuela institucionalizada. Propone <strong>"desescolarización"</strong>: la educación formal actúa como "plan de estudios oculto" que enseña obediencia, pasividad y conformidad con el sistema.</td></tr>
+          <tr><td><strong>Pierre Bourdieu</strong></td><td><strong>Educación y reproducción cultural:</strong> la escuela reproduce las desigualdades sociales. El "capital cultural" favorece a las clases superiores. Los habitus perpetúan la estructura de clases.</td></tr>
+          <tr><td><strong>Paul Willis</strong></td><td><strong>Reproducción cultural desde abajo:</strong> los alumnos de clase obrera ("los colegas") crean una contracultura escolar que — paradójicamente — los condena a permanecer en la clase obrera.</td></tr></table></div>
+          <div class="callout callout-key"><div class="callout-label">💡 Paraguay — Marco normativo</div>
+            <p>Ley de Educación Superior Nº 4995. CONES (Consejo Nacional de Educación Superior). ANEAES (Agencia Nacional de Evaluación y Acreditación de la Educación Superior). La innovación educativa y las nuevas tecnologías transforman la educación actual.</p>
+          </div>
+          <h4>Desigualdad y educación</h4>
+          <p>El acceso desigual a la educación reproduce la estratificación social. Las nuevas tecnologías educativas pueden tanto democratizar el acceso como profundizar la brecha digital.</p>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-orange">👨‍👩‍👧‍👦</div>
+          <div class="topic-title">Familia — Evolución, Diversidad y Violencia Doméstica</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Perspectivas teóricas sobre la familia</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Perspectiva</th><th>Enfoque</th></tr>
+          <tr><td><strong>Funcionalismo</strong></td><td>La familia cumple funciones esenciales: socialización, estabilidad emocional, reproducción, estatus social</td></tr>
+          <tr><td><strong>Feminismo (Engels)</strong></td><td>Las familias convierten a las mujeres en propiedad económica y sexual de los hombres. La familia patriarcal beneficia a los hombres a costa de las mujeres.</td></tr>
+          <tr><td><strong>Conflicto</strong></td><td>La familia refleja y refuerza las desigualdades de clase, género y etnia. El matrimonio endogámico apuntala la jerarquía racial.</td></tr></table></div>
+          <div class="callout callout-warn"><div class="callout-label">⚠️ Violencia Intrafamiliar</div>
+            <p>La familia puede ser uno de los grupos sociales más violentos. En EE.UU., más del 30% de las mujeres asesinadas muere a manos de sus parejas. La <strong>violencia de género</strong> (feminicidio) es reconocida como fenómeno social, no individual. Se requieren legislaciones específicas de protección.</p>
+          </div>
+          <h4>Modelos familiares actuales</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Nuclear biparental</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Monoparental</span>
+            <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Extendida</span>
+            <span class="badge" style="background:var(--green-bg);color:var(--green);border-color:var(--green)">Reconstituida</span>
+            <span class="badge" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">Homoparental</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-purple">📺</div>
+          <div class="topic-title">Medios de Comunicación — Perspectivas y Efectos</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Perspectivas teóricas sobre los medios</h4>
+          <ul>
+            <li><strong>Funcionalismo:</strong> los medios informan, entretienen, socializan y refuerzan los valores sociales</li>
+            <li><strong>Teoría del Conflicto:</strong> los medios están controlados por las élites y refuerzan ideologías dominantes (hegemonía cultural, Gramsci)</li>
+            <li><strong>Nuevas teorías:</strong> Baudrillard — los medios crean la "hiperrealidad" y "simulacros"; Habermas — los medios pueden contribuir a la democracia participativa (radios y TV públicas)</li>
+          </ul>
+          <div class="callout callout-key"><div class="callout-label">💡 Post-verdad y Rol de los Medios</div>
+            <p>En la era digital, los medios y redes sociales pueden amplificar desinformación. El análisis crítico de los medios es una competencia sociológica fundamental. Los algoritmos crean "burbujas de filtro" que refuerzan sesgos.</p>
+          </div>
+          <h4>Control político de los medios</h4>
+          <p>La concentración de medios en pocas manos limita la diversidad informativa y puede ser instrumento de control social. En Paraguay y América Latina, la propiedad cruzada de medios por grupos económicos y políticos es un tema estructural relevante.</p>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">⛪</div>
+          <div class="topic-title">Religión — Teorías Sociológicas y Cambio Religioso</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Teorías sociológicas de la religión</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Autor</th><th>Visión de la religión</th></tr>
+          <tr><td><strong>Durkheim</strong></td><td>La religión es fuente de cohesión social. Lo sagrado vs. lo profano. El totemismo como forma elemental de religión — la sociedad se venera a sí misma.</td></tr>
+          <tr><td><strong>Marx</strong></td><td>"La religión es el opio del pueblo." Instrumento ideológico de la clase dominante para mantener el orden establecido y desviar la atención de la explotación.</td></tr>
+          <tr><td><strong>Weber</strong></td><td>La religión puede ser motor del cambio social. La <strong>ética protestante</strong> (calvinismo, puritanismo) fue fundamental en el surgimiento del capitalismo moderno.</td></tr></table></div>
+          <h4>Tendencias religiosas contemporáneas</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Cambio en las religiones</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Mito de la secularización</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Fundamentalismos religiosos</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Nuevos movimientos religiosos</span>
+            <span class="badge" style="background:var(--gold-bg);color:var(--gold);border-color:var(--gold)">Religión en el siglo XXI</span>
+          </div>
+          <h4>Religiones existentes en el mundo</h4>
+          <p>Totemismo y animismo (formas primitivas) → Judaísmo → Cristianismo → Islamismo → Budismo → Hinduismo. Cada una con sus características sociológicas específicas de cohesión, rituales y estructura comunitaria.</p>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-green">🏥</div>
+          <div class="topic-title">Salud, Enfermedad y Discapacidad</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <p>La sociología de la salud analiza cómo los factores sociales (clase, género, raza, edad) determinan los estados de salud y enfermedad en las poblaciones. La salud no es solo un fenómeno biológico individual.</p>
+          <h4>Modelo social de la discapacidad</h4>
+          <p>A diferencia del modelo médico (que ve la discapacidad como déficit individual), el <strong>modelo social</strong> sostiene que la discapacidad es el resultado de barreras sociales, culturales y físicas que excluyen a las personas con diversidad funcional.</p>
+          <div class="callout callout-def"><div class="callout-label">📌 Desigualdades en salud</div>
+            <p>Las personas de clases bajas tienen peor acceso a servicios de salud, alimentación adecuada y condiciones de vida saludables. Las desigualdades de salud reflejan y refuerzan las desigualdades sociales más amplias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== UNIDAD VII ======================== -->
+    <section class="unit-section" id="u7">
+      <div class="unit-header">
+        <div class="unit-number">Unidad VII</div>
+        <div class="unit-title">Cambio Social</div>
+        <div class="unit-subtitle">Estructura y cambio · Tipos de cambio · Innovaciones · Movimientos sociales · Condiciones del cambio</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-blue">🔄</div>
+          <div class="topic-title">Estructura Social y Cambio — Conceptos Dialécticos</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <p>La estructura y el cambio social son conceptos <strong>dialécticos</strong>: producción y reproducción de la sociedad van intrínsecamente unidas.</p>
+          <div class="callout callout-def"><div class="callout-label">📖 Estructura Social — Salvador Giner (1974)</div>
+            <p>"El conjunto relativamente estable de las interrelaciones entre diversas partes de una sociedad, más la distribución de estas según un orden dinámico."</p>
+          </div>
+          <h4>Componentes básicos de la estructura social</h4>
+          <div class="badge-row">
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Individuos</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Roles y funciones</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Normas</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Culturas y valores</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Tradiciones y hábitos</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Instituciones</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Organizaciones</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Grupos</span>
+            <span class="badge" style="background:var(--primary-bg);color:var(--primary);border-color:var(--primary)">Estratos</span>
+          </div>
+          <div class="callout callout-key"><div class="callout-label">💡 La metáfora de la estantería</div>
+            <p>Los estratos sociales son como niveles de una estantería. Los laterales (instituciones, organizaciones, grupos) son los elementos constitutivos. La base (valores, costumbres, tradiciones) le da estabilidad a toda la estructura. Los "libros" son los individuos que pueden ubicarse en distintos niveles.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-orange">⚡</div>
+          <div class="topic-title">Tipos de Cambio Social — Clasificación</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <h4>Tipo 1 vs Tipo 2 (Andrés de Francisco)</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Tipo de cambio</th><th>Nivel</th><th>Descripción</th></tr>
+          <tr><td><strong>Tipo 1 — Paraestructural</strong></td><td>Superestructura</td><td>Cambios por factores ideológicos o culturales que <strong>no alteran</strong> el modo de producción. Ajustes en roles sin cambiar el sistema. Ej.: reformulación de roles de género dentro de la familia patriarcal.</td></tr>
+          <tr><td><strong>Tipo 2 — Estructural</strong></td><td>Infraestructura</td><td>Cambios que <strong>afectan al modo de producción</strong>. Causados por factores materiales. Alteran el propio "escenario social". Ej.: revolución industrial, revolución socialista.</td></tr></table></div>
+          <div class="callout callout-tip"><div class="callout-label">✅ Características del cambio social</div>
+            <p>El cambio social tiene una dimensión de <strong>relatividad cuantitativa</strong> (cuánto cambia). Los sistemas tienden al equilibrio mediante ajustes internos. El cambio social profundo requiere generalmente <strong>presión externa</strong>.</p>
+          </div>
+          <h3>Cuadro de tipos de cambio e innovaciones</h3>
+          <div class="compare-wrap"><table class="compare-table"><tr><th></th><th>Endógeno (desde dentro)</th><th>Exógeno (desde fuera)</th></tr>
+          <tr><td><strong>Ascendente (desde las bases)</strong></td><td><strong>Autogestionario</strong> — movimientos sociales comunitarios; respuesta a necesidades concretas de la población (ej.: movimiento indigenista)</td><td><strong>Exo-emergente</strong> — cambios impulsados por agentes externos que responden a demandas populares</td></tr>
+          <tr><td><strong>Descendente (desde las élites)</strong></td><td><strong>Endo-dirigido</strong> — élites internas reforman el sistema (ej.: transición española a la democracia, "pactada desde arriba")</td><td><strong>Exo-dirigido</strong> — élites externas imponen el cambio (ej.: imposición de la democracia en Iraq por EE.UU.)</td></tr></table></div>
+          <div class="callout callout-key"><div class="callout-label">💡 Factores del cambio social</div>
+            <p>Factores <strong>materiales:</strong> tecnología, economía, demografía. Factores <strong>ideológicos/culturales:</strong> valores, religión, ideas. Factores <strong>políticos:</strong> conflicto, guerras, movimientos sociales. La combinación y el peso de cada uno varía según el enfoque teórico (Marx, Weber, Parsons, etc.).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-green">🤝</div>
+          <div class="topic-title">Movimientos Sociales y Condiciones del Cambio</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="callout callout-def"><div class="callout-label">📖 Movimientos Sociales</div>
+            <p>Ejemplo paradigmático de <strong>cambio ascendente</strong>. Surgen como respuesta espontánea a problemas concretos. Son flexibles, adaptados a la población, con alto componente informal. Difíciles de reproducir en otros contextos.</p>
+          </div>
+          <h4>Condiciones favorables para el cambio autogestionario</h4>
+          <ul>
+            <li>Tejido social organizado y dinámico</li>
+            <li>Abundancia de mediadores y líderes locales favorables al cambio</li>
+            <li>Cierto potencial económico de la comunidad</li>
+            <li>Presión externa limitada (no hay imposición desde fuera)</li>
+            <li>Incapacidad o falta de voluntad de las élites endógenas para dirigir el cambio</li>
+          </ul>
+          <h4>Dinámica entre cambios Tipo 1 y Tipo 2</h4>
+          <p>Los cambios de Tipo 1 (ajustes de roles) pueden acumularse hasta generar condiciones para cambios de Tipo 2 (cambio sistémico). El <strong>choque cultural</strong> entre dos estructuras estables está generalmente en la base de los cambios más profundos.</p>
+          <div class="quote-block">
+            "Su realidad social determina sus oportunidades y siempre está sujeto al cambio. En gran medida, un mundo mejor está en la voluntad y decisión que asuman ustedes como protagonistas de su propia generación."
+            <cite>— Prof. Ilda Mayeregger, UNA 2026</cite>
+          </div>
+          <h4>Ejemplos de procesos de cambio</h4>
+          <div class="compare-wrap"><table class="compare-table"><tr><th>Caso</th><th>Tipo</th><th>Características</th></tr>
+          <tr><td><strong>Transición española a la democracia</strong></td><td>Endógeno-Descendente</td><td>Élites internas pactaron las condiciones, desmovilizando la protesta social para garantizar la supervivencia del sistema</td></tr>
+          <tr><td><strong>Democratización de Iraq</strong></td><td>Exógeno-Descendente</td><td>Élites externas (EE.UU.) intentaron imponer el cambio — con escasa participación popular y resultados conflictivos</td></tr>
+          <tr><td><strong>Movimiento indigenista latinoamericano</strong></td><td>Endógeno-Ascendente</td><td>Respuesta a la incapacidad del modelo occidental para integrar a poblaciones autóctonas; surgido desde las bases</td></tr></table></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">📚</div>
+          <div class="topic-title">Bibliografía del Curso</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <ul>
+            <li><strong>Giddens, Anthony</strong> (2018, 8ª Ed.) — <em>Sociología</em>. Alianza Editorial.</li>
+            <li><strong>Macionis, J.J. y Plummer, K.</strong> (2019, 5ª Ed.) — <em>Sociología</em>. Pearson Educación.</li>
+            <li><strong>Ritzer, George</strong> (2008, 6ª Ed.) — <em>Teoría Sociológica Clásica</em>. McGraw-Hill.</li>
+            <li><strong>Díaz, C. y Demas, S.</strong> (2016) — <em>Sociología y Género</em>. Ed. Tecnos.</li>
+            <li><strong>Morrison, Ken</strong> (2018) — <em>Sociología</em>. Ed. Popular. Madrid.</li>
+            <li><strong>Caballero Merlo, J.N.</strong> (2011) — <em>Sociología aplicada a la realidad social del Paraguay</em>. CEADUC/UCA.</li>
+            <li><strong>Hernández Sampieri et al.</strong> (2007) — <em>Fundamentos de Metodología de la Investigación</em>. McGraw-Hill.</li>
+            <li><strong>CEPAL</strong>, Informe 2020 | <strong>PNUD</strong>, Informe 2020 | <strong>DGEEC</strong> www.dgeec.gov.py | <strong>Banco Mundial</strong>, Informe 2020</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================== QUIZ ======================== -->
+    <section class="unit-section" id="quiz" style="margin-top:0">
+      <div class="unit-header" style="background:linear-gradient(135deg,var(--primary-bg),var(--surface))">
+        <div class="unit-number" style="color:var(--primary)">Test de Conocimientos</div>
+        <div class="unit-title">30 Preguntas — Selección Múltiple</div>
+        <div class="unit-subtitle">Unidades I a VII · Sociología completa · UNA 2026</div>
+      </div>
+
+      <div id="quiz-container">
+        <div id="quiz-intro" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:24px;text-align:center">
+          <div style="font-size:3rem;margin-bottom:12px">🎯</div>
+          <h2 style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin-bottom:8px;color:var(--text)">¿Listo para el examen?</h2>
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:24px;max-width:480px;margin-inline:auto">30 preguntas sobre todo el contenido del curso. Tenés tiempo ilimitado. Al final verás tu puntaje y las respuestas correctas.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+            <div style="background:var(--primary-bg);border:1px solid color-mix(in oklch,var(--primary) 30%,transparent);border-radius:var(--radius-sm);padding:12px 20px;min-width:100px">
+              <div style="font-size:1.6rem;font-weight:800;color:var(--primary);font-family:var(--font-display)">30</div>
+              <div style="font-size:.75rem;color:var(--muted)">Preguntas</div>
+            </div>
+            <div style="background:var(--gold-bg);border:1px solid color-mix(in oklch,var(--gold) 30%,transparent);border-radius:var(--radius-sm);padding:12px 20px;min-width:100px">
+              <div style="font-size:1.6rem;font-weight:800;color:var(--gold);font-family:var(--font-display)">7</div>
+              <div style="font-size:.75rem;color:var(--muted)">Unidades</div>
+            </div>
+            <div style="background:var(--purple-bg);border:1px solid color-mix(in oklch,var(--purple) 30%,transparent);border-radius:var(--radius-sm);padding:12px 20px;min-width:100px">
+              <div style="font-size:1.6rem;font-weight:800;color:var(--purple);font-family:var(--font-display)">∞</div>
+              <div style="font-size:.75rem;color:var(--muted)">Intentos</div>
+            </div>
+          </div>
+          <button onclick="startQuiz()" style="background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);padding:14px 36px;font-size:1rem;font-weight:700;cursor:pointer;font-family:var(--font-display);letter-spacing:-.01em;transition:background .18s" onmouseover="this.style.background='var(--primary-hover)'" onmouseout="this.style.background='var(--primary)'">Comenzar Test →</button>
+        </div>
+
+        <div id="quiz-active" style="display:none">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px">
+            <span id="q-counter" style="font-size:.82rem;color:var(--muted);white-space:nowrap">Pregunta 1 de 30</span>
+            <div style="flex:1;height:6px;background:var(--surface-2);border-radius:100px;overflow:hidden">
+              <div id="q-progress" style="height:100%;background:var(--primary);border-radius:100px;transition:width .3s;width:3.3%"></div>
+            </div>
+            <span id="q-score-live" style="font-size:.82rem;font-weight:700;color:var(--primary);white-space:nowrap">✓ 0</span>
+          </div>
+          <div id="q-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:16px;box-shadow:var(--shadow)">
+            <div id="q-unit-badge" style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--primary);margin-bottom:12px"></div>
+            <p id="q-text" style="font-size:1rem;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:24px;max-width:none"></p>
+            <div id="q-options" style="display:flex;flex-direction:column;gap:10px"></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end">
+            <button id="q-next-btn" onclick="nextQuestion()" style="display:none;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);padding:12px 28px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font-display);transition:background .18s" onmouseover="this.style.background='var(--primary-hover)'" onmouseout="this.style.background='var(--primary)'">Siguiente →</button>
+          </div>
+        </div>
+
+        <div id="quiz-results" style="display:none">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 32px;text-align:center;margin-bottom:24px">
+            <div id="result-emoji" style="font-size:4rem;margin-bottom:12px"></div>
+            <h2 id="result-title" style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;margin-bottom:8px;color:var(--text)"></h2>
+            <p id="result-subtitle" style="color:var(--muted);font-size:.9rem;margin-bottom:24px"></p>
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;border-radius:50%;border:4px solid var(--primary);margin-bottom:24px">
+              <div>
+                <div id="result-score" style="font-size:2rem;font-weight:800;color:var(--primary);font-family:var(--font-display);line-height:1"></div>
+                <div style="font-size:.72rem;color:var(--muted)">de 30</div>
+              </div>
+            </div>
+            <div id="result-pct" style="font-size:1rem;color:var(--muted);margin-bottom:28px"></div>
+            <button onclick="retryQuiz()" style="background:var(--primary);color:#fff;border:none;border-radius:var(--radius-sm);padding:12px 28px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font-display);margin-right:10px">↺ Reintentar</button>
+            <button onclick="showReview()" style="background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 28px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font-display)">Ver revisión</button>
+          </div>
+          <div id="review-section" style="display:none">
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;margin-bottom:16px;color:var(--text)">Revisión de respuestas</h3>
+            <div id="review-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<button id="scrollTop" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <strong>Introducción a la Sociología</strong> · Facultad de Derecho y Ciencias Sociales · Universidad Nacional de Asunción · 2026<br>
+  Prof. Ilda Mayeregger · Material elaborado para examen final
+</footer>
+
+<script>
+// Theme toggle
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=r.getAttribute('data-theme')||'dark';
+  r.setAttribute('data-theme',d);
+  const icons={dark:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',light:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'};
+  if(t){t.innerHTML=icons[d];t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=icons[d];});}
+})();
+
+// Topic toggle
+function toggleTopic(header){
+  header.classList.toggle('open');
+}
+
+// Scroll to unit
+function scrollToUnit(id){
+  const el=document.getElementById(id);
+  if(el){el.scrollIntoView({behavior:'smooth',block:'start'});}
+  document.querySelectorAll('.pill').forEach((p,i)=>{
+    p.classList.toggle('active',p.getAttribute('onclick')&&p.getAttribute('onclick').includes(id));
+  });
+}
+
+// Nav pills active on scroll
+const units=['u1','u2','u3','u4','u5','u6','u7'];
+const pills=document.querySelectorAll('.pill');
+const tocItems=document.querySelectorAll('.toc-item');
+
+window.addEventListener('scroll',()=>{
+  // scroll top button
+  document.getElementById('scrollTop').classList.toggle('visible',window.scrollY>400);
+
+  // active pill
+  let current='u1';
+  units.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<120)current=id;
+  });
+  pills.forEach((p,i)=>{
+    p.classList.toggle('active',units[i]===current);
+  });
+  tocItems.forEach(t=>{
+    const oc=t.getAttribute('onclick')||'';
+    t.classList.toggle('active',oc.includes(current));
+  });
+},{passive:true});
+
+// Open first topic in each unit
+document.querySelectorAll('.topic-header.open').forEach(h=>{
+  h.nextElementSibling.style.display='block';
+});
+</script>
+
+<script>
+const QUESTIONS = [
+  // UNIDAD I
+  {unit:"Unidad I",q:"¿Quién acuñó el término 'Sociología' y es considerado el padre fundador de esta disciplina?",opts:["Émile Durkheim","Karl Marx","Auguste Comte","Max Weber"],ans:2},
+  {unit:"Unidad I",q:"Según Giddens (2010), la sociología es:",opts:["El estudio de los fenómenos naturales y su impacto en la sociedad","El estudio de la vida social humana, de sus grupos y sociedades","La ciencia de los hechos sociales externos y coercitivos","El análisis de las acciones individuales subjetivamente significativas"],ans:1},
+  {unit:"Unidad I",q:"La perspectiva sociológica propone que el individuo es único pero sus experiencias vitales dependen de:",opts:["Su inteligencia y capacidad individual","La categoría social a la que pertenece (rol, status)","La voluntad divina o destino","Sus genes y herencia biológica"],ans:1},
+  {unit:"Unidad I",q:"¿Cuál de los siguientes es un ejemplo del nivel MACRO-sistémico?",opts:["La relación entre padres e hijos en casa","El grupo de amigos del barrio","La ideología política y la religión de un país","El aula de clases de la universidad"],ans:2},
+  // UNIDAD II
+  {unit:"Unidad II",q:"La investigación cualitativa se caracteriza principalmente por:",opts:["Medir variables con datos numéricos y análisis estadístico","Buscar comprender e interpretar la realidad desde adentro con enfoque humanista","Ser completamente objetivable y generalizable","Usar experimentos controlados en laboratorio"],ans:1},
+  {unit:"Unidad II",q:"¿Cuál de las siguientes es una técnica de investigación CUALITATIVA?",opts:["Análisis estadístico de encuestas","Metaanálisis de datos numéricos","Investigación Acción Participativa (IAP)","Experimento cuasiexperimental"],ans:2},
+  {unit:"Unidad II",q:"El enfoque que combina métodos cualitativos y cuantitativos se denomina:",opts:["Enfoque positivista","Triangulación o abordaje mixto","Fenomenología pura","Método deductivo exclusivo"],ans:1},
+  {unit:"Unidad II",q:"La investigación cuantitativa es más característica de:",opts:["Las ciencias humanas y humanidades","Las ciencias exactas como física y biología","La hermenéutica social","El interaccionismo simbólico"],ans:1},
+  // UNIDAD III
+  {unit:"Unidad III",q:"Según Giddens, la globalización refiere a:",opts:["La expansión del capitalismo financiero a todos los continentes","La manera en que personas, grupos y naciones se hacen más interdependientes","El proceso de modernización de los países en vías de desarrollo","La homogeneización cultural a nivel mundial"],ans:1},
+  {unit:"Unidad III",q:"¿Cuál es el componente más importante de la cultura?",opts:["Los valores","Los símbolos","El lenguaje","Las normas"],ans:2},
+  {unit:"Unidad III",q:"Juzgar a otra cultura según los estándares de la propia se denomina:",opts:["Relativismo cultural","Multiculturalismo","Etnocentrismo","Desajuste cultural"],ans:2},
+  {unit:"Unidad III",q:"Michel Foucault analizó principalmente:",opts:["La función de las instituciones modernas como herramientas de control y poder","La ética protestante como origen del capitalismo","La dialéctica entre tesis, antítesis y síntesis","Los tipos de acción social y su racionalidad"],ans:0},
+  // UNIDAD IV
+  {unit:"Unidad IV",q:"La estratificación social por CASTAS se caracteriza por ser un sistema:",opts:["Abierto, con gran movilidad social","Semiabierto con algunos mecanismos de cambio","Completamente cerrado donde el nacimiento determina el destino","Basado en el mérito y el esfuerzo individual"],ans:2},
+  {unit:"Unidad IV",q:"Para Marx, ¿qué es la 'plusvalía'?",opts:["El salario total que recibe el trabajador","La diferencia entre lo que produce el obrero y el salario que recibe","El valor del capital acumulado por la burguesía","El precio de venta de la mercancía en el mercado"],ans:1},
+  {unit:"Unidad IV",q:"Max Weber propone que la estratificación social tiene tres dimensiones. ¿Cuáles son?",opts:["Educación, ocupación e ingresos","Infraestructura, superestructura y modo de producción","Clase (económica), Estatus (prestigio) y Partido (poder)","Rol, función y posición dentro de la familia"],ans:2},
+  {unit:"Unidad IV",q:"La movilidad social INTERGENERACIONAL se refiere a:",opts:["El cambio de ocupación de una misma persona a lo largo de su vida","Las diferencias de posición social entre padres e hijos","El traslado geográfico de una región a otra","El ascenso dentro de la misma empresa u organización"],ans:1},
+  {unit:"Unidad IV",q:"¿Qué diferencia hay entre 'raza' y 'etnia'?",opts:["Son sinónimos, ambos refieren a características biológicas heredadas","Raza refiere a rasgos físicos heredados; etnia refiere a herencia cultural compartida","Etnia es una subcategoría de raza con mayor pureza genética","Raza es una construcción cultural; etnia es biológicamente determinada"],ans:1},
+  {unit:"Unidad IV",q:"El proceso por el cual un individuo adquiere nuevas normas y valores que reemplazan los anteriores (ej.: en el ejército) se llama:",opts:["Socialización primaria","Socialización de género","Resocialización","Reproducción cultural"],ans:2},
+  // UNIDAD V
+  {unit:"Unidad V",q:"La 'Ley de los Tres Estadios' de Auguste Comte plantea que el pensamiento humano evoluciona en este orden:",opts:["Metafísico → Teológico → Positivo","Teológico → Metafísico → Positivo","Positivo → Teológico → Metafísico","Empírico → Racional → Religioso"],ans:1},
+  {unit:"Unidad V",q:"Durkheim define los hechos sociales como modos de actuar y pensar que son:",opts:["Subjetivos, internos y modificables por la voluntad individual","Externos al individuo, coercitivos y de carácter colectivo","Producto de la conciencia individual de cada sujeto","Creaciones libres de los grupos sin ninguna presión sobre el individuo"],ans:1},
+  {unit:"Unidad V",q:"La 'solidaridad orgánica' de Durkheim corresponde a:",opts:["Sociedades tradicionales donde todos comparten los mismos valores","Sociedades industriales con división del trabajo e individuos interdependientes","El derecho represivo que castiga las transgresiones a la norma","Grupos primitivos como clanes y tribus con religión común"],ans:1},
+  {unit:"Unidad V",q:"En el análisis marxista, la INFRAESTRUCTURA comprende:",opts:["Las instituciones políticas, religiosas y educativas de la sociedad","La ideología dominante que justifica el orden social existente","Las fuerzas productivas y las relaciones de producción (base económica)","La cultura, costumbres y tradiciones de una sociedad"],ans:2},
+  {unit:"Unidad V",q:"¿Qué es la 'alienación' según Marx?",opts:["La explotación económica directa mediante el robo de plusvalía","El proceso por el cual el trabajador no controla el producto de su trabajo, que se vuelve ajeno","La conciencia falsa que justifica los problemas sociales como individuales","El conflicto entre burguesía y proletariado por el control del Estado"],ans:1},
+  {unit:"Unidad V",q:"Max Weber definió la 'acción racional con arreglo a fines' como:",opts:["Actuar guiado por convicciones morales o religiosas previas","Actuar por hábito y costumbre arraigada en la tradición","Actuar mediante cálculo racional de medios para alcanzar una meta","Actuar determinado por el estado emotivo del momento"],ans:2},
+  {unit:"Unidad V",q:"La 'dominación carismática' de Weber se basa en:",opts:["La obediencia a leyes y estatutos escritos","El respeto a la costumbre y a la tradición ancestral","Las dotes sobrenaturales, heroísmo o poder intelectual del líder","La jerarquía burocrática establecida en un reglamento"],ans:2},
+  {unit:"Unidad V",q:"Weber advertía sobre la 'jaula de hierro' de la racionalización. Esto significa que:",opts:["El capitalismo inevitablemente lleva a la revolución proletaria","La burocracia tiene potencial asfixiante y deshumanizador para la democracia","La ciencia reemplazará definitivamente a la religión en la modernidad","Las clases sociales tienden a la movilidad ascendente con el capitalismo"],ans:1},
+  // UNIDAD VI
+  {unit:"Unidad VI",q:"Pierre Bourdieu plantea que la educación:",opts:["Es el principal mecanismo de movilidad social ascendente para las clases bajas","Reproduce las desigualdades sociales a través del 'capital cultural'","Garantiza la igualdad de oportunidades si es pública y gratuita","Es un espacio neutral libre de influencias ideológicas y de clase"],ans:1},
+  {unit:"Unidad VI",q:"Desde la perspectiva de Marx y Engels, la familia patriarcal:",opts:["Es una institución natural que garantiza la estabilidad social","Convierte a las mujeres en propiedad económica y sexual de los hombres","Es el principal agente de solidaridad orgánica en la sociedad industrial","Refleja la dominación carismática del padre como líder familiar"],ans:1},
+  // UNIDAD VII
+  {unit:"Unidad VII",q:"Según Andrés de Francisco, el cambio social 'Tipo 2 Estructural' implica:",opts:["Ajustes en roles y superestructura sin alterar el modo de producción","Cambios que afectan al modo de producción y alteran el propio sistema social","Reformas culturales promovidas desde las élites dominantes","Adaptaciones normativas dentro de una misma estructura política"],ans:1},
+  {unit:"Unidad VII",q:"Un ejemplo de cambio social ENDÓGENO-ASCENDENTE (autogestionario) es:",opts:["La democratización de Iraq impuesta por EE.UU.","La transición española a la democracia pactada por las élites internas","El movimiento indigenista latinoamericano surgido desde las bases","La Revolución Francesa liderada por la burguesía ilustrada"],ans:2},
+];
+
+let current=0, score=0, userAnswers=[];
+
+function startQuiz(){
+  document.getElementById('quiz-intro').style.display='none';
+  document.getElementById('quiz-active').style.display='block';
+  current=0; score=0; userAnswers=[];
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=QUESTIONS[current];
+  document.getElementById('q-counter').textContent='Pregunta '+(current+1)+' de 30';
+  document.getElementById('q-progress').style.width=((current+1)/30*100)+'%';
+  document.getElementById('q-score-live').textContent='✓ '+score;
+  document.getElementById('q-unit-badge').textContent=q.unit;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('q-next-btn').style.display='none';
+  const opts=document.getElementById('q-options');
+  opts.innerHTML='';
+  q.opts.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.textContent=opt;
+    btn.style.cssText='text-align:left;padding:12px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--surface-2);color:var(--text);font-size:.88rem;cursor:pointer;transition:all .18s;font-family:var(--font-body);line-height:1.5';
+    btn.onmouseover=()=>{if(!btn.disabled)btn.style.borderColor='var(--primary)'};
+    btn.onmouseout=()=>{if(!btn.disabled&&!btn.dataset.selected)btn.style.borderColor='var(--border)'};
+    btn.onclick=()=>selectAnswer(i,btn);
+    opts.appendChild(btn);
+  });
+}
+
+function selectAnswer(idx, btn){
+  const q=QUESTIONS[current];
+  const btns=document.getElementById('q-options').querySelectorAll('button');
+  btns.forEach(b=>{b.disabled=true;b.onmouseover=null;b.onmouseout=null});
+  const correct=idx===q.ans;
+  if(correct){
+    score++;
+    btn.style.background='var(--green-bg)';
+    btn.style.borderColor='var(--green)';
+    btn.style.color='var(--green)';
+  } else {
+    btn.style.background='var(--red-bg)';
+    btn.style.borderColor='var(--red)';
+    btn.style.color='var(--red)';
+    btns[q.ans].style.background='var(--green-bg)';
+    btns[q.ans].style.borderColor='var(--green)';
+    btns[q.ans].style.color='var(--green)';
+  }
+  userAnswers.push({q:current,selected:idx,correct});
+  document.getElementById('q-score-live').textContent='✓ '+score;
+  document.getElementById('q-next-btn').style.display='block';
+  document.getElementById('q-next-btn').textContent=current<29?'Siguiente →':'Ver resultados';
+}
+
+function nextQuestion(){
+  current++;
+  if(current<30){renderQuestion();}
+  else{showResults();}
+}
+
+function showResults(){
+  document.getElementById('quiz-active').style.display='none';
+  document.getElementById('quiz-results').style.display='block';
+  const pct=Math.round(score/30*100);
+  document.getElementById('result-score').textContent=score;
+  document.getElementById('result-pct').textContent=pct+'% de respuestas correctas';
+  let emoji,title,sub;
+  if(pct>=90){emoji='🏆';title='¡Excelente! ¡Aprobado con distinción!';sub='Dominás el contenido de Sociología. ¡Estás listo para el examen final!';}
+  else if(pct>=70){emoji='✅';title='¡Muy bien! ¡Aprobado!';sub='Buen manejo del material. Repasá los temas donde fallaste.';}
+  else if(pct>=50){emoji='📚';title='Aprobado justo — pero podés mejorar';sub='Revisá las unidades donde tuviste más errores antes del examen.';}
+  else{emoji='💪';title='Necesitás repasar más';sub='No te desanimes — volvé al material de lectura y reintentá el test.';}
+  document.getElementById('result-emoji').textContent=emoji;
+  document.getElementById('result-title').textContent=title;
+  document.getElementById('result-subtitle').textContent=sub;
+  document.getElementById('review-section').style.display='none';
+}
+
+function showReview(){
+  const sec=document.getElementById('review-section');
+  sec.style.display=sec.style.display==='none'?'block':'none';
+  const list=document.getElementById('review-list');
+  list.innerHTML='';
+  userAnswers.forEach(a=>{
+    const q=QUESTIONS[a.q];
+    const div=document.createElement('div');
+    div.style.cssText='background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;border-left:3px solid '+(a.correct?'var(--green)':'var(--red)');
+    div.innerHTML='<div style="font-size:.72rem;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:6px">'+q.unit+'</div>'
+      +'<p style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:8px">'+q.q+'</p>'
+      +'<p style="font-size:.83rem;margin:3px 0;color:'+(a.correct?'var(--green)':'var(--red)')+'">'+( a.correct?'✓ Correcto: ':'✗ Tu respuesta: ')+q.opts[a.selected]+'</p>'
+      +(a.correct?'':'<p style="font-size:.83rem;color:var(--green);margin:3px 0">✓ Correcta: '+q.opts[q.ans]+'</p>');
+    list.appendChild(div);
+  });
+}
+
+function retryQuiz(){
+  document.getElementById('quiz-results').style.display='none';
+  document.getElementById('quiz-active').style.display='none';
+  document.getElementById('quiz-intro').style.display='block';
+}
+</script>
+
+
+<script>
+// ======= VOICE READER =======
+const synth = window.speechSynthesis;
+let voices = [];
+let utterance = null;
+let isPlaying = false;
+let isPaused = false;
+let currentSectionIdx = 0;
+let sections = [];
+let highlightedEl = null;
+
+function loadVoices(){
+  voices = synth.getVoices();
+}
+if(synth.onvoiceschanged !== undefined){
+  synth.onvoiceschanged = loadVoices;
+}
+loadVoices();
+
+function buildSections(){
+  // Recolectar todas las secciones de contenido legibles
+  sections = [];
+  // Unidades
+  document.querySelectorAll('.unit-section').forEach(sec => {
+    const header = sec.querySelector('.unit-title');
+    const unitNum = sec.querySelector('.unit-number');
+    if(!header) return;
+    // Cada topic body abierto o cerrado
+    sec.querySelectorAll('.topic').forEach(topic => {
+      const titleEl = topic.querySelector('.topic-title');
+      const bodyEl = topic.querySelector('.topic-body');
+      if(!titleEl || !bodyEl) return;
+      const titleText = titleEl.textContent.trim();
+      const unitText = unitNum ? unitNum.textContent.trim() : '';
+      // Extraer texto limpio del body
+      const rawText = bodyEl.innerText || bodyEl.textContent;
+      const cleanText = rawText.replace(/\s+/g,' ').trim();
+      if(cleanText.length > 20){
+        sections.push({
+          label: unitText + ' — ' + titleText,
+          text: titleText + '. ' + cleanText,
+          el: bodyEl,
+          headerEl: titleEl
+        });
+      }
+    });
+  });
+  return sections;
+}
+
+function getSpanishVoice(){
+  const preferred = ['es-PY','es-AR','es-ES','es-MX','es-US','es'];
+  for(const lang of preferred){
+    const v = voices.find(v => v.lang.startsWith(lang));
+    if(v) return v;
+  }
+  const anyEs = voices.find(v => v.lang.startsWith('es'));
+  return anyEs || null;
+}
+
+function activateReader(){
+  buildSections();
+  document.getElementById('voice-bar').classList.remove('hidden');
+  document.getElementById('voice-fab').style.display='none';
+  if(sections.length > 0){
+    updateVoiceLabel();
+  }
+}
+
+function deactivateReader(){
+  stopReading();
+  document.getElementById('voice-bar').classList.add('hidden');
+  document.getElementById('voice-fab').style.display='flex';
+}
+
+function updateVoiceLabel(){
+  if(sections.length === 0) return;
+  const s = sections[currentSectionIdx];
+  document.getElementById('voice-label').textContent = s.label;
+  document.getElementById('voice-sub').textContent = (currentSectionIdx+1) + ' / ' + sections.length;
+}
+
+function readCurrentSection(){
+  if(sections.length === 0){ buildSections(); }
+  stopReading(false);
+  const s = sections[currentSectionIdx];
+  updateVoiceLabel();
+  // Scroll al elemento
+  if(s.headerEl){
+    s.headerEl.closest('.topic-header').classList.add('open');
+    s.el.style.display = 'block';
+    setTimeout(() => s.headerEl.scrollIntoView({behavior:'smooth', block:'center'}), 100);
+  }
+  // Highlight
+  clearHighlight();
+  if(s.el){ s.el.classList.add('speaking-highlight'); highlightedEl = s.el; }
+  // Speak
+  utterance = new SpeechSynthesisUtterance(s.text);
+  utterance.lang = 'es-PY';
+  const v = getSpanishVoice();
+  if(v) utterance.voice = v;
+  utterance.rate = parseFloat(document.getElementById('voice-speed').value);
+  utterance.pitch = 1;
+  utterance.onstart = () => { isPlaying = true; isPaused = false; setPlayIcon(true); };
+  utterance.onend = () => {
+    isPlaying = false; isPaused = false; setPlayIcon(false);
+    clearHighlight();
+    // Avanzar automáticamente
+    if(currentSectionIdx < sections.length - 1){
+      currentSectionIdx++;
+      setTimeout(() => readCurrentSection(), 600);
+    } else {
+      document.getElementById('voice-sub').textContent = '✓ Lectura completada';
+    }
+  };
+  utterance.onerror = () => { isPlaying = false; setPlayIcon(false); clearHighlight(); };
+  synth.speak(utterance);
+}
+
+function togglePlay(){
+  if(sections.length === 0) buildSections();
+  if(!isPlaying && !isPaused){
+    readCurrentSection();
+  } else if(isPlaying && !isPaused){
+    synth.pause();
+    isPaused = true;
+    isPlaying = false;
+    setPlayIcon(false);
+  } else if(isPaused){
+    synth.resume();
+    isPaused = false;
+    isPlaying = true;
+    setPlayIcon(true);
+  }
+}
+
+function stopReading(reset=true){
+  synth.cancel();
+  isPlaying = false;
+  isPaused = false;
+  setPlayIcon(false);
+  clearHighlight();
+  if(reset && sections.length > 0){
+    document.getElementById('voice-sub').textContent = (currentSectionIdx+1) + ' / ' + sections.length;
+  }
+}
+
+function nextSection(){
+  if(currentSectionIdx < sections.length - 1){
+    currentSectionIdx++;
+    if(isPlaying || isPaused) readCurrentSection();
+    else updateVoiceLabel();
+  }
+}
+
+function prevSection(){
+  if(currentSectionIdx > 0){
+    currentSectionIdx--;
+    if(isPlaying || isPaused) readCurrentSection();
+    else updateVoiceLabel();
+  }
+}
+
+function changeSpeed(val){
+  if(utterance && isPlaying){
+    stopReading(false);
+    setTimeout(() => readCurrentSection(), 100);
+  }
+}
+
+function setPlayIcon(playing){
+  const icon = document.getElementById('play-icon');
+  if(playing){
+    icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+  } else {
+    icon.innerHTML = '<polygon points="5,3 19,12 5,21"/>';
+  }
+}
+
+function clearHighlight(){
+  if(highlightedEl){ highlightedEl.classList.remove('speaking-highlight'); highlightedEl = null; }
+}
+
+// Parar si cambia de página
+window.addEventListener('beforeunload', () => synth.cancel());
+</script>
+
+
+<script>
+// ===== HIGHLIGHTER =====
+const HL_KEY = 'socio_highlights_v1';
+let hlActive = false;
+let hlColor = 'hl-y';
+let hlData = [];
+
+function loadHighlights(){
+  try {
+    const raw = localStorage.getItem(HL_KEY);
+    if(raw) hlData = JSON.parse(raw);
+  } catch(e){ hlData = []; }
+  hlData.forEach(h => restoreHighlight(h));
+  updateHlStats();
+}
+
+function saveHighlights(){
+  try { localStorage.setItem(HL_KEY, JSON.stringify(hlData)); } catch(e){}
+  updateHlStats();
+}
+
+function updateHlStats(){
+  const el = document.getElementById('hl-stats');
+  if(!el) return;
+  const n = hlData.length;
+  el.textContent = n === 0 ? 'Sin resaltados guardados' : n + ' resaltado' + (n>1?'s':'') + ' guardado' + (n>1?'s':'');
+}
+
+function toggleHighlighter(){
+  hlActive = !hlActive;
+  const fab = document.getElementById('hl-fab');
+  const toolbar = document.getElementById('hl-toolbar');
+  fab.classList.toggle('active', hlActive);
+  toolbar.classList.toggle('open', hlActive);
+  document.body.style.cursor = hlActive ? 'text' : '';
+}
+
+function selectColor(btn){
+  document.querySelectorAll('.hl-color-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  hlColor = btn.dataset.color;
+}
+
+function applyHighlight(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || sel.toString().trim().length < 2){
+    alert('Seleccioná un texto primero para resaltarlo.');
+    return;
+  }
+  const range = sel.getRangeAt(0);
+  const text = sel.toString().trim();
+  const note = document.getElementById('hl-note-input').value.trim();
+
+  // Crear el mark
+  const mark = document.createElement('mark');
+  mark.className = 'hl ' + hlColor;
+  mark.dataset.hlId = Date.now() + '_' + Math.random().toString(36).substr(2,5);
+  mark.dataset.hlColor = hlColor;
+  mark.title = note || '';
+
+  // Tooltip de nota
+  if(note){
+    const tip = document.createElement('span');
+    tip.className = 'hl-tooltip';
+    tip.textContent = '📝 ' + note;
+    mark.appendChild(tip);
+  }
+
+  try {
+    range.surroundContents(mark);
+    sel.removeAllRanges();
+
+    // Click para eliminar
+    mark.addEventListener('click', function(e){
+      if(e.shiftKey || confirm('¿Eliminar este resaltado?')){
+        const id = this.dataset.hlId;
+        const parent = this.parentNode;
+        while(this.firstChild){ parent.insertBefore(this.firstChild, this); }
+        parent.removeChild(this);
+        hlData = hlData.filter(h => h.id !== id);
+        saveHighlights();
+      }
+    });
+
+    // Guardar
+    const hlEntry = {
+      id: mark.dataset.hlId,
+      color: hlColor,
+      text: text,
+      note: note,
+      path: getNodePath(mark)
+    };
+    hlData.push(hlEntry);
+    saveHighlights();
+    document.getElementById('hl-note-input').value = '';
+  } catch(e){
+    sel.removeAllRanges();
+    alert('No se pudo resaltar esa selección. Intentá con una selección más corta o dentro de un mismo párrafo.');
+  }
+}
+
+function removeAllHighlights(){
+  if(hlData.length === 0){ alert('No hay resaltados para borrar.'); return; }
+  if(!confirm('¿Borrar TODOS los resaltados guardados?')) return;
+  document.querySelectorAll('mark.hl').forEach(mark => {
+    const parent = mark.parentNode;
+    while(mark.firstChild){ parent.insertBefore(mark.firstChild, mark); }
+    parent.removeChild(mark);
+  });
+  hlData = [];
+  saveHighlights();
+}
+
+function getNodePath(node){
+  // Guardar contexto: texto circundante para restaurar
+  const parent = node.parentElement;
+  if(!parent) return null;
+  return {
+    parentText: parent.innerText ? parent.innerText.substring(0,100) : '',
+    sectionId: node.closest('[id]') ? node.closest('[id]').id : '',
+    textSnippet: node.textContent.substring(0,80)
+  };
+}
+
+function restoreHighlight(h){
+  // Buscar el texto en el DOM y restaurar el mark
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  const target = h.text;
+  while((node = walker.nextNode())){
+    const idx = node.nodeValue.indexOf(target);
+    if(idx !== -1 && !node.parentElement.classList.contains('hl')){
+      try {
+        const range = document.createRange();
+        range.setStart(node, idx);
+        range.setEnd(node, idx + target.length);
+        const mark = document.createElement('mark');
+        mark.className = 'hl ' + h.color;
+        mark.dataset.hlId = h.id;
+        mark.dataset.hlColor = h.color;
+        mark.title = h.note || '';
+        if(h.note){
+          const tip = document.createElement('span');
+          tip.className = 'hl-tooltip';
+          tip.textContent = '📝 ' + h.note;
+          mark.appendChild(tip);
+        }
+        range.surroundContents(mark);
+        mark.addEventListener('click', function(e){
+          if(e.shiftKey || confirm('¿Eliminar este resaltado?')){
+            const id = this.dataset.hlId;
+            const parent = this.parentNode;
+            while(this.firstChild){ parent.insertBefore(this.firstChild, this); }
+            parent.removeChild(this);
+            hlData = hlData.filter(item => item.id !== id);
+            saveHighlights();
+          }
+        });
+        break;
+      } catch(err){ break; }
+    }
+  }
+}
+
+// Shortcut: seleccionar texto con resaltador activo aplica directo
+document.addEventListener('mouseup', function(e){
+  if(!hlActive) return;
+  if(e.target.closest('#hl-toolbar') || e.target.closest('#hl-fab')) return;
+  const sel = window.getSelection();
+  if(sel && !sel.isCollapsed && sel.toString().trim().length >= 2){
+    // pequeño delay para que el usuario vea la selección
+    setTimeout(() => {
+      if(window.getSelection() && !window.getSelection().isCollapsed){
+        applyHighlight();
+      }
+    }, 150);
+  }
+});
+
+// Cargar al inicio
+document.addEventListener('DOMContentLoaded', loadHighlights);
+// Fallback si DOMContentLoaded ya pasó
+if(document.readyState !== 'loading') loadHighlights();
+</script>
+
+</body>
+</html>
+<!-- QUIZ SECTION — insertado antes del cierre del body -->
