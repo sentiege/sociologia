@@ -195,6 +195,38 @@
       .hero { padding:2rem 1.2rem; }
       .case-card { padding:1.4rem 1.1rem; }
     }
+  
+    /* === FEATURED CASE === */
+    .case-card.featured {
+      border: 2px solid #b45309;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      box-shadow: 0 4px 20px rgba(180,83,9,0.15), var(--shadow);
+    }
+    .case-card.featured .case-title {
+      color: #92400e;
+    }
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #b45309;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.22rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+    .case-card.featured .case-tag {
+      background: #fde68a;
+      color: #92400e;
+    }
+    .case-card.featured .response-box {
+      border-left: 3px solid #b45309;
+    }
+
   </style>
 </head>
 <body>
@@ -208,7 +240,88 @@
 
   <main class="main">
     <!-- 1. Educación pública deficiente -->
-    <section class="case-card">
+    
+    <!-- 0. Conflicto de tierras en Paraguay — DESTACADO -->
+    <section class="case-card featured">
+      <div>
+        <span class="featured-badge">⭐ Tema prioritario — Paraguay</span>
+      </div>
+      <div class="case-header">
+        <h2 class="case-title">🌾 Conflicto de tenencia de la tierra en Paraguay</h2>
+        <span class="case-tag">Desigualdad estructural</span>
+      </div>
+      <p class="case-text">
+        Paraguay tiene una de las distribuciones de tierra más desiguales del mundo: menos del 2% de los propietarios concentra más del 80% de las tierras cultivables.
+        Comunidades campesinas e indígenas llevan décadas reclamando acceso a la tierra, enfrentando desalojos, criminalización de la protesta y violencia institucional.
+        El latifundio y el agronegocio (principalmente soja y ganadería extensiva) desplazan a familias enteras, generando pobreza rural, migración y conflicto social permanente.
+      </p>
+      <div class="thinkers-row">
+
+        <!-- Marx -->
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored_%26_Adjusted_%283x4_cropped_b%29.png" alt="Karl Marx">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Karl Marx</div>
+              <span class="thinker-tag tag-marx">"La tierra es un medio de producción concentrado en pocas manos"</span>
+            </div>
+          </div>
+          <button class="btn-toggle" data-target="tierra-marx">¿Qué diría Marx?</button>
+          <div class="response-box" id="tierra-marx">
+            <div class="response-title">Lectura desde Marx</div>
+            <p>
+              <strong>1. Infraestructura y superestructura:</strong> la concentración de la tierra es la base económica (infraestructura) del conflicto.
+              El Estado paraguayo, las leyes agrarias y el sistema judicial no son neutrales: reflejan los intereses de la burguesía terrateniente y del agronegocio transnacional.
+              La superestructura —instituciones, discurso político, medios— legitima esa concentración y criminaliza la protesta campesina.
+            </p>
+            <p>
+              <strong>2. Lucha de clases y plusvalía:</strong> los campesinos sin tierra son un proletariado rural obligado a vender su fuerza de trabajo en las grandes estancias en condiciones de explotación.
+              La riqueza del latifundista se construye sobre la plusvalía extraída de ese trabajo: el campesino genera más valor del que recibe como salario, y esa diferencia es apropiada por el propietario de los medios de producción —la tierra.
+            </p>
+            <p>
+              <strong>3. Alienación y falsa conciencia:</strong> el campesino paraguayo está alienado: trabaja una tierra que no le pertenece, produce alimentos que no puede consumir y está desconectado del fruto de su propio trabajo.
+              La ideología dominante —"el que trabaja, progresa"; "la propiedad privada es sagrada"— opera como falsa conciencia que impide al campesinado reconocer su explotación y organizarse colectivamente para transformar el sistema.
+            </p>
+          </div>
+        </article>
+
+        <!-- Weber -->
+        <article class="thinker-card">
+          <div class="thinker-header">
+            <div class="thinker-img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Retrato-del-sociologo-aleman-max-weber-sin-fecha-de-imagen-ta4ex3.jpg" alt="Max Weber">
+            </div>
+            <div class="thinker-info">
+              <div class="thinker-name">Max Weber</div>
+              <span class="thinker-tag tag-weber">"Poder, estatus y dominación se concentran junto con la tierra"</span>
+            </div>
+          </div>
+          <button class="btn-toggle" data-target="tierra-weber">¿Qué diría Weber?</button>
+          <div class="response-box" id="tierra-weber">
+            <div class="response-title">Lectura desde Weber</div>
+            <p>
+              <strong>1. Estratificación multidimensional (clase, estatus y poder):</strong> para Weber el conflicto de tierras no es solo económico.
+              El terrateniente concentra simultáneamente clase (riqueza económica), estatus (prestigio social) y poder (acceso al Estado y decisiones políticas).
+              El campesino sin tierra carece de las tres dimensiones: no tiene capital, tiene bajo estatus social y está excluido de los espacios de poder. Esa triple exclusión hace que el conflicto sea especialmente difícil de resolver.
+            </p>
+            <p>
+              <strong>2. Dominación legal-racional y burocracia:</strong> el sistema legal paraguayo legitima la concentración de la tierra a través de títulos de propiedad, registros notariales y procedimientos judiciales —instrumentos de la dominación legal-racional.
+              Pero esa burocracia opera en favor de quienes ya tienen poder: los latifundistas pueden costear abogados y gestionar trámites, mientras las comunidades campesinas quedan atrapadas en una "jaula de hierro" burocrática que formaliza su exclusión.
+            </p>
+            <p>
+              <strong>3. Acción racional con arreglo a fines vs. valores:</strong> los movimientos campesinos actúan motivados por valores (justicia, dignidad, derecho a la tierra — acción racional con arreglo a valores).
+              El agronegocio y los grandes propietarios actúan según un cálculo puro de medios-fines: maximizar rendimiento económico (acción racional con arreglo a fines).
+              Para Weber, el conflicto surge porque ambas racionalidades son incompatibles: una busca eficiencia productiva, la otra reclama reconocimiento y derechos, y el Estado debe mediar entre ellas mediante una burocracia imparcial —que en Paraguay históricamente no ha sido neutral.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+<section class="case-card">
       <div class="case-header">
         <h2 class="case-title">🧩 Educación pública deficiente</h2>
         <span class="case-tag">Escuelas públicas con pocos recursos</span>
