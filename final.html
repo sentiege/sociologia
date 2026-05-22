@@ -260,6 +260,20 @@ mark.hl-o{background:#fed7aa;color:#1a1814}
 .hl-tooltip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 10px;font-size:.75rem;color:var(--text);white-space:nowrap;box-shadow:var(--shadow-md);z-index:400;pointer-events:none;max-width:220px;white-space:normal;display:none}
 mark.hl:hover .hl-tooltip{display:block}
 
+
+/* ===== EXAM BADGES ===== */
+.exam-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(212,165,10,.12);border:1px solid rgba(212,165,10,.35);border-radius:100px;padding:3px 10px;font-size:.68rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 0 8px;vertical-align:middle;white-space:nowrap}
+.exam-badge svg{width:10px;height:10px;flex-shrink:0}
+.exam-block{background:rgba(212,165,10,.07);border:1px solid rgba(212,165,10,.3);border-radius:var(--radius-sm);padding:14px 16px;margin:14px 0;position:relative}
+.exam-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);border-radius:3px 0 0 3px}
+.exam-block-label{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.exam-block-label svg{width:12px;height:12px;flex-shrink:0}
+.exam-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
+.exam-summary-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.exam-summary-card h3{margin:0 0 8px 0;padding:0;border:none;font-family:var(--font-display);font-size:1rem}
+.exam-summary-card ul{margin:0;padding-left:18px}
+.exam-summary-card li{margin-bottom:6px}
+
 </style>
 </head>
 <body>
@@ -343,6 +357,8 @@ mark.hl:hover .hl-tooltip{display:block}
       <button class="pill" onclick="scrollToUnit('u6')">VI</button>
       <button class="pill" onclick="scrollToUnit('u7')">VII</button>
       <button class="pill" onclick="scrollToUnit('quiz')">🎯 Test</button>
+      
+      <button class="pill" onclick="scrollToUnit('examenes')" style="text-decoration:none;background:color-mix(in oklch,var(--gold) 15%,transparent);color:var(--gold);font-weight:700;border:1px solid color-mix(in oklch,var(--gold) 30%,transparent)">⭐ Exámenes</button>
       <a class="pill" href="https://sentiege.github.io/sociologia/que-dirian.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;background:color-mix(in oklch,var(--purple) 15%,transparent);color:var(--purple);font-weight:700;border:1px solid color-mix(in oklch,var(--purple) 30%,transparent)">💬 ¿Qué dirían?</a>
     </div>
     <button class="theme-btn" data-theme-toggle aria-label="Cambiar tema">
@@ -481,7 +497,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header open" onclick="toggleTopic(this)">
           <div class="topic-icon icon-purple">🔬</div>
-          <div class="topic-title">Investigación Cualitativa (Perspectiva Humanista)</div>
+          <div class="topic-title">Investigación Cualitativa (Perspectiva Humanista) <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -509,7 +525,12 @@ mark.hl:hover .hl-tooltip{display:block}
             <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">Entrevista a profundidad</span>
             <span class="badge" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple)">IAP (Investigación Acción Participativa)</span>
           </div>
-          <div class="callout callout-def"><div class="callout-label">📌 Aspectos fundamentales en la investigación</div>
+          
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <p><strong>Parcial 1 — Desarrollo:</strong> apareció el cuadro comparativo <em>investigación cualitativa vs cuantitativa</em>. Estudiá enfoque, epistemología, objetivo, teoría, valores y técnicas.</p>
+          </div>
+<div class="callout callout-def"><div class="callout-label">📌 Aspectos fundamentales en la investigación</div>
             <p><strong>Epistemológico:</strong> tipo de verdad que se intenta producir. <strong>Técnico/Metodológico:</strong> métodos y herramientas que demuestren validez. <strong>Ético y Político:</strong> objetivos e impacto de la investigación en la sociedad y en los participantes.</p>
           </div>
         </div>
@@ -518,7 +539,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-blue">📊</div>
-          <div class="topic-title">Investigación Cuantitativa (Perspectiva Positivista)</div>
+          <div class="topic-title">Investigación Cuantitativa (Perspectiva Positivista) <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -547,7 +568,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-green">⚖️</div>
-          <div class="topic-title">Diferencias entre Enfoques — Cuadro Comparativo</div>
+          <div class="topic-title">Diferencias entre Enfoques — Cuadro Comparativo <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -574,11 +595,20 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header open" onclick="toggleTopic(this)">
           <div class="topic-icon icon-blue">🌐</div>
-          <div class="topic-title">Concepto de Sociedad y Tipos Históricos</div>
+          <div class="topic-title">Concepto de Sociedad y Tipos Históricos <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
-          <div class="callout callout-def"><div class="callout-label">📖 Definiciones</div>
+          
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <ul>
+              <li><strong>Parcial 1:</strong> la evolución de las sociedades se produce <em>en forma de proceso en el tiempo</em>.</li>
+              <li><strong>Parcial 1:</strong> en cada tipo de sociedad <em>cohabitan lo nuevo y lo viejo</em>.</li>
+              <li><strong>Parcial 1:</strong> la sociedad moderna se caracteriza por <em>una reconfiguración según el orden de economía</em>.</li>
+            </ul>
+          </div>
+<div class="callout callout-def"><div class="callout-label">📖 Definiciones</div>
             <p><strong>Fichter (1986):</strong> "Un gran número de seres humanos que obran conjuntamente para satisfacer sus necesidades sociales y comparten una cultura en común."</p>
             <p><strong>Giddens (2000):</strong> "Un sistema de interrelaciones que vincula a los individuos."</p>
             <p><strong>Plummer & Macionis (2011):</strong> "Las personas que interactúan en un espacio definido y comparten una cultura."</p>
@@ -664,7 +694,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-green">🌱</div>
-          <div class="topic-title">Sociólogos Contemporáneos — Postmodernidad y Globalización</div>
+          <div class="topic-title">Sociólogos Contemporáneos — Postmodernidad y Globalización <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -675,6 +705,11 @@ mark.hl:hover .hl-tooltip{display:block}
               <span class="author-tag tag-col">Postmoderno</span>
               <p>Analizó la función de las instituciones modernas (cárceles, hospitales, escuelas) como herramientas de control. "El poder opera mediante el discurso." La <strong>Arqueología del saber:</strong> buscar sentido en lo familiar ahondando en el pasado.</p>
             </div>
+            <div class="exam-block">
+              <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+              <p><strong>Parcial 1:</strong> para Michel Foucault el poder se centra en las <em>instituciones de encierro</em>, como cárceles y otras modalidades de control.</p>
+            </div>
+
             <div class="author-card">
               <div class="author-name">Jürgen Habermas</div>
               <div class="author-dates">1929 – · Alemania</div>
@@ -895,7 +930,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-blue">1️⃣</div>
-          <div class="topic-title">Auguste Comte — El Positivismo y la fundación de la Sociología</div>
+          <div class="topic-title">Auguste Comte — El Positivismo y la fundación de la Sociología <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -905,6 +940,14 @@ mark.hl:hover .hl-tooltip{display:block}
             <span class="author-tag tag-pos">Positivismo</span>
             <p>Acuñó el término "Sociología" y fundó el positivismo. Dividió la sociología en <strong>Estática Social</strong> (orden) y <strong>Dinámica Social</strong> (progreso).</p>
           </div>
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <ul>
+              <li><strong>Parcial 2:</strong> mérito de Comte: <em>haber acuñado el concepto de Sociología</em>.</li>
+              <li><strong>Parcial 2:</strong> dinámica social: <em>estudia los cambios y transformaciones sociales</em>.</li>
+            </ul>
+          </div>
+
           <h3>Ley de los Tres Estadios</h3>
           <div class="stages">
             <div class="stage"><div class="stage-num">I</div><div class="stage-name">Teológico</div><div class="stage-desc">Las personas dan explicaciones mágicas y religiosas. Agentes sobrenaturales.</div></div>
@@ -927,7 +970,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-blue">2️⃣</div>
-          <div class="topic-title">Émile Durkheim — El Funcionalismo y los Hechos Sociales</div>
+          <div class="topic-title">Émile Durkheim — El Funcionalismo y los Hechos Sociales <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -937,6 +980,15 @@ mark.hl:hover .hl-tooltip{display:block}
             <span class="author-tag tag-func">Funcionalismo</span>
             <p>Padre fundador de la sociología científica. Creó la primera revista de sociología (L'Année Sociologique). "La sociología es la ciencia de los hechos sociales."</p>
           </div>
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <ul>
+              <li><strong>Parcial 2:</strong> Durkheim fue quien <em>dotó de método a la Sociología</em>.</li>
+              <li><strong>Parcial 2:</strong> la división del trabajo reconoce solidaridad <em>mecánica y orgánica</em>.</li>
+              <li><strong>Parcial 2 — Desarrollo:</strong> comparación entre <em>Hecho Social</em> y <em>Acción Social</em>.</li>
+            </ul>
+          </div>
+
           <div class="callout callout-def"><div class="callout-label">📖 Hecho Social (Durkheim)</div>
             <p>"Consisten en modos de actuar, de sentir y de pensar, que se le imponen al individuo humano en forma coactiva, siendo exteriores a sí mismo."</p>
           </div>
@@ -969,7 +1021,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-red">3️⃣</div>
-          <div class="topic-title">Karl Marx — Materialismo Histórico y Teoría del Conflicto</div>
+          <div class="topic-title">Karl Marx — Materialismo Histórico y Teoría del Conflicto <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -979,6 +1031,14 @@ mark.hl:hover .hl-tooltip{display:block}
             <span class="author-tag tag-conf">Teoría del Conflicto</span>
             <p>Historiador, economista, teórico social y revolucionario. Obras: "El Capital", "El Manifiesto Comunista", "La Ideología Alemana", "Contribución a la Crítica de la Economía Política".</p>
           </div>
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <ul>
+              <li><strong>Parcial 2:</strong> relación entre <em>infraestructura y superestructura</em>.</li>
+              <li><strong>Parcial 2:</strong> la teoría del conflicto resalta <em>la importancia de las clases sociales</em>.</li>
+            </ul>
+          </div>
+
           <h3>Conceptos fundamentales del pensamiento marxista</h3>
           <div class="compare-wrap"><table class="compare-table"><tr><th>Concepto</th><th>Definición</th></tr>
           <tr><td><strong>Medios de producción</strong></td><td>Todo lo que se usa para producir: tierra, fábricas, herramientas, maquinaria</td></tr>
@@ -1012,7 +1072,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header" onclick="toggleTopic(this)">
           <div class="topic-icon icon-purple">4️⃣</div>
-          <div class="topic-title">Max Weber — La Acción Social, Burocracia y Racionalización</div>
+          <div class="topic-title">Max Weber — La Acción Social, Burocracia y Racionalización <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -1022,6 +1082,16 @@ mark.hl:hover .hl-tooltip{display:block}
             <span class="author-tag tag-acc">Teoría de la Acción</span>
             <p>La figura más influyente de la teoría sociológica. Obras: "La Ética Protestante y el Espíritu del Capitalismo" (1905), "Economía y Sociedad" (póstumo). Antipositivista, idealista y hermenéutico.</p>
           </div>
+          <div class="exam-block">
+            <div class="exam-block-label"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</div>
+            <ul>
+              <li><strong>Parcial 2:</strong> Weber sienta bases de la <em>microsociología</em>.</li>
+              <li><strong>Parcial 2:</strong> acción racional con arreglo a <em>fines</em> y <em>valores</em>.</li>
+              <li><strong>Parcial 2:</strong> la <em>dominación carismática</em> depende del líder carismático.</li>
+              <li><strong>Parcial 2 — Desarrollo:</strong> propuesta educativa con tecnología desde Weber.</li>
+            </ul>
+          </div>
+
           <div class="callout callout-def"><div class="callout-label">📖 Acción Social (Weber)</div>
             <p>"Se comprende por acción aquella conducta humana que su propio agente o agentes entienden como subjetivamente significativa, y en la medida en que lo es. La acción social está referida a la conducta de otros."</p>
           </div>
@@ -1069,7 +1139,7 @@ mark.hl:hover .hl-tooltip{display:block}
       <div class="topic">
         <div class="topic-header open" onclick="toggleTopic(this)">
           <div class="topic-icon icon-blue">🎓</div>
-          <div class="topic-title">Educación — Teorías y Análisis Sociológico</div>
+          <div class="topic-title">Educación — Teorías y Análisis Sociológico <span class="exam-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> EN EXÁMENES ANTERIORES</span></div>
           <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="topic-body">
@@ -1291,7 +1361,81 @@ mark.hl:hover .hl-tooltip{display:block}
 
 
     <!-- ======================== QUIZ ======================== -->
-    <section class="unit-section" id="quiz" style="margin-top:0">
+    
+    <section class="unit-section" id="examenes">
+      <div class="unit-header">
+        <div class="unit-number" style="color:var(--gold)">Prioridad alta</div>
+        <div class="unit-title">Temas en exámenes anteriores</div>
+        <div class="unit-subtitle">Resumen compacto de todo lo que apareció en parciales previos y que conviene repasar primero.</div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header open" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">⭐</div>
+          <div class="topic-title">Mapa rápido de temas repetidos</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <div class="exam-summary-grid">
+            <div class="exam-summary-card">
+              <h3>Parcial 1</h3>
+              <ul>
+                <li>Evolución de las sociedades.</li>
+                <li>Sociedad moderna.</li>
+                <li>Foucault e instituciones de encierro.</li>
+                <li>Cualitativo vs cuantitativo.</li>
+              </ul>
+            </div>
+            <div class="exam-summary-card">
+              <h3>Parcial 2</h3>
+              <ul>
+                <li>Comte: mérito y dinámica social.</li>
+                <li>Durkheim: método y solidaridad.</li>
+                <li>Marx: infraestructura y superestructura.</li>
+                <li>Weber: acción racional, carisma, microsociología.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">📝</div>
+          <div class="topic-title">Parcial 1 — selección múltiple y desarrollo</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <ul>
+            <li>La evolución de las sociedades ocurre en forma de proceso en el tiempo.</li>
+            <li>En cada tipo de sociedad cohabitan lo nuevo y lo viejo.</li>
+            <li>La sociedad moderna supone una reconfiguración según el orden económico.</li>
+            <li>Foucault: poder centrado en instituciones de encierro.</li>
+            <li>Desarrollo: evaluación objetiva de la sociedad contemporánea.</li>
+            <li>Desarrollo: cuadro comparativo cualitativo vs cuantitativo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="topic-header" onclick="toggleTopic(this)">
+          <div class="topic-icon icon-gold">📝</div>
+          <div class="topic-title">Parcial 2 — selección múltiple, V/F y desarrollo</div>
+          <svg class="topic-toggle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="topic-body">
+          <ul>
+            <li>Comte: mérito y dinámica social.</li>
+            <li>Durkheim: método sociológico y solidaridad mecánica / orgánica.</li>
+            <li>Marx: infraestructura y superestructura.</li>
+            <li>Weber: microsociología, acción racional y dominación carismática.</li>
+            <li>Desarrollo: Hecho Social vs Acción Social.</li>
+            <li>Desarrollo: propuesta educativa con tecnología desde Weber.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+<section class="unit-section" id="quiz" style="margin-top:0">
       <div class="unit-header" style="background:linear-gradient(135deg,var(--primary-bg),var(--surface))">
         <div class="unit-number" style="color:var(--primary)">Test de Conocimientos</div>
         <div class="unit-title">30 Preguntas — Selección Múltiple</div>
